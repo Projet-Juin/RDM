@@ -13,27 +13,21 @@ from sys import exit
 print('******************** Veuillez rentrer les éléments caractéristiques de votre étude : ********************\n')
 materiau=input('Quel est le matériau utilisé ?\n')
 etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer 1),répartie (Rentrer 2), ou les deux (Rentrer 3) ?\n'))
-if etude!=1 and etude!=2 and etude!=3: 
-    #Vérification si l'étude est bien définie sur un des 3 cas posssibles
+while etude!=1 and etude!=2 and etude!=3: #Vérification si l'étude est bien définie sur un des 3 cas posssibles
     print ('!!!! Erreur !!!!','  On recommence :') #Sinon on renvoie une erreur et il faut relancer la question
-    etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "1"),répartie (Rentrer "2"), ou les deux (Rentrer "3") ?\n'))
-    if etude!=1 and etude!=2 and etude!=3: #Re-vérification
-        #Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
-print('\n') 
+    etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer 1),répartie (Rentrer 2), ou les deux (Rentrer 3) ?\n'))
+print('\n')
 #Géométrie#
 print('******************** Rentrez les caractéristiques géométriques de votre poutre en ',materiau,' : ********************\n')
 h=float(input('Entrer la hauteur de la poutre en mm: '))
 L=float(input('Entrer la longueur de la poutre en mm: '))
-l=float(input('Entrer la largeur de la poutre en mm: '))
+c=float(input('Entrer la largeur de la poutre en mm: ')) #attention ici  largeur noté c
 print('\n')  
 #Caractéristiques matériau#
 print('******************** Rentrez les caractéristiques physiques du matériau de votre poutre en ',materiau,' : ********************\n')
 E=float(input('Entrer son Module de Young de la poutre en MPa:'))
 Mv=float(input('Entrer sa Masse Volumique de la poutre en g/cm^3:'))
-Elim=float(input('Entrer sa limite élastique :'))
+Elim=float(input('Entrer sa limite élastique MPa:'))
 print('\n')
 #Chargement#
 print('******************** Rentrez les caractéristiques du chargement de votre poutre en ',materiau,' : ********************\n')
@@ -55,23 +49,23 @@ print('\n')
 
 ###CALCULS INTERMEDIAIRES###
 #Réactions aux appuis#
-if etude=='A':
+if etude==1:
     RA=(p*b)/L
     RB=(p*a)/L
-if etude=='B':
+if etude==2:
     RA=(q*L)/2
     RB=(q*L)/2
-if etude=='C':
+if etude==3:
     RA=((p*b)/L)+((q*L)/2)
     RB=((p*a)/L)+((q*L)/2)
 #Moment d'inertie#
-igz=(l*(pow(h,3)))/12
+igz=(c*(pow(h,3)))/12
 #hauteur dans la poutre#
 y=h/2
 #flèche max#
 Fmax=(p/(E*igz))*(pow(a,2))*(pow(b,2))/(3*L)
 #Masse#
-M=l*L*h*Mv*(10^(-6))
+M=c*L*h*Mv*(10^(-6))
 
 
 
