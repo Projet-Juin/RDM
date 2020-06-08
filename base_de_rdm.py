@@ -11,12 +11,12 @@ from sys import exit
 #Initialisation#
 print('******************** Veuillez rentrer les éléments caractéristiques de votre étude : ********************\n')
 materiau=input('Quel est le matériau utilisé ?\n')
-etude=input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "A"),répartie (Rentrer "B"), ou les deux (Rentrer "C") ?\n')
-if etude!='A' or etude!='B' or etude!='C': 
+etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer 1),répartie (Rentrer 2), ou les deux (Rentrer 3) ?\n'))
+if etude!=1 or etude!=2 or etude!=3: 
     #Vérification si l'étude est bien définie sur un des 3 cas posssibles
     print ('!!!! Erreur !!!!','  On recommence :') #Sinon on renvoie une erreur et il faut relancer la question
-    etude=input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "A"),répartie (Rentrer "B"), ou les deux (Rentrer "C") ?\n')
-    if etude!='A' or etude!='B' or etude!='C': #Re-vérification
+    etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "1"),répartie (Rentrer "2"), ou les deux (Rentrer "3") ?\n'))
+    if etude!=1 or etude!=2 or etude!=3: #Re-vérification
         #Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
@@ -24,87 +24,87 @@ if etude!='A' or etude!='B' or etude!='C':
 
 #Géométrie#
 print('******************** Rentrez les caractéristiques géométriques de votre poutre en ',materiau,' : ********************\n')
-h=input('Entrer la hauteur de la poutre en mm: ')
-L=input('Entrer la longueur de la poutre en mm: ')
-l=input('Entrer la largeur de la poutre en mm: ')
-if type(h)!=int() or type(h)!=float() or type(L)!=int() or type(L)!=float() or type(l)!=int() or type(l)!=float():
-    #Vérification si les valeurs sont bien des nombres
-    print ('!!!! Erreur !!!!','  On recommence :')
-    h=input('Entrer la hauteur de la poutre en mm: ')
-    L=input('Entrer la longueur de la poutre en mm: ')
-    l=input('Entrer la largeur de la poutre en mm: ')
-    if type(h)!=int() or type(h)!=float() or type(L)!=int() or type(L)!=float() or type(l)!=int() or type(l)!=float():
-    #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
+h=float(input('Entrer la hauteur de la poutre en mm: '))
+L=float(input('Entrer la longueur de la poutre en mm: '))
+l=float(input('Entrer la largeur de la poutre en mm: '))
+# if type(h)!=int() or type(h)!=float() or type(L)!=int() or type(L)!=float() or type(l)!=int() or type(l)!=float():
+#     #Vérification si les valeurs sont bien des nombres
+#     print ('!!!! Erreur !!!!','  On recommence :')
+#     h=float(input('Entrer la hauteur de la poutre en mm: ')
+#     L=float(input('Entrer la longueur de la poutre en mm: ')
+#     l=float(input('Entrer la largeur de la poutre en mm: ')
+#     if type(h)!=int() or type(h)!=float() or type(L)!=int() or type(L)!=float() or type(l)!=int() or type(l)!=float():
+#     #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
+#         print("******************** Erreur...ENCORE ********************")
+#         print("******************** Arrêt du programme ********************")
+#         exit() # Arrêt du programme
 print('\n')  
 
 
 #Caractéristiques matériau#
 print('******************** Rentrez les caractéristiques physiques du matériau de votre poutre en ',materiau,' : ********************\n')
-E=input('Entrer son Module de Young de la poutre en MPa:')
-Mv=input('Entrer sa Masse Volumique de la poutre en g/cm^3:')
-Elim=input('Entrer sa limite élastique :')
-if type(E)!=int() or type(E)!=float() or type(Mv)!=int() or type(Mv)!=float() or type(Elim)!=int() or type(Elim)!=float():
-    #Vérification si les valeurs sont bien des nombres
-    print ('!!!! Erreur !!!!','  On recommence :')
-    E=input('Entrer son Module de Young de la poutre en MPa:')
-    Mv=input('Entrer sa Masse Volumique de la poutre en g/cm^3:')
-    Elim=input('Entrer sa limite élastique :')
-    if type(E)!=int() or type(E)!=float() or type(Mv)!=int() or type(Mv)!=float() or type(Elim)!=int() or type(Elim)!=float():
-    #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
+E=float(input('Entrer son Module de Young de la poutre en MPa:'))
+Mv=float(input('Entrer sa Masse Volumique de la poutre en g/cm^3:'))
+Elim=float(input('Entrer sa limite élastique :'))
+# if type(E)!=int() or type(E)!=float() or type(Mv)!=int() or type(Mv)!=float() or type(Elim)!=int() or type(Elim)!=float():
+#     #Vérification si les valeurs sont bien des nombres
+#     print ('!!!! Erreur !!!!','  On recommence :')
+#     E=input('Entrer son Module de Young de la poutre en MPa:')
+#     Mv=input('Entrer sa Masse Volumique de la poutre en g/cm^3:')
+#     Elim=input('Entrer sa limite élastique :')
+#     if type(E)!=int() or type(E)!=float() or type(Mv)!=int() or type(Mv)!=float() or type(Elim)!=int() or type(Elim)!=float():
+#     #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
+#         print("******************** Erreur...ENCORE ********************")
+#         print("******************** Arrêt du programme ********************")
+#         exit() # Arrêt du programme
 print('\n')
 
 
 #Chargement#
 print('******************** Rentrez les caractéristiques du chargement de votre poutre en ',materiau,' : ********************\n')
 if etude=='A':
-    p=input('Entrer la Force de la charge ponctuelle en N :')
-    a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
+    p=float(input('Entrer la Force de la charge ponctuelle en N :'))
+    a=float(input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :'))
     b=L-a
-if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float():
-    #Vérification si les valeurs sont bien des nombres
-    print ('!!!! Erreur !!!!','  On recommence :')
-    p=input('Entrer la Force de la charge ponctuelle en N :')
-    a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
-    b=L-a
-    if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float():
-        #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
+# if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float():
+#     #Vérification si les valeurs sont bien des nombres
+#     print ('!!!! Erreur !!!!','  On recommence :')
+#     p=input('Entrer la Force de la charge ponctuelle en N :')
+#     a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
+#     b=L-a
+#     if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float():
+#         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
+#         print("******************** Erreur...ENCORE ********************")
+#         print("******************** Arrêt du programme ********************")
+#         exit() # Arrêt du programme
 if etude=='B':
-    q=input('Entrer la Force linéique de la charge répartie en N/mm :')
-if type(q)!=int() or type(q)!=float():
-    #Vérification si les valeurs sont bien des nombres
-    print ('!!!! Erreur !!!!','  On recommence :')
-    q=input('Entrer la Force linéique de la charge répartie en N/mm :')
-    if type(q)!=int() or type(q)!=float():
-        #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
+    q=float(input('Entrer la Force linéique de la charge répartie en N/mm :'))
+# if type(q)!=int() or type(q)!=float():
+#     #Vérification si les valeurs sont bien des nombres
+#     print ('!!!! Erreur !!!!','  On recommence :')
+#     q=input('Entrer la Force linéique de la charge répartie en N/mm :')
+#     if type(q)!=int() or type(q)!=float():
+#         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
+#         print("******************** Erreur...ENCORE ********************")
+#         print("******************** Arrêt du programme ********************")
+#         exit() # Arrêt du programme
 if etude=='C':
-    p=input('Entrer la Force de la charge ponctuelle en N :')
-    q=input('Entrer la Force linéique de la charge répartie en N/mm :')
-    a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
+    p=float(input('Entrer la Force de la charge ponctuelle en N :'))
+    q=float(input('Entrer la Force linéique de la charge répartie en N/mm :'))
+    a=float(input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :'))
     b=L-a
-if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float() or type(q)!=int() or type(q)!=float():
-    #Vérification si les valeurs sont bien des nombres
-    print ('!!!! Erreur !!!!','  On recommence :')
-    p=input('Entrer la Force de la charge ponctuelle en N :')
-    q=input('Entrer la Force linéique de la charge répartie en N/mm :')
-    a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
-    b=L-a
-    if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float() or type(q)!=int() or type(q)!=float():
-        #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
-        print("******************** Erreur...ENCORE ********************")
-        print("******************** Arrêt du programme ********************")
-        exit() # Arrêt du programme
+# if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float() or type(q)!=int() or type(q)!=float():
+#     #Vérification si les valeurs sont bien des nombres
+#     print ('!!!! Erreur !!!!','  On recommence :')
+#     p=input('Entrer la Force de la charge ponctuelle en N :')
+#     q=input('Entrer la Force linéique de la charge répartie en N/mm :')
+#     a=input('Entrer la Distance entre la charge ponctuelle et le zéro de la poutre :')
+#     b=L-a
+#     if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float() or type(q)!=int() or type(q)!=float():
+#         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
+#         print("******************** Erreur...ENCORE ********************")
+#         print("******************** Arrêt du programme ********************")
+#         exit() # Arrêt du programme
 print('\n')
 
 
