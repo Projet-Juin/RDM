@@ -12,11 +12,11 @@ from sys import exit
 print('******************** Veuillez rentrer les éléments caractéristiques de votre étude : ********************\n')
 materiau=input('Quel est le matériau utilisé ?\n')
 etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer 1),répartie (Rentrer 2), ou les deux (Rentrer 3) ?\n'))
-if etude!=1 or etude!=2 or etude!=3: 
+if etude!=1 and etude!=2 and etude!=3: 
     #Vérification si l'étude est bien définie sur un des 3 cas posssibles
     print ('!!!! Erreur !!!!','  On recommence :') #Sinon on renvoie une erreur et il faut relancer la question
     etude=int(input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "1"),répartie (Rentrer "2"), ou les deux (Rentrer "3") ?\n'))
-    if etude!=1 or etude!=2 or etude!=3: #Re-vérification
+    if etude!=1 and etude!=2 and etude!=3: #Re-vérification
         #Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
