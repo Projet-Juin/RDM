@@ -5,9 +5,10 @@ Created on Sat Jun  6 15:40:18 2020
 """
 from sys import exit
 
+
+
+
 ###INPUTS###
-
-
 #Initialisation#
 print('******************** Veuillez rentrer les éléments caractéristiques de votre étude : ********************\n')
 materiau=input('Quel est le matériau utilisé ?\n')
@@ -22,22 +23,18 @@ if etude!=1 and etude!=2 and etude!=3:
         print("******************** Arrêt du programme ********************")
         exit() # Arrêt du programme
 print('\n') 
-
 #Géométrie#
 print('******************** Rentrez les caractéristiques géométriques de votre poutre en ',materiau,' : ********************\n')
 h=float(input('Entrer la hauteur de la poutre en mm: '))
 L=float(input('Entrer la longueur de la poutre en mm: '))
 l=float(input('Entrer la largeur de la poutre en mm: '))
 print('\n')  
-
 #Caractéristiques matériau#
 print('******************** Rentrez les caractéristiques physiques du matériau de votre poutre en ',materiau,' : ********************\n')
 E=float(input('Entrer son Module de Young de la poutre en MPa:'))
 Mv=float(input('Entrer sa Masse Volumique de la poutre en g/cm^3:'))
 Elim=float(input('Entrer sa limite élastique :'))
-
 print('\n')
-
 #Chargement#
 print('******************** Rentrez les caractéristiques du chargement de votre poutre en ',materiau,' : ********************\n')
 if etude==1:
@@ -54,8 +51,9 @@ if etude==3:
 print('\n')
 
 
-###CALCULS INTERMEDIAIRES###
 
+
+###CALCULS INTERMEDIAIRES###
 #Réactions aux appuis#
 if etude=='A':
     RA=(p*b)/L
@@ -66,28 +64,24 @@ if etude=='B':
 if etude=='C':
     RA=((p*b)/L)+((q*L)/2)
     RB=((p*a)/L)+((q*L)/2)
-    
 #Moment d'inertie#
 igz=(l*(pow(h,3)))/12
-
 #hauteur dans la poutre#
 y=h/2
-
 #flèche max#
 Fmax=(p/(E*igz))*(pow(a,2))*(pow(b,2))/(3*L)
-
 #Masse#
 M=l*L*h*Mv*(10^(-6))
 
 
-###CALCULS###
 
+
+###CALCULS###
 #x#
 pas=100 #Création d'un pas pour la discrétisation des valeurs
-x=[0]*pas #Création d'une liste de pas élements
-for i in range(pas+1):
+x=[0]*(pas+1) #Création d'une liste de pas élements
+for i in range(1,pas+1):
     x[i]+=i*L/pas
-
 #Efforts tranchant T#
 
 
