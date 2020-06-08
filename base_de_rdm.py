@@ -3,7 +3,6 @@
 Created on Sat Jun  6 15:40:18 2020
 @author: Forjot Henri
 """
-from sys import exit
 
 
 ###INPUTS###
@@ -17,11 +16,10 @@ if etude!='A' or etude!='B' or etude!='C':
     #Vérification si l'étude est bien définie sur un des 3 cas posssibles
     print ('!!!! Erreur !!!!','  On recommence :') #Sinon on renvoie une erreur et il faut relancer la question
     etude=input('S\'agit\'il d\'une étude en charge concentrée (Rentrer "A"),répartie (Rentrer "B"), ou les deux (Rentrer "C") ?\n')
-    if etude!=stg(A) or etude!='B' or etude!='C': #Re-vérification
+    if etude!='A' or etude!='B' or etude!='C': #Re-vérification
         #Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 
 
 #Géométrie#
@@ -39,7 +37,6 @@ if type(h)!=int() or type(h)!=float() or type(L)!=int() or type(L)!=float() or t
     #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 print('\n')  
 
 
@@ -58,7 +55,6 @@ if type(E)!=int() or type(E)!=float() or type(Mv)!=int() or type(Mv)!=float() or
     #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 print('\n')
 
 
@@ -78,7 +74,6 @@ if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float():
         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 if etude=='B':
     q=input('Entrer la Force linéique de la charge répartie en N/mm :')
 if type(q)!=int() or type(q)!=float():
@@ -89,7 +84,6 @@ if type(q)!=int() or type(q)!=float():
         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 if etude=='C':
     p=input('Entrer la Force de la charge ponctuelle en N :')
     q=input('Entrer la Force linéique de la charge répartie en N/mm :')
@@ -106,7 +100,6 @@ if type(p)!=int() or type(p)!=float() or type(a)!=int() or type(a)!=float() or t
         #Re-Vérification si les valeurs sont bien des nombres ..... Erreur considérée comme volontaire, arrêt du programme!
         print("******************** Erreur...ENCORE ********************")
         print("******************** Arrêt du programme ********************")
-        exit() #Arrêt du programme
 print('\n')
 
 
