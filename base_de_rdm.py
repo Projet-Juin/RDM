@@ -115,3 +115,29 @@ if etude=='B':
 if etude=='C':
     RA=((p*b)/L)+((q*L)/2)
     RB=((p*a)/L)+((q*L)/2)
+    
+#Moment d'inertie#
+igz=(l*(h^3))/12
+
+#hauteur dans la poutre#
+y=h/2
+
+#flèche max#
+Fmax=(p/(E*igz))*(a^2)*(b^2)/(3*L)
+
+#Masse#
+M=l*L*h*Mv*(10^(-6))
+
+
+###CALCULS###
+
+#x#
+pas=100 #Création d'un pas pour la discrétisation des valeurs
+x=[0]*pas #Création d'une liste de pas élements
+for i in range(pas+1):
+    x[i]+=i*L/pas
+
+#Efforts tranchant T#
+
+
+
