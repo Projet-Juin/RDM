@@ -37,10 +37,37 @@ def charge_répartie(hauteur, longueur, largeur, matériau, E, MasseVol, LimElas
     flèche = -(q/(24*E*Igz))*(2*longueur*pow(x,3)-pow(x,4)-pow(longueur,3)*x)
     FlècheMax = max(x)
     
-    plt.figure(1) #Ma première figure
+    plt.figure(1) #Graphe effort tranchant
+    plt.xlabel("x [mm]") 
+    plt.ylabel("T [N]") 
+    plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+    plt.plot(x,EffortTranch) #Le tracé en lui-même
+    plt.show()
+    
+    plt.figure(2) #Graphe moment fléchissant
+    plt.xlabel("x") 
+    plt.ylabel("Mf") 
+    plt.title("Tracé du Moment Fléchissant") 
+    plt.plot(x,Mf)
+    plt.show()
+    
+    plt.figure(3) #Graphe de la contrainte en y = h/2
+    plt.xlabel("x") 
+    plt.ylabel("Contrainte Max") 
+    plt.title("Tracé de la Contrainte Maximale") 
+    plt.plot(x,ContrainteYMax) 
+    plt.show()
+    
+    plt.figure(4) #Graphe de la déformation en y = h/2
+    plt.xlabel("x") 
+    plt.ylabel("Déformation Max") 
+    plt.title("Tracé de la Déformation Maximale") 
+    plt.plot(x,DeformationYMax) 
+    plt.show()
+    
+    plt.figure(5) #Graphe de la flèche
     plt.xlabel("x") 
     plt.ylabel("flèche") 
-    plt.title("Tracé de la flèche") #Titre de la courbe
-    plt.plot(x,flèche,label="flèche") #Le tracé en lui-même
-    plt.legend('salut') 
+    plt.title("Tracé de la flèche") 
+    plt.plot(x,flèche,label="flèche")
     plt.show()
