@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 10 13:25:43 2020
-
 @author: Forjot Henri
+
+Création d'une fenetre de bienvenue
 """
 
 from tkinter import *
@@ -15,9 +15,6 @@ gris_clair='#EDEDED'
 gris_fonce='#9B9B9B'
 
 
-"""
-création d'une fenetre de bienvenue
-"""
 def fenetre_bienvenue():    
     bienvenue = Tk() #création de la fenetre bienvenue
     bienvenue.title("RDM6+++ --- BIENVENUE") #Titre de l'encadré

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 10 15:07:13 2020
-
 @author: Forjot Henri
-"""
 
+Gestion des entrées
+
+"""
 
 ### Liste de fonction d'Entrées ###
 # Longueur (mm) : L
