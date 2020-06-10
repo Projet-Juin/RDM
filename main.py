@@ -8,7 +8,8 @@ Création du main
 ### IMPORTATIONS ###
 from tkinter import *
 from appel_fonctions_annexes import *
-# import appel_fonctions
+#from gestion_des_entrées import *
+from gestion_des_calculs import *
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -48,47 +49,54 @@ fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item
 # Création d'un menu éléments finis et ajout d'items
 elts_finis_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu élts finis
 elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis) # ajout de l'item permettant d'aller en élément finis
-autres_menu.add_separator() #ajout d'un separateur
-elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=donothing) # ajout de l'item permettant d'importer les données d'éléments finis
-elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=donothing) # ajout de l'item permettant d'exporter les données d'éléments finis
+elts_finis_menu.add_separator() #ajout d'un separateur
+elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=import_elts_finis) # ajout de l'item permettant d'importer les données d'éléments finis
+elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=export_elts_finis) # ajout de l'item permettant d'exporter les données d'éléments finis
 # Création d'un menu autres et ajout d'items
 autres_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu autres
-autres_menu.add_command(label='Aide') # ajout de l'item aide
+autres_menu.add_command(label='Aide',command=aide) # ajout de l'item aide
+autres_menu.add_command(label='Conditions de fonctionnement',command=ctds_de_fct) # ajout de l'item conditions de la rdm
 autres_menu.add_separator() #ajout d'un separateur
-autres_menu.add_command(label='Crédit') # ajout de l'item crédit
+autres_menu.add_command(label='Crédit',command=credit) # ajout de l'item crédit
 #Ajouts des barres de menus
 barre_de_menu.add_cascade(label='Fichier', menu=fichier_menu,command=donothing) # ajouter de fichier_menu dans barre_de_menu
-barre_de_menu.add_cascade(label='Éléments finis', menu=autres_menu,command=donothing) # ajouter de elts_finis_menu dans barre_de_menu
+barre_de_menu.add_cascade(label='Éléments finis', menu=elts_finis_menu,command=donothing) # ajouter de elts_finis_menu dans barre_de_menu
 barre_de_menu.add_cascade(label='Autres', menu=autres_menu,command=donothing) # ajouter de autres_menu dans barre_de_menu
 """
 Fin
 """
 
-### Création de 3 frames principales ###
+### Création de 2 frames principales ###
 #encadré gauche
 left_frame= Frame(main, bg="blue", width=400, height=1080)
 #encadré droite
 right_frame = Frame(main, bg='green', width =1520, height=1080)
-#Gestion sur une grille des 2 frames principales
-left_frame.grid(row=0, column=0)
-right_frame.grid(row=0,column=1,columnspan=4)
+#paramètres de grille et Gestion sur une grille des 2 frames principales
+main.columnconfigure(0,weight=1)
+main.columnconfigure(1,weight=4)
+left_frame.grid(row=0,column=0,in_=main)
+right_frame.grid(row=0,column=1,in_=main)
 """
 Fin
 """
 
 ### left_frame ###
 ### frame_géométrie ###
-frame_geometrie=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=10, pady=10)
-frame_geometrie.grid(column=0,row=0)
+frame_geometrie=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=0,in_=left_frame)
 ### frame_matériau ###
-frame_matériau=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=10, pady=10)
-frame_matériau.grid(column=0,row=1)
+frame_materiau=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=1,in_=left_frame)
 ### frame_chargement ###
-frame_chargement=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=10, pady=10)
-frame_chargement.grid(column=0,row=2)
+frame_chargement=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=2,in_=left_frame)
+#paramètres de grille left_frame
+# left_frame.rowconfigure(0,weight=2)
+# left_frame.rowconfigure(1,weight=2)
+# left_frame.rowconfigure(2,weight=2)
+# left_frame.rowconfigure(3,weight=1)
+
+
 ### Bouton Calculer ###
-bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=)
-bouton_calculer.grid(column=0,row=3,)
+# bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
+# bouton_calculer.grid(column=0,row=3)
 """
 Fin
 """
@@ -99,19 +107,16 @@ Fin
 Fin
 """
 
-### Fenetre de bienvenue ###
-fenetre_bienvenue()
-"""
-Fin
-"""
+
 
 ### Lancement du rendu général ###
+# Fenetre de bienvenue #
+#fenetre_bienvenue()
 #lancer le main
 main.mainloop()
 """
 Fin
 """
-
 
 
 

@@ -22,4 +22,4 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous program
 
 def calcul(): # Effectue le calcul sur le bouton calcul
     donothing() #pour le moment, fait rien
-
+    # update()

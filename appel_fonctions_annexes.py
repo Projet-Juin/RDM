@@ -6,7 +6,7 @@ Création de fonctions annexes
 """
 ### IMPORTATIONS ###
 from tkinter import *
-from tkinter.filedialog import *
+import tkinter.filedialog
 from tkinter.messagebox import *
 import sys
 import os
@@ -20,7 +20,7 @@ gris_fonce='#9B9B9B'
 
 def donothing(): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
     nouvelle_fenetre =Tk()
-    boutton = Button(nouvelle_fenetre, text="Ne fait rien pour le moment")
+    boutton = Button(nouvelle_fenetre, text="Ne fait rien pour le moment \n A venir très prochainement !")
     boutton.pack(side='top')  
     nouvelle_fenetre.mainloop()
 
@@ -49,7 +49,7 @@ def ouvrir():
     # if IOError: 
     #     error()
     # else:
-    o=filedialog.askopenfilename(title="Ouvrir un fichier csv RDM6+++",filetypes=[('.txt')])
+    o=tkinter.filedialog.askopenfilename(title="Ouvrir un fichier csv RDM6+++",filetypes=[("Fichier Text","*.csv")])
     print(o)
         
     # reboot_programme()
@@ -69,12 +69,27 @@ def sauvegarder(): # Extention de sauvegarder sous
     
 def sauvegarder_sous(): # sauvegarder les données crééent par le calcul
     # si le fichier existe déjà, cela vaut dire qu'on veut changer de répertoire ou le renommer donc on fait rien
-    e_s=filedialog.asksaveasfile(title="Enregistrer sous",filetypes=[('.txt')],defaultextension=".txt") # ouvre la fenêtre pour enregistrer
+    e_s=tkinter.filedialog.asksaveasfile(title="Enregistrer sous",filetypes=[("Fichier Text","*.csv")]) # ouvre la fenêtre pour enregistrer
     text2save = str(0,1,2) # fichier à sauvegarder... ATENTION  forcément un str
     e_s.write(text2save) # on ouvre et on stock
     e_s.close() # on referme
     return print(e_s),e_s
 
-def switch_elts_finis(): #fonction qui renvoie sur le programme d'élts finis
+def switch_elts_finis(): # fonction qui renvoie sur le programme d'élts finis
     donothing()
 
+def import_elts_finis(): # fonction qui import des données de géometrie,chargement,matériau du programme d'élts finis vers celui de rdm
+    donothing()
+    
+def export_elts_finis(): # fonction qui import des données de géometrie,chargement,matériau du programme de rdm vers celui d'élts finis
+    donothing()
+    
+def aide(): # fourni les liens URLs de la plateforme d'aide en ligne, du pdf et de la page youtube
+    donothing()
+    
+def ctds_de_fct(): # annonce les conditions dans lequels le programme renvois des valeurs "exactes"
+    donothing()
+    
+def credit(): # annonce la version du programme, les concepteurs du programme et l'année de développement
+    donothing()
+    
