@@ -4,9 +4,10 @@
 
 Création de fonctions annexes
 """
-
+### IMPORTATIONS ###
 from tkinter import *
-import tkinter.filedialog
+from tkinter.filedialog import *
+from tkinter.messagebox import *
 import sys
 import os
 
@@ -17,16 +18,13 @@ font_texte1 = ("Arial", 8, "bold")
 gris_clair='#EDEDED'
 gris_fonce='#9B9B9B'
 
-def donothing():
+def donothing(): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
     nouvelle_fenetre =Tk()
     boutton = Button(nouvelle_fenetre, text="Ne fait rien pour le moment")
     boutton.pack(side='top')  
     nouvelle_fenetre.mainloop()
 
-"""
-Création d'une fenetre de bienvenue
-"""
-def fenetre_bienvenue():    
+def fenetre_bienvenue(): #Création d'une fenetre de bienvenue    
     bienvenue = Tk() #création de la fenetre bienvenue
     bienvenue.title("RDM6+++ --- BIENVENUE") #Titre de l'encadré
     bienvenue.config(bg=gris_clair)
@@ -39,32 +37,19 @@ def fenetre_bienvenue():
     bouton_continuer.pack(anchor='se')
     bienvenue.mainloop()
 
-def reboot_programme():
-    """Restarts the current program.
-    Note: this function does not return. Any cleanup action (like
-    saving data) must be done before calling this function."""
+def reboot_programme(): #relance le programme de zéro
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
-def error():
-    error_fenetre=Tk()
-    error_fenetre.title('ERREUR')  
-    # logo = BitmapImage('error.xbm', foreground='red')
-    # Label(image=logo).grid()
-    msg=Label(error_fenetre,text='Argument non valable... Veuillez recommencer !',borderwidth=1,font=font_titre2)
-    msg_bis=Label(error_fenetre,bitmap='error',fg='red',borderwidth=1,font=("Arial", 30, "bold"))
-    msg_bis2=Label(error_fenetre,bitmap='error',fg='red',borderwidth=1,font=("Arial", 30, "bold"))
-    msg.grid(column=1)
-    msg_bis.grid(column=0,sticky='w')
-    msg_bis2.grid(column=2,sticky='e')
-    error_fenetre.mainloop()
+def error(): #affiche une fenêtre pour les erreurs
+    showerror(title='ERREUR !!!',message='Argument non valable... Veuillez recommencer !')
     
 def ouvrir():
     # S'il n'est pas du bon genre, renvoie une erreur
     # if IOError: 
     #     error()
     # else:
-    o=tkinter.filedialog.askopenfilename(title="Ouvrir un fichier csv RDM6+++",filetypes=[('.txt')],defaultextension=".txt")
+    o=filedialog.askopenfilename(title="Ouvrir un fichier csv RDM6+++",filetypes=[('.txt')])
     print(o)
         
     # reboot_programme()
@@ -73,7 +58,7 @@ def ouvrir():
     # fh.close() 
     #     
     
-def sauvegarder():
+def sauvegarder(): # Extention de sauvegarder sous
     #Il faut lire si je fichier existe déjà
     if e_s != None: #le fichier existe pas
         return sauvegarder_sous()
@@ -82,12 +67,14 @@ def sauvegarder():
         e_s.write(text2save) # on ouvre et on stock
         e_s.close() # on referme
     
-def sauvegarder_sous():
+def sauvegarder_sous(): # sauvegarder les données crééent par le calcul
     # si le fichier existe déjà, cela vaut dire qu'on veut changer de répertoire ou le renommer donc on fait rien
-    e_s=tkinter.filedialog.asksaveasfile(title="Enregistrer sous",filetypes=[('.txt')],defaultextension=".txt") # ouvre la fenêtre pour enregistrer
+    e_s=filedialog.asksaveasfile(title="Enregistrer sous",filetypes=[('.txt')],defaultextension=".txt") # ouvre la fenêtre pour enregistrer
     text2save = str(0,1,2) # fichier à sauvegarder... ATENTION  forcément un str
     e_s.write(text2save) # on ouvre et on stock
     e_s.close() # on referme
     return print(e_s),e_s
 
-    
+def switch_elts_finis(): #fonction qui renvoie sur le programme d'élts finis
+    donothing()
+

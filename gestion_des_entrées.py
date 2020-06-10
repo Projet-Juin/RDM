@@ -5,6 +5,10 @@
 Gestion des entrées
 
 """
+### IMPORTATIONS ###
+from tkinter import *
+from tkinter.filedialog import *
+from tkinter.messagebox import *
 
 ### Liste de fonction d'Entrées ###
 # Longueur (mm) : L
