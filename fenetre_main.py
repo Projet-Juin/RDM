@@ -20,8 +20,7 @@ gris_tres_fonce='#7E7E7E'
 """
 Fin
 """
-### Fenetre de bienvenue ###
-fenetre_bienvenue()
+
 
 ### Création fenetre principale ###
 main=Tk()
@@ -39,20 +38,21 @@ Fin
 barre_de_menu = Menu(main, tearoff=0)
 main.config(menu=barre_de_menu)
 # Création d'un menu fichier et ajout d'items
-fichier_menu = Menu(barre_de_menu) # Création d'un menu fichier
-fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)') # ajout de l'item redémarrer
-fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)') # ajout de l'item quitter
-fichier_menu.add_separator() #ajout d'un separateur
+fichier_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu fichier
+fichier_menu.add_command(label='Ouvrir',command=ouvrir) # ajout de l'item ouvrir
+fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)',command=sauvegarder) # ajout de l'item sauvegarder
+fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)',command=sauvegarder_sous) # ajout de l'item sauvegarder sous
 fichier_menu.add_command(label='Redémarrer',command=reboot_programme) # ajout de l'item redémarrer
+fichier_menu.add_separator() #ajout d'un separateur
 fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter
 # Création d'un menu autres et ajout d'items
-autres_menu = Menu(barre_de_menu) # Création d'un menu autres
+autres_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu autres
 autres_menu.add_command(label='Aide') # ajout de l'item aide
 autres_menu.add_separator() #ajout d'un separateur
 autres_menu.add_command(label='Crédit') # ajout de l'item crédit
 #Ajouts des barres de menus
-barre_de_menu.add_cascade(label='Fichier', menu=fichier_menu) # ajouter de fichier_menu dans barre_de_menu
-barre_de_menu.add_cascade(label='Autres', menu=autres_menu) # ajouter de autres_menu dans barre_de_menu
+barre_de_menu.add_cascade(label='Fichier', menu=fichier_menu,command=donothing) # ajouter de fichier_menu dans barre_de_menu
+barre_de_menu.add_cascade(label='Autres', menu=autres_menu,command=donothing) # ajouter de autres_menu dans barre_de_menu
 """
 Fin
 """
@@ -93,9 +93,8 @@ frame_matériau.grid(column=0,row=1)
 frame_chargement=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=10, pady=10)
 frame_chargement.grid(column=0,row=2)
 ### Bouton Calculer ###
-bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white")
-# , command=
-bouton_calculer.grid(column=0,row=3)
+bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=donothing)
+bouton_calculer.grid(column=0,row=3,)
 """
 Fin
 """
@@ -109,7 +108,12 @@ Fin
 ### Lancement du rendu général ###
 #lancer le main
 main.mainloop()
+"""
+Fin
+"""
 
+### Fenetre de bienvenue ###
+fenetre_bienvenue()
 """
 Fin
 """
