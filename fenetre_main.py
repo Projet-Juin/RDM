@@ -43,8 +43,8 @@ fichier_menu = Menu(barre_de_menu) # Création d'un menu fichier
 fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)') # ajout de l'item redémarrer
 fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)') # ajout de l'item quitter
 fichier_menu.add_separator() #ajout d'un separateur
-fichier_menu.add_command(label='Redémarrer',command=reboot_programme()) # ajout de l'item redémarrer
-fichier_menu.add_command(label='Quitter',command=quitter_main) # ajout de l'item quitter
+fichier_menu.add_command(label='Redémarrer',command=reboot_programme) # ajout de l'item redémarrer
+fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter
 # Création d'un menu autres et ajout d'items
 autres_menu = Menu(barre_de_menu) # Création d'un menu autres
 autres_menu.add_command(label='Aide') # ajout de l'item aide

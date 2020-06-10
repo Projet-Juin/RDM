@@ -28,15 +28,9 @@ def fenetre_bienvenue():
     bienvenue_message1.pack() # affiche le message 1
     bienvenue_message2=Label(bienvenue,font=font_texte1,text='Ce programme à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=300,bg=gris_clair) #définit le message 2
     bienvenue_message2.pack() # affiche le message 2
-    bouton_continuer = Button(bienvenue, text="Entrer",borderwidth=6,activebackground=gris_clair,relief="raised",overrelief="groove",command=quitter_bienvenue)
+    bouton_continuer = Button(bienvenue, text="Entrer",borderwidth=6,activebackground=gris_clair,relief="raised",overrelief="groove",command=bienvenue.destroy)
     bouton_continuer.pack(anchor='se')
     bienvenue.mainloop()
-
-# Quitter une interface graphique correctement 
-def quitter_bienvenue() :
-    bienvenue.destroy()
-def quitter_main() :
-    fenetre.destroy()
 
 def reboot_programme():
     """Restarts the current program.
