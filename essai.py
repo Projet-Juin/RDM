@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun  8 20:17:14 2020
+Created on Tue Jun  9 11:44:02 2020
 
 @author: Simon
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
-import charge_répartie
-
-# LES IMPUTS SONT :
 
     # Géométrie de la poutre :
 hauteur = 100
@@ -26,15 +22,19 @@ LimElast = 40
 
     # Forces appliquées
 q = -200
-    
-    # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
+Igz = (largeur *(pow(hauteur,3)))/12
+
 NbrePointsX = 100 
 x = np.linspace(0, longueur, NbrePointsX+1)
+# np.mat(x)
 NbrePointsY = 40
 y = np.linspace(0, hauteur, NbrePointsY+1)
+# np.mat(y)
+print('y = ', y, 'nombre de lignes : ', np.shape(y)[0], 'nombre de colonnes : ', np.shape(y)[1])
 
-# LES CALCULS :
-# fonction que l'on pourra appeler qui s'occupe de calculer différentes données d'une poutre qui subit seulement une charge répartie
+Mf = q*(longueur-x)*(x/2)
+Mf.reshape(101,1)
+print('mf = ', Mf, '\n', 'avec des éléments de type : ', Mf.dtype, 'nmbre de lignes : ', np.shape(Mf)[0], '\n', 'nombre de colonnes : ', np.shape(Mf)[0])
+# calcul = (-1/Igz)*np.matmul(Mf,y)
+# print(calcul)
 
-    
-charge_répartie.charge_répartie(hauteur, longueur, largeur, matériau, E, MasseVol, LimElast, q, x, y) 

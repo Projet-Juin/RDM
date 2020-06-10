@@ -8,7 +8,7 @@ Created on Mon Jun  8 21:05:36 2020
 import numpy as np
 import matplotlib.pyplot as plt
 
-def charge_répartie(hauteur, longueur, largeur, matériau, E, MasseVol, LimElast, q, x) :
+def charge_répartie(hauteur, longueur, largeur, matériau, E, MasseVol, LimElast, q, x, y) :
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
     RA = (q*longueur)/2
@@ -26,9 +26,14 @@ def charge_répartie(hauteur, longueur, largeur, matériau, E, MasseVol, LimElas
     
     # Moment Fléchissant [N.mm]
     Mf = q*(longueur-x)*(x/2)
+    print('mf = ', Mf)
     
     # Contrainte pour y = h/2 [MPa]
-    ContrainteYMax = (Mf/Igz)*(hauteur/2)
+    ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+    print('contrainte max = ', ContrainteYMax)
+    
+    # Contrainte pour tout y [MPa]
+    #Contrainte = np.matmul(-(Mf/Igz),y)
     
     # Déformation pour y = h/2 [SD]
     DeformationYMax = ContrainteYMax/E
