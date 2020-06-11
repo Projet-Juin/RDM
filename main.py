@@ -70,17 +70,16 @@ Fin
 ### Création de 2 frames principales ###
 #Fenetre principale en 2 frames
 left_frame= Frame(main, bg="blue") # encadré gauche
-left_frame.resizable(width=FALSE, height=FALSE) #empêche de déformer la fenetre
-right_frame = Frame(main, bg='green', width =1420, height=1050) #encadré droite
+right_frame = Frame(main, bg='green') #encadré droite
 # left frame en 2 canvas
-left_canvas1=Canvas(left_frame, bg="purple",width=500, height=900) # encadré gauche haut
-left_canvas2=Canvas(left_frame, bg="red",width=500, height=150) # encadré gauche bas
+left_canvas1=Canvas(left_frame, bg="purple") # encadré gauche haut
+left_canvas2=Canvas(left_frame, bg="red") # encadré gauche bas
 # placement sur la grille des deux 2 frames principales
-left_frame.place(relx=0,rely=0, width=500, height=1050)
-right_frame.place(x=500,y=0)
+left_frame.place(relx=0,rely=0, relwidth=0.25, relheight=1)
+right_frame.place(relx=0.25,y=0, relwidth =0.75, relheight=1)
 # placement des deux 2 canvas de left_frame
-left_canvas1.place(x=0,y=0)
-left_canvas2.place(x=0,y=900)
+left_canvas1.place(relx=0,rely=0,relwidth=1, relheight=0.9)
+left_canvas2.place(relx=0,rely=0.9,relwidth=1, relheight=0.1)
 
 """
 Fin
@@ -101,7 +100,7 @@ canva_tab2.pack(expand=1, fill='both')
 #Barre 3 : Chargement
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
-canva_tab3=Canvas(tab3, bg="purple")
+canva_tab3=Canvas(tab3, bg="white")
 canva_tab3.pack(expand=1, fill='both')
 # on place le notebook
 notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
