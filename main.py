@@ -23,7 +23,6 @@ gris_tres_fonce='#7E7E7E'
 Fin
 """
 
-
 ### Création fenetre principale ###
 main=Tk()
 main.title("RDM6+++ --- Écran principal") #Titre de l'encadré
@@ -80,7 +79,6 @@ right_frame.place(relx=0.25,y=0, relwidth =0.75, relheight=1)
 # placement des deux 2 canvas de left_frame
 left_canvas1.place(relx=0,rely=0,relwidth=1, relheight=0.9)
 left_canvas2.place(relx=0,rely=0.9,relwidth=1, relheight=0.1)
-
 """
 Fin
 """
@@ -105,6 +103,7 @@ canva_tab3.pack(expand=1, fill='both')
 # on place le notebook
 notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
 notebook.pack(expand=1, fill='both') 
+
 
 # LabelFrame using tab1 as the parent
 # mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
