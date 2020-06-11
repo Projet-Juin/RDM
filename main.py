@@ -69,24 +69,59 @@ Fin
 """
 
 ### Création de 2 frames principales ###
-left_frame= Frame(main, bg="blue", width=400, height=1050) #encadré gauche
-left_canva1=Canvas()
-left_canva2=Canvas()
-#encadré droite
-right_frame = Frame(main, bg='green', width =1520, height=1080)
+#Fenetre principale en 2 frames
+left_frame= Frame(main, bg="blue", width=500, height=1050) # encadré gauche
+right_frame = Frame(main, bg='green', width =1420, height=1080) #encadré droite
+# left frame en 2 canvas
+left_canvas1=Canvas(left_frame, bg="purple") # encadré gauche haut
+left_canvas2=Canvas(left_frame, bg="red") # encadré gauche bas
 #paramètres de grille et Gestion sur une grille des 2 frames principales
 main.columnconfigure(0,weight=1)
 main.columnconfigure(1,weight=4)
+# placement sur la grille des deux 2 frames principales
 left_frame.grid(row=0,column=0,in_=main)
 right_frame.grid(row=0,column=1,in_=main)
+# placement des deux 2 canvas de left_frame
+left_canvas1.place()
+left_canvas1.place()
 """
 Fin
 """
 
-### left_frame ###
+### NoteBook - left_canvas1 ###
+notebook = ttk.Notebook(left_canvas1) # Creation du Notebook
+# Barre 1 : Géométrie
+tab1 = ttk.Frame(notebook) # Creation de la barre 1
+notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
+
+
+# Barre 2 : Matériau
+tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
+notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
+
+
+#Barre 3 : Chargement
+tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
+notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
+
+
+# on place le notebook
+notebook.pack(expand=1, fill='both') 
+
+
+
+# LabelFrame using tab1 as the parent
+# mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
+# mighty.grid(column=0, row=0, padx=8, pady=4)
+# a_label = ttk.Label(mighty, text=' Enter a number: ')
+# a_label.grid(column=0, row=0, sticky='W')
+
+### scrolbar - left_canva2 ###
+
+
 ### Bouton Calculer ###
-# bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
-# bouton_calculer.grid(column=0,row=3)
+bouton_calculer= Button(left_canvas2,width=15, height=2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
+bouton_calculer.pack(anchor='center')
 """
 Fin
 """

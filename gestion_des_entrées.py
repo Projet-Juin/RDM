@@ -28,7 +28,7 @@ largeur
 hauteur
     
 # Rayon de le section (mm) : R
-rayon
+def rayon
     
 # Hauteur de l’aile supérieure (mm) : h1
 def hauteur_aile_sup():
