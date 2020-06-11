@@ -103,15 +103,19 @@ canva_tab1_label2 = Label(canva_tab1_labelframe,font = ("Arial",11 ),text = 'Cir
 case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=1)
 #Appel des item à placer et sélection taille du labelframe
 if type_de_section == 0: # on est sur le cas rectangulaire
+    #définition des variables
     L = DoubleVar(main,'Longueur') 
     b = DoubleVar(main,'Largeur')
     h = DoubleVar(main,'Hauteur')
+    #messages des inputs L,b,h
     label_longueur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Longueur L de votre poutre en mm :')
     label_largeur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Largeur b de votre poutre en mm :')
     label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Hauteur h de votre poutre en mm :')
+    #saisie des inputs L,b,h
     saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=L)
     saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=b)
     saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=h)
+    #Placement des items sur la grille
     label_longueur.grid(row=1)
     saisie_longueur.grid(row=2)
     label_largeur.grid(row=3)
@@ -119,21 +123,20 @@ if type_de_section == 0: # on est sur le cas rectangulaire
     label_hauteur.grid(row=5)
     saisie_hauteur.grid(row=6)
 else: # on est dans le cas circulaire
+    #définition des variables
     L = DoubleVar(main,'Longueur') 
-    b = DoubleVar(main,'Largeur')
-    h = DoubleVar(main,'Hauteur')
+    R = DoubleVar(main,'Rayon')
+    #messages des inputs L,b,h
     label_longueur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Longueur L de votre poutre en mm :')
-    label_largeur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Largeur b de votre poutre en mm :')
-    label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter la Hauteur h de votre poutre en mm :')
+    label_rayon = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Enter le Rayon R de votre poutre en mm :')
+    #saisie des inputs L,b,h
     saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=L)
-    saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=b)
-    saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=h)
+    saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textevariable=R)
+    #Placement des items sur la grille
     label_longueur.grid(row=1)
     saisie_longueur.grid(row=2)
-    label_largeur.grid(row=3)
-    saisie_largeur.grid(row=4)
-    label_hauteur.grid(row=5)
-    saisie_hauteur.grid(row=6)
+    label_rayon.grid(row=3)
+    saisie_rayon.grid(row=4)
 #Placement du labelframe type de section
 canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de section    
 #définition de la grille du labelframe type de section
@@ -144,7 +147,7 @@ canva_tab1_labelframe.columnconfigure(3, weight=4)
 # canva_tab1_labelframe.rowconfigure(0, weight=1)
 # canva_tab1_labelframe.rowconfigure(1, weight=10)
 # canva_tab1_labelframe.rowconfigure(2, weight=1)
-#Placement des items
+#Placement des items sur la grille
 case1_tab1.grid(row=0,column=0,sticky='e') # affiche le radio bouton rectangulaire
 canva_tab1_label1.grid(row=0,column=1,sticky='w') # affiche le label rectangulaire
 case2_tab1.grid(row=0,column=2,sticky='e') # affiche le radio bouton circulaire
