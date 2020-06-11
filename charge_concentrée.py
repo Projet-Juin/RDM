@@ -31,7 +31,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
             Mf[i] = P*(b/longueur)*x[i]
         elif x[i] >= a :
             Mf[i] = P*(a/longueur)*(longueur-x[i])
-    
+    #test github
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
     ContrainteMax = np.amax(ContrainteYMax)
