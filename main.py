@@ -30,7 +30,7 @@ main.title("RDM6+++ --- Écran principal") #Titre de l'encadré
 main.config(bg=gris_clair)
 width = main.winfo_screenwidth()  #obtient la taille de l'écran de l'utilisateur en largeur
 height = main.winfo_screenheight()  #obtient la taille de l'écran de l'utilisateur en hauteur
-main.geometry("%dx%d" % (width, height)) 
+main.geometry("%dx%d" % (width, 1050))
 # main.resizable(width=FALSE, height=FALSE) #empêche de déformer la fenetre
 """
 Fin
@@ -69,17 +69,19 @@ Fin
 
 ### Création de 2 frames principales ###
 #Fenetre principale en 2 frames
-left_frame= Frame(main, bg="blue", width=500, height=1050) # encadré gauche
+left_frame= Frame(main, bg="blue") # encadré gauche
+left_frame.resizable(width=FALSE, height=FALSE) #empêche de déformer la fenetre
 right_frame = Frame(main, bg='green', width =1420, height=1050) #encadré droite
 # left frame en 2 canvas
 left_canvas1=Canvas(left_frame, bg="purple",width=500, height=900) # encadré gauche haut
 left_canvas2=Canvas(left_frame, bg="red",width=500, height=150) # encadré gauche bas
 # placement sur la grille des deux 2 frames principales
-left_frame.place(x=0,y=0)
+left_frame.place(relx=0,rely=0, width=500, height=1050)
 right_frame.place(x=500,y=0)
 # placement des deux 2 canvas de left_frame
 left_canvas1.place(x=0,y=0)
-left_canvas2.place(x=900,y=0)
+left_canvas2.place(x=0,y=900)
+
 """
 Fin
 """
@@ -142,19 +144,16 @@ notebook.pack(expand=1, fill='both')
 # root.mainloop()
 
 ### Bouton Calculer ###
-bouton_calculer= Button(left_canvas2,width=10, height=20, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
+bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
 #création d'une grille 3*3 pour placer le bouton au centre
-left_canvas2.columnconfigure(0, weight=1)
-left_canvas2.columnconfigure(1, weight=10)
-left_canvas2.columnconfigure(2, weight=1)
-left_canvas2.rowconfigure(0, weight=1)
-left_canvas2.rowconfigure(1, weight=10)
-left_canvas2.rowconfigure(2, weight=1)
-bouton_calculer.grid(row=1,column=1) # afficher le bouton
-# bouton_calculer.place(x=200,y=950)
-
-# 
-bouton_calculer.pack()
+# left_canvas2.columnconfigure(0, weight=1)
+# left_canvas2.columnconfigure(1, weight=10)
+# left_canvas2.columnconfigure(2, weight=1)
+# left_canvas2.rowconfigure(0, weight=1)
+# left_canvas2.rowconfigure(1, weight=10)
+# left_canvas2.rowconfigure(2, weight=1)
+# bouton_calculer.grid(row=0,column=0,rowspan=20,columnspan=20) # afficher le bouton
+bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center')
 """
 Fin
 """
