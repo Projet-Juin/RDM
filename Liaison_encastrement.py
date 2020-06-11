@@ -94,13 +94,13 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
-    RA = q*longueur
+    RA = -q*longueur
     
     # Efforts tranchants [N]
-    EffortTranch = -RA + q*x # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = -(RA + q*x) # EffortTranch est de type <class 'numpy.ndarray'>. 
     
     # Moment Fléchissant [N.mm]
-    Mf = RA*x-(q/2)*((x**2)-(longueur**2))
+    Mf = RA*x+(q/2)*(x**2)+q*((longueur**2)/2)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)

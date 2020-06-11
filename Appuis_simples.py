@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b):
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
-    RA = (P*b)/longueur
-    RB = (P*b)/longueur
+    RA = -(P*b)/longueur
+    RB = -(P*a)/longueur
     print(RA, RB)
     
     # Efforts tranchants [N] 
@@ -28,9 +28,9 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] < a :
-            Mf[i] = P*(b/longueur)*x[i]
+            Mf[i] = RA*x[i]
         elif x[i] >= a :
-            Mf[i] = P*(a/longueur)*(longueur-x[i])
+            Mf[i] = RB*(longueur-x[i])
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -97,15 +97,15 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     # Réactions aux appuis
-    RA = (q*longueur)/2
-    RB = (q*longueur)/2
+    RA = -(q*longueur)/2
+    RB = -(q*longueur)/2
     
     # Efforts tranchants [N]
-    EffortTranch = (-q*longueur/2) + q*x # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = -((-q*longueur/2) + q*x) # EffortTranch est de type <class 'numpy.ndarray'>. 
     # En tant qu'instances de classe, il possède donc des attributs et méthodes
     
     # Moment Fléchissant [N.mm]
-    Mf = q*(longueur-x)*(x/2)
+    Mf = -q*(longueur-x)*(x/2)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)

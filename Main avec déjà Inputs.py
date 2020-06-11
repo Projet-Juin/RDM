@@ -28,7 +28,7 @@ LimElast = 40
 
 (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
 
-    # Forces appliquées
+    # Forces appliquées [N.mm]
 q = -200
 P = -1000
 a = 10000
