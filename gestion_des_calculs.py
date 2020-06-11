@@ -8,7 +8,7 @@ Gestion des calculs
 from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
-
+from appel_fonctions_annexes import *
 
 
 def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous programme de calcul qui renvoi TRUE si les conditions de la rdm sont respectué, sinon FALSE
@@ -23,3 +23,4 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous program
 def calcul(): # Effectue le calcul sur le bouton calcul
     donothing() #pour le moment, fait rien
     # update()
+    # ttk.Progressbar()

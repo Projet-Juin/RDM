@@ -1,3 +1,4 @@
+@ -1,131 +1,34 @@
 # -*- coding: utf-8 -*-
 """
 @author: Forjot Henri
@@ -10,6 +11,7 @@ from tkinter import *
 from appel_fonctions_annexes import *
 #from gestion_des_entrées import *
 from gestion_des_calculs import *
+from tkinter import ttk
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -67,8 +69,9 @@ Fin
 """
 
 ### Création de 2 frames principales ###
-#encadré gauche
-left_frame= Frame(main, bg="blue", width=400, height=1080)
+left_frame= Frame(main, bg="blue", width=400, height=1050) #encadré gauche
+left_canva1=Canvas()
+left_canva2=Canvas()
 #encadré droite
 right_frame = Frame(main, bg='green', width =1520, height=1080)
 #paramètres de grille et Gestion sur une grille des 2 frames principales
@@ -81,19 +84,6 @@ Fin
 """
 
 ### left_frame ###
-### frame_géométrie ###
-frame_geometrie=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=0,in_=left_frame)
-### frame_matériau ###
-frame_materiau=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=1,in_=left_frame)
-### frame_chargement ###
-frame_chargement=LabelFrame(left_frame,labelanchor='nw',bg=gris_tres_fonce,bd=5,cursor='arrow', padx=1, pady=1,width=350,height=150).grid(column=0,row=2,in_=left_frame)
-#paramètres de grille left_frame
-# left_frame.rowconfigure(0,weight=2)
-# left_frame.rowconfigure(1,weight=2)
-# left_frame.rowconfigure(2,weight=2)
-# left_frame.rowconfigure(3,weight=1)
-
-
 ### Bouton Calculer ###
 # bouton_calculer= Button(left_frame, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
 # bouton_calculer.grid(column=0,row=3)
@@ -117,15 +107,3 @@ main.mainloop()
 """
 Fin
 """
-
-
-
-
-#contenu top_frame
-# top_frame_message1=Label(top_frame,text='top',anchor=W,bg=gris_clair) #définit le message 1
-
-# #contenu left_frame
-# left_frame_message1=Label(left_frame,text='left',width=50, height=2,bg=gris_clair) #définit le message 2
-
-# #contenu right_frame
-# right_frame_message1=Label(right_frame,text='right',width=50, height=2,bg=gris_clair) #définit le message 3

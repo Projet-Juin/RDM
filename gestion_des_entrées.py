@@ -11,17 +11,24 @@ from tkinter.filedialog import *
 from tkinter.messagebox import *
 
 ### Liste de fonction d'Entrées ###
+
+
+### Gémoétrie ###
+#Rectangulaire
+def geo_rectangulaire():
+    if 
+ 
 # Longueur (mm) : L
-def longueur():
-    
+longueur
+
 # Largeur section (mm) : b
-def largeur():
+largeur
     
 # Hauteur section (mm) : h
-def hauteur():
+hauteur
     
 # Rayon de le section (mm) : R
-def rayon():
+rayon
     
 # Hauteur de l’aile supérieure (mm) : h1
 def hauteur_aile_sup():
