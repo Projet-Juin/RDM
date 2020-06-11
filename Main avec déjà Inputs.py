@@ -15,9 +15,9 @@ import charge_concentrée_encastrement
 # LES IMPUTS SONT :
 
     # Géométrie de la poutre :
-hauteur = 100
-longueur = 20000
-largeur = 200
+hauteur = 10
+longueur = 500
+largeur = 20
     # Pour l'instant considérons une poutre rectangulaire remplie, on fera les géométries Igz complexes plus tard
     
     # Matériau de la poutre :
@@ -32,7 +32,7 @@ LimElast = 40
     # Forces appliquées
 q = -200
 P = -1000
-a = 10000
+a = 200
 b = longueur - a
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
