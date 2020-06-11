@@ -72,8 +72,8 @@ Fin
 left_frame= Frame(main, bg="blue", width=500, height=1050) # encadré gauche
 right_frame = Frame(main, bg='green', width =1420, height=1050) #encadré droite
 # left frame en 2 canvas
-left_canvas1=Canvas(left_frame, bg="purple") # encadré gauche haut
-left_canvas2=Canvas(left_frame, bg="red") # encadré gauche bas
+left_canvas1=Canvas(left_frame, bg="purple",width=500, height=900) # encadré gauche haut
+left_canvas2=Canvas(left_frame, bg="red",width=500, height=150) # encadré gauche bas
 # placement sur la grille des deux 2 frames principales
 left_frame.place(x=0,y=0)
 right_frame.place(x=500,y=0)
@@ -89,23 +89,21 @@ notebook = ttk.Notebook(left_canvas1,height=900,width=500) # Creation du Noteboo
 # Barre 1 : Géométrie
 tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
-
-
+canva_tab1=Canvas(tab1, bg="yellow")
+canva_tab1.pack(expand=1, fill='both')
 # Barre 2 : Matériau
 tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
-
-
+canva_tab2=Canvas(tab2, bg="red")
+canva_tab2.pack(expand=1, fill='both')
 #Barre 3 : Chargement
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
-
-
+canva_tab3=Canvas(tab3, bg="purple")
+canva_tab3.pack(expand=1, fill='both')
 # on place le notebook
 notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
 notebook.pack(expand=1, fill='both') 
-
-
 
 # LabelFrame using tab1 as the parent
 # mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
@@ -144,16 +142,19 @@ notebook.pack(expand=1, fill='both')
 # root.mainloop()
 
 ### Bouton Calculer ###
-bouton_calculer= Button(left_canvas2,width=15, height=2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
+bouton_calculer= Button(left_canvas2,width=10, height=20, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
 #création d'une grille 3*3 pour placer le bouton au centre
-# left_canvas2.columnconfigure(0, weight=1)
-# left_canvas2.columnconfigure(1, weight=18)
-# left_canvas2.columnconfigure(2, weight=1)
-# left_canvas2.rowconfigure(0, weight=1)
-# left_canvas2.rowconfigure(1, weight=14)
-# left_canvas2.rowconfigure(2, weight=1)
-# bouton_calculer.grid(row=1,column=1) # afficher le bouton
+left_canvas2.columnconfigure(0, weight=1)
+left_canvas2.columnconfigure(1, weight=10)
+left_canvas2.columnconfigure(2, weight=1)
+left_canvas2.rowconfigure(0, weight=1)
+left_canvas2.rowconfigure(1, weight=10)
+left_canvas2.rowconfigure(2, weight=1)
+bouton_calculer.grid(row=1,column=1) # afficher le bouton
+# bouton_calculer.place(x=200,y=950)
 
+# 
+bouton_calculer.pack()
 """
 Fin
 """
@@ -168,7 +169,7 @@ Fin
 
 ### Lancement du rendu général ###
 # Fenetre de bienvenue #
-#fenetre_bienvenue()
+# fenetre_bienvenue()
 #lancer le main
 main.mainloop()
 """
