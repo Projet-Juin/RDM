@@ -96,7 +96,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
-    # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
+    # Réactions aux appuis
     RA = (q*longueur)/2
     RB = (q*longueur)/2
     
@@ -162,3 +162,48 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax, \
     GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR
+    
+
+def force_répartie(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c):
+    #avec une charge qui ne s'étend pas partout
+    # Réactions aux appuis
+    RA = (q*b/longueur)*(a+b/2)
+    RB = (q*b/longueur)*(c+b/2)
+    
+    # Efforts tranchants [N]
+    EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            EffortTranch[i] = -RA
+        elif x[i] > a and x[i] <= (a+b):
+            EffortTranch[i] = -RA+q*(x[i]-a)
+        elif x[i] > (a+b) and x[i] <= longueur :
+            EffortTranch[i] = RB
+    
+    # Moment Fléchissant [N.mm]
+    Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            Mf[i] = RA*x[i]
+        elif x[i] > a and x[i] <= (a+b):
+            Mf[i] = RA*x[i]-q*((x[i]**2)/2-a*x[i]-(a**2)/2)
+        elif x[i] > (a+b) :
+            Mf[i] = RB*(longueur-x[i])
+    
+    # Contrainte pour y = h/2 [MPa]
+    ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+    ContrainteMax = np.amax(ContrainteYMax)
+    print('contrainte max = ', ContrainteMax)
+    
+    # Contrainte pour tout y [MPa]
+    #Contrainte = np.matmul(-(Mf/Igz),y)
+    
+    # Déformation pour y = h/2 [SD]
+    DefYMax = ContrainteYMax/E
+    DefMax = np.amax(DefYMax)
+    print('DefMax', DefMax)
+    
+    # Flèche de la poutre
+    flèche = 
+    FlècheMax = np.amin(flèche)
+    print('flèche max : ',FlècheMax)
