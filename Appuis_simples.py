@@ -204,6 +204,6 @@ def force_répartie(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = 
-    FlècheMax = np.amin(flèche)
-    print('flèche max : ',FlècheMax)
+    #flèche = 
+    #FlècheMax = np.amin(flèche)
+    #print('flèche max : ',FlècheMax)
