@@ -29,7 +29,7 @@ main.title("RDM6+++ --- Écran principal") #Titre de l'encadré
 main.config(bg=gris_clair)
 width = main.winfo_screenwidth()  #obtient la taille de l'écran de l'utilisateur en largeur
 height = main.winfo_screenheight()  #obtient la taille de l'écran de l'utilisateur en hauteur
-main.geometry("%dx%d" % (width, 1050))
+main.geometry("%dx%d" % (width,height))
 # main.resizable(width=FALSE, height=FALSE) #empêche de déformer la fenetre
 """
 Fin
@@ -85,25 +85,50 @@ Fin
 
 ### NoteBook - left_canvas1 ###
 notebook = ttk.Notebook(left_canvas1,height=900,width=500) # Creation du Notebook
-# Barre 1 : Géométrie
+"""
+Fin
+"""
+
+### Barre 1 : Géométrie ###
 tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
-canva_tab1=Canvas(tab1, bg="yellow")
+canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
-# Barre 2 : Matériau
+canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text='Type de section',bg=gris_clair) #définit le message 1
+canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le message 1
+type_de_section = IntVar (main,'type_de_section1')
+canva_tab1_label1=Label(canva_tab1_labelframe,text='Rectangulaire')
+case1_tab1=Radiobutton(canva_tab1_labelframe,selectcolor='red',variable = type_de_section,value=0)
+canva_tab1_label2=Label(canva_tab1_labelframe,text='Circulaire')
+case2_tab1=Radiobutton(canva_tab1_labelframe,selectcolor='red',variable = type_de_section,value=1)
+case1_tab1.grid(row=0,column=0)
+canva_tab1_label1.grid(row=0,column=1)
+case2_tab1.grid(row=0,column=2)
+canva_tab1_label2.grid(row=0,column=3)
+# on place le notebook
+notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
+notebook.pack(expand=1, fill='both') 
+"""
+Fin
+"""
+
+### Barre 2 : Matériau ###
 tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
 canva_tab2=Canvas(tab2, bg="red")
 canva_tab2.pack(expand=1, fill='both')
-#Barre 3 : Chargement
+"""
+Fin
+"""
+
+### Barre 3 : Chargement ###
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
 canva_tab3=Canvas(tab3, bg="white")
 canva_tab3.pack(expand=1, fill='both')
-# on place le notebook
-notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
-notebook.pack(expand=1, fill='both') 
-
+"""
+Fin
+"""
 
 # LabelFrame using tab1 as the parent
 # mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
@@ -141,7 +166,8 @@ notebook.pack(expand=1, fill='both')
  
 # root.mainloop()
 
-### Bouton Calculer ###
+### left_canvas_2 ###
+# Bouton Calculer #
 bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
 #création d'une grille 3*3 pour placer le bouton au centre
 # left_canvas2.columnconfigure(0, weight=1)
