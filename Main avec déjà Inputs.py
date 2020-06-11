@@ -7,10 +7,9 @@ Created on Mon Jun  8 20:17:14 2020
 
 import numpy as np
 import matplotlib.pyplot as plt
-import charge_répartie
-import charge_concentrée
+import Appuis_simples
+import Liaison_encastrement
 import géométrie_poutre
-import charge_concentrée_encastrement
 
 # LES IMPUTS SONT :
 
@@ -46,11 +45,14 @@ y = np.linspace(0, hauteur, NbrePointsY)
     
 (RACC, RBCR, EffortTranchCR, MfCR, ContrainteYMaxCR, ContrainteMaxCR, DefYMaxCR, DefMaxCR, flècheCR, FlècheMaxCR, \
 GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR) = \
-charge_répartie.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) 
+Appuis_simples.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) 
   
 (RACC, RBCC, EffortTranchCC, MfCC, ContrainteYMaxCC, ContrainteMaxCC, DefYMaxCC, DefMaxCC, flècheCC, FlècheMaxCC, \
 GrapheEffortTranchCC, GrapheMfCC, GrapheContrainteYMaxCC, GrapheDefYMaxCC, GrapheFlècheCC) = \
-charge_concentrée.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+Appuis_simples.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
 
 (RACCE, EffortTranchCCE, MfCCE, ContrainteYMaxCCE, ContrainteMaxCCE, DefYMaxCCE, DefMaxCCE, flècheCCE, FlècheMaxCCE) = \
-charge_concentrée_encastrement.charge_concentrée_encastrement(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+Liaison_encastrement.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+
+(RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
+Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
