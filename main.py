@@ -1,4 +1,3 @@
-@ -1,131 +1,34 @@
 # -*- coding: utf-8 -*-
 """
 @author: Forjot Henri
@@ -71,25 +70,22 @@ Fin
 ### Création de 2 frames principales ###
 #Fenetre principale en 2 frames
 left_frame= Frame(main, bg="blue", width=500, height=1050) # encadré gauche
-right_frame = Frame(main, bg='green', width =1420, height=1080) #encadré droite
+right_frame = Frame(main, bg='green', width =1420, height=1050) #encadré droite
 # left frame en 2 canvas
 left_canvas1=Canvas(left_frame, bg="purple") # encadré gauche haut
 left_canvas2=Canvas(left_frame, bg="red") # encadré gauche bas
-#paramètres de grille et Gestion sur une grille des 2 frames principales
-main.columnconfigure(0,weight=1)
-main.columnconfigure(1,weight=4)
 # placement sur la grille des deux 2 frames principales
-left_frame.grid(row=0,column=0,in_=main)
-right_frame.grid(row=0,column=1,in_=main)
+left_frame.place(x=0,y=0)
+right_frame.place(x=500,y=0)
 # placement des deux 2 canvas de left_frame
-left_canvas1.place()
-left_canvas1.place()
+left_canvas1.place(x=0,y=0)
+left_canvas2.place(x=900,y=0)
 """
 Fin
 """
 
 ### NoteBook - left_canvas1 ###
-notebook = ttk.Notebook(left_canvas1) # Creation du Notebook
+notebook = ttk.Notebook(left_canvas1,height=900,width=500) # Creation du Notebook
 # Barre 1 : Géométrie
 tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
@@ -106,6 +102,7 @@ notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
 
 
 # on place le notebook
+notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
 notebook.pack(expand=1, fill='both') 
 
 
@@ -117,11 +114,46 @@ notebook.pack(expand=1, fill='both')
 # a_label.grid(column=0, row=0, sticky='W')
 
 ### scrolbar - left_canva2 ###
-
+# Onglet1 = TTK.Notebook(root) 
+# Onglet1.pack(side=TK.LEFT)
+# Onglet1.enable_traversal()
+# f1 = TK.Frame(Onglet1, bg='green', bd=5)
+# Onglet1.add(f1, text='Onglet 1')
+# s1 = TK.Scrollbar(f1,orient=TK.VERTICAL)
+# texte1 = TK.Text(f1, wrap=TK.WORD)
+# texte1.config(yscrollcommand=s1.set, font=('courier', 11),
+# 	background='seashell2', foreground='black', insertbackground='purple')
+# texte1.grid(column=0, row=0)
+# s1.grid(column=1, row=0, sticky=TK.S+TK.N)
+# Onglet1.select(Onglet1.index('end')-1)
+# texte1.focus_set()
+ 
+# Onglet2 = TTK.Notebook(root) 
+# Onglet2.pack() 
+# Onglet2.enable_traversal() 
+# f2 = TK.Frame(Onglet2, bg='red', bd=5) 
+# Onglet2.add(f2, text='Onglet 2')
+# s2 = TK.Scrollbar(f2,orient=TK.VERTICAL)
+# texte2 = TK.Text(f2, wrap=TK.WORD)
+# texte2.config(yscrollcommand=s2.set, font=('courier', 11),
+# 	background='seashell2', foreground='purple', insertbackground='purple')
+# texte2.grid(column=0, row=0)
+# s2.grid(column=1, row=0, sticky=TK.S+TK.N)
+# Onglet2.select(Onglet2.index('end')-1)
+ 
+# root.mainloop()
 
 ### Bouton Calculer ###
 bouton_calculer= Button(left_canvas2,width=15, height=2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
-bouton_calculer.pack(anchor='center')
+#création d'une grille 3*3 pour placer le bouton au centre
+# left_canvas2.columnconfigure(0, weight=1)
+# left_canvas2.columnconfigure(1, weight=18)
+# left_canvas2.columnconfigure(2, weight=1)
+# left_canvas2.rowconfigure(0, weight=1)
+# left_canvas2.rowconfigure(1, weight=14)
+# left_canvas2.rowconfigure(2, weight=1)
+# bouton_calculer.grid(row=1,column=1) # afficher le bouton
+
 """
 Fin
 """
