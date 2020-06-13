@@ -26,7 +26,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] < a :
-            Mf[i] = -EffortTranch[i]*(x[i]+a)
+            Mf[i] = -EffortTranch[i]*(x[i]-a)
         elif x[i] >= a :
             Mf[i] = 0
             
@@ -47,9 +47,9 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            flèche[i] = -(RA/(E*Igz))*((x[i]**3)/6+a*(x[i]**2)/2)
+            flèche[i] = -RA*(x[i]**2)/(6*E*Igz)*(3*a-x[i])  #-(RA/(E*Igz))*((x[i]**3)/6+a*(x[i]**2)/2)
         elif x[i] > a :
-            flèche[i] = -(RA/(E*Igz))*((3/2)*(a**2)*x[i]-(5/6)*(a**3))
+            flèche[i] = -RA*(a**2)/(6*E*Igz)*(3*x[i]-a) #-(RA/(E*Igz))*((3/2)*(a**2)*x[i]-(5/6)*(a**3))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
@@ -97,10 +97,10 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     RA = -q*longueur
     
     # Efforts tranchants [N]
-    EffortTranch = -(RA + q*x) # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = q*(x-longueur)  # EffortTranch est de type <class 'numpy.ndarray'>. 
     
     # Moment Fléchissant [N.mm]
-    Mf = RA*x+(q/2)*(x**2)+q*((longueur**2)/2)
+    Mf = -(q/2)*(x-longueur)**2
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -116,7 +116,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -(q/(24*E*Igz))*(-((x**4)/12)+(longueur*(x**3)/3)+((longueur**2)*(x**2)/2))
+    flèche = -q/(24*E*Igz)*((longueur-x)**4+4*(longueur**3)*x-(longueur**4))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
