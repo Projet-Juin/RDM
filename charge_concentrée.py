@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b):
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
-    RA = (P*b)/longueur
-    RB = (P*b)/longueur
+    RA = -(P*b)/longueur
+    RB = -(P*a)/longueur
     print(RA, RB)
     
     # Efforts tranchants [N] 
@@ -90,5 +90,3 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     GrapheFlècheCC = plt.plot(x,flèche,label="flèche")
     plt.show()
     
-    return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax, \
-    GrapheEffortTranchCC, GrapheMfCC, GrapheContrainteYMaxCC, GrapheDefYMaxCC, GrapheFlècheCC
