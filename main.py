@@ -11,6 +11,7 @@ from appel_fonctions_annexes import *
 from gestion_des_entrees import *
 from gestion_des_calculs import *
 from tkinter import ttk
+from tkinter.messagebox import *
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -58,7 +59,7 @@ autres_menu.add_command(label='Aide',command=aide) # ajout de l'item aide
 autres_menu.add_command(label='Conditions de fonctionnement',command=ctds_de_fct) # ajout de l'item conditions de la rdm
 autres_menu.add_separator() #ajout d'un separateur
 autres_menu.add_command(label='Crédit',command=credit) # ajout de l'item crédit
-#Ajouts des barres de menus
+# Ajouts des barres de menus
 barre_de_menu.add_cascade(label='Fichier', menu=fichier_menu,command=donothing) # ajouter de fichier_menu dans barre_de_menu
 barre_de_menu.add_cascade(label='Éléments finis', menu=elts_finis_menu,command=donothing) # ajouter de elts_finis_menu dans barre_de_menu
 barre_de_menu.add_cascade(label='Autres', menu=autres_menu,command=donothing) # ajouter de autres_menu dans barre_de_menu
@@ -67,7 +68,7 @@ Fin
 """
 
 ### Création de 2 frames principales ###
-#Fenetre principale en 2 frames
+# Fenetre principale en 2 frames
 left_frame= Frame(main, bg="blue") # encadré gauche
 right_frame = Frame(main, bg='green') #encadré droite
 # left frame en 2 canvas
@@ -96,63 +97,119 @@ tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
 canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
-#Création labelframe
-canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text = 'Type de section',bg=gris_clair) #définit le message 1
+# Création labelframe
+canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text = 'Type de section',bg="blue") #définit le message 1
 canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section    
-#Sélection de circulaire ou rectangulaire
-type_de_sectionVar = IntVar() # Veleur 1 si circulaire sinon valeur 0
+# Sélection de circulaire ou rectangulaire
+type_de_section = IntVar() # Valeur 1 si circulaire sinon valeur 0
 canva_tab1_label1 = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Rectangulaire')
-case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=0)
+case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=0)
 canva_tab1_label2 = Label(canva_tab1_labelframe,font = ("Arial",11 ),text = 'Circulaire')
-case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=1)
-#Placement des 4 ci-dessus items sur une grille *4
+case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=1)
+# Placement des 4 ci-dessus items sur une grille *4
 case1_tab1.grid(row=0,column=0) # affiche le radio bouton rectangulaire
 canva_tab1_label1.grid(row=0,column=1) # affiche le label rectangulaire
 case2_tab1.grid(row=0,column=2) # affiche le radio bouton circulaire
 canva_tab1_label2.grid(row=0,column=3) #affiche le label circulaire
-# case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-# canva_tab1_label1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-# case2_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-# canva_tab1_label2.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-#Modification type de section
-type_de_section = int(type_de_sectionVar.get())
-#Appel des item à placer et sélection taille du labelframe
-if type_de_section == 0: # on est sur le cas rectangulaire
-    #messages des inputs L,b,h
-    label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-    label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
-    label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
-    #saisie des inputs L,b,h
-    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-    saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-    saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-    saisie_longueur.insert(0, "0")
-    saisie_largeur.insert(0, "0")
-    saisie_hauteur.insert(0, "0")
+# messages des inputs L,b,h,R
+label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+# saisie des inputs L,b,h
+saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# saisie affichage de départ
+saisie_longueur.insert(0, "0.0")
+saisie_largeur.insert(0, "0.0")
+saisie_hauteur.insert(0, "0.0")
+saisie_rayon.insert(0, "0.0")
+# Placement des items sur la grille 4 colonnes
+label_longueur.grid(row=2,column=1,columnspan=4)
+saisie_longueur.grid(row=3,column=1,columnspan=4)
+label_largeur.grid(row=4,column=1,columnspan=4)
+saisie_largeur.grid(row=5,column=1,columnspan=4)
+label_hauteur.grid(row=6,column=1,columnspan=4)
+saisie_hauteur.grid(row=7,column=1,columnspan=4)
+label_rayon.grid(row=8,column=1,columnspan=4)
+saisie_rayon.grid(row=9,column=1,columnspan=4)   
+# Gestion du stockage des valeurs
+def valider_la_géométrie():
+    global valeurs_geometriques,type_de_section
     L = float(saisie_longueur.get())
     b = float(saisie_largeur.get())
     h = float(saisie_hauteur.get())
-    #Placement des items sur la grille
-    label_longueur.grid(row=1,column=0,columnspan=4)
-    saisie_longueur.grid(row=2,column=0,columnspan=4)
-    label_largeur.grid(row=3,column=0,columnspan=4)
-    saisie_largeur.grid(row=4,column=0,columnspan=4)
-    label_hauteur.grid(row=5,column=0,columnspan=4)
-    saisie_hauteur.grid(row=6,column=0,columnspan=4)
-else: # on est dans le cas circulaire
-    #messages des inputs L,b,h
-    label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-    label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
-    #saisie des inputs L,b,h
-    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
-    saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_R)
-    L = float(saisie_longueur.get())
     R = float(saisie_rayon.get())
-    #Placement des items sur la grille
-    label_longueur.grid(row=1,column=0,columnspan=4)
-    saisie_longueur.grid(row=2,column=0,columnspan=4)
-    label_rayon.grid(row=3,column=0,columnspan=4)
-    saisie_rayon.grid(row=4,column=0,columnspan=4)
+    if int(type_de_section.get()) == 0 : # 0 si radio bouton sur rectangulaire
+        if L!='' and b!='' and h!='' :
+            R=0.0
+            valeurs_geometriques=(L,b,h,R)
+            saisie_longueur.focus()
+            saisie_longueur.select_range(0,END)
+        if L==0 or b==0 or h==0 :
+            showerror('Erreur', 'Un champ de coordonnées est vide')
+        if L=='' and b=='' and h=='' :
+            showerror('Erreur', 'Un champ de coordonnées est vide')
+        print("Les valeurs de L,b,h et R sont (config RECTANGULAIRE):",valeurs_geometriques)
+    else : # 1 si radio bouton sur circulaire
+        if L!='' and R!='' :
+            b=0.0
+            h=0.0
+            valeurs_geometriques=(L,b,h,R)
+            saisie_longueur.focus()
+            saisie_longueur.select_range(0,END)
+        if L==0 or R==0 :
+            showerror('Erreur', 'Un champ de coordonnées est vide')
+        if L=='' and R=='' :
+            showerror('Erreur', 'Un champ de coordonnées est vide')
+        print("Les valeurs de L,b,h et R sont (config CIRCULAIRE):",valeurs_geometriques)
+# défini tion de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
+def largeur_next(evt): #fct pour passer à b
+    saisie_largeur.focus()
+    saisie_largeur.select_range(0,END)
+def hauteur_next(evt): #fct pour passer à h
+    saisie_hauteur.focus()
+    saisie_hauteur.select_range(0,END)
+def rayon_next(evt): #fct pour passer à R
+    saisie_rayon.focus()
+    saisie_rayon.select_range(0,END) 
+def detection_passage(): # détecte quand on doit passer d'une cas à l'autre en fonction du choix de section (radio bouton)
+    global type_de_section
+    if int(type_de_section.get()) == 0 : #rectangulaire
+        longueur_to_largeur.bind('<Return>', largeur_next) # switch de L à b quand on tape sur entrée
+        largeur_to_hauteur.bind('<Return>', hauteur_next) # switch de b à h quand on tape sur entrée
+    else : # circulaire
+        longueur_to_rayon.bind('<Return>', rayon_next) # switch de L à R quand on tape sur entrée
+def detection_choix_section(): # fct pour voir quel radio bouton est sélectionné et donc qu'elles cases doivent etre grisé
+    global type_de_section
+    if int(type_de_section.get()) == 0 : #rectangulaire
+        saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
+        saisie_longueur.select_range(0,END)
+        label_rayon.config(state = DISABLED)
+        saisie_rayon.config(state = DISABLED)
+    else : # circulaire
+        saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
+        saisie_longueur.select_range(0,END)
+        saisie_longueur.select_range(0,END)
+        label_largeur.config(state = DISABLED)
+        label_hauteur.config(state = DISABLED)
+        saisie_largeur.config(state = DISABLED)
+        saisie_hauteur.config(state = DISABLED)
+# Passage d'une casse à l'autre avec détection si circulaire ou rectangulaire ( et donc grisage des cases en fonction)
+saisie_longueur.focus()
+saisie_longueur.select_range(0,END)
+saisie_longueur.bind('<Return>', detection_passage)
+case1_tab1.bind('<ButtonPress>', detection_choix_section)
+case2_tab1.bind('<ButtonPress>', detection_choix_section)           
+# Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
+Button(canva_tab1_labelframe, text='Valider la géométrie', command=valider_la_géométrie).grid(row=10,column=1,pady=15,columnspan=4)
+
+
+
+
+# canva_tab1_labelframe.bind('<Return>',(L,b,h,R))
 """
 Fin
 """
@@ -162,6 +219,69 @@ tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
 canva_tab2=Canvas(tab2, bg="red")
 canva_tab2.pack(expand=1, fill='both')
+#Création labelframe
+canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_clair) #définit le message 1
+canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section
+#Défintion de E,Mv,m,m,Re,nu
+E = None ; Mv = None ; m = None ; Re = None ; nu = None
+#Appel des items à placer en fonction du choix précédant et sélection taille du labelframe
+#messages des inputs E,Mv,m,m,Re,nu
+label_young = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer le Module de Young E de votre poutre en N/mm² ou MPa :')
+label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 :')
+label_masse = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer la Masse m de votre poutre en kg :')
+label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer la Limite élastique Re de votre poutre en MPa :')
+label_coeffpoiss = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer le Coefficient de Poisson nu de votre poutre :')
+#saisie des inputs E,Mv,m,m,Re,nu
+saisie_young = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_massevol = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_masse = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_limiteel = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+saisie_coeffpoiss = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+#saisie affichage de départ
+saisie_young.insert(0, "0")
+saisie_massevol.insert(0, "0")
+saisie_masse.insert(0, "0")
+saisie_limiteel.insert(0, "0")
+saisie_coeffpoiss.insert(0, "0")
+#Gestion du stockage des valeurs
+E = float(saisie_young.get())
+Mv = float(saisie_massevol.get())
+m = float(saisie_masse.get())
+Re = float(saisie_limiteel.get())
+nu = float(saisie_coeffpoiss.get())
+canva_tab1_labelframe.bind('<Return>',(E,Mv,m,Re,nu))
+print(E,Mv,m,Re,nu)
+#Placement des items sur la grille
+label_young.grid(row=0)
+saisie_young.grid(row=1)
+label_massevol.grid(row=2)
+saisie_massevol.grid(row=3)
+label_masse.grid(row=4)
+saisie_masse.grid(row=5)
+label_limiteel.grid(row=6)
+saisie_limiteel.grid(row=7)
+label_coeffpoiss.grid(row=8)
+saisie_coeffpoiss.grid(row=9)
+# def valider_la_géométrie():
+#     global valeurs_geometrique,type_de_section
+#     if type_de_section.get() == 0 : # 0 si radio bouton sur rectangulaire
+#         if saisie_longueur.get()!='' and saisie_rayon.get()!='':
+#             (L,b,h,R)=(float(saisie_longueur.get()),float(saisie_largeur.get()),float(saisie_hauteur.get()),float(0.0))
+#             valeurs_geometrique=(L,b,h,R)
+#             saisie_longueur.focus()
+#             saisie_longueur.select_range(0,END)
+#         else:
+#             messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
+#     else : # 1 si radio bouton sur circulaire
+#         if saisie_longueur.get()!='' and saisie_largeur.get()!='' and saisie_hauteur.get()!='' :
+#             (L,b,h,R)=(float(saisie_longueur.get()),float(0.0),float(0.0),float(saisie_rayon.get()))
+#             valeurs_geometrique=(L,b,h,R)
+#             saisie_longueur.focus()
+#             saisie_longueur.select_range(0,END)
+#         else:
+#             messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
+# # Bouton pour valider l'entrée des données de géométrie
+# Button(canva_tab1_labelframe, text='Valider la géométrie', command=valider_la_géométrie).grid(row=10,column=1,pady=15,columnspan=4)
 """
 Fin
 """
@@ -174,6 +294,39 @@ canva_tab3.pack(expand=1, fill='both')
 """
 Fin
 """
+
+
+
+
+    # def Xnoeud_next(evt):
+    #             Ynoeud.focus()
+    #             Ynoeud.select_range(0,tk.END)
+
+    # def AjouterNoeud():
+    #             global liste_noeuds
+    #             if Xnoeud.get()!='' and Ynoeud.get()!='' and Znoeud.get()!='':
+    #                 temp_noeud=(float(Xnoeud.get()),float(Ynoeud.get()),float(Znoeud.get()))
+    #                 if not(temp_noeud in liste_noeuds):
+    #                     liste_noeuds.append(temp_noeud)
+    #                     Xnoeud.focus()
+    #                     Xnoeud.select_range(0,tk.END)
+    #                 else:
+    #                     tk.messagebox.showerror('Erreur', 'Ce nœud existe déjà, il ne peut pas être ajouté.')
+    #             else:
+    #                 tk.messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
+
+    # tk.Button(frameNoeud, text='Ajouter un Nœud', command=AjouterNoeud).grid(row=7)
+
+
+
+
+
+
+
+
+
+
+
 
 # LabelFrame using tab1 as the parent
 # mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
