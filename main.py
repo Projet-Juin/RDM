@@ -96,59 +96,61 @@ canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
 canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text = 'Type de section',bg=gris_clair) #définit le message 1
 #Sélection de circulaire ou rectangulaire
-type_de_section = IntVar # Veleur 1 si circulaire sinon valeur 0
+type_de_sectionVar = IntVar # Veleur 1 si circulaire sinon valeur 0
 canva_tab1_label1 = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Rectangulaire')
-case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=0)
+case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=0)
 canva_tab1_label2 = Label(canva_tab1_labelframe,font = ("Arial",11 ),text = 'Circulaire')
-case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=1)
+case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=1)
+#Placement des items sur la grille
+case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+canva_tab1_label1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+canva_tab1_label2.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+#Modification type de section
+type_de_section = int(type_de_sectionVar.get())
 #Appel des item à placer et sélection taille du labelframe
-L=10.0
-b=10.0
-h=10.0
-R=10.0
-def geo_rectangulaire(type_de_section):
-    global L,b,h,R
-    if type_de_section == 0: # on est sur le cas rectangulaire
-        str_L = StringVar()
-        str_b = StringVar()
-        str_h = StringVar()
-        #messages des inputs L,b,h
-        label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-        label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
-        label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
-        #saisie des inputs L,b,h
-        saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
-        saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_b)
-        saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_h)
-        L = str_L.get()
-        b = str_b.get()
-        h = str_h.get()
-        #Placement des items sur la grille
-        label_longueur.grid(row=1,column=0)
-        saisie_longueur.grid(row=2,column=0)
-        label_largeur.grid(row=3,column=0)
-        saisie_largeur.grid(row=4,column=0)
-        label_hauteur.grid(row=5,column=0)
-        saisie_hauteur.grid(row=6,column=0)
-    else: # on est dans le cas circulaire
-        #définition des variables
-        str_L = StringVar()
-        str_R = StringVar()
-        #messages des inputs L,b,h
-        label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-        label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
-        #saisie des inputs L,b,h
-        saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
-        saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_R)
-        L = str_L.get()
-        R = str_R.get()
-        #Placement des items sur la grille
-        label_longueur.grid(row=1,column=0)
-        saisie_longueur.grid(row=2,column=0)
-        label_rayon.grid(row=3,column=0)
-        saisie_rayon.grid(row=4,column=0)
-
-geo_rectangulaire(type_de_section)
+if type_de_section == 0: # on est sur le cas rectangulaire
+    str_L = DoubleVar()
+    str_b = DoubleVar()
+    str_h = DoubleVar()
+    #messages des inputs L,b,h
+    label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+    label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+    label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+    #saisie des inputs L,b,h
+    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
+    saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_b)
+    saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_h)
+    saisie_longueur.insert(0, "0")
+    saisie_largeur.insert(0, "0")
+    saisie_hauteur.insert(0, "0")
+    L = str_L.get()
+    b = str_b.get()
+    h = str_h.get()
+    #Placement des items sur la grille
+    label_longueur.grid(row=1,column=0)
+    saisie_longueur.grid(row=2,column=0)
+    label_largeur.grid(row=3,column=0)
+    saisie_largeur.grid(row=4,column=0)
+    label_hauteur.grid(row=5,column=0)
+    saisie_hauteur.grid(row=6,column=0)
+else: # on est dans le cas circulaire
+    #définition des variables
+    str_L = DoubleVar()
+    str_R = DoubleVar()
+    #messages des inputs L,b,h
+    label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+    label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+    #saisie des inputs L,b,h
+    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
+    saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_R)
+    L = float(str_L.get())
+    R = float(str_R.get())
+    #Placement des items sur la grille
+    label_longueur.grid(row=1,column=0)
+    saisie_longueur.grid(row=2,column=0)
+    label_rayon.grid(row=3,column=0)
+    saisie_rayon.grid(row=4,column=0)
 #Placement du labelframe type de section
 canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section    
 #définition de la grille du labelframe type de section
@@ -156,11 +158,7 @@ canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) #
 # canva_tab1_labelframe.columnconfigure(1, weight=4)
 # canva_tab1_labelframe.columnconfigure(2, weight=1)
 # canva_tab1_labelframe.columnconfigure(3, weight=4)
-#Placement des items sur la grille
-case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-canva_tab1_label1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-canva_tab1_label2.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+
 # case1_tab1.grid(row=0,column=0,sticky='e') # affiche le radio bouton rectangulaire
 # canva_tab1_label1.grid(row=0,column=1,sticky='w') # affiche le label rectangulaire
 # case2_tab1.grid(row=0,column=2,sticky='e') # affiche le radio bouton circulaire
