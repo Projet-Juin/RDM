@@ -39,7 +39,7 @@ Fin
 barre_de_menu = Menu(main, tearoff=0)
 main.config(menu=barre_de_menu)
 # Création d'un menu fichier et ajout d'items
-fichier_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu fichier
+fichier_menu = Menu(barre_de_menu,activebackground=gris_clair, tearoff=0) # Création d'un menu fichier
 fichier_menu.add_command(label='Ouvrir',command=ouvrir) # ajout de l'item ouvrir
 fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)',command=sauvegarder) # ajout de l'item sauvegarder
 fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)',command=sauvegarder_sous) # ajout de l'item sauvegarder sous
@@ -47,13 +47,13 @@ fichier_menu.add_command(label='Redémarrer',command=reboot_programme) # ajout d
 fichier_menu.add_separator() #ajout d'un separateur
 fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter
 # Création d'un menu éléments finis et ajout d'items
-elts_finis_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu élts finis
+elts_finis_menu = Menu(barre_de_menu,activebackground=gris_clair, tearoff=0) # Création d'un menu élts finis
 elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis) # ajout de l'item permettant d'aller en élément finis
 elts_finis_menu.add_separator() #ajout d'un separateur
 elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=import_elts_finis) # ajout de l'item permettant d'importer les données d'éléments finis
 elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=export_elts_finis) # ajout de l'item permettant d'exporter les données d'éléments finis
 # Création d'un menu autres et ajout d'items
-autres_menu = Menu(barre_de_menu,activebackground=gris_clair) # Création d'un menu autres
+autres_menu = Menu(barre_de_menu,activebackground=gris_clair, tearoff=0) # Création d'un menu autres
 autres_menu.add_command(label='Aide',command=aide) # ajout de l'item aide
 autres_menu.add_command(label='Conditions de fonctionnement',command=ctds_de_fct) # ajout de l'item conditions de la rdm
 autres_menu.add_separator() #ajout d'un separateur
