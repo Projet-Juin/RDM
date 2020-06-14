@@ -85,6 +85,8 @@ Fin
 
 ### NoteBook - left_canvas1 ###
 notebook = ttk.Notebook(left_canvas1,height=900,width=500) # Creation du Notebook
+notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
+notebook.pack(expand=1, fill='both') # on place le notebook
 """
 Fin
 """
@@ -94,77 +96,63 @@ tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
 canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
+#Création labelframe
 canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text = 'Type de section',bg=gris_clair) #définit le message 1
+canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section    
 #Sélection de circulaire ou rectangulaire
-type_de_sectionVar = IntVar # Veleur 1 si circulaire sinon valeur 0
+type_de_sectionVar = IntVar() # Veleur 1 si circulaire sinon valeur 0
 canva_tab1_label1 = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Rectangulaire')
 case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=0)
 canva_tab1_label2 = Label(canva_tab1_labelframe,font = ("Arial",11 ),text = 'Circulaire')
 case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_sectionVar,value=1)
-#Placement des items sur la grille
-case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-canva_tab1_label1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
-canva_tab1_label2.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+#Placement des 4 ci-dessus items sur une grille *4
+case1_tab1.grid(row=0,column=0) # affiche le radio bouton rectangulaire
+canva_tab1_label1.grid(row=0,column=1) # affiche le label rectangulaire
+case2_tab1.grid(row=0,column=2) # affiche le radio bouton circulaire
+canva_tab1_label2.grid(row=0,column=3) #affiche le label circulaire
+# case1_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+# canva_tab1_label1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+# case2_tab1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
+# canva_tab1_label2.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30)
 #Modification type de section
 type_de_section = int(type_de_sectionVar.get())
 #Appel des item à placer et sélection taille du labelframe
 if type_de_section == 0: # on est sur le cas rectangulaire
-    str_L = DoubleVar()
-    str_b = DoubleVar()
-    str_h = DoubleVar()
     #messages des inputs L,b,h
     label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
     label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
     label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
     #saisie des inputs L,b,h
-    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
-    saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_b)
-    saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_h)
+    saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+    saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+    saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
     saisie_longueur.insert(0, "0")
     saisie_largeur.insert(0, "0")
     saisie_hauteur.insert(0, "0")
-    L = str_L.get()
-    b = str_b.get()
-    h = str_h.get()
+    L = float(saisie_longueur.get())
+    b = float(saisie_largeur.get())
+    h = float(saisie_hauteur.get())
     #Placement des items sur la grille
-    label_longueur.grid(row=1,column=0)
-    saisie_longueur.grid(row=2,column=0)
-    label_largeur.grid(row=3,column=0)
-    saisie_largeur.grid(row=4,column=0)
-    label_hauteur.grid(row=5,column=0)
-    saisie_hauteur.grid(row=6,column=0)
+    label_longueur.grid(row=1,column=0,columnspan=4)
+    saisie_longueur.grid(row=2,column=0,columnspan=4)
+    label_largeur.grid(row=3,column=0,columnspan=4)
+    saisie_largeur.grid(row=4,column=0,columnspan=4)
+    label_hauteur.grid(row=5,column=0,columnspan=4)
+    saisie_hauteur.grid(row=6,column=0,columnspan=4)
 else: # on est dans le cas circulaire
-    #définition des variables
-    str_L = DoubleVar()
-    str_R = DoubleVar()
     #messages des inputs L,b,h
     label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
     label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
     #saisie des inputs L,b,h
     saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_L)
     saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11),textvariable = str_R)
-    L = float(str_L.get())
-    R = float(str_R.get())
+    L = float(saisie_longueur.get())
+    R = float(saisie_rayon.get())
     #Placement des items sur la grille
-    label_longueur.grid(row=1,column=0)
-    saisie_longueur.grid(row=2,column=0)
-    label_rayon.grid(row=3,column=0)
-    saisie_rayon.grid(row=4,column=0)
-#Placement du labelframe type de section
-canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section    
-#définition de la grille du labelframe type de section
-# canva_tab1_labelframe.columnconfigure(0, weight=1)
-# canva_tab1_labelframe.columnconfigure(1, weight=4)
-# canva_tab1_labelframe.columnconfigure(2, weight=1)
-# canva_tab1_labelframe.columnconfigure(3, weight=4)
-
-# case1_tab1.grid(row=0,column=0,sticky='e') # affiche le radio bouton rectangulaire
-# canva_tab1_label1.grid(row=0,column=1,sticky='w') # affiche le label rectangulaire
-# case2_tab1.grid(row=0,column=2,sticky='e') # affiche le radio bouton circulaire
-# canva_tab1_label2.grid(row=0,column=3,sticky='w') #affiche le label circulaire
-notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
-notebook.pack(expand=1, fill='both') # on place le notebook
+    label_longueur.grid(row=1,column=0,columnspan=4)
+    saisie_longueur.grid(row=2,column=0,columnspan=4)
+    label_rayon.grid(row=3,column=0,columnspan=4)
+    saisie_rayon.grid(row=4,column=0,columnspan=4)
 """
 Fin
 """
@@ -226,15 +214,7 @@ Fin
 ### left_canvas_2 ###
 # Bouton Calculer #
 bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_tres_fonce, fg ="white", command=calcul)
-#création d'une grille 3*3 pour placer le bouton au centre
-# left_canvas2.columnconfigure(0, weight=1)
-# left_canvas2.columnconfigure(1, weight=10)
-# left_canvas2.columnconfigure(2, weight=1)
-# left_canvas2.rowconfigure(0, weight=1)
-# left_canvas2.rowconfigure(1, weight=10)
-# left_canvas2.rowconfigure(2, weight=1)
-# bouton_calculer.grid(row=0,column=0,rowspan=20,columnspan=20) # afficher le bouton
-bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center')
+bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
 """
 Fin
 """

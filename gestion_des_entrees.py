@@ -10,7 +10,6 @@ from tkinter import *
 from appel_fonctions_annexes import *
 from gestion_des_calculs import *
 from tkinter import ttk
-from main import *
 
 ### Liste de fonction d'Entrées ###
 
