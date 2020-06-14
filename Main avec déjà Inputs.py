@@ -33,6 +33,7 @@ q = -200
 P = -1000
 a = 10000
 b = longueur - a
+c = 3000
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
 NbrePointsX = 101 
@@ -57,5 +58,7 @@ y = np.linspace(0, hauteur, NbrePointsY)
 # (RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
 # Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
 
-(RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
-= Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
+# (RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
+# = Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
+
+Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
