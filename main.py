@@ -46,7 +46,7 @@ fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)',command=sauvega
 fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)',command=sauvegarder_sous) # ajout de l'item sauvegarder sous
 fichier_menu.add_command(label='Redémarrer',command=reboot_programme) # ajout de l'item redémarrer
 fichier_menu.add_separator() #ajout d'un separateur
-fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter
+fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter (ou sys.exit)
 # Création d'un menu éléments finis et ajout d'items
 elts_finis_menu = Menu(barre_de_menu,activebackground=gris_clair, tearoff=0) # Création d'un menu élts finis
 elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis) # ajout de l'item permettant d'aller en élément finis
@@ -121,11 +121,6 @@ saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fon
 saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
 saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
 saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-# saisie affichage de départ
-saisie_longueur.insert(0, "0.0")
-saisie_largeur.insert(0, "0.0")
-saisie_hauteur.insert(0, "0.0")
-saisie_rayon.insert(0, "0.0")
 # Placement des items sur la grille 4 colonnes
 label_longueur.grid(row=2,column=1,columnspan=4)
 saisie_longueur.grid(row=3,column=1,columnspan=4)
@@ -150,7 +145,7 @@ def valider_la_géométrie():
             saisie_longueur.select_range(0,END)
         if L==0 or b==0 or h==0 :
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        if L=='' and b=='' and h=='' :
+        if L=='' or b=='' or h=='' :
             showerror('Erreur', 'Un champ de coordonnées est vide')
         print("Les valeurs de L,b,h et R sont (config RECTANGULAIRE):",valeurs_geometriques)
     else : # 1 si radio bouton sur circulaire
@@ -162,10 +157,10 @@ def valider_la_géométrie():
             saisie_longueur.select_range(0,END)
         if L==0 or R==0 :
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        if L=='' and R=='' :
+        if L=='' or R=='' :
             showerror('Erreur', 'Un champ de coordonnées est vide')
         print("Les valeurs de L,b,h et R sont (config CIRCULAIRE):",valeurs_geometriques)
-# défini tion de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
+# définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def largeur_next(evt): #fct pour passer à b
     saisie_largeur.focus()
     saisie_largeur.select_range(0,END)
@@ -174,42 +169,54 @@ def hauteur_next(evt): #fct pour passer à h
     saisie_hauteur.select_range(0,END)
 def rayon_next(evt): #fct pour passer à R
     saisie_rayon.focus()
-    saisie_rayon.select_range(0,END) 
-def detection_passage(): # détecte quand on doit passer d'une cas à l'autre en fonction du choix de section (radio bouton)
+    saisie_rayon.select_range(0,END)
+def detection_passage(evt): # détecte quand on doit passer d'une case à l'autre en fonction du choix de section (radio bouton)
     global type_de_section
     if int(type_de_section.get()) == 0 : #rectangulaire
-        longueur_to_largeur.bind('<Return>', largeur_next) # switch de L à b quand on tape sur entrée
-        largeur_to_hauteur.bind('<Return>', hauteur_next) # switch de b à h quand on tape sur entrée
+        saisie_largeur.bind('<Return>', largeur_next) # switch de L à b quand on tape sur entrée
+        saisie_hauteur.bind('<Return>', hauteur_next) # switch de b à h quand on tape sur entrée
     else : # circulaire
-        longueur_to_rayon.bind('<Return>', rayon_next) # switch de L à R quand on tape sur entrée
-def detection_choix_section(): # fct pour voir quel radio bouton est sélectionné et donc qu'elles cases doivent etre grisé
+        saisie_rayon.bind('<Return>', rayon_next) # switch de L à R quand on tape sur entrée
+def detection_choix_section(evt): # fct pour voir quel radio bouton est sélectionné et donc qu'elles cases doivent etre grisé
     global type_de_section
+    saisie_longueur.delete(0,END) # saisie affichage de départ
+    saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+    saisie_longueur.config(cursor='hand1')
     if int(type_de_section.get()) == 0 : #rectangulaire
+        saisie_largeur.insert(0, "0.0") # saisie affichage de départ
+        saisie_hauteur.insert(0, "0.0") # saisie affichage de départ
+        saisie_rayon.delete(0,END) # saisie affichage de départ
         saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
         saisie_longueur.select_range(0,END)
-        label_rayon.config(state = DISABLED)
-        saisie_rayon.config(state = DISABLED)
+        label_rayon.config(state = DISABLED,cursor='X_cursor')
+        saisie_rayon.config(state = DISABLED,cursor='X_cursor')
+        label_largeur.config(state = NORMAL)
+        label_hauteur.config(state = NORMAL)
+        saisie_largeur.config(state = NORMAL,cursor='hand1')
+        saisie_hauteur.config(state = NORMAL,cursor='hand1')
+        print ("saisie_rayon désactivé")
     else : # circulaire
+        saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+        saisie_largeur.delete(0,END) # saisie affichage de départ
+        saisie_hauteur.delete(0,END) # saisie affichage de départ
         saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
-        saisie_longueur.select_range(0,END)
         saisie_longueur.select_range(0,END)
         label_largeur.config(state = DISABLED)
         label_hauteur.config(state = DISABLED)
-        saisie_largeur.config(state = DISABLED)
-        saisie_hauteur.config(state = DISABLED)
-# Passage d'une casse à l'autre avec détection si circulaire ou rectangulaire ( et donc grisage des cases en fonction)
-saisie_longueur.focus()
-saisie_longueur.select_range(0,END)
-saisie_longueur.bind('<Return>', detection_passage)
+        saisie_largeur.config(state = DISABLED,cursor='X_cursor')
+        saisie_hauteur.config(state = DISABLED,cursor='X_cursor')
+        label_rayon.config(state = NORMAL,cursor='hand1')
+        saisie_rayon.config(state = NORMAL,cursor='hand1')
+        print ("saisie_largeur désactivé \nsaisie_hauteur désactivé")
+# initialisation sélection
+saisie_longueur.focus() 
+saisie_longueur.select_range(0,END) 
+saisie_longueur.bind('<Return>', detection_passage) 
+# Passage d'une casse à l'autre avec détection si circulaire ou rectangulaire (et donc grisage des cases en fonction)
 case1_tab1.bind('<ButtonPress>', detection_choix_section)
 case2_tab1.bind('<ButtonPress>', detection_choix_section)           
 # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
 Button(canva_tab1_labelframe, text='Valider la géométrie', command=valider_la_géométrie).grid(row=10,column=1,pady=15,columnspan=4)
-
-
-
-
-# canva_tab1_labelframe.bind('<Return>',(L,b,h,R))
 """
 Fin
 """
@@ -221,10 +228,7 @@ canva_tab2=Canvas(tab2, bg="red")
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_clair) #définit le message 1
-canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section
-#Défintion de E,Mv,m,m,Re,nu
-E = None ; Mv = None ; m = None ; Re = None ; nu = None
-#Appel des items à placer en fonction du choix précédant et sélection taille du labelframe
+canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
 label_young = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer le Module de Young E de votre poutre en N/mm² ou MPa :')
 label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 :')
@@ -238,19 +242,11 @@ saisie_masse = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,
 saisie_limiteel = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
 saisie_coeffpoiss = Entry(canva_tab2_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
 #saisie affichage de départ
-saisie_young.insert(0, "0")
-saisie_massevol.insert(0, "0")
-saisie_masse.insert(0, "0")
-saisie_limiteel.insert(0, "0")
-saisie_coeffpoiss.insert(0, "0")
-#Gestion du stockage des valeurs
-E = float(saisie_young.get())
-Mv = float(saisie_massevol.get())
-m = float(saisie_masse.get())
-Re = float(saisie_limiteel.get())
-nu = float(saisie_coeffpoiss.get())
-canva_tab1_labelframe.bind('<Return>',(E,Mv,m,Re,nu))
-print(E,Mv,m,Re,nu)
+saisie_young.insert(0, "0.0")
+saisie_massevol.insert(0, "Option")
+saisie_masse.insert(0, "Option")
+saisie_limiteel.insert(0, "0.0")
+saisie_coeffpoiss.insert(0, "Option")
 #Placement des items sur la grille
 label_young.grid(row=0)
 saisie_young.grid(row=1)
@@ -262,26 +258,74 @@ label_limiteel.grid(row=6)
 saisie_limiteel.grid(row=7)
 label_coeffpoiss.grid(row=8)
 saisie_coeffpoiss.grid(row=9)
-# def valider_la_géométrie():
-#     global valeurs_geometrique,type_de_section
-#     if type_de_section.get() == 0 : # 0 si radio bouton sur rectangulaire
-#         if saisie_longueur.get()!='' and saisie_rayon.get()!='':
-#             (L,b,h,R)=(float(saisie_longueur.get()),float(saisie_largeur.get()),float(saisie_hauteur.get()),float(0.0))
-#             valeurs_geometrique=(L,b,h,R)
-#             saisie_longueur.focus()
-#             saisie_longueur.select_range(0,END)
-#         else:
-#             messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
-#     else : # 1 si radio bouton sur circulaire
-#         if saisie_longueur.get()!='' and saisie_largeur.get()!='' and saisie_hauteur.get()!='' :
-#             (L,b,h,R)=(float(saisie_longueur.get()),float(0.0),float(0.0),float(saisie_rayon.get()))
-#             valeurs_geometrique=(L,b,h,R)
-#             saisie_longueur.focus()
-#             saisie_longueur.select_range(0,END)
-#         else:
-#             messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
-# # Bouton pour valider l'entrée des données de géométrie
-# Button(canva_tab1_labelframe, text='Valider la géométrie', command=valider_la_géométrie).grid(row=10,column=1,pady=15,columnspan=4)
+# Gestion du stockage des valeurs
+def valider_le_materiau():
+    global valeurs_materiau
+    #Gestion du stockage des valeurs
+    E = float(saisie_young.get())
+    m = str(saisie_masse.get())
+    Mv = str(saisie_massevol.get())
+    Re = float(saisie_limiteel.get())
+    nu = str(saisie_coeffpoiss.get())
+    if E!='' and Re!='' :
+        if Mv!='Option' :
+            m = 0.0 ; nu = 0.0
+            Mv = float(saisie_massevol.get())
+            valeurs_materiau = (E,Mv,m,Re,nu)
+            saisie_young.focus()
+            saisie_young.select_range(0,END)
+        if m!='Option' :
+            Mv = 0.0 ; nu = 0.0
+            m = float(saisie_masse.get())
+            valeurs_materiau = (E,Mv,m,Re,nu)
+            saisie_young.focus()
+            saisie_young.select_range(0,END)
+        if  nu!='Option' :
+            Mv = 0.0 ; m = 0.0
+            nu = float(saisie_coeffpoiss.get())
+            valeurs_materiau = (E,Mv,m,Re,nu)
+            saisie_young.focus()
+            saisie_young.select_range(0,END)
+        if  Mv!='Option' or m!='Option' :
+            Mv = 0.0 ; m = 0.0
+            nu = float(saisie_coeffpoiss.get())
+            valeurs_materiau = (E,Mv,m,Re,nu)
+            saisie_young.focus()
+            saisie_young.select_range(0,END)
+        else :
+            Mv = 0.0 ; m = 0.0 ; nu = 0.0
+            valeurs_materiau = (E,Mv,m,Re,nu)
+            saisie_young.focus()
+            saisie_young.select_range(0,END)
+    if E==0 or Re==0 :
+        showerror('Erreur', 'Un champ de coordonnées est vide')
+    if E=='' or Re=='' :
+        showerror('Erreur', 'Un champ de coordonnées est vide')
+    print("Les valeurs de E,Mv,m,Re et nu sont :",valeurs_materiau)
+# définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
+def massevol_next(evt): #fct pour passer à Mv
+    saisie_massevol.focus()
+    saisie_massevol.select_range(0,END)
+def masse_next(evt): #fct pour passer à m
+    saisie_masse.focus()
+    saisie_masse.select_range(0,END)
+def limiteel_next(evt): #fct pour passer à Re
+    saisie_limiteel.focus()
+    saisie_limiteel.select_range(0,END)
+def coeffpoiss_next(evt): #fct pour passer à nu
+    saisie_coeffpoiss.focus()
+    saisie_coeffpoiss.select_range(0,END)
+def detection_passage2(evt): # détecte quand on doit passer d'une case à l'autre
+    saisie_young.bind('<Return>', massevol_next) # switch de E à Mv quand on tape sur entrée
+    saisie_massevol.bind('<Return>', masse_next) # switch de Mv à m quand on tape sur entrée
+    saisie_masse.bind('<Return>', limiteel_next) # switch de m à Re quand on tape sur entrée
+    saisie_limiteel.bind('<Return>', coeffpoiss_next) # switch de Re à nu quand on tape sur entrée
+# initialisation sélection
+saisie_young.focus()
+saisie_young.select_range(0,END)
+saisie_young.bind('<Return>', detection_passage2)         
+# Bouton pour valider l'entrée des données de matériau pour rassurer l'utilisateur
+Button(canva_tab2_labelframe, text='Valider la matériau', command=valider_le_materiau).grid(row=10)
 """
 Fin
 """
@@ -294,75 +338,6 @@ canva_tab3.pack(expand=1, fill='both')
 """
 Fin
 """
-
-
-
-
-    # def Xnoeud_next(evt):
-    #             Ynoeud.focus()
-    #             Ynoeud.select_range(0,tk.END)
-
-    # def AjouterNoeud():
-    #             global liste_noeuds
-    #             if Xnoeud.get()!='' and Ynoeud.get()!='' and Znoeud.get()!='':
-    #                 temp_noeud=(float(Xnoeud.get()),float(Ynoeud.get()),float(Znoeud.get()))
-    #                 if not(temp_noeud in liste_noeuds):
-    #                     liste_noeuds.append(temp_noeud)
-    #                     Xnoeud.focus()
-    #                     Xnoeud.select_range(0,tk.END)
-    #                 else:
-    #                     tk.messagebox.showerror('Erreur', 'Ce nœud existe déjà, il ne peut pas être ajouté.')
-    #             else:
-    #                 tk.messagebox.showerror('Erreur', 'Un champ de coordonnées est vide')
-
-    # tk.Button(frameNoeud, text='Ajouter un Nœud', command=AjouterNoeud).grid(row=7)
-
-
-
-
-
-
-
-
-
-
-
-
-# LabelFrame using tab1 as the parent
-# mighty = ttk.LabelFrame(tab1, text=' Mighty Python ')
-# mighty.grid(column=0, row=0, padx=8, pady=4)
-# a_label = ttk.Label(mighty, text=' Enter a number: ')
-# a_label.grid(column=0, row=0, sticky='W')
-
-### scrolbar - left_canva2 ###
-# Onglet1 = TTK.Notebook(root) 
-# Onglet1.pack(side=TK.LEFT)
-# Onglet1.enable_traversal()
-# f1 = TK.Frame(Onglet1, bg='green', bd=5)
-# Onglet1.add(f1, text='Onglet 1')
-# s1 = TK.Scrollbar(f1,orient=TK.VERTICAL)
-# texte1 = TK.Text(f1, wrap=TK.WORD)
-# texte1.config(yscrollcommand=s1.set, font=('courier', 11),
-# 	background='seashell2', foreground='black', insertbackground='purple')
-# texte1.grid(column=0, row=0)
-# s1.grid(column=1, row=0, sticky=TK.S+TK.N)
-# Onglet1.select(Onglet1.index('end')-1)
-# texte1.focus_set()
- 
-# Onglet2 = TTK.Notebook(root) 
-# Onglet2.pack() 
-# Onglet2.enable_traversal() 
-# f2 = TK.Frame(Onglet2, bg='red', bd=5) 
-# Onglet2.add(f2, text='Onglet 2')
-# s2 = TK.Scrollbar(f2,orient=TK.VERTICAL)
-# texte2 = TK.Text(f2, wrap=TK.WORD)
-# texte2.config(yscrollcommand=s2.set, font=('courier', 11),
-# 	background='seashell2', foreground='purple', insertbackground='purple')
-# texte2.grid(column=0, row=0)
-# s2.grid(column=1, row=0, sticky=TK.S+TK.N)
-# Onglet2.select(Onglet2.index('end')-1)
- 
-# root.mainloop()
 
 ### left_canvas_2 ###
 # Bouton Calculer #
@@ -377,8 +352,6 @@ Fin
 """
 Fin
 """
-
-
 
 ### Lancement du rendu général ###
 # Fenetre de bienvenue #
