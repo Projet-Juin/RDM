@@ -11,15 +11,15 @@ import matplotlib.pyplot as plt
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
-    RA = (q*longueur)/2
-    RB = (q*longueur)/2
+    RA = -(q*longueur)/2
+    RB = -(q*longueur)/2
     
     # Efforts tranchants [N]
-    EffortTranch = (-q*longueur/2) + q*x # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = q*longueur/2 - q*x # EffortTranch est de type <class 'numpy.ndarray'>. 
     # En tant qu'instances de classe, il possède donc des attributs et méthodes
     
     # Moment Fléchissant [N.mm]
-    Mf = q*(longueur-x)*(x/2)
+    Mf = -q*(longueur-x)*(x/2)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -35,7 +35,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -(q/(24*E*Igz))*(2*longueur*pow(x,3)-pow(x,4)-pow(longueur,3)*x)
+    flèche = q*x/(24*E*Igz)*((longueur**3)-2*longueur*(x**2)+(x**3))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
@@ -73,6 +73,3 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     plt.title("Tracé de la flèche") 
     GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
     plt.show()
-    
-    return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax, \
-    GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR
