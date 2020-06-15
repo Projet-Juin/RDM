@@ -26,7 +26,7 @@ MasseVol = 0.75
 LimElast = 40
     # plus tard dans le projet, on pourrait importer une base de données pour faire en sorte qu'avec la seule connaissance du matériau, le logiciel pourrait en déduire automatiquement E, la masse volumque etc...
 
-(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
+(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol, géométrie)
 
     # Forces appliquées [N.mm]
 q = -200
