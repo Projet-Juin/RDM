@@ -38,3 +38,5 @@ print('mf = ', Mf, '\n', 'avec des éléments de type : ', Mf.dtype, 'nmbre de l
 # calcul = (-1/Igz)*np.matmul(Mf,y)
 # print(calcul)
 
+
+

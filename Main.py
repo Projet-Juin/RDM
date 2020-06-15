@@ -64,7 +64,7 @@ Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimE
 
 # Appuis_simples.charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
-# Appuis_simples.charge_triangulaire_antisymétriqu(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+# Appuis_simples.charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
 # Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 

@@ -469,7 +469,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
     plt.show()
     
-def charge_triangulaire_antisymétriqu(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
+def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     # q s'inverse à la moitié de la poutre
     # Réactions aux appuis
     RA = q*(longueur)/6 
@@ -616,7 +616,7 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     # q forme une parabole
     # Réactions aux appuis
     RA = q*longueur/3 
-    RB = RB 
+    RB = RA 
     
     # Efforts tranchants [N]
     EffortTranch = -q*(4*(x**3)-(6*longueur*x**2)+(longueur**3))/(3*longueur**2)

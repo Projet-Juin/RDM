@@ -5,7 +5,7 @@ Created on Wed Jun 10 18:02:26 2020
 @author: Simon
 """
 
-def géométrie_poutre(hauteur, longueur, largeur, MasseVol):
+def géométrie_poutre(hauteur, longueur, largeur, MasseVol, a):
     
     # Masse de la poutre
     Masse = largeur*longueur*hauteur*MasseVol*(10^(-6))
