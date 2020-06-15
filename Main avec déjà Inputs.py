@@ -26,7 +26,7 @@ MasseVol = 0.75
 LimElast = 40
     # plus tard dans le projet, on pourrait importer une base de données pour faire en sorte qu'avec la seule connaissance du matériau, le logiciel pourrait en déduire automatiquement E, la masse volumque etc...
 
-(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol, géométrie)
+(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
 
     # Forces appliquées [N.mm]
 q = -200
@@ -62,3 +62,13 @@ y = np.linspace(0, hauteur, NbrePointsY)
 # = Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
 
 Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
+
+# Appuis_simples.charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
+
+# Appuis_simples.charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+
+# Appuis_simples.charge_triangulaire_antisymétriqu(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+
+# Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
+
+# Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
