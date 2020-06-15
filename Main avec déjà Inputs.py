@@ -58,10 +58,14 @@ y = np.linspace(0, hauteur, NbrePointsY)
 # (RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
 # Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
 
+#Liaison_encastrement.charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x)
+    
+#Liaison_encastrement.charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x)
+
 # (RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
 # = Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
 
-Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
+# Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
 
 # Appuis_simples.charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
