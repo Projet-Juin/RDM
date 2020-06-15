@@ -49,9 +49,9 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            flèche[i] = RA*x[i]/(E*Igz)*((x[i]**2)/6+a/b*(longueur*a/2-(a**2)/6-(longueur**2)/3))*0.1
+            flèche[i] = RA*x[i]/(E*Igz)*((x[i]**2)/6+a/b*(longueur*a/2-(a**2)/6-(longueur**2)/3))
         elif x[i] > a :
-            flèche[i] = RB/(E*Igz)*(-(x[i]**3)/6+longueur/2*(x[i]**2)-((a**2)/6+(longueur**2)/3)*x[i]+(a**2)*longueur/6)*0.1
+            flèche[i] = RB/(E*Igz)*(-(x[i]**3)/6+longueur/2*(x[i]**2)-((a**2)/6+(longueur**2)/3)*x[i]+(a**2)*longueur/6)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
