@@ -97,47 +97,132 @@ tab1 = ttk.Frame(notebook) # Creation de la barre 1
 notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
 canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
-# Création labelframe
-canva_tab1_labelframe = LabelFrame(canva_tab1,font=("Arial",14 , "bold"),text = 'Type de section',bg="blue") #définit le message 1
-canva_tab1_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section    
-# Sélection de circulaire ou rectangulaire
-type_de_section = IntVar() # Valeur 1 si circulaire sinon valeur 0
-canva_tab1_label1 = Label(canva_tab1_labelframe,font = ("Arial",11),text = 'Rectangulaire')
-case1_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=0)
-canva_tab1_label2 = Label(canva_tab1_labelframe,font = ("Arial",11 ),text = 'Circulaire')
-case2_tab1 = Radiobutton(canva_tab1_labelframe,selectcolor = 'red',variable = type_de_section,value=1)
-# Placement des 4 ci-dessus items sur une grille *4
-case1_tab1.grid(row=0,column=0) # affiche le radio bouton rectangulaire
-canva_tab1_label1.grid(row=0,column=1) # affiche le label rectangulaire
-case2_tab1.grid(row=0,column=2) # affiche le radio bouton circulaire
-canva_tab1_label2.grid(row=0,column=3) #affiche le label circulaire
-# messages des inputs L,b,h,R
-label_longueur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-label_largeur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
-label_hauteur = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
-label_rayon = Label(canva_tab1_labelframe,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
-# saisie des inputs L,b,h
-saisie_longueur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_largeur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_hauteur = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_rayon = Entry(canva_tab1_labelframe,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-# Placement des items sur la grille 4 colonnes
-label_longueur.grid(row=2,column=1,columnspan=4)
-saisie_longueur.grid(row=3,column=1,columnspan=4)
-label_largeur.grid(row=4,column=1,columnspan=4)
-saisie_largeur.grid(row=5,column=1,columnspan=4)
-label_hauteur.grid(row=6,column=1,columnspan=4)
-saisie_hauteur.grid(row=7,column=1,columnspan=4)
-label_rayon.grid(row=8,column=1,columnspan=4)
-saisie_rayon.grid(row=9,column=1,columnspan=4)   
-# Gestion du stockage des valeurs
+# Création labelframe 1
+canva_tab1_labelframe1 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Type de section',bg = gris_fonce) #définit le message 1
+canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de section    
+# Choisir quelle est la géométrie du problème
+canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choissiez le type de géométrie de votre poutre :")
+canva_tab1_labelframe1_label.grid(row=0)
+geometrie = StringVar()
+canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly")
+canva_tab1_labelframe1_Combobox1['values'] = ("","Rectangle", "Carré", "Forme", "Triangle", "Cercle", "Losange")
+canva_tab1_labelframe1_Combobox1.grid(row=1) # affichage de la combobox
+canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
+def ajout_combobox(event):
+    global geometrie2,geometrie3,geometrie4,geometrie5
+    print("Sélection en cours du Combobox 1 :  index <",canva_tab1_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Rectangle':
+        geometrie2 = StringVar()
+        canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly")
+        canva_tab1_labelframe1_Combobox2['values'] = ("Normal","Troué")
+        canva_tab1_labelframe1_Combobox2.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
+        print("Sélection en cours du Combobox 2 :  index <",canva_tab1_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Carré':
+        geometrie3 = StringVar()
+        canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly")
+        canva_tab1_labelframe1_Combobox3['values'] = ("Normal","Troué")
+        canva_tab1_labelframe1_Combobox3.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
+        print("Sélection en cours du Combobox 3 :  index <",canva_tab1_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Forme':
+        geometrie4 = StringVar()
+        canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly")
+        canva_tab1_labelframe1_Combobox4['values'] = ("I","T","L","Z","Croix")
+        canva_tab1_labelframe1_Combobox4.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
+        print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Triangle':
+        geometrie5 = StringVar()
+        canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly")
+        canva_tab1_labelframe1_Combobox5['values'] = ("Rectangle")
+        canva_tab1_labelframe1_Combobox5.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
+        print("Sélection en cours du Combobox 5 :  index <",canva_tab1_labelframe1_Combobox5.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox5.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Cercle':
+        geometrie6 = StringVar()
+        canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly")
+        canva_tab1_labelframe1_Combobox6['values'] = ("Normal","Troué","Demi-Cercle","Quart-de-Cercle","Ovale")
+        canva_tab1_labelframe1_Combobox6.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
+        print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(geometrie.get()) == 'Losange': 
+        canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", nouveau_labelframe)
+def nouveau_labelframe(event): # nouvelle frame où on rentre les données
+    global label_longueur,label_largeur,label_hauteur,label_rayon,saisie_longueur,saisie_largeur,saisie_hauteur,saisie_rayon,canva_tab1_labelframe2
+    # Création labelframe 1
+    canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_fonce) #définit le message 2
+    canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section   
+    if str(geometrie.get()) == 'Rectangle':
+        # messages des inputs L,b,h
+        label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+        label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+        label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+        # saisie des inputs L,b,h
+        saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        # Placement des items sur une grille
+        label_longueur.grid(row=2)
+        saisie_longueur.grid(row=3)
+        label_largeur.grid(row=4)
+        saisie_largeur.grid(row=5)
+        label_hauteur.grid(row=6)
+        saisie_hauteur.grid(row=7)
+        # saisie affichage de départ
+        saisie_longueur.insert(0, "0.0")
+        saisie_largeur.insert(0, "0.0") 
+        saisie_hauteur.insert(0, "0.0") 
+        # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+        saisie_longueur.focus() 
+        saisie_longueur.select_range(0,END)
+        # main au dessus de la case
+        saisie_longueur.config(cursor='hand1')
+        saisie_largeur.config(cursor='hand1')
+        saisie_hauteur.config(cursor='hand1')
+        # lancement retour des touches
+        saisie_longueur.bind('<Return>', detection_passage)
+    if str(geometrie.get()) == 'Cercle':
+        # messages des inputs L,R
+        label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+        label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+        # saisie des inputs L,R
+        saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        # Placement des items sur une grille
+        label_longueur.grid(row=2)
+        saisie_longueur.grid(row=3)
+        label_rayon.grid(row=8)
+        saisie_rayon.grid(row=9)
+        # saisie affichage de départ        
+        saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+        saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+        # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+        saisie_longueur.focus() 
+        saisie_longueur.select_range(0,END)
+        # main au dessus de la case
+        saisie_longueur.config(cursor='hand1')
+        saisie_rayon.config(cursor='hand1')
+        # lancement retour des touches
+        saisie_longueur.bind('<Return>', detection_passage)
+# Gestion du stockage des valeurs pour le bouton
 def valider_la_géométrie():
-    global valeurs_geometriques,type_de_section
+    global valeurs_geometriques,geometrie,saisie_longueur,saisie_largeur,saisie_hauteur,saisie_rayon
     L = float(saisie_longueur.get())
     b = float(saisie_largeur.get())
     h = float(saisie_hauteur.get())
     R = float(saisie_rayon.get())
-    if int(type_de_section.get()) == 0 : # 0 si radio bouton sur rectangulaire
+    if str(geometrie.get()) == 'Rectangle': # Rectangle
         if L!='' and b!='' and h!='' :
             R=0.0
             valeurs_geometriques=(L,b,h,R)
@@ -147,8 +232,8 @@ def valider_la_géométrie():
             showerror('Erreur', 'Un champ de coordonnées est vide')
         if L=='' or b=='' or h=='' :
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        print("Les valeurs de L,b,h et R sont (config RECTANGULAIRE):",valeurs_geometriques)
-    else : # 1 si radio bouton sur circulaire
+        print("Les valeurs de L,b,h et R sont (config RECTANGLE):",valeurs_geometriques)
+    if str(geometrie.get()) == 'Cercle': # Cercle
         if L!='' and R!='' :
             b=0.0
             h=0.0
@@ -159,7 +244,7 @@ def valider_la_géométrie():
             showerror('Erreur', 'Un champ de coordonnées est vide')
         if L=='' or R=='' :
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        print("Les valeurs de L,b,h et R sont (config CIRCULAIRE):",valeurs_geometriques)
+        print("Les valeurs de L,b,h et R sont (config CERCLE):",valeurs_geometriques)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def largeur_next(evt): #fct pour passer à b
     saisie_largeur.focus()
@@ -171,52 +256,16 @@ def rayon_next(evt): #fct pour passer à R
     saisie_rayon.focus()
     saisie_rayon.select_range(0,END)
 def detection_passage(evt): # détecte quand on doit passer d'une case à l'autre en fonction du choix de section (radio bouton)
-    global type_de_section
-    if int(type_de_section.get()) == 0 : #rectangulaire
+    global geometrie, largeur_next, hauteur_next, rayon_next
+    if str(geometrie.get()) == 'Rectangle': # Rectangle
         saisie_largeur.bind('<Return>', largeur_next) # switch de L à b quand on tape sur entrée
         saisie_hauteur.bind('<Return>', hauteur_next) # switch de b à h quand on tape sur entrée
-    else : # circulaire
+    if str(geometrie.get()) == 'Cercle': # Cercle
         saisie_rayon.bind('<Return>', rayon_next) # switch de L à R quand on tape sur entrée
-def detection_choix_section(evt): # fct pour voir quel radio bouton est sélectionné et donc qu'elles cases doivent etre grisé
-    global type_de_section
-    saisie_longueur.delete(0,END) # saisie affichage de départ
-    saisie_longueur.insert(0, "0.0") # saisie affichage de départ
-    saisie_longueur.config(cursor='hand1')
-    if int(type_de_section.get()) == 0 : #rectangulaire
-        saisie_largeur.insert(0, "0.0") # saisie affichage de départ
-        saisie_hauteur.insert(0, "0.0") # saisie affichage de départ
-        saisie_rayon.delete(0,END) # saisie affichage de départ
-        saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
-        saisie_longueur.select_range(0,END)
-        label_rayon.config(state = DISABLED,cursor='X_cursor')
-        saisie_rayon.config(state = DISABLED,cursor='X_cursor')
-        label_largeur.config(state = NORMAL)
-        label_hauteur.config(state = NORMAL)
-        saisie_largeur.config(state = NORMAL,cursor='hand1')
-        saisie_hauteur.config(state = NORMAL,cursor='hand1')
-        print ("saisie_rayon désactivé")
-    else : # circulaire
-        saisie_rayon.insert(0, "0.0") # saisie affichage de départ
-        saisie_largeur.delete(0,END) # saisie affichage de départ
-        saisie_hauteur.delete(0,END) # saisie affichage de départ
-        saisie_longueur.focus() #refait le focus automatique sur la première case dès qu'on change le choix du radio bouton type de section
-        saisie_longueur.select_range(0,END)
-        label_largeur.config(state = DISABLED)
-        label_hauteur.config(state = DISABLED)
-        saisie_largeur.config(state = DISABLED,cursor='X_cursor')
-        saisie_hauteur.config(state = DISABLED,cursor='X_cursor')
-        label_rayon.config(state = NORMAL,cursor='hand1')
-        saisie_rayon.config(state = NORMAL,cursor='hand1')
-        print ("saisie_largeur désactivé \nsaisie_hauteur désactivé")
-# initialisation sélection
-saisie_longueur.focus() 
-saisie_longueur.select_range(0,END) 
-saisie_longueur.bind('<Return>', detection_passage) 
-# Passage d'une casse à l'autre avec détection si circulaire ou rectangulaire (et donc grisage des cases en fonction)
-case1_tab1.bind('<ButtonPress>', detection_choix_section)
-case2_tab1.bind('<ButtonPress>', detection_choix_section)           
+# Passage d'une combobox à l'autre   
+canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox)      
 # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
-Button(canva_tab1_labelframe, text='Valider la géométrie', command=valider_la_géométrie).grid(row=10,column=1,pady=15,columnspan=4)
+Button(canva_tab1, text='Valider la géométrie', command=valider_la_géométrie).place(relx=0.25,rely=0.50,relwidth=0.5, relheight=0.10) # affiche le labelframe type de section  
 """
 Fin
 """
