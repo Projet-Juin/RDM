@@ -338,24 +338,24 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
 def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b):
      #avec une charge répartie sous forme de triangle
     # Réactions aux appuis
-    RA = q*(longueur+b)/6 
-    RB = q*(longueur+a)/6 
+    RA = -q*(longueur+b)/6 
+    RB = -q*(longueur+a)/6 
     
     # Efforts tranchants [N]
     EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            EffortTranch[i] = -q*(a*(longueur+b)-3*x[i]**2)/(6*a)
+            EffortTranch[i] = -RA-q/(2*a)*(x[i]**2)
         elif x[i] > a and x[i] <= longueur :
-            EffortTranch[i] = -q*(3*x[i]**2-6*longueur*x[i]+2*longueur**2+a**2)/(6*b)
+            EffortTranch[i] = q/(6*b)*(3*(x[i]**2)-6*longueur*x[i]+2*(longueur**2)+(a**2))
     
     # Moment Fléchissant [N.mm]
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a : 
-            Mf[i] = q*x[i]*(a*(longueur+b)-3*x[i]**2)/(6*a)
+            Mf[i] = RA*x[i]+q/(6*a)*(x[i]**3)
         elif x[i] > a :
-            Mf[i] = q*(longueur-x[i])*(2*longueur*x[i]-x[i]**2-a**2)/(6*b)
+            Mf[i] = -q/(6*b)*((x[i]**3)-3*longueur*(x[i]**2)+(2*(longueur**2)+(a**2))*x[i]-(a**2)*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -374,9 +374,9 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            flèche[i] = -q*x[i]*(3*(x[i]**4)+a*(longueur+b)*(7*longueur**2-3*b**2-10*x[i]**2))/(360*E*Igz*a)
+            flèche[i] = q*x[i]*(3*(x[i]**4)+a*(longueur+b)*(7*longueur**2-3*b**2-10*x[i]**2))/(360*E*Igz*a)
         elif x[i] > a :
-            flèche[i] = -q*(longueur-x[i])*(3*((longueur-x[i])**4)+b*(longueur+a)*(7*longueur**2-3*a**2-10*(longueur-x[i])**2))/(360*E*Igz*b)
+            flèche[i] = q*(longueur-x[i])*(3*((longueur-x[i])**4)+b*(longueur+a)*(7*longueur**2-3*a**2-10*(longueur-x[i])**2))/(360*E*Igz*b)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
