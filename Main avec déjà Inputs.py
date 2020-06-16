@@ -24,6 +24,7 @@ matériau = 'bois'
 E = 210000
 MasseVol = 0.75
 LimElast = 40
+géométrie = 'carré'
     # plus tard dans le projet, on pourrait importer une base de données pour faire en sorte qu'avec la seule connaissance du matériau, le logiciel pourrait en déduire automatiquement E, la masse volumque etc...
 
 (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
@@ -55,8 +56,8 @@ y = np.linspace(0, hauteur, NbrePointsY)
 # (RACCE, EffortTranchCCE, MfCCE, ContrainteYMaxCCE, ContrainteMaxCCE, DefYMaxCCE, DefMaxCCE, flècheCCE, FlècheMaxCCE) = \
 # Liaison_encastrement.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
 
-# (RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
-# Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
+(RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
+Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
 
 #Liaison_encastrement.charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x)
     

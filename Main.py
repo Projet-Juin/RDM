@@ -40,7 +40,7 @@ print(x)
 
 # LES CALCULS :
 # fonction que l'on pourra appeler qui s'occupe de calculer différentes données d'une poutre qui subit seulement une charge répartie
-     
+    
 # (RACC, RBCR, EffortTranchCR, MfCR, ContrainteYMaxCR, ContrainteMaxCR, DefYMaxCR, DefMaxCR, flècheCR, FlècheMaxCR, \
 # GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR) = \
 # Appuis_simples.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) 
@@ -55,16 +55,20 @@ print(x)
 # (RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = \
 # Liaison_encastrement.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x)
 
+#Liaison_encastrement.charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x)
+    
+#Liaison_encastrement.charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x)
+
 # (RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
 # = Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
 
-Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
+# Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
 
 # Appuis_simples.charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
 # Appuis_simples.charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
-# Appuis_simples.charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+# Appuis_simples.charge_triangulaire_antisymétriqu(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
 # Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
