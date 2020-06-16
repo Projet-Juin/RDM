@@ -91,16 +91,16 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     return RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
 
-def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
+def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
-    RA = -q*longueur
+    RA = q*longueur
     
     # Efforts tranchants [N]
-    EffortTranch = q*(x-longueur)  # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = RA-q*x  # EffortTranch est de type <class 'numpy.ndarray'>. 
     
     # Moment Fléchissant [N.mm]
-    Mf = -(q/2)*(x-longueur)**2
+    Mf = (q/2)*(x-longueur)**2
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -115,8 +115,10 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     DefMax = np.amax(DefYMax)
     print('DefMax', DefMax)
     
-    # Flèche de la poutre
-    flèche = -q/(24*E*Igz)*((longueur-x)**4+4*(longueur**3)*x-(longueur**4))
+    # Flèche de la poutre                   ##NE FONCTIONNE PAS
+    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range (NbrePointsX):
+        flèche[i] = q/(24*E*Igz)*(((longueur-x[i])**4)+4*(longueur**3)*x[i]-(longueur**4))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
