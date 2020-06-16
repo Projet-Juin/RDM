@@ -114,7 +114,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Rectangle':
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly")
-        canva_tab1_labelframe1_Combobox2['values'] = ("Normal","Troué")
+        canva_tab1_labelframe1_Combobox2['values'] = ("","Normal","Troué")
         canva_tab1_labelframe1_Combobox2.grid(row=3) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -123,7 +123,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Carré':
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly")
-        canva_tab1_labelframe1_Combobox3['values'] = ("Normal","Troué")
+        canva_tab1_labelframe1_Combobox3['values'] = ("","Normal","Troué")
         canva_tab1_labelframe1_Combobox3.grid(row=3) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -132,7 +132,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Forme':
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly")
-        canva_tab1_labelframe1_Combobox4['values'] = ("I","T","L","Z","Croix")
+        canva_tab1_labelframe1_Combobox4['values'] = ("","I","T","L","Z","Croix")
         canva_tab1_labelframe1_Combobox4.grid(row=3) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -141,7 +141,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Triangle':
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly")
-        canva_tab1_labelframe1_Combobox5['values'] = ("Rectangle")
+        canva_tab1_labelframe1_Combobox5['values'] = ("","Rectangle")
         canva_tab1_labelframe1_Combobox5.grid(row=3) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -150,7 +150,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Cercle':
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly")
-        canva_tab1_labelframe1_Combobox6['values'] = ("Normal","Troué","Demi-Cercle","Quart-de-Cercle","Ovale")
+        canva_tab1_labelframe1_Combobox6['values'] = ("","Normal","Troué","Demi Cercle","Quart de Cercle","Ovale")
         canva_tab1_labelframe1_Combobox6.grid(row=3) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -162,57 +162,522 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     global label_longueur,label_largeur,label_hauteur,label_rayon,saisie_longueur,saisie_largeur,saisie_hauteur,saisie_rayon,canva_tab1_labelframe2
     # Création labelframe 1
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_fonce) #définit le message 2
-    canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section   
+    canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section   
     if str(geometrie.get()) == 'Rectangle':
+        if str(geometrie2.get()) == 'Normal':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie2.get()) == 'Troué':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b1 de votre poutre en mm :')
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            label_largeur1.grid(row=6)
+            saisie_largeur1.grid(row=7)
+            label_hauteur1.grid(row=8)
+            saisie_hauteur1.grid(row=9)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0")
+            saisie_largeur1.insert(0, "0.0") 
+            saisie_hauteur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            saisie_hauteur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+    if str(geometrie.get()) == 'Carré':
+        if str(geometrie3.get()) == 'Normal':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0")  
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie3.get()) == 'Troué':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_largeur1.grid(row=4)
+            saisie_largeur1.grid(row=5)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_largeur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+    if str(geometrie.get()) == 'Forme':
+        if str(geometrie4.get()) == 'I':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile supérieure b1 de votre poutre en mm :')
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre en mm :')
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            label_largeur1.grid(row=6)
+            saisie_largeur1.grid(row=7)
+            label_largeur2.grid(row=8)
+            saisie_largeur2.grid(row=9)
+            label_hauteur1.grid(row=10)
+            saisie_hauteur1.grid(row=11)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0")
+            saisie_largeur1.insert(0, "0.0")
+            saisie_largeur2.insert(0, "0.0") 
+            saisie_hauteur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            saisie_largeur2.config(cursor='hand1')
+            saisie_hauteur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie4.get()) == 'T':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :')
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            label_largeur1.grid(row=6)
+            saisie_largeur1.grid(row=7)
+            label_hauteur1.grid(row=8)
+            saisie_hauteur1.grid(row=9)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0")
+            saisie_largeur1.insert(0, "0.0") 
+            saisie_hauteur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            saisie_hauteur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie4.get()) == 'L':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :')
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            label_largeur1.grid(row=6)
+            saisie_largeur1.grid(row=7)
+            label_hauteur1.grid(row=8)
+            saisie_hauteur1.grid(row=9)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0")
+            saisie_largeur1.insert(0, "0.0") 
+            saisie_hauteur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            saisie_hauteur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie4.get()) == 'Z':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :')
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre en mm :')
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            label_largeur1.grid(row=6)
+            saisie_largeur1.grid(row=7)
+            label_largeur2.grid(row=8)
+            saisie_largeur2.grid(row=9)
+            label_hauteur1.grid(row=10)
+            saisie_hauteur1.grid(row=11)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0")
+            saisie_largeur1.insert(0, "0.0")
+            saisie_largeur2.insert(0, "0.0")
+            saisie_hauteur1.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            saisie_largeur1.config(cursor='hand1')
+            saisie_largeur2.config(cursor='hand1')
+            saisie_hauteur1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie2.get()) == 'Croix':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)  
+    if str(geometrie.get()) == 'Triangle':
+        if str(geometrie5.get()) == 'Rectangle':
+            # messages des inputs L,b,h
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+            # saisie des inputs L,b,h
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_largeur.grid(row=2)
+            saisie_largeur.grid(row=3)
+            label_hauteur.grid(row=4)
+            saisie_hauteur.grid(row=5)
+            # saisie affichage de départ
+            saisie_longueur.insert(0, "0.0")
+            saisie_largeur.insert(0, "0.0") 
+            saisie_hauteur.insert(0, "0.0") 
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_largeur.config(cursor='hand1')
+            saisie_hauteur.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+    if str(geometrie.get()) == 'Cercle':
+        if str(geometrie6.get()) == 'Normal':
+            # messages des inputs L,R
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+            # saisie des inputs L,R
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_rayon.grid(row=2)
+            saisie_rayon.grid(row=3)
+            # saisie affichage de départ        
+            saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+            saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_rayon.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie6.get()) == 'Troué':
+            # messages des inputs L,R
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+            label_rayon1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R1 de votre poutre en mm :')
+            # saisie des inputs L,R
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_rayon1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_rayon.grid(row=2)
+            saisie_rayon.grid(row=3)
+            label_rayon1.grid(row=4)
+            saisie_rayon1.grid(row=5)
+            # saisie affichage de départ        
+            saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+            saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+            saisie_rayon1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_rayon.config(cursor='hand1')
+            saisie_rayon1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie6.get()) == 'Demi Cercle':
+            # messages des inputs L,R
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+            # saisie des inputs L,R
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_rayon.grid(row=2)
+            saisie_rayon.grid(row=3)
+            # saisie affichage de départ        
+            saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+            saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_rayon.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie6.get()) == 'Quart de Cercle':
+            # messages des inputs L,R
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
+            # saisie des inputs L,R
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_rayon.grid(row=2)
+            saisie_rayon.grid(row=3)
+            # saisie affichage de départ        
+            saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+            saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_rayon.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+        if str(geometrie6.get()) == 'Ovale':
+            # messages des inputs L,R
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
+            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la grande diagonale D1 de votre poutre en mm :')
+            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la petite diagonale D2 de votre poutre en mm :')
+            # saisie des inputs L,R
+            saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_diagonale2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur une grille
+            label_longueur.grid(row=0)
+            saisie_longueur.grid(row=1)
+            label_diagonale1.grid(row=2)
+            saisie_diagonale1.grid(row=3)
+            label_diagonale2.grid(row=4)
+            saisie_diagonale2.grid(row=5)
+            # saisie affichage de départ        
+            saisie_longueur.insert(0, "0.0") # saisie affichage de départ
+            saisie_diagonale1.insert(0, "0.0") # saisie affichage de départ
+            saisie_diagonale2.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_longueur.focus() 
+            saisie_longueur.select_range(0,END)
+            # main au dessus de la case
+            saisie_longueur.config(cursor='hand1')
+            saisie_diagonale1.config(cursor='hand1')
+            saisie_diagonale2.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_longueur.bind('<Return>', detection_passage)
+    if str(geometrie.get()) == 'Losange':
         # messages des inputs L,b,h
         label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-        label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
-        label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Hauteur h de votre poutre en mm :')
+        label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la grande diagonale D1 de votre poutre en mm :')
+        label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la petite diagonale D2 de votre poutre en mm :')
         # saisie des inputs L,b,h
         saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-        saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-        saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+        saisie_diagonale2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
         # Placement des items sur une grille
-        label_longueur.grid(row=2)
-        saisie_longueur.grid(row=3)
-        label_largeur.grid(row=4)
-        saisie_largeur.grid(row=5)
-        label_hauteur.grid(row=6)
-        saisie_hauteur.grid(row=7)
+        label_longueur.grid(row=0)
+        saisie_longueur.grid(row=1)
+        label_diagonale1.grid(row=2)
+        saisie_diagonale1.grid(row=3)
+        label_diagonale2.grid(row=4)
+        saisie_diagonale2.grid(row=5)
         # saisie affichage de départ
-        saisie_longueur.insert(0, "0.0")
-        saisie_largeur.insert(0, "0.0") 
-        saisie_hauteur.insert(0, "0.0") 
-        # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-        saisie_longueur.focus() 
-        saisie_longueur.select_range(0,END)
-        # main au dessus de la case
-        saisie_longueur.config(cursor='hand1')
-        saisie_largeur.config(cursor='hand1')
-        saisie_hauteur.config(cursor='hand1')
-        # lancement retour des touches
-        saisie_longueur.bind('<Return>', detection_passage)
-    if str(geometrie.get()) == 'Cercle':
-        # messages des inputs L,R
-        label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
-        label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer le Rayon R de votre poutre en mm :')
-        # saisie des inputs L,R
-        saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-        saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-        # Placement des items sur une grille
-        label_longueur.grid(row=2)
-        saisie_longueur.grid(row=3)
-        label_rayon.grid(row=8)
-        saisie_rayon.grid(row=9)
-        # saisie affichage de départ        
         saisie_longueur.insert(0, "0.0") # saisie affichage de départ
-        saisie_rayon.insert(0, "0.0") # saisie affichage de départ
+        saisie_diagonale1.insert(0, "0.0") # saisie affichage de départ
+        saisie_diagonale2.insert(0, "0.0") # saisie affichage de départ 
         # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
         saisie_longueur.focus() 
         saisie_longueur.select_range(0,END)
         # main au dessus de la case
         saisie_longueur.config(cursor='hand1')
-        saisie_rayon.config(cursor='hand1')
+        saisie_diagonale1.config(cursor='hand1')
+        saisie_diagonale2.config(cursor='hand1')
         # lancement retour des touches
         saisie_longueur.bind('<Return>', detection_passage)
 # Gestion du stockage des valeurs pour le bouton
@@ -246,16 +711,16 @@ def valider_la_géométrie():
             showerror('Erreur', 'Un champ de coordonnées est vide')
         print("Les valeurs de L,b,h et R sont (config CERCLE):",valeurs_geometriques)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
-def largeur_next(evt): #fct pour passer à b
+def largeur_next(event): #fct pour passer à b
     saisie_largeur.focus()
     saisie_largeur.select_range(0,END)
-def hauteur_next(evt): #fct pour passer à h
+def hauteur_next(event): #fct pour passer à h
     saisie_hauteur.focus()
     saisie_hauteur.select_range(0,END)
-def rayon_next(evt): #fct pour passer à R
+def rayon_next(event): #fct pour passer à R
     saisie_rayon.focus()
     saisie_rayon.select_range(0,END)
-def detection_passage(evt): # détecte quand on doit passer d'une case à l'autre en fonction du choix de section (radio bouton)
+def detection_passage(event): # détecte quand on doit passer d'une case à l'autre en fonction du choix de section (radio bouton)
     global geometrie, largeur_next, hauteur_next, rayon_next
     if str(geometrie.get()) == 'Rectangle': # Rectangle
         saisie_largeur.bind('<Return>', largeur_next) # switch de L à b quand on tape sur entrée
@@ -265,7 +730,7 @@ def detection_passage(evt): # détecte quand on doit passer d'une case à l'autr
 # Passage d'une combobox à l'autre   
 canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox)      
 # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
-Button(canva_tab1, text='Valider la géométrie', command=valider_la_géométrie).place(relx=0.25,rely=0.50,relwidth=0.5, relheight=0.10) # affiche le labelframe type de section  
+Button(canva_tab1, text='Valider la géométrie', command=valider_la_géométrie).place(relx=0.25,rely=0.75,relwidth=0.5, relheight=0.05) # affiche le labelframe type de section  
 """
 Fin
 """
