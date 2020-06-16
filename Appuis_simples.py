@@ -121,7 +121,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -(q/(24*E*Igz))*(2*longueur*pow(x,3)-pow(x,4)-pow(longueur,3)*x)
+    flèche = q*x/(24*E*Igz)*((longueur**3)-2*longueur*(x**2)+(x**3))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
