@@ -159,7 +159,11 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Losange': 
         canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", nouveau_labelframe)
 def nouveau_labelframe(event): # nouvelle frame où on rentre les données
-    global label_longueur,label_largeur,label_hauteur,label_rayon,saisie_longueur,saisie_largeur,saisie_hauteur,saisie_rayon,canva_tab1_labelframe2
+    global label_longueur,label_largeur,label_largeur1,label_largeur2,label_rayon,label_rayon1\
+        ,label_hauteur,label_hauteur1,label_diagonale1,label_diagonale2\
+            ,saisie_longueur,saisie_largeur,saisie_largeur1,saisie_largeur2,saisie_rayon,saisie_rayon1\
+                ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
+                    ,canva_tab1_labelframe2
     # Création labelframe 1
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_fonce) #définit le message 2
     canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section   
@@ -682,34 +686,202 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
         saisie_longueur.bind('<Return>', detection_passage)
 # Gestion du stockage des valeurs pour le bouton
 def valider_la_géométrie():
-    global valeurs_geometriques,geometrie,saisie_longueur,saisie_largeur,saisie_hauteur,saisie_rayon
+    global label_longueur,label_largeur,label_largeur1,label_largeur2,label_rayon,label_rayon1\
+        ,label_hauteur,label_hauteur1,label_diagonale1,label_diagonale2\
+            ,saisie_longueur,saisie_largeur,saisie_largeur1,saisie_largeur2,saisie_rayon,saisie_rayon1\
+                ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
+                    ,canva_tab1_labelframe2,valeurs_geometriques
     L = float(saisie_longueur.get())
     b = float(saisie_largeur.get())
+    b1 = float(saisie_largeur1.get())
+    b2 = float(saisie_largeur2.get())
     h = float(saisie_hauteur.get())
+    h1 = float(saisie_hauteur1.get())
     R = float(saisie_rayon.get())
-    if str(geometrie.get()) == 'Rectangle': # Rectangle
-        if L!='' and b!='' and h!='' :
-            R=0.0
-            valeurs_geometriques=(L,b,h,R)
+    R1 = float(saisie_rayon1.get())
+    D1 = float(saisie_diagonale1.get())
+    D2 = float(saisie_diagonale2.get())
+    if str(geometrie.get()) == 'Rectangle':
+        if str(geometrie2.get()) == 'Normal':
+            if L!='' and b!='' and h!='' :
+                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or h==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or h=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie2.get(),") :",valeurs_geometriques)
+        if str(geometrie2.get()) == 'Troué':
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
+                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 or h==0 or h1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' or h=='' or h1=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie2.get(),") :",valeurs_geometriques)
+    if str(geometrie.get()) == 'Carré':
+        if str(geometrie3.get()) == 'Normal':
+            if L!='' and b!='' :
+                b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie3.get(),") :",valeurs_geometriques)
+        if str(geometrie3.get()) == 'Troué':
+            if L!='' and b!='' and b1!='' :
+                b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie3.get(),") :",valeurs_geometriques)            
+    if str(geometrie.get()) == 'Forme':
+        if str(geometrie4.get()) == 'I':
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='':
+                R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' or h=='' or h1=='' or b2=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+        if str(geometrie4.get()) == 'T':
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
+                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 or h==0 or h1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' or h=='' or h1=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+        if str(geometrie4.get()) == 'L':
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
+                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 or h==0 or h1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' or h=='' or h1=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+        if str(geometrie4.get()) == 'Z':
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='':
+                R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or b1=='' or h=='' or h1=='' or b2=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+        if str(geometrie4.get()) == 'Croix': 
+            if L!='' and b!='' and h!='' :
+                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or h==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or h=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+    if str(geometrie.get()) == 'Triangle':
+        if str(geometrie5.get()) == 'Rectangle':
+            if L!='' and b!='' and h!='' :
+                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or b==0 or h==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or b=='' or h=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie5.get(),") :",valeurs_geometriques)
+    if str(geometrie.get()) == 'Cercle':
+        if str(geometrie6.get()) == 'Normal':
+            if L!='' and R!='' :
+                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or R==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or R=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+        if str(geometrie6.get()) == 'Troué':
+            if L!='' and R!='' and R1!='' :
+                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or R==0 or R1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or R=='' or R1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+        if str(geometrie6.get()) == 'Demi Cercle':
+            if L!='' and R!='' :
+                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or R==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or R=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+        if str(geometrie6.get()) == 'Quart de Cercle':
+            if L!='' and R!='' :
+                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or R==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or R=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+        if str(geometrie6.get()) == 'Ovale':
+            if L!='' and D1!='' and D2!='' :
+                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0
+                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                saisie_longueur.focus()
+                saisie_longueur.select_range(0,END)
+            if L==0 or D1==0 or D2==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            if L=='' or D1=='' or D2=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+    if str(geometrie.get()) == 'Losange':
+        if L!='' and D1!='' and D2!='' :
+            b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0
+            valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
             saisie_longueur.focus()
             saisie_longueur.select_range(0,END)
-        if L==0 or b==0 or h==0 :
+        if L==0 or D1==0 or D2==0 :
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        if L=='' or b=='' or h=='' :
+        if L=='' or D1=='' or D2=='':
             showerror('Erreur', 'Un champ de coordonnées est vide')
-        print("Les valeurs de L,b,h et R sont (config RECTANGLE):",valeurs_geometriques)
-    if str(geometrie.get()) == 'Cercle': # Cercle
-        if L!='' and R!='' :
-            b=0.0
-            h=0.0
-            valeurs_geometriques=(L,b,h,R)
-            saisie_longueur.focus()
-            saisie_longueur.select_range(0,END)
-        if L==0 or R==0 :
-            showerror('Erreur', 'Un champ de coordonnées est vide')
-        if L=='' or R=='' :
-            showerror('Erreur', 'Un champ de coordonnées est vide')
-        print("Les valeurs de L,b,h et R sont (config CERCLE):",valeurs_geometriques)
+        print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def largeur_next(event): #fct pour passer à b
     saisie_largeur.focus()
