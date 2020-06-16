@@ -165,10 +165,13 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
 
 def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c):
+    
+    x = np.array(x)
+    
     #avec une charge qui ne s'étend pas partout
     # Réactions aux appuis
-    RA = q*b*(b + 2*c)/(2*longueur)
-    RB = q*b*(b + 2*a)/(2*longueur)
+    RA = -q*b*(b + 2*c)/(2*longueur)
+    RB = -q*b*(b + 2*a)/(2*longueur)
     
     # Efforts tranchants [N]
     EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
@@ -176,7 +179,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         if x[i] <= a :
             EffortTranch[i] = -RA
         elif x[i] > a and x[i] <= (a+b):
-            EffortTranch[i] = -RA+q*(x[i]-a)
+            EffortTranch[i] = -RA-q*(x[i]-a)
         elif x[i] > (a+b) and x[i] <= longueur :
             EffortTranch[i] = RB
     
