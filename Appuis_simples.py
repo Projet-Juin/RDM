@@ -166,8 +166,6 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
 
 def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c):
     
-    x = np.array(x)
-    
     #avec une charge qui ne s'étend pas partout
     # Réactions aux appuis
     RA = -q*b*(b + 2*c)/(2*longueur)
@@ -206,8 +204,18 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
     DefMax = np.amax(DefYMax)
     print('DefMax', DefMax)
     
-    # Flèche de la poutre
-    flèche = -q/(48*E*Igz*longueur)*(b*(b+2*c)*x*(4*(longueur**2-x**2)-(b+2*c)**2-b**2)+2*longueur*(x-a)**4)
+    # Flèche de la poutre        ##NE FONCTIONNE PAS
+    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            #flèche[i] = 1/(E*Igz)*(RA/6*(x[i]**3)+(q/(24*longueur)*(-4*(a**3)*b+12*(a**2)*b*longueur+8*a*(b**2)*(4*longueur+b)-8*(b**3)*longueur+11*(b**4))-RB/3*(longueur**2))*x[i])
+            flèche[i] = 0
+        elif x[i] > a and x[i] <= (a+b):
+            flèche[i] = -q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
+            #flèche[i] = 0
+        elif x[i] > (a+b) :
+            #flèche[i] = 1/(E*Igz)*(RB*(x[i]**3)/6-RB*longueur*(x[i]**2)/2-q/(24/longueur)*(-4*(a**3)*b+8*a*(b**3)+11*(b**4))*(x[i]-longueur)+RB*(longueur**2)/3*x[i])
+            flèche[i] = 0
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
@@ -250,24 +258,24 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
 def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a):
     #avec une charge qui ne s'étend pas partout et proche d'un appui
     # Réactions aux appuis
-    RA = q*a*(longueur - (a/2))/longueur
-    RB = q*(a**2)/(2*longueur)
+    RA = -q*a*(longueur - (a/2))/longueur
+    RB = -q*(a**2)/(2*longueur)
     
     # Efforts tranchants [N]
     EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            EffortTranch[i] = -q*(a*(2*longueur-a)-2*longueur*x[i])/(2*longueur)
+            EffortTranch[i] = -RA-q*x[i]
         elif x[i] > a and x[i] <= longueur :
-            EffortTranch[i] = q*(a**2)/(2*longueur)
+            EffortTranch[i] = RB
     
     # Moment Fléchissant [N.mm]
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a : 
-            Mf[i] = q*x[i]*(a*(2*longueur-a)-longueur*x[i])/(2*longueur)
+            Mf[i] = -RA*x[i]-q*(x[i]**2)/2
         elif x[i] > a :
-            Mf[i] = q*(a**2)*(longueur-x[i])/(2*longueur)
+            Mf[i] = -RB*(longueur-x[i])
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -282,7 +290,7 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
     DefMax = np.amax(DefYMax)
     print('DefMax', DefMax)
     
-    # Flèche de la poutre
+    # Flèche de la poutre           ##NE FONCTIONNE PAS
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
