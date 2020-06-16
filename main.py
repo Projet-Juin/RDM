@@ -247,7 +247,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur.bind('<Return>',hauteur_next)
             saisie_hauteur.bind('<Return>',largeur1_next)
             saisie_largeur1.bind('<Return>',hauteur1_next)
-            saisie_hauteur1.bind('<Return>',_auto)
+            saisie_hauteur1.bind('<Return>',valider_la_géométrie_auto)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab1_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(geometrie.get()) == 'Carré':
         if str(geometrie3.get()) == 'Normal':
@@ -994,7 +994,7 @@ def valider_la_géométrie():
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or D1=='' or D2=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie7.get(),") :",valeurs_geometriques)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def largeur_next(event): #fct pour passer à b
     saisie_largeur.focus()
