@@ -189,7 +189,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         if x[i] <= a :
             Mf[i] = RA*x[i]
         elif x[i] > a and x[i] <= (a+b):
-            Mf[i] = RA*x[i]-q*(((x[i]-a)**2)/2)
+            Mf[i] = (RA-q*a)*x[i]+q/2*((x[i])**2)+q/2*(a**2)
         elif x[i] > (a+b) :
             Mf[i] = RB*(longueur-x[i])
     
