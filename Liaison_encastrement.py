@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b):
    
      # Réactions aux liaisons
-    RA = P
+    RA = -P
     
     # Efforts tranchants [N] 
     EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
