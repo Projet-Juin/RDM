@@ -73,3 +73,4 @@ print(x)
 # Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
 # Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+#

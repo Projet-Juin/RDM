@@ -77,5 +77,5 @@ def géométrie_poutre(hauteur, longueur, largeur, MasseVol):
     #     Igz = (hauteur**4)/48
         
 
-    # Masse de la poutre
+
     
