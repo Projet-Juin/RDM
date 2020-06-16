@@ -109,7 +109,7 @@ canva_tab1_labelframe1_Combobox1['values'] = ("","Rectangle", "Carré", "Forme",
 canva_tab1_labelframe1_Combobox1.grid(row=1) # affichage de la combobox
 canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 def ajout_combobox(event):
-    global geometrie2,geometrie3,geometrie4,geometrie5
+    global geometrie2,geometrie3,geometrie4,geometrie5,geometrie6
     print("Sélection en cours du Combobox 1 :  index <",canva_tab1_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(geometrie.get()) == 'Rectangle':
         geometrie2 = StringVar()
@@ -464,7 +464,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur1.config(cursor='hand1')
             # lancement retour des touches
             saisie_longueur.bind('<Return>', detection_passage)
-        if str(geometrie2.get()) == 'Croix':
+        if str(geometrie4.get()) == 'Croix':
             # messages des inputs L,b,h
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Longueur L de votre poutre en mm :')
             label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10),text = 'Entrer la Largeur b de votre poutre en mm :')
