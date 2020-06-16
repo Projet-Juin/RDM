@@ -170,6 +170,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     # Création labelframe 2
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_fonce) #définit le message 2
     canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section   
+    # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
+    Button(canva_tab1, text='Valider la géométrie', command=valider_la_géométrie).place(relx=0.25,rely=0.75,relwidth=0.5, relheight=0.05) # affiche le labelframe type de section  
     if str(geometrie.get()) == 'Rectangle':
         if str(geometrie2.get()) == 'Normal':
             # messages des inputs L,b,h
@@ -1025,8 +1027,6 @@ def diagonale2_next(event): #fct pour passer à R
     saisie_diagonale2.select_range(0,END)      
 # Passage d'une combobox à l'autre   
 canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox)      
-# Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
-Button(canva_tab1, text='Valider la géométrie', command=valider_la_géométrie).place(relx=0.25,rely=0.75,relwidth=0.5, relheight=0.05) # affiche le labelframe type de section  
 """
 Fin
 """
@@ -1143,44 +1143,62 @@ Fin
 ### Barre 3 : Chargement ###
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
-canva_tab3=Canvas(tab3, bg="white")
+canva_tab3=Canvas(tab3, bg="blue")
 canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
-canva_tab3_labelframe1 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = 'Charge concentrée',bg=gris_clair) #définit le message 1
-canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_fonce) #définit le message 1
+canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de chargement    
+# Choisir quelle est la géométrie du problème
+canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :")
+canva_tab3_labelframe1_label.pack(expand=1, fill='both')
+chargement = StringVar()
+canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly")
+canva_tab3_labelframe1_Combobox1['values'] = ["","Charge concentrée", "Charge répartie", "Charge répartie partielle",\
+                                "Charge triangulaire", "Charge triangulaire monotone", "Charge triangulaire antisymétrique",\
+                                    "Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
+canva_tab3_labelframe1_Combobox1.pack( fill='both') # affichage de la combobox
+canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 # Création labelframe 2
-canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = 'Charge répartie',bg=gris_clair) #définit le message 1
-canva_tab3_labelframe2.place(relx=0.01,rely=0.37,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
-# messages des inputs label frame 1
-label_force_conc_1 = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la Force concentrée P sur votre poutre en N :')
-label_pos_a = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la distance a de votre poutre en mm :')
-label_pos_b = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la distance b de votre poutre mm :')
-# saisie des inputs label frame 1
-saisie_force_conc_1 = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_pos_a = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_pos_b = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-# Placement des items sur la grille labelframe1
-label_force_conc_1.grid(row=0)
-saisie_force_conc_1.grid(row=1)
-label_pos_a.grid(row=2)
-saisie_pos_a.grid(row=3)
-label_pos_b.grid(row=4)
-saisie_pos_b.grid(row=5)
-# messages des inputs label frame 2
-label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q de votre poutre en N :')
-label_pos_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
-label_pos_b1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance b1 de votre poutre en mm :')
-# saisie des inputs label frame 2
-saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_pos_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-saisie_pos_b1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-# Placement des items sur la grille labelframe2
-label_force_rep_1.grid(row=0)
-saisie_force_rep_1.grid(row=1)
-label_pos_a1.grid(row=2)
-saisie_pos_a1.grid(row=3)
-label_pos_b1.grid(row=4)
-saisie_pos_b1.grid(row=5)
+canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),bg=gris_clair) #définit le message 1
+canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+# Actualisation du labelframe 2
+def ajout_combobox_chargement(event):
+    canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = str(chargement.get()),bg=gris_clair) #définit le message 1
+    canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+    donothing_event(event)
+    canva_tab3_labelframe1_Combobox1.bind("<<ComboboxSelected>>", donothing_event)
+    # nouveau_labelframe_chargement
+    print("Sélection en cours du Combobox 1 :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+# # messages des inputs label frame 1
+# label_force_conc_1 = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la Force concentrée P sur votre poutre en N :')
+# label_pos_a = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la distance a de votre poutre en mm :')
+# label_pos_b = Label(canva_tab3_labelframe1,font = ("Arial",10),text = 'Entrer la distance b de votre poutre mm :')
+# # saisie des inputs label frame 1
+# saisie_force_conc_1 = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# saisie_pos_a = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# saisie_pos_b = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# # Placement des items sur la grille labelframe1
+# label_force_conc_1.grid(row=0)
+# saisie_force_conc_1.grid(row=1)
+# label_pos_a.grid(row=2)
+# saisie_pos_a.grid(row=3)
+# label_pos_b.grid(row=4)
+# saisie_pos_b.grid(row=5)
+# # messages des inputs label frame 2
+# label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q de votre poutre en N :')
+# label_pos_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+# label_pos_b1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance b1 de votre poutre en mm :')
+# # saisie des inputs label frame 2
+# saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# saisie_pos_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# saisie_pos_b1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+# # Placement des items sur la grille labelframe2
+# label_force_rep_1.grid(row=0)
+# saisie_force_rep_1.grid(row=1)
+# label_pos_a1.grid(row=2)
+# saisie_pos_a1.grid(row=3)
+# label_pos_b1.grid(row=4)
+# saisie_pos_b1.grid(row=5)
 # # saisie affichage de départ
 
 # saisie_young.insert(0, "0.0")
@@ -1194,11 +1212,12 @@ saisie_pos_b1.grid(row=5)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 
 # initialisation sélection
-saisie_force_conc_1.focus()
-saisie_force_conc_1.select_range(0,END)
-       
+# saisie_force_conc_1.focus()
+# saisie_force_conc_1.select_range(0,END)
+# Passage d'une combobox à l'autre   
+canva_tab3_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox_chargement)      
 # Bouton pour valider l'entrée du chargement de la poutre pour rassurer l'utilisateur
-Button(canva_tab3, text='Valider la charge', command=donothing).place(relx=0.25,rely=0.80,relwidth=0.5, relheight=0.10)
+# Button(canva_tab3, text='Valider la charge', command=donothing).place(relx=0.25,rely=0.80,relwidth=0.5, relheight=0.10)
 """
 Fin
 """

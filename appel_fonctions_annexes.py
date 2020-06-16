@@ -24,6 +24,12 @@ def donothing(): # Pour eviter les bugs, fonctions qui dit que rien n'est encore
     boutton.pack(side='top')  
     nouvelle_fenetre.mainloop()
 
+def donothing_event(event): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
+    nouvelle_fenetre =Tk()
+    boutton = Button(nouvelle_fenetre, text="Ne fait rien pour le moment \n A venir très prochainement !")
+    boutton.pack(side='top')  
+    nouvelle_fenetre.mainloop()
+
 def fenetre_bienvenue(): #Création d'une fenetre de bienvenue    
     bienvenue = Tk() #création de la fenetre bienvenue
     bienvenue.title("RDM6+++ --- BIENVENUE") #Titre de l'encadré
