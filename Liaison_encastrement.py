@@ -91,7 +91,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     return RA, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
 
-def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
+def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
     RA = q*longueur
@@ -116,9 +116,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     print('DefMax', DefMax)
     
     # Flèche de la poutre                   ##NE FONCTIONNE PAS
-    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-    for i in range (NbrePointsX):
-        flèche[i] = q/(24*E*Igz)*(((longueur-x[i])**4)+4*(longueur**3)*x[i]-(longueur**4))
+    flèche = q*(((longueur-x)**4)+4*(longueur**3)*x-(longueur**4))/(24*E*Igz)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
