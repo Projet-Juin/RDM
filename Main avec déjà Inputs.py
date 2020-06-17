@@ -32,12 +32,12 @@ géométrie = 'carré'
     # Forces appliquées [N.mm]
 q = -200
 P = -200
-a = 500
-b = longueur - a - c
+a = 200
 c = 200
+b = longueur - a - c
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
-NbrePointsX = 101 
+NbrePointsX = 101
 x = np.linspace(0, longueur, NbrePointsX)
 NbrePointsY = 41
 y = np.linspace(0, hauteur, NbrePointsY)
@@ -64,7 +64,7 @@ y = np.linspace(0, hauteur, NbrePointsY)
 #Liaison_encastrement.charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x)
 
 #(RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
-Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
+#Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
 
 #Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
 
@@ -72,9 +72,8 @@ Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q
 
 #Appuis_simples.charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
-#Appuis_simples.charge_triangulaire_antisymétriqu(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+#Appuis_simples.charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
 
 #Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
-#Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
-#
+Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
