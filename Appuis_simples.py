@@ -92,7 +92,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     
     return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax, \
     GrapheEffortTranchCC, GrapheMfCC, GrapheContrainteYMaxCC, GrapheDefYMaxCC, GrapheFlècheCC
-    
+
     
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
@@ -208,14 +208,11 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            #flèche[i] = 1/(E*Igz)*(RA/6*(x[i]**3)+(q/(24*longueur)*(-4*(a**3)*b+12*(a**2)*b*longueur+8*a*(b**2)*(4*longueur+b)-8*(b**3)*longueur+11*(b**4))-RB/3*(longueur**2))*x[i])
-            flèche[i] = 0
+            flèche[i] = -RA/(E*Igz)*((x[i]**3)/6-(q/(48*longueur*RA)*b*(b+2*c)*(4*((longueur**2)-(a**2))-((b+2*c)**2)-(b**2))+(a**2)/6)*x[i])
         elif x[i] > a and x[i] <= (a+b):
-            flèche[i] = -q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
-            #flèche[i] = 0
+            flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
-            #flèche[i] = 1/(E*Igz)*(RB*(x[i]**3)/6-RB*longueur*(x[i]**2)/2-q/(24/longueur)*(-4*(a**3)*b+8*a*(b**3)+11*(b**4))*(x[i]-longueur)+RB*(longueur**2)/3*x[i])
-            flèche[i] = 0
+            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+(1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*x[i]-((longueur**3)/3+longueur*1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3)))
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
@@ -417,8 +414,6 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
     
 def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     
-    x = np.array(x)
-    
     # comme triangle mais avec a = longueur et b = 0
     # Réactions aux appuis
     RA = -q*(longueur)/6 
@@ -428,7 +423,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     EffortTranch = q*((longueur**2)-3*(x**2))/(6*longueur)
     
     # Moment Fléchissant [N.mm]
-    Mf = q*x*((longueur**2)-(x**2))/(6*longueur)
+    Mf = -q*x*((longueur**2)-(x**2))/(6*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -444,7 +439,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -q*x*(longueur**2-x**2)*(7*longueur**2-3*x**2)/(360*E*Igz*longueur)
+    flèche = q*x*(longueur**2-x**2)*(7*longueur**2-3*x**2)/(360*E*Igz*longueur)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
