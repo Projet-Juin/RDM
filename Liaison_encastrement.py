@@ -284,3 +284,5 @@ def charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x):
     plt.title("Tracé de la flèche") 
     GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
     plt.show()
+    
+    #

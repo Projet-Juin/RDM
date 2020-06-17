@@ -65,7 +65,7 @@ class charge_trapézoïdale_symétrique :
 class charge_parabolique :
     
     def __init__(self, q): 
-        self.q = q
+        #
         
     
     
