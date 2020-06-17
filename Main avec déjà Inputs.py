@@ -14,9 +14,9 @@ import géométrie_poutre
 # LES IMPUTS SONT :
 
     # Géométrie de la poutre :
-hauteur = 100
-longueur = 20000
-largeur = 200
+hauteur = 10
+longueur = 1200
+largeur = 20
     # Pour l'instant considérons une poutre rectangulaire remplie, on fera les géométries Igz complexes plus tard
     
     # Matériau de la poutre :
@@ -31,10 +31,10 @@ géométrie = 'carré'
 
     # Forces appliquées [N.mm]
 q = -200
-P = -1000
-a = 10000
+P = 0
+a = 0
 b = longueur - a
-c = 3000
+c = 0
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
 NbrePointsX = 101 
