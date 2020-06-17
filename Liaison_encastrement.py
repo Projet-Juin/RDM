@@ -92,7 +92,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
 
 
 def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
-    
+
     # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
     RA = q*longueur
     
@@ -163,10 +163,10 @@ def charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x):
     RA = -q*longueur/2
     
     # Efforts tranchants [N]
-    EffortTranch = q*longueur*(x**2/longueur**2-1)/2  # EffortTranch est de type <class 'numpy.ndarray'>. 
+    EffortTranch = RA*((x**2)/(longueur**2)-1)  # EffortTranch est de type <class 'numpy.ndarray'>. 
     
     # Moment Fléchissant [N.mm]
-    Mf = -q*((longueur-x)**2)*(2*longueur+x)/(6*longueur)
+    Mf = q*((longueur-x)**2)*(2*longueur+x)/(6*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -182,7 +182,7 @@ def charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x):
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -q*(x**2)*(20*(longueur**3)-10*longueur**2*x+(x**3))/(120*E*Igz*longueur)
+    flèche = q*(x**2)*(20*(longueur**3)-10*longueur**2*x+(x**3))/(120*E*Igz*longueur)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
@@ -227,10 +227,10 @@ def charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x):
     RA = -q*longueur/2
     
     # Efforts tranchants [N]
-    EffortTranch = -q*((longueur-x)**2)/(2*longueur)
+    EffortTranch = q*((longueur-x)**2)/(2*longueur)
     
     # Moment Fléchissant [N.mm]
-    Mf = -q*((longueur-x)**3)/(6*longueur)
+    Mf = q*((longueur-x)**3)/(6*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -246,7 +246,7 @@ def charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x):
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = -q*(4*(longueur**5)-5*(longueur**4)*(longueur-x)+((longueur-x)**5))/(120*E*Igz*longueur)
+    flèche = q*(4*(longueur**5)-5*(longueur**4)*(longueur-x)+((longueur-x)**5))/(120*E*Igz*longueur)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
