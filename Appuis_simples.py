@@ -416,16 +416,19 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
     plt.show()
     
 def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
+    
+    x = np.array(x)
+    
     # comme triangle mais avec a = longueur et b = 0
     # Réactions aux appuis
-    RA = q*(longueur)/6 
-    RB = q*(longueur)/3 
+    RA = -q*(longueur)/6 
+    RB = -q*(longueur)/3 
     
     # Efforts tranchants [N]
-    EffortTranch = -q*(longueur**2-3*x**2)/(6*longueur)
+    EffortTranch = q*((longueur**2)-3*(x**2))/(6*longueur)
     
     # Moment Fléchissant [N.mm]
-    Mf = q*x*(longueur**2-x**2)/(6*longueur)
+    Mf = q*x*((longueur**2)-(x**2))/(6*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
