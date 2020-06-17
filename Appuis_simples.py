@@ -212,7 +212,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         elif x[i] > a and x[i] <= (a+b):
             flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
-            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+(1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*x[i]-((longueur**3)/3+longueur*1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3)))
+            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+(1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
