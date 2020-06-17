@@ -85,7 +85,8 @@ Fin
 """
 
 ### NoteBook - left_canvas1 ###
-notebook = ttk.Notebook(left_canvas1,height=900,width=500) # Creation du Notebook
+notebook = ttk.Notebook(left_canvas1) # Creation du Notebook
+#,height=900,width=500
 notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
 notebook.pack(expand=1, fill='both') # on place le notebook
 """
@@ -99,14 +100,14 @@ canva_tab1 = Canvas(tab1, bg="yellow")
 canva_tab1.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab1_labelframe1 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Type de section',bg = gris_fonce) #définit le message 1
-canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de section    
+canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.12) # affiche le labelframe type de section    
 # Choisir quelle est la géométrie du problème
 canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choissiez le type de géométrie de votre poutre :")
-canva_tab1_labelframe1_label.grid(row=0)
+canva_tab1_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
 geometrie = StringVar()
 canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly")
 canva_tab1_labelframe1_Combobox1['values'] = ["","Rectangle", "Carré", "Forme", "Triangle", "Cercle", "Losange"]
-canva_tab1_labelframe1_Combobox1.grid(row=1) # affichage de la combobox
+canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.30) # affichage de la combobox
 canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 def ajout_combobox(event):
     global geometrie2,geometrie3,geometrie4,geometrie5,geometrie6,geometrie7,\
@@ -117,7 +118,7 @@ def ajout_combobox(event):
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly")
         canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Troué"]
-        canva_tab1_labelframe1_Combobox2.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -125,7 +126,7 @@ def ajout_combobox(event):
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly")
         canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Troué"]
-        canva_tab1_labelframe1_Combobox3.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
@@ -133,7 +134,7 @@ def ajout_combobox(event):
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly")
         canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
-        canva_tab1_labelframe1_Combobox4.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -141,7 +142,7 @@ def ajout_combobox(event):
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly")
         canva_tab1_labelframe1_Combobox5['values'] = ["","Rectangle"]
-        canva_tab1_labelframe1_Combobox5.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -149,7 +150,7 @@ def ajout_combobox(event):
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly")
         canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Troué","Demi Cercle","Quart de Cercle","Ovale"]
-        canva_tab1_labelframe1_Combobox6.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -157,7 +158,7 @@ def ajout_combobox(event):
         geometrie7 = StringVar()
         canva_tab1_labelframe1_Combobox7 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie7 , state = "readonly")
         canva_tab1_labelframe1_Combobox7['values'] = ["","Normal"]
-        canva_tab1_labelframe1_Combobox7.grid(row=2) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox7.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox7.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -183,12 +184,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -219,16 +220,16 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
-            label_largeur1.grid(row=6)
-            saisie_largeur1.grid(row=7)
-            label_hauteur1.grid(row=8)
-            saisie_hauteur1.grid(row=9)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
+            label_hauteur1.pack(fill='both')
+            saisie_hauteur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -260,10 +261,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0")  
@@ -287,12 +288,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_largeur1.grid(row=4)
-            saisie_largeur1.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -326,18 +327,18 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
-            label_largeur1.grid(row=6)
-            saisie_largeur1.grid(row=7)
-            label_largeur2.grid(row=8)
-            saisie_largeur2.grid(row=9)
-            label_hauteur1.grid(row=10)
-            saisie_hauteur1.grid(row=11)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
+            label_largeur2.pack(fill='both')
+            saisie_largeur2.pack(fill='both')
+            label_hauteur1.pack(fill='both')
+            saisie_hauteur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -377,16 +378,16 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
-            label_largeur1.grid(row=6)
-            saisie_largeur1.grid(row=7)
-            label_hauteur1.grid(row=8)
-            saisie_hauteur1.grid(row=9)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
+            label_hauteur1.pack(fill='both')
+            saisie_hauteur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -423,16 +424,16 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
-            label_largeur1.grid(row=6)
-            saisie_largeur1.grid(row=7)
-            label_hauteur1.grid(row=8)
-            saisie_hauteur1.grid(row=9)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
+            label_hauteur1.pack(fill='both')
+            saisie_hauteur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -471,18 +472,18 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
-            label_largeur1.grid(row=6)
-            saisie_largeur1.grid(row=7)
-            label_largeur2.grid(row=8)
-            saisie_largeur2.grid(row=9)
-            label_hauteur1.grid(row=10)
-            saisie_hauteur1.grid(row=11)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
+            label_largeur1.pack(fill='both')
+            saisie_largeur1.pack(fill='both')
+            label_largeur2.pack(fill='both')
+            saisie_largeur2.pack(fill='both')
+            label_hauteur1.pack(fill='both')
+            saisie_hauteur1.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -518,12 +519,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -554,12 +555,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_hauteur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_largeur.grid(row=2)
-            saisie_largeur.grid(row=3)
-            label_hauteur.grid(row=4)
-            saisie_hauteur.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_largeur.pack(fill='both')
+            saisie_largeur.pack(fill='both')
+            label_hauteur.pack(fill='both')
+            saisie_hauteur.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0")
             saisie_largeur.insert(0, "0.0") 
@@ -585,10 +586,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_rayon.grid(row=2)
-            saisie_rayon.grid(row=3)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_rayon.pack(fill='both')
+            saisie_rayon.pack(fill='both')
             # saisie affichage de départ        
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_rayon.insert(0, "0.0") # saisie affichage de départ
@@ -612,12 +613,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_rayon1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_rayon.grid(row=2)
-            saisie_rayon.grid(row=3)
-            label_rayon1.grid(row=4)
-            saisie_rayon1.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_rayon.pack(fill='both')
+            saisie_rayon.pack(fill='both')
+            label_rayon1.pack(fill='both')
+            saisie_rayon1.pack(fill='both')
             # saisie affichage de départ        
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_rayon.insert(0, "0.0") # saisie affichage de départ
@@ -642,10 +643,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_rayon.grid(row=2)
-            saisie_rayon.grid(row=3)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_rayon.pack(fill='both')
+            saisie_rayon.pack(fill='both')
             # saisie affichage de départ        
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_rayon.insert(0, "0.0") # saisie affichage de départ
@@ -667,10 +668,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_rayon.grid(row=2)
-            saisie_rayon.grid(row=3)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_rayon.pack(fill='both')
+            saisie_rayon.pack(fill='both')
             # saisie affichage de départ        
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_rayon.insert(0, "0.0") # saisie affichage de départ
@@ -694,12 +695,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_diagonale2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_diagonale1.grid(row=2)
-            saisie_diagonale1.grid(row=3)
-            label_diagonale2.grid(row=4)
-            saisie_diagonale2.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_diagonale1.pack(fill='both')
+            saisie_diagonale1.pack(fill='both')
+            label_diagonale2.pack(fill='both')
+            saisie_diagonale2.pack(fill='both')
             # saisie affichage de départ        
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_diagonale1.insert(0, "0.0") # saisie affichage de départ
@@ -727,12 +728,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_diagonale2 = Entry(canva_tab1_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur une grille
-            label_longueur.grid(row=0)
-            saisie_longueur.grid(row=1)
-            label_diagonale1.grid(row=2)
-            saisie_diagonale1.grid(row=3)
-            label_diagonale2.grid(row=4)
-            saisie_diagonale2.grid(row=5)
+            label_longueur.pack(fill='both')
+            saisie_longueur.pack(fill='both')
+            label_diagonale1.pack(fill='both')
+            saisie_diagonale1.pack(fill='both')
+            label_diagonale2.pack(fill='both')
+            saisie_diagonale2.pack(fill='both')
             # saisie affichage de départ
             saisie_longueur.insert(0, "0.0") # saisie affichage de départ
             saisie_diagonale1.insert(0, "0.0") # saisie affichage de départ
@@ -1038,7 +1039,7 @@ canva_tab2=Canvas(tab2, bg="red")
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_clair) #définit le message 1
-canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.30) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
 label_young = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer le Module de Young E de votre poutre en N/mm² ou MPa :')
 label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 :')
@@ -1058,16 +1059,16 @@ saisie_masse.insert(0, "Option")
 saisie_limiteel.insert(0, "0.0")
 saisie_coeffpoiss.insert(0, "Option")
 #Placement des items sur la grille
-label_young.grid(row=0)
-saisie_young.grid(row=1)
-label_massevol.grid(row=2)
-saisie_massevol.grid(row=3)
-label_masse.grid(row=4)
-saisie_masse.grid(row=5)
-label_limiteel.grid(row=6)
-saisie_limiteel.grid(row=7)
-label_coeffpoiss.grid(row=8)
-saisie_coeffpoiss.grid(row=9)
+label_young.pack(fill='both')
+saisie_young.pack(fill='both')
+label_massevol.pack(fill='both')
+saisie_massevol.pack(fill='both')
+label_masse.pack(fill='both')
+saisie_masse.pack(fill='both')
+label_limiteel.pack(fill='both')
+saisie_limiteel.pack(fill='both')
+label_coeffpoiss.pack(fill='both')
+saisie_coeffpoiss.pack(fill='both')
 # Gestion du stockage des valeurs
 def valider_le_materiau():
     global valeurs_materiau
@@ -1135,7 +1136,7 @@ saisie_young.focus()
 saisie_young.select_range(0,END)
 saisie_young.bind('<Return>', detection_passage2)         
 # Bouton pour valider l'entrée des données de matériau pour rassurer l'utilisateur
-Button(canva_tab2_labelframe, text='Valider le matériau', command=valider_le_materiau).grid(row=10)
+Button(canva_tab2_labelframe, text='Valider le matériau', command=valider_le_materiau).place(relx=0,rely=0.89,relwidth=1, relheight=0.10)
 """
 Fin
 """
@@ -1147,14 +1148,14 @@ canva_tab3=Canvas(tab3, bg="blue")
 canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_fonce) #définit le message 1
-canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de chargement    
+canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.12) # affiche le labelframe type de chargement    
 # Choisir quelle est la charge 1 du problème
 canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :")
-canva_tab3_labelframe1_label.grid(row=0)
+canva_tab3_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
 chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly")
 canva_tab3_labelframe1_Combobox1['values'] = ["","2 appuis simples", "1 encastrement et 1 bord libre"]
-canva_tab3_labelframe1_Combobox1.grid(row=1) # affichage de la combobox
+canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.30) # affichage de la combobox
 canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 # Choisir quelle est la charge 2 du problème
 def ajout_combobox_chargement(event):
@@ -1166,7 +1167,7 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge triangulaire", "Charge triangulaire monotone", "Charge triangulaire antisymétrique",\
                                     "Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
-        canva_tab3_labelframe1_Combobox2.grid(row=2) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox2.bind("<<ComboboxSelected>>", ajout_données_chargement)
@@ -1175,21 +1176,27 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly")
         canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
-        canva_tab3_labelframe1_Combobox3.grid(row=2) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab3_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox3.bind("<<ComboboxSelected>>", ajout_données_chargement) 
-    
 def ajout_données_chargement(event): # nouvelle frame où on rentre les données du chargement
     global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2
     # nouveau_labelframe_chargement
     canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = "Chargement",bg=gris_clair) #définit le message 1
-    canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+    canva_tab3_labelframe2.place(relx=0.01,rely=0.14,relwidth=0.98, relheight=0.21) # affiche le labelframe type de section
+    # Apparition du list box
+    yDefilB = Scrollbar(canva_tab3, orient='vertical')
+    yDefilB.place(relx=0.94,rely=0.36,relwidth=0.05, relheight=0.53)
+    Listbox_tab3 = Listbox(canva_tab3,activestyle= 'dotbox',selectmode=SINGLE,yscrollcommand=yDefilB.set)
+    Liste_listboxCharges.append(Listbox_tab3)
+    Liste_listboxCharges[0].place(relx=0.01,rely=0.36,relwidth=0.93, relheight=0.53)
+    yDefilB['command'] = Listbox_tab3.yview
     # Apparition bouton ajouter/supprimer/renommer charge
-    Button(canva_tab3, text='Ajouter la charge', command=ajout_charge).place(relx=0.25,rely=0.50,relwidth=0.25, relheight=0.10)
-    Button(canva_tab3, text='Renommer la charge', command=renommer_charge).place(relx=0.75,rely=0.50,relwidth=0.25, relheight=0.10)
-    Button(canva_tab3, text='Supprimer la charge', command=supprimer_charge).place(relx=0.25,rely=0.90,relwidth=0.5, relheight=0.10)
+    Button(canva_tab3, text='Ajouter la charge', command=ajout_charge).place(relx=0.01,rely=0.90,relwidth=0.49, relheight=0.04)
+    Button(canva_tab3, text='Renommer la charge', command=renommer_charge).place(relx=0.51,rely=0.90,relwidth=0.48, relheight=0.04)
+    Button(canva_tab3, text='Supprimer la charge', command=supprimer_charge).place(relx=0.01,rely=0.95,relwidth=0.98, relheight=0.04)
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             # messages des inputs
@@ -1199,10 +1206,10 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_conc_1.grid(row=0)
-            saisie_force_conc_1.grid(row=1)
-            label_a1.grid(row=2)
-            saisie_a1.grid(row=3)
+            label_force_conc_1.pack(fill='both')
+            saisie_force_conc_1.pack(fill='both')
+            label_a1.pack(fill='both')
+            saisie_a1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_conc_1.insert(0, "0.0") # saisie affichage de départ
             saisie_a1.insert(0, "0.0") # saisie affichage de départ
@@ -1214,6 +1221,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_a1.config(cursor='hand1')
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
+            saisie_a1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie' :
             # messages des inputs
@@ -1221,8 +1229,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1230,6 +1238,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
@@ -1241,12 +1251,12 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
-            label_I.grid(row=2)
-            saisie_I.grid(row=3)
-            label_c1.grid(row=4)
-            saisie_c1.grid(row=5)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
+            label_I.pack(fill='both')
+            saisie_I.pack(fill='both')
+            label_c1.pack(fill='both')
+            saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             saisie_I.insert(0, "0.0") # saisie affichage de départ
@@ -1261,6 +1271,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
+            saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire' :
             # messages des inputs
@@ -1270,10 +1281,10 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
-            label_a1.grid(row=2)
-            saisie_a1.grid(row=3)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
+            label_a1.pack(fill='both')
+            saisie_a1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             saisie_a1.insert(0, "0.0") # saisie affichage de départ
@@ -1285,6 +1296,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_a1.config(cursor='hand1')
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',a1_next)
+            saisie_a1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire monotone' :
             # messages des inputs
@@ -1292,8 +1304,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1301,6 +1313,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire antisymétrique' :
             # messages des inputs
@@ -1308,8 +1322,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1317,6 +1331,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge trapézoïdale' :
             # messages des inputs
@@ -1328,12 +1344,12 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
-            label_I.grid(row=2)
-            saisie_I.grid(row=3)
-            label_c1.grid(row=4)
-            saisie_c1.grid(row=5)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
+            label_I.pack(fill='both')
+            saisie_I.pack(fill='both')
+            label_c1.pack(fill='both')
+            saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             saisie_I.insert(0, "0.0") # saisie affichage de départ
@@ -1348,6 +1364,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
+            saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge parabolique' :
             # messages des inputs
@@ -1355,8 +1372,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1364,6 +1381,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Moment' :
             # messages des inputs
@@ -1373,10 +1392,10 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_moment.grid(row=0)
-            saisie_moment.grid(row=1)
-            label_a1.grid(row=2)
-            saisie_a1.grid(row=3)
+            label_moment.pack(fill='both')
+            saisie_moment.pack(fill='both')
+            label_a1.pack(fill='both')
+            saisie_a1.pack(fill='both')
             # saisie affichage de départ
             saisie_moment.insert(0, "0.0") # saisie affichage de départ
             saisie_a1.insert(0, "0.0") # saisie affichage de départ
@@ -1388,6 +1407,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_a1.config(cursor='hand1')
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
+            saisie_a1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Moment uniformément réparti' :    
             # messages des inputs
@@ -1395,8 +1415,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_moment.grid(row=0)
-            saisie_moment.grid(row=1)
+            label_moment.pack(fill='both')
+            saisie_moment.pack(fill='both')
             # saisie affichage de départ
             saisie_moment.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1405,6 +1425,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
             # lancement retour des touches
+            saisie_moment.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if str(chargement3.get()) == 'Charge concentrée' :
@@ -1415,10 +1436,10 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_conc_1.grid(row=0)
-            saisie_force_conc_1.grid(row=1)
-            label_a1.grid(row=2)
-            saisie_a1.grid(row=3)
+            label_force_conc_1.pack(fill='both')
+            saisie_force_conc_1.pack(fill='both')
+            label_a1.pack(fill='both')
+            saisie_a1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_conc_1.insert(0, "0.0") # saisie affichage de départ
             saisie_a1.insert(0, "0.0") # saisie affichage de départ
@@ -1430,6 +1451,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_a1.config(cursor='hand1')
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
+            saisie_a1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge uniformément répartie' :
             # messages des inputs
@@ -1437,8 +1459,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1446,6 +1468,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
@@ -1457,12 +1481,12 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
-            label_I.grid(row=2)
-            saisie_I.grid(row=3)
-            label_c1.grid(row=4)
-            saisie_c1.grid(row=5)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
+            label_I.pack(fill='both')
+            saisie_I.pack(fill='both')
+            label_c1.pack(fill='both')
+            saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             saisie_I.insert(0, "0.0") # saisie affichage de départ
@@ -1477,6 +1501,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
+            saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire croissante' :
             # messages des inputs
@@ -1484,8 +1509,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1493,6 +1518,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire décroissante' :
             # messages des inputs
@@ -1500,8 +1527,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_force_rep_1.grid(row=0)
-            saisie_force_rep_1.grid(row=1)
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
@@ -1509,6 +1536,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Moment' :
             # messages des inputs
@@ -1518,10 +1547,10 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
             # Placement des items sur la grille
-            label_moment.grid(row=0)
-            saisie_moment.grid(row=1)
-            label_a1.grid(row=2)
-            saisie_a1.grid(row=3)
+            label_moment.pack(fill='both')
+            saisie_moment.pack(fill='both')
+            label_a1.pack(fill='both')
+            saisie_a1.pack(fill='both')
             # saisie affichage de départ
             saisie_moment.insert(0, "0.0") # saisie affichage de départ
             saisie_a1.insert(0, "0.0") # saisie affichage de départ
@@ -1533,92 +1562,59 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_a1.config(cursor='hand1')
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
+            saisie_a1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-    #     def listboxNoeud_update(index):
-    #         for i in Liste_listboxNoeuds:
-    #             i.delete(index)
-    #         if Liste_listboxNoeuds[0].size()!=len(liste_noeuds):
-    #             for i in Liste_listboxNoeuds:
-    #                 i.insert(index,liste_noeuds[index][0]+" "+str(liste_noeuds[index][1]))
-    #         if len(liste_noeuds)<2:
-    #             ongletsInput.tab(0, image = Noeud_rouge, compound=tk.LEFT)
-    #         else:
-    #             ongletsInput.tab(0, image = Noeud_vert, compound=tk.LEFT)
-    
-    #     def SupprimerNoeud():
-    #         if Liste_listboxNoeuds[0].curselection()!=():
-    #             del liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]]
-    #             listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
-    #         else:
-    #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
-
-
-
-
-
-    #     tk.Label(frameNoeud, text='Ajouter des nœuds :').grid(row=0)
-    #     tk.Label(frameNoeud, text='Position selon X (m) :').grid(row=1)
-    #     tk.Label(frameNoeud, text='Position selon Y (m) :').grid(row=3)
-    #     tk.Label(frameNoeud, text='Position selon Z (m) :').grid(row=5)
-    #     Xnoeud = tk.Entry(frameNoeud)
-    #     Xnoeud.grid(row=2)
-    #     Ynoeud = tk.Entry(frameNoeud)
-    #     Ynoeud.grid(row=4)
-    #     Znoeud = tk.Entry(frameNoeud)
-    #     Znoeud.grid(row=6)
-    #     def Xnoeud_next(evt):
-    #         Ynoeud.focus()
-    #         Ynoeud.select_range(0,tk.END)
-    #     def Ynoeud_next(evt):
-    #         Znoeud.focus()
-    #         Znoeud.select_range(0,tk.END)
-    #     Xnoeud.bind('<Return>', Xnoeud_next)
-    #     Ynoeud.bind('<Return>', Ynoeud_next)
-    #     Znoeud.bind('<Return>', AjouterNoeub)
-    #     tk.Button(frameNoeud, text='Ajouter nœud', command=AjouterNoeud).grid(row=7)
-    #     Liste_listboxNoeuds.append(tk.Listbox(frameNoeud, selectmode=tk.SINGLE))
-    #     Liste_listboxNoeuds[0].grid(row=8)
-    #     tk.Button(frameNoeud, text='Renommer nœud', command=RenommerNoeud).grid(row=11)
-    #     tk.Button(frameNoeud, text='Supprimer nœud', command=SupprimerNoeud).grid(row=12)
-
-    # ongletsInput.add(frameNoeud)
-    # ongletsInput.tab(0, text='Nœuds',image=Noeud_rouge, compound=tk.LEFT)
-    # frameChargements = tk.Frame(ongletsInput)
+# Définition des listes pour la listbox 
+Liste_listboxCharges = []
+liste_charges=[]
 def ajout_charge_event(event):
     ajout_charge()
 def ajout_charge():
-    global liste_charges
-    Liste_listboxCharges.append(Listbox(canva_tab3, selectmode=SINGLE))
-    Liste_listboxCharges[0].place(relx=0.25,rely=0.49,relwidth=0.75, relheight=0.28)
-        # if Xnoeud.get()!='' and Ynoeud.get()!='' and Znoeud.get()!='':
-        #     temp_noeud=(float(Xnoeud.get()),float(Ynoeud.get()),float(Znoeud.get()))
-        #     absent = True
-        #     for i in liste_noeuds:
-        #         if i[1]==temp_noeud:
-        #             absent = False
-        #     if absent:
-        #         liste_noeuds.append(['Nœud'+str(len(liste_noeuds)+1),temp_noeud,None,None,None])
-        #         listboxNoeud_update(len(liste_noeuds)-1)
-        #         Xnoeud.focus()
-        #         Xnoeud.select_range(0,tk.END)
-        #     else:
-        #         tk.messagebox.showerror('Erreur', 'Ce nœud existe déjà, il ne peut pas être ajouté.')
-        # else:
-        #     tk.messagebox.showerror('Erreur', 'Un champ de coordonnées est vide.')
+    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
+        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
+    if str(chargement.get()) == '2 appuis simples' : 
+        if str(chargement2.get()) == 'Charge concentrée' :
+            p = float(saisie_force_conc_1.get())
+            a1 = float(saisie_a1.get())
+            q = 0.0 ; c1 = 0.0 ; I =0.0 ; M = 0.0
+            if p!='' and a1!='' :
+                temp_charges=(p,q,a1,c1,I,M)
+                absent = True
+                for i in liste_charges:
+                    if i[1]==temp_charges:
+                        absent = False
+                    if absent:
+                        liste_charges.append(['Charge'+str(len(liste_charges)+1),temp_charges,None,None,None])
+                        udapte_listbox_charge(len(liste_charges)-1)
+                        saisie_force_conc_1.focus()
+                        saisie_force_conc_1.select_range(0,END)
+                    else:
+                        showerror('Erreur', 'Cette Charge existe déjà, elle ne peut pas être ajouté.')
+            if p==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if p=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont (config ",chargement.get()," - ",chargement2.get(),") :",liste_charges)
+def udapte_listbox_charge(index):    
+    for i in Liste_listboxCharges:
+        i.delete(index)
+    if Liste_listboxCharges[0].size()!=len(liste_charges):
+        for i in Liste_listboxCharges:
+            i.insert(index,liste_charges[index][0]+" "+str(liste_charges[index][1]))
 def renommer_charge():
-    donothing()
-        #     def RenommerNoeud():
-    #         if Liste_listboxNoeuds[0].curselection()!=():
-        
-    #             temp_nom_noeud=tk.simpledialog.askstring("Renommer nœud", 'Nouveau nom du nœud : "'+Liste_listboxNoeuds[0].get(Liste_listboxNoeuds[0].curselection()[0])+'" :')
-    #             if temp_nom_noeud!='':
-    #                 liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]][0] = temp_nom_noeud
-    #                 listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
-    #         else:
-    #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
+    if Liste_listboxCharges[0].curselection()!=():
+        temp_nom_charges=simpledialog.askstring("Renommer ", 'Nouveau nom de la charges : "'+Liste_listboxCharges[0].get(Liste_listboxCharges[0].curselection()[0])+'" :')
+        if temp_nom_noeud!='':
+            liste_charges[Liste_listboxCharges[0].curselection()[0]][0] = temp_nom_charges
+            udapte_listbox_charge(Liste_listboxCharges[0].curselection()[0])
+    else:
+        showerror('Erreur', 'Aucune charge sélectionné.')
 def supprimer_charge():
-    donothing()
-
+    if Liste_listboxCharges[0].curselection()!=():
+        del liste_charges[Liste_listboxCharges[0].curselection()[0]]
+        udapte_listbox_charge(Liste_listboxCharges[0].curselection()[0])
+    else:
+        showerror('Erreur', 'Aucune charge sélectionné.')
 def a1_next(event): #fct pour passer à a1
     saisie_a1.focus()
     saisie_a1.select_range(0,END)
@@ -1643,7 +1639,46 @@ Fin
 """
 
 ### right frame ###
+### NoteBook - right_canvas1 ###
+notebook2 = ttk.Notebook(right_frame) # Creation du Notebook
+notebook2.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
+notebook2.pack(expand=1, fill='both') # on place le notebook
+"""
+Fin
+"""
 
+### Barre 1 : Schémas ###
+tab4 = ttk.Frame(notebook2) # Creation de la barre 1
+notebook2.add(tab4, text='Schémas') # Ajout de la barre 1 au notebook
+canva_tab4 = Canvas(tab4, bg="white")
+canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+"""
+Fin
+"""
+
+### Barre 2 : Graphiques Globaux ###
+tab5 = ttk.Frame(notebook2) # Creation de la barre 1
+notebook2.add(tab5, text='Graphiques Globaux') # Ajout de la barre 1 au notebook
+canva_tab5 = Canvas(tab5, bg="blue")
+canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+"""
+Fin
+"""
+
+### Barre 3 : Graphiques détaillés ###
+tab6 = ttk.Frame(notebook2) # Creation de la barre 1
+notebook2.add(tab6, text='Graphiques détaillés') # Ajout de la barre 1 au notebook
+canva_tab6 = Canvas(tab6, bg="green")
+canva_tab6.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+"""
+Fin
+"""
+
+### Barre 4 : Analyse ###
+tab7 = ttk.Frame(notebook2) # Creation de la barre 1
+notebook2.add(tab7, text='Analyse') # Ajout de la barre 1 au notebook
+canva_tab7 = Canvas(tab7, bg="red")
+canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
 """
