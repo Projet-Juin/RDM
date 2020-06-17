@@ -117,7 +117,7 @@ def ajout_combobox(event):
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly")
         canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Troué"]
-        canva_tab1_labelframe1_Combobox2.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -125,7 +125,7 @@ def ajout_combobox(event):
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly")
         canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Troué"]
-        canva_tab1_labelframe1_Combobox3.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
@@ -133,7 +133,7 @@ def ajout_combobox(event):
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly")
         canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
-        canva_tab1_labelframe1_Combobox4.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -141,7 +141,7 @@ def ajout_combobox(event):
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly")
         canva_tab1_labelframe1_Combobox5['values'] = ["","Rectangle"]
-        canva_tab1_labelframe1_Combobox5.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -149,7 +149,7 @@ def ajout_combobox(event):
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly")
         canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Troué","Demi Cercle","Quart de Cercle","Ovale"]
-        canva_tab1_labelframe1_Combobox6.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -157,7 +157,7 @@ def ajout_combobox(event):
         geometrie7 = StringVar()
         canva_tab1_labelframe1_Combobox7 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie7 , state = "readonly")
         canva_tab1_labelframe1_Combobox7['values'] = ["","Normal"]
-        canva_tab1_labelframe1_Combobox7.grid(row=3) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox7.grid(row=2) # affichage de la combobox
         canva_tab1_labelframe1_Combobox7.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox7.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -1148,202 +1148,486 @@ canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_fonce) #définit le message 1
 canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.10) # affiche le labelframe type de chargement    
-# Choisir quelle est la géométrie du problème
+# Choisir quelle est la charge 1 du problème
 canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :")
-canva_tab3_labelframe1_label.pack(expand=1, fill='both')
+canva_tab3_labelframe1_label.grid(row=0)
 chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly")
-canva_tab3_labelframe1_Combobox1['values'] = ["","Charge concentrée", "Charge répartie", "Charge répartie partielle",\
+canva_tab3_labelframe1_Combobox1['values'] = ["","2 appuis simples", "1 encastrement et 1 bord libre"]
+canva_tab3_labelframe1_Combobox1.grid(row=1) # affichage de la combobox
+canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
+# Choisir quelle est la charge 2 du problème
+def ajout_combobox_chargement(event):
+    global chargement,chargement2,chargement3,canva_tab3_labelframe1_Combobox2,canva_tab3_labelframe1_Combobox3
+    print("Sélection en cours du Combobox 1 :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(chargement.get()) == '2 appuis simples':
+        chargement2 = StringVar()
+        canva_tab3_labelframe1_Combobox2 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement2 , state = "readonly")
+        canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge triangulaire", "Charge triangulaire monotone", "Charge triangulaire antisymétrique",\
                                     "Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
-canva_tab3_labelframe1_Combobox1.pack( fill='both') # affichage de la combobox
-canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
-# Création labelframe 2
-canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),bg=gris_clair) #définit le message 1
-canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
-# Actualisation du labelframe 2
-def ajout_combobox_chargement(event):
-    canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = str(chargement.get()),bg=gris_clair) #définit le message 1
-    canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
-    donothing_event(event)
-    canva_tab3_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_données_chargement)
-    # nouveau_labelframe_chargement
-
-    Button(canva_tab3, text='Ajouter la charge', command=ajout_charge).place(relx=0.25,rely=0.48,relwidth=0.5, relheight=0.10)
-    # Liste_listboxCharges.append(Listbox(canva_tab3, selectmode=SINGLE))
-    # Liste_listboxCharges[0].place(relx=0.25,rely=0.49,relwidth=0.75, relheight=0.28)
-    Button(canva_tab3, text='Renommer la charge', command=renommer_charge).place(relx=0.25,rely=0.79,relwidth=0.5, relheight=0.10)
-    Button(canva_tab3, text='Supprimer la charge', command=supprimer_charge).place(relx=0.25,rely=0.90,relwidth=0.5, relheight=0.10)
-def ajout_données_chargement(event): # nouvelle frame où on rentre les données du chargement
-    # Bouton pour valider l'entrée du chargement de la poutre pour rassurer l'utilisateur
-    # Button(canva_tab3, text='Valider la charge', command=donothing).place(relx=0.25,rely=0.80,relwidth=0.5, relheight=0.10)
-    donothing()
-#     global canva_tab3_labelframe1_Combobox1
-#     if str(chargement.get()) == 'Charge concentrée' :
-#         # messages des inputs
-#         label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force concentrée P sur votre poutre en N :')
-#         label_pos_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
-#         # saisie des inputs
-#         saisie_force_conc_1 = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         saisie_pos_a1 = Entry(canva_tab3_labelframe1,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         # Placement des items sur la grille
-#         label_force_conc_1.grid(row=0)
-#         saisie_force_conc_1.grid(row=1)
-#         label_pos_a1.grid(row=2)
-#         saisie_pos_a1.grid(row=3)
-#         # saisie affichage de départ
-#         saisie_force_conc_1.insert(0, "0.0") # saisie affichage de départ
-#         saisie_pos_a1.insert(0, "0.0") # saisie affichage de départ
-#         # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-#         saisie_force_conc_1.focus() 
-#         saisie_force_conc_1.select_range(0,END)
-#         # main au dessus de la case
-#         saisie_force_conc_1.config(cursor='hand1')
-#         saisie_pos_a1.config(cursor='hand1')
-#         # lancement retour des touches
-#         saisie_force_conc_1.bind('<Return>',pos_a1_next)
-#         print("Sélection en cours du Combobox :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-#     if str(chargement.get()) == 'Charge répartie' :
-#         # messages des inputs
-#         label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
-#         # saisie des inputs
-#         saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         # Placement des items sur la grille
-#         label_force_rep_1.grid(row=0)
-#         saisie_force_rep_1.grid(row=1)
-#         # saisie affichage de départ
-#         saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-#         # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-#         saisie_force_rep_1.focus() 
-#         saisie_force_rep_1.select_range(0,END)
-#         # main au dessus de la case
-#         saisie_force_rep_1.config(cursor='hand1')
-#         print("Sélection en cours du Combobox :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-#     if str(chargement.get()) == 'Charge répartie partielle' :
-#         # messages des inputs
-#         label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
-#         label_I = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre poutre en mm :')        
-#         label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance entre le noeud de base et l’endroit du début d’application de la charge c1 sur votre poutre en mm :')
-#         # saisie des inputs
-#         saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
-#         # Placement des items sur la grille
-#         label_force_rep_1.grid(row=0)
-#         saisie_force_rep_1.grid(row=1)
-#         # saisie affichage de départ
-#         saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-#         # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-#         saisie_force_rep_1.focus() 
-#         saisie_force_rep_1.select_range(0,END)
-#         # main au dessus de la case
-#         saisie_force_rep_1.config(cursor='hand1')
-#         print("Sélection en cours du Combobox :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-#     if str(chargement.get()) == 'Charge triangulaire' :
-#     if str(chargement.get()) == 'Charge triangulaire monotone' :
-#     if str(chargement.get()) == 'Charge triangulaire antisymétrique' :
-#     if str(chargement.get()) == 'Charge trapézoïdale' :
-#     if str(chargement.get()) == 'Charge parabolique' :  
-#     if str(chargement.get()) == 'Moment' :  
-#     if str(chargement.get()) == 'Moment uniformément réparti' :     
-#     #     def listboxNoeud_update(index):
-#     #         for i in Liste_listboxNoeuds:
-#     #             i.delete(index)
-#     #         if Liste_listboxNoeuds[0].size()!=len(liste_noeuds):
-#     #             for i in Liste_listboxNoeuds:
-#     #                 i.insert(index,liste_noeuds[index][0]+" "+str(liste_noeuds[index][1]))
-#     #         if len(liste_noeuds)<2:
-#     #             ongletsInput.tab(0, image = Noeud_rouge, compound=tk.LEFT)
-#     #         else:
-#     #             ongletsInput.tab(0, image = Noeud_vert, compound=tk.LEFT)
+        canva_tab3_labelframe1_Combobox2.grid(row=2) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab3_labelframe1_Combobox2.bind("<<ComboboxSelected>>", ajout_données_chargement)
+    if str(chargement.get()) == '1 encastrement et 1 bord libre':
+        chargement3 = StringVar()
+        canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly")
+        canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
+                                "Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
+        canva_tab3_labelframe1_Combobox3.grid(row=2) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
+        # Passage d'une combobox à l'autre   
+        canva_tab3_labelframe1_Combobox3.bind("<<ComboboxSelected>>", ajout_données_chargement) 
     
-#     #     def SupprimerNoeud():
-#     #         if Liste_listboxNoeuds[0].curselection()!=():
-#     #             del liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]]
-#     #             listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
-#     #         else:
-#     #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
+def ajout_données_chargement(event): # nouvelle frame où on rentre les données du chargement
+    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
+        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2
+    # nouveau_labelframe_chargement
+    canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = "Chargement",bg=gris_clair) #définit le message 1
+    canva_tab3_labelframe2.place(relx=0.01,rely=0.12,relwidth=0.98, relheight=0.35) # affiche le labelframe type de section
+    # Apparition bouton ajouter/supprimer/renommer charge
+    Button(canva_tab3, text='Ajouter la charge', command=ajout_charge).place(relx=0.25,rely=0.50,relwidth=0.25, relheight=0.10)
+    Button(canva_tab3, text='Renommer la charge', command=renommer_charge).place(relx=0.75,rely=0.50,relwidth=0.25, relheight=0.10)
+    Button(canva_tab3, text='Supprimer la charge', command=supprimer_charge).place(relx=0.25,rely=0.90,relwidth=0.5, relheight=0.10)
+    if str(chargement.get()) == '2 appuis simples' : 
+        if str(chargement2.get()) == 'Charge concentrée' :
+            # messages des inputs
+            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force concentrée P sur votre poutre en N :')
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_conc_1.grid(row=0)
+            saisie_force_conc_1.grid(row=1)
+            label_a1.grid(row=2)
+            saisie_a1.grid(row=3)
+            # saisie affichage de départ
+            saisie_force_conc_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_a1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_conc_1.focus() 
+            saisie_force_conc_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_conc_1.config(cursor='hand1')
+            saisie_a1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_conc_1.bind('<Return>',a1_next)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge uniformément répartie' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
+            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre poutre en mm :')        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            label_I.grid(row=2)
+            saisie_I.grid(row=3)
+            label_c1.grid(row=4)
+            saisie_c1.grid(row=5)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_c1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            saisie_I.config(cursor='hand1')
+            saisie_c1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',I_next)
+            saisie_I.bind('<Return>',c1_next)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge triangulaire' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            label_a1.grid(row=2)
+            saisie_a1.grid(row=3)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_a1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            saisie_a1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',a1_next)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge triangulaire monotone' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge triangulaire antisymétrique' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge trapézoïdale' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
+            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre poutre en mm :')        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            label_I.grid(row=2)
+            saisie_I.grid(row=3)
+            label_c1.grid(row=4)
+            saisie_c1.grid(row=5)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_c1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            saisie_I.config(cursor='hand1')
+            saisie_c1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',I_next)
+            saisie_I.bind('<Return>',c1_next)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge parabolique' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Moment' :
+            # messages des inputs
+            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer le Moment M sur votre poutre en N.mm :')
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+            # saisie des inputs
+            saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_moment.grid(row=0)
+            saisie_moment.grid(row=1)
+            label_a1.grid(row=2)
+            saisie_a1.grid(row=3)
+            # saisie affichage de départ
+            saisie_moment.insert(0, "0.0") # saisie affichage de départ
+            saisie_a1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_moment.focus() 
+            saisie_moment.select_range(0,END)
+            # main au dessus de la case
+            saisie_moment.config(cursor='hand1')
+            saisie_a1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_moment.bind('<Return>',a1_next)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Moment uniformément réparti' :    
+            # messages des inputs
+            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer le Moment M sur votre poutre en N.mm :')
+            # saisie des inputs
+            saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_moment.grid(row=0)
+            saisie_moment.grid(row=1)
+            # saisie affichage de départ
+            saisie_moment.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_moment.focus() 
+            saisie_moment.select_range(0,END)
+            # main au dessus de la case
+            saisie_moment.config(cursor='hand1')
+            # lancement retour des touches
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
+        if str(chargement3.get()) == 'Charge concentrée' :
+            # messages des inputs
+            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force concentrée P sur votre poutre en N :')
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_conc_1.grid(row=0)
+            saisie_force_conc_1.grid(row=1)
+            label_a1.grid(row=2)
+            saisie_a1.grid(row=3)
+            # saisie affichage de départ
+            saisie_force_conc_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_a1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_conc_1.focus() 
+            saisie_force_conc_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_conc_1.config(cursor='hand1')
+            saisie_a1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_conc_1.bind('<Return>',a1_next)
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement3.get()) == 'Charge uniformément répartie' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N/mm :')
+            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre poutre en mm :')        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            label_I.grid(row=2)
+            saisie_I.grid(row=3)
+            label_c1.grid(row=4)
+            saisie_c1.grid(row=5)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_c1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            saisie_I.config(cursor='hand1')
+            saisie_c1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',I_next)
+            saisie_I.bind('<Return>',c1_next)
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement3.get()) == 'Charge triangulaire croissante' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement3.get()) == 'Charge triangulaire décroissante' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la Force répartie q sur votre poutre en N :')
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_force_rep_1.grid(row=0)
+            saisie_force_rep_1.grid(row=1)
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement3.get()) == 'Moment' :
+            # messages des inputs
+            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer le Moment M sur votre poutre en N.mm :')
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10),text = 'Entrer la distance a1 de votre poutre en mm :')
+            # saisie des inputs
+            saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_tres_fonce,font = ("Arial",11))
+            # Placement des items sur la grille
+            label_moment.grid(row=0)
+            saisie_moment.grid(row=1)
+            label_a1.grid(row=2)
+            saisie_a1.grid(row=3)
+            # saisie affichage de départ
+            saisie_moment.insert(0, "0.0") # saisie affichage de départ
+            saisie_a1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_moment.focus() 
+            saisie_moment.select_range(0,END)
+            # main au dessus de la case
+            saisie_moment.config(cursor='hand1')
+            saisie_a1.config(cursor='hand1')
+            # lancement retour des touches
+            saisie_moment.bind('<Return>',a1_next)
+            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+    #     def listboxNoeud_update(index):
+    #         for i in Liste_listboxNoeuds:
+    #             i.delete(index)
+    #         if Liste_listboxNoeuds[0].size()!=len(liste_noeuds):
+    #             for i in Liste_listboxNoeuds:
+    #                 i.insert(index,liste_noeuds[index][0]+" "+str(liste_noeuds[index][1]))
+    #         if len(liste_noeuds)<2:
+    #             ongletsInput.tab(0, image = Noeud_rouge, compound=tk.LEFT)
+    #         else:
+    #             ongletsInput.tab(0, image = Noeud_vert, compound=tk.LEFT)
+    
+    #     def SupprimerNoeud():
+    #         if Liste_listboxNoeuds[0].curselection()!=():
+    #             del liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]]
+    #             listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
+    #         else:
+    #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
 
 
 
 
 
-#     #     tk.Label(frameNoeud, text='Ajouter des nœuds :').grid(row=0)
-#     #     tk.Label(frameNoeud, text='Position selon X (m) :').grid(row=1)
-#     #     tk.Label(frameNoeud, text='Position selon Y (m) :').grid(row=3)
-#     #     tk.Label(frameNoeud, text='Position selon Z (m) :').grid(row=5)
-#     #     Xnoeud = tk.Entry(frameNoeud)
-#     #     Xnoeud.grid(row=2)
-#     #     Ynoeud = tk.Entry(frameNoeud)
-#     #     Ynoeud.grid(row=4)
-#     #     Znoeud = tk.Entry(frameNoeud)
-#     #     Znoeud.grid(row=6)
-#     #     def Xnoeud_next(evt):
-#     #         Ynoeud.focus()
-#     #         Ynoeud.select_range(0,tk.END)
-#     #     def Ynoeud_next(evt):
-#     #         Znoeud.focus()
-#     #         Znoeud.select_range(0,tk.END)
-#     #     Xnoeud.bind('<Return>', Xnoeud_next)
-#     #     Ynoeud.bind('<Return>', Ynoeud_next)
-#     #     Znoeud.bind('<Return>', AjouterNoeub)
-#     #     tk.Button(frameNoeud, text='Ajouter nœud', command=AjouterNoeud).grid(row=7)
-#     #     Liste_listboxNoeuds.append(tk.Listbox(frameNoeud, selectmode=tk.SINGLE))
-#     #     Liste_listboxNoeuds[0].grid(row=8)
-#     #     tk.Button(frameNoeud, text='Renommer nœud', command=RenommerNoeud).grid(row=11)
-#     #     tk.Button(frameNoeud, text='Supprimer nœud', command=SupprimerNoeud).grid(row=12)
+    #     tk.Label(frameNoeud, text='Ajouter des nœuds :').grid(row=0)
+    #     tk.Label(frameNoeud, text='Position selon X (m) :').grid(row=1)
+    #     tk.Label(frameNoeud, text='Position selon Y (m) :').grid(row=3)
+    #     tk.Label(frameNoeud, text='Position selon Z (m) :').grid(row=5)
+    #     Xnoeud = tk.Entry(frameNoeud)
+    #     Xnoeud.grid(row=2)
+    #     Ynoeud = tk.Entry(frameNoeud)
+    #     Ynoeud.grid(row=4)
+    #     Znoeud = tk.Entry(frameNoeud)
+    #     Znoeud.grid(row=6)
+    #     def Xnoeud_next(evt):
+    #         Ynoeud.focus()
+    #         Ynoeud.select_range(0,tk.END)
+    #     def Ynoeud_next(evt):
+    #         Znoeud.focus()
+    #         Znoeud.select_range(0,tk.END)
+    #     Xnoeud.bind('<Return>', Xnoeud_next)
+    #     Ynoeud.bind('<Return>', Ynoeud_next)
+    #     Znoeud.bind('<Return>', AjouterNoeub)
+    #     tk.Button(frameNoeud, text='Ajouter nœud', command=AjouterNoeud).grid(row=7)
+    #     Liste_listboxNoeuds.append(tk.Listbox(frameNoeud, selectmode=tk.SINGLE))
+    #     Liste_listboxNoeuds[0].grid(row=8)
+    #     tk.Button(frameNoeud, text='Renommer nœud', command=RenommerNoeud).grid(row=11)
+    #     tk.Button(frameNoeud, text='Supprimer nœud', command=SupprimerNoeud).grid(row=12)
 
-#     # ongletsInput.add(frameNoeud)
-#     # ongletsInput.tab(0, text='Nœuds',image=Noeud_rouge, compound=tk.LEFT)
-#     # frameChargements = tk.Frame(ongletsInput)
-# def ajout_charge_event(event):
-#     ajout_charge()
-# def ajout_charge():
-#     global liste_charges
-#     if str(chargement.get()) == 'Charge concentrée' :
-#     if str(chargement.get()) == 'Charge répartie' :
-#     if str(chargement.get()) == 'Charge répartie partielle' :
-#     if str(chargement.get()) == 'Charge triangulaire' :
-#     if str(chargement.get()) == 'Charge triangulaire monotone' :
-#     if str(chargement.get()) == 'Charge triangulaire antisymétrique' :
-#     if str(chargement.get()) == 'Charge trapézoïdale' :
-#     if str(chargement.get()) == 'Charge parabolique' :  
-#     if str(chargement.get()) == 'Moment' :  
-#     if str(chargement.get()) == 'Moment uniformément réparti' :  
-#         # if Xnoeud.get()!='' and Ynoeud.get()!='' and Znoeud.get()!='':
-#         #     temp_noeud=(float(Xnoeud.get()),float(Ynoeud.get()),float(Znoeud.get()))
-#         #     absent = True
-#         #     for i in liste_noeuds:
-#         #         if i[1]==temp_noeud:
-#         #             absent = False
-#         #     if absent:
-#         #         liste_noeuds.append(['Nœud'+str(len(liste_noeuds)+1),temp_noeud,None,None,None])
-#         #         listboxNoeud_update(len(liste_noeuds)-1)
-#         #         Xnoeud.focus()
-#         #         Xnoeud.select_range(0,tk.END)
-#         #     else:
-#         #         tk.messagebox.showerror('Erreur', 'Ce nœud existe déjà, il ne peut pas être ajouté.')
-#         # else:
-#         #     tk.messagebox.showerror('Erreur', 'Un champ de coordonnées est vide.')
-# def renommer_charge():
-#     donothing()
-#         #     def RenommerNoeud():
-#     #         if Liste_listboxNoeuds[0].curselection()!=():
+    # ongletsInput.add(frameNoeud)
+    # ongletsInput.tab(0, text='Nœuds',image=Noeud_rouge, compound=tk.LEFT)
+    # frameChargements = tk.Frame(ongletsInput)
+def ajout_charge_event(event):
+    ajout_charge()
+def ajout_charge():
+    global liste_charges
+    Liste_listboxCharges.append(Listbox(canva_tab3, selectmode=SINGLE))
+    Liste_listboxCharges[0].place(relx=0.25,rely=0.49,relwidth=0.75, relheight=0.28)
+        # if Xnoeud.get()!='' and Ynoeud.get()!='' and Znoeud.get()!='':
+        #     temp_noeud=(float(Xnoeud.get()),float(Ynoeud.get()),float(Znoeud.get()))
+        #     absent = True
+        #     for i in liste_noeuds:
+        #         if i[1]==temp_noeud:
+        #             absent = False
+        #     if absent:
+        #         liste_noeuds.append(['Nœud'+str(len(liste_noeuds)+1),temp_noeud,None,None,None])
+        #         listboxNoeud_update(len(liste_noeuds)-1)
+        #         Xnoeud.focus()
+        #         Xnoeud.select_range(0,tk.END)
+        #     else:
+        #         tk.messagebox.showerror('Erreur', 'Ce nœud existe déjà, il ne peut pas être ajouté.')
+        # else:
+        #     tk.messagebox.showerror('Erreur', 'Un champ de coordonnées est vide.')
+def renommer_charge():
+    donothing()
+        #     def RenommerNoeud():
+    #         if Liste_listboxNoeuds[0].curselection()!=():
         
-#     #             temp_nom_noeud=tk.simpledialog.askstring("Renommer nœud", 'Nouveau nom du nœud : "'+Liste_listboxNoeuds[0].get(Liste_listboxNoeuds[0].curselection()[0])+'" :')
-#     #             if temp_nom_noeud!='':
-#     #                 liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]][0] = temp_nom_noeud
-#     #                 listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
-#     #         else:
-#     #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
-# def supprimer_charge():
-#     donothing()
+    #             temp_nom_noeud=tk.simpledialog.askstring("Renommer nœud", 'Nouveau nom du nœud : "'+Liste_listboxNoeuds[0].get(Liste_listboxNoeuds[0].curselection()[0])+'" :')
+    #             if temp_nom_noeud!='':
+    #                 liste_noeuds[Liste_listboxNoeuds[0].curselection()[0]][0] = temp_nom_noeud
+    #                 listboxNoeud_update(Liste_listboxNoeuds[0].curselection()[0])
+    #         else:
+    #             tk.messagebox.showerror('Erreur', 'Aucun nœud sélectionné.')
+def supprimer_charge():
+    donothing()
 
-# def pos_a1_next(event): #fct pour passer à p
-#     saisie_pos_a1.focus()
-#     saisie_pos_a1.select_range(0,END)
-
-
+def a1_next(event): #fct pour passer à a1
+    saisie_a1.focus()
+    saisie_a1.select_range(0,END)
+def I_next(event): #fct pour passer à I
+    saisie_I.focus()
+    saisie_I.select_range(0,END)
+def c1_next(event): #fct pour passer à c1
+    saisie_c1.focus()
+    saisie_c1.select_range(0,END)
 # Passage d'une combobox à l'autre   
 canva_tab3_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox_chargement)      
 """
