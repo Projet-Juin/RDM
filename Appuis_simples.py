@@ -212,7 +212,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         elif x[i] > a and x[i] <= (a+b):
             flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
-            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+(1/c*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
+            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
@@ -270,9 +270,9 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a : 
-            Mf[i] = -RA*x[i]-q*(x[i]**2)/2
+            Mf[i] = RA*x[i]+q*(x[i]**2)/2
         elif x[i] > a :
-            Mf[i] = -RB*(longueur-x[i])
+            Mf[i] = RB*(longueur-x[i])
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -287,13 +287,13 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
     DefMax = np.amax(DefYMax)
     print('DefMax', DefMax)
     
-    # Flèche de la poutre           ##NE FONCTIONNE PAS
+    # Flèche de la poutre
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            flèche[i] = -q*x[i]*((a**2)*(2*longueur-a)**2-2*a*(2*longueur-a)*(x[i]**2)+longueur*(x[i]**3))/(24*E*Igz*longueur)
+            flèche[i] = q*x[i]*((a**2)*((2*longueur-a)**2)-2*a*(2*longueur-a)*(x[i]**2)+longueur*(x[i]**3))/(24*E*Igz*longueur)
         elif x[i] > a :
-            flèche[i] = -q*a**2*(longueur-x[i])*(4*longueur*x[i]-2*x[i]**2-a**2)/(2*E*Igz*longueur)
+            flèche[i] = q*a**2*(longueur-x[i])*(4*longueur*x[i]-2*x[i]**2-a**2)/(24*E*Igz*longueur)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
@@ -481,14 +481,14 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
 def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     # q s'inverse à la moitié de la poutre
     # Réactions aux appuis
-    RA = q*(longueur)/6 
-    RB = -q*(longueur)/6 
+    RA = -q*(longueur)/6 
+    RB = q*(longueur)/6 
     
     # Efforts tranchants [N]
-    EffortTranch = -q*(6*x**2-6*longueur*x+longueur**2)/(6*longueur)
+    EffortTranch = q*(6*x**2-6*longueur*x+longueur**2)/(6*longueur)
     
     # Moment Fléchissant [N.mm]
-    Mf = q*x*(longueur-x)*(longueur-2*x)/(6*longueur)
+    Mf = -q*x*(longueur-x)*(longueur-2*x)/(6*longueur)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -504,7 +504,7 @@ def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, 
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = q*x*(6*(x**4)-15*longueur*(x**3)+10*longueur**2*x**2-(longueur**4))/(360*E*Igz*longueur)
+    flèche = -q*x*(6*(x**4)-15*longueur*(x**3)+10*longueur**2*x**2-(longueur**4))/(360*E*Igz*longueur)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
@@ -553,21 +553,21 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            EffortTranch[i] = -q*(a*longueur-a**2-x[i]**2)/(2*a) 
+            EffortTranch[i] = q*(a*longueur-(a**2)-(x[i]**2))/(2*a) 
         elif x[i] > a and x[i] <= (a+b):
-            EffortTranch[i] = -q*(longueur-2*x[i])/2
+            EffortTranch[i] = q*(longueur-2*x[i])/2
         elif x[i] > (a+b) and x[i] <= longueur :
-            EffortTranch[i] =  -q*((longueur-x[i])**2-a*(longueur-a))/(2*a)
+            EffortTranch[i] = q*(((longueur-x[i])**2)-a*(longueur-a))/(2*a)
     
     # Moment Fléchissant [N.mm]
     Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            Mf[i] = q*x[i]*(3*a*longueur-3*a**2-x[i]**2)/(6*a)
+            Mf[i] = -q*x[i]*(3*a*longueur-3*(a**2)-(x[i]**2))/(6*a)
         elif x[i] > a and x[i] <= (a+b):
-            Mf[i] = q*(3*longueur*x[i]-3*x**2-a**2)/6 
+            Mf[i] = -q*(3*longueur*x[i]-3*(x[i]**2)-(a**2))/6 
         elif x[i] > (a+b) :
-            Mf[i] = q*(longueur-x[i])*(3*a*(longueur-a)-(longueur-x[i])**2)/(6*a)
+            Mf[i] = -q*(longueur-x[i])*(3*a*(longueur-a)-((longueur-x[i])**2))/(6*a)
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -583,7 +583,7 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = 0#pas de flèche encore
+    flèche = 0*x #pas de flèche encore
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
@@ -628,10 +628,10 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     RB = RA 
     
     # Efforts tranchants [N]
-    EffortTranch = -q*(4*(x**3)-(6*longueur*x**2)+(longueur**3))/(3*longueur**2)
+    EffortTranch = -q*(4*(x**3)-(6*longueur*(x**2))+(longueur**3))/(3*(longueur**2))
     
     # Moment Fléchissant [N.mm]
-    Mf = q*x*((x**3)-2*longueur*x**2+(longueur**3))/(3*longueur**2)
+    Mf = q*x*((x**3)-2*longueur*(x**2)+(longueur**3))/(3*(longueur**2))
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
@@ -647,7 +647,7 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = q*x*((x**5)*-3*longueur*(x**4)+5*(longueur**3)*x**2-3*(longueur**5))/(90*E*Igz*longueur**2)
+    flèche = q*x*((x**5)*-3*longueur*(x**4)+5*(longueur**3)*(x**2)-3*(longueur**5))/(90*E*Igz*(longueur**2))
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
