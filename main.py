@@ -71,17 +71,76 @@ barre_de_menu.add_cascade(label='Autres', menu=autres_menu,command=donothing) # 
 """
 Fin
 """
-COLOR_1 = 'black'
-COLOR_2 = 'white'
-COLOR_3 = 'red'
-COLOR_4 = '#2E2E2E'
-COLOR_5 = '#8A4B08'
-COLOR_6 = '#DF7401'
-#Notebook Style
+
+### Notebook Style ###
 noteStyler = ttk.Style()
 noteStyler.configure("TNotebook", background=gris_7, borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background=gris_7, foreground=gris_7, lightcolor=gris_7, borderwidth=0)
 noteStyler.configure("TFrame", background=gris_7, foreground=gris_7, borderwidth=0)
+
+### Importation des images nécessaires ###
+img_geo_carre = PhotoImage(file='images/section carré.PNG')
+
+# img_geo_carre_t = PhotoImage(file='images/section carré troué.PNG')
+
+# img_geo_rectangle = PhotoImage(file='images/section rectangle.PNG')
+
+# img_geo_rectangle_t = PhotoImage(file='images/section rectangle troué.PNG')
+
+# img_geo_forme_i = PhotoImage(file='images/section forme i.PNG')
+
+# img_geo_forme_t = PhotoImage(file='images/section forme T.PNG')
+
+# img_geo_forme_l = PhotoImage(file='images/section forme L.PNG')
+
+# img_geo_forme_z = PhotoImage(file='images/section forme Z.PNG')
+
+# img_geo_forme_croix = PhotoImage(file='images/section forme croix.PNG')
+
+# img_geo_triangle_rec = PhotoImage(file='images/section triangle rectangle.PNG')
+
+# img_geo_cercle = PhotoImage(file='images/section cercle.PNG')
+
+# img_geo_cercle_t = PhotoImage(file='images/section cercle troué.PNG')
+
+# img_geo_demi_cercle = PhotoImage(file='images/section demi-cercle.PNG')
+
+# img_geo_quart_de_cercle = PhotoImage(file='images/section quart de cercle.PNG')
+
+# img_geo_ovale = PhotoImage(file='images/section ovale.PNG')
+
+# img_geo_losange = PhotoImage(file='images/section losange.PNG')
+
+# img_charge_con_app_simple = PhotoImage(file='images/charge concentrée appuis simples.PNG')
+
+# img_charge_con_encas = PhotoImage(file='images/charge concentrée encastrement.PNG')
+
+# img_charge_rep_app_simlple = PhotoImage(file='images/charge répartie appuis simples.PNG')
+
+# img_charge_rep_encas = PhotoImage(file='images/charge répartie encastrement.PNG')
+
+# img_charge_rep_part = PhotoImage(file='images/charge partiellement répartie appuis simples.PNG')
+
+# img_charge_triang = PhotoImage(file='images/charge triangulaire appuis simples.PNG')
+
+# img_charge_triang_monotone = PhotoImage(file='images/charge triangulaire monotone appuis simples.PNG')
+
+# img_charge_triang_croiss = PhotoImage(file='images/charge triangulaire croissante encastrement.PNG')
+
+# img_charge_triang_décroiss = PhotoImage(file='images/charge triangulaire décroissante encastrement.PNG')
+
+# img_charge_triang_anti = PhotoImage(file='images/charge triangulaire antisymétrique appuis simples.PNG')
+
+# img_charge_trapèze = PhotoImage(file='images/charge trapézoïdale appuis simples.PNG')
+
+# img_charge_parabo = PhotoImage(file='images/charge parabolique appuis simples.PNG')
+
+# img_charge_moment_app_simple = PhotoImage(file='images/moment appuis simples.PNG')
+
+# img_charge_moment_encas = PhotoImage(file='images/moment encastrement.PNG')
+
+# img_charge_moment_unfi = PhotoImage(file='images/moment uniformément répartie appuis simples.PNG')
+
 
 ### Création de 2 frames principales ###
 # Fenetre principale en 2 frames
@@ -115,7 +174,7 @@ Fin
 ### Barre 1 : Géométrie ###
 tab1 = ttk.Frame(notebook, style='TFrame') # Creation de la barre 1
 # notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
-img1 = PhotoImage(file='images/geo.png')
+img1 = PhotoImage(file='images/sphere.png')
 notebook.add(tab1,text='Géométrie',image=img1, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab1 = Canvas(tab1, bg=gris_5)
 canva_tab1.pack(expand=1, fill='both')
@@ -1662,26 +1721,31 @@ Fin
 """
 
 ### Barre 1 : Schémas ###
-tab4 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 1
-notebook2.add(tab4, text='Schémas') # Ajout de la barre 1 au notebook
-canva_tab4 = Canvas(tab4, bg="white")
+tab4 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 4
+img4 = PhotoImage(file='images/picture.png')
+notebook2.add(tab4, text='Schémas',image=img4, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab4 = Canvas(tab4, bg="white", width = 600, height = 600)
+# canva_tab4.create_image(0,0, image=img_geo_carre)
 canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
 """
 
 ### Barre 2 : Graphiques Globaux ###
-tab5 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 1
-notebook2.add(tab5, text='Graphiques Globaux') # Ajout de la barre 1 au notebook
+tab5 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 5
+img5 = PhotoImage(file='images/statistics.png')
+notebook2.add(tab5, text='Graphiques Globaux',image=img5, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab5 = Canvas(tab5, bg="blue")
 canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+
 """
 Fin
 """
 
 ### Barre 3 : Graphiques détaillés ###
-tab6 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 1
-notebook2.add(tab6, text='Graphiques détaillés') # Ajout de la barre 1 au notebook
+tab6 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
+img6 = PhotoImage(file='images/analysis (1).png')
+notebook2.add(tab6, text='Graphiques détaillés',image=img6, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab6 = Canvas(tab6, bg="green")
 canva_tab6.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
@@ -1689,8 +1753,9 @@ Fin
 """
 
 ### Barre 4 : Analyse ###
-tab7 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 1
-notebook2.add(tab7, text='Analyse') # Ajout de la barre 1 au notebook
+tab7 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 7
+img7 = PhotoImage(file='images/analysis.png')
+notebook2.add(tab7, text='Analyse',image=img7, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab7 = Canvas(tab7, bg="red")
 canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
