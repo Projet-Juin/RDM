@@ -114,7 +114,9 @@ Fin
 
 ### Barre 1 : Géométrie ###
 tab1 = ttk.Frame(notebook, style='TFrame') # Creation de la barre 1
-notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
+# notebook.add(tab1, text='Géométrie') # Ajout de la barre 1 au notebook
+img1 = PhotoImage(file='images/geo.png')
+notebook.add(tab1,text='Géométrie',image=img1, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab1 = Canvas(tab1, bg=gris_5)
 canva_tab1.pack(expand=1, fill='both')
 # Création labelframe 1
@@ -1053,7 +1055,9 @@ Fin
 
 ### Barre 2 : Matériau ###
 tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
-notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
+# notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
+img2 = PhotoImage(file='images/construction-and-tools.png')
+notebook.add(tab2,text='Matériau',image=img2, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab2=Canvas(tab2, bg=gris_5)
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
@@ -1151,6 +1155,8 @@ Fin
 ### Barre 3 : Chargement ###
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
+img3 = PhotoImage(file='images/loading.png')
+notebook.add(tab3,text='Chargement',image=img3, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab3=Canvas(tab3, bg=gris_5)
 canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
