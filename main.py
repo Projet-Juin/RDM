@@ -77,70 +77,45 @@ noteStyler = ttk.Style()
 noteStyler.configure("TNotebook", background=gris_7, borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background=gris_7, foreground=gris_7, lightcolor=gris_7, borderwidth=0)
 noteStyler.configure("TFrame", background=gris_7, foreground=gris_7, borderwidth=0)
+"""
+Fin
+"""
 
 ### Importation des images nécessaires ###
 img_geo_carre = PhotoImage(file='images/section carré.PNG')
-
-# img_geo_carre_t = PhotoImage(file='images/section carré troué.PNG')
-
-# img_geo_rectangle = PhotoImage(file='images/section rectangle.PNG')
-
+img_geo_carre_t = PhotoImage(file='images/section carré troué.PNG')
+img_geo_rectangle = PhotoImage(file='images/section rectangle.PNG')
 img_geo_rectangle_t = PhotoImage(file='images/section rectangle troué.PNG')
-
-# img_geo_forme_i = PhotoImage(file='images/section forme i.PNG')
-
-# img_geo_forme_t = PhotoImage(file='images/section forme T.PNG')
-
-# img_geo_forme_l = PhotoImage(file='images/section forme L.PNG')
-
-# img_geo_forme_z = PhotoImage(file='images/section forme Z.PNG')
-
-# img_geo_forme_croix = PhotoImage(file='images/section forme croix.PNG')
-
-# img_geo_triangle_rec = PhotoImage(file='images/section triangle rectangle.PNG')
-
-# img_geo_cercle = PhotoImage(file='images/section cercle.PNG')
-
-# img_geo_cercle_t = PhotoImage(file='images/section cercle troué.PNG')
-
-# img_geo_demi_cercle = PhotoImage(file='images/section demi-cercle.PNG')
-
-# img_geo_quart_de_cercle = PhotoImage(file='images/section quart de cercle.PNG')
-
-# img_geo_ovale = PhotoImage(file='images/section ovale.PNG')
-
-# img_geo_losange = PhotoImage(file='images/section losange.PNG')
-
-# img_charge_con_app_simple = PhotoImage(file='images/charge concentrée appuis simples.PNG')
-
-# img_charge_con_encas = PhotoImage(file='images/charge concentrée encastrement.PNG')
-
-# img_charge_rep_app_simlple = PhotoImage(file='images/charge répartie appuis simples.PNG')
-
-# img_charge_rep_encas = PhotoImage(file='images/charge répartie encastrement.PNG')
-
-# img_charge_rep_part = PhotoImage(file='images/charge partiellement répartie appuis simples.PNG')
-
-# img_charge_triang = PhotoImage(file='images/charge triangulaire appuis simples.PNG')
-
-# img_charge_triang_monotone = PhotoImage(file='images/charge triangulaire monotone appuis simples.PNG')
-
-# img_charge_triang_croiss = PhotoImage(file='images/charge triangulaire croissante encastrement.PNG')
-
-# img_charge_triang_décroiss = PhotoImage(file='images/charge triangulaire décroissante encastrement.PNG')
-
-# img_charge_triang_anti = PhotoImage(file='images/charge triangulaire antisymétrique appuis simples.PNG')
-
-# img_charge_trapèze = PhotoImage(file='images/charge trapézoïdale appuis simples.PNG')
-
-# img_charge_parabo = PhotoImage(file='images/charge parabolique appuis simples.PNG')
-
-# img_charge_moment_app_simple = PhotoImage(file='images/moment appuis simples.PNG')
-
-# img_charge_moment_encas = PhotoImage(file='images/moment encastrement.PNG')
-
-# img_charge_moment_unfi = PhotoImage(file='images/moment uniformément répartie appuis simples.PNG')
-
+img_geo_forme_i = PhotoImage(file='images/section forme i.PNG')
+img_geo_forme_t = PhotoImage(file='images/section forme T.PNG')
+img_geo_forme_l = PhotoImage(file='images/section forme L.PNG')
+img_geo_forme_z = PhotoImage(file='images/section forme Z.PNG')
+img_geo_forme_croix = PhotoImage(file='images/section forme croix.PNG')
+img_geo_triangle_rec = PhotoImage(file='images/section triangle rectangle.PNG')
+img_geo_cercle = PhotoImage(file='images/section cercle.PNG')
+img_geo_cercle_t = PhotoImage(file='images/section cercle troué.PNG')
+img_geo_demi_cercle = PhotoImage(file='images/section demi-cercle.PNG')
+img_geo_quart_de_cercle = PhotoImage(file='images/section quart de cercle.PNG')
+img_geo_ovale = PhotoImage(file='images/section ovale.PNG')
+img_geo_losange = PhotoImage(file='images/section losange.PNG')
+img_charge_con_app_simple = PhotoImage(file='images/charge concentrée appuis simples.PNG')
+img_charge_con_encas = PhotoImage(file='images/charge concentrée encastrement.PNG')
+img_charge_rep_app_simple = PhotoImage(file='images/charge répartie appuis simples.PNG')
+img_charge_rep_encas = PhotoImage(file='images/charge répartie encastrement.PNG')
+img_charge_rep_part = PhotoImage(file='images/charge partiellement répartie appuis simples.PNG')
+img_charge_triang = PhotoImage(file='images/charge triangulaire appuis simples.PNG')
+img_charge_triang_monotone = PhotoImage(file='images/charge triangulaire monotone appuis simples.PNG')
+img_charge_triang_croiss = PhotoImage(file='images/charge triangulaire croissante encastrement.PNG')
+img_charge_triang_décroiss = PhotoImage(file='images/charge triangulaire décroissante encastrement.PNG')
+img_charge_triang_anti = PhotoImage(file='images/charge triangulaire antisymétrique appuis simples.PNG')
+img_charge_trapèze = PhotoImage(file='images/charge trapézoïdale appuis simples.PNG')
+img_charge_parabo = PhotoImage(file='images/charge parabolique appuis simples.PNG')
+img_charge_moment_app_simple = PhotoImage(file='images/moment appuis simples.PNG')
+img_charge_moment_encas = PhotoImage(file='images/moment encastrement.PNG')
+img_charge_moment_unfi = PhotoImage(file='images/moment uniformément répartie appuis simples.PNG')
+"""
+Fin
+"""
 
 ### Création de 2 frames principales ###
 # Fenetre principale en 2 frames
@@ -158,9 +133,6 @@ left_canvas2.place(relx=0,rely=0.9,relwidth=1, relheight=0.1)
 """
 Fin
 """
-
-
-
 
 ### NoteBook - left_canvas1 ###
 notebook = ttk.Notebook(left_canvas1, style='TNotebook') # Creation du Notebook
@@ -281,6 +253,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_rectangle)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -389,6 +363,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_carre_t)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',largeur1_next)
@@ -440,6 +416,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1.config(cursor='hand1')
             saisie_largeur2.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_forme_i)            
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -487,6 +465,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_forme_t)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -533,6 +513,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_forme_l)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -585,6 +567,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1.config(cursor='hand1')
             saisie_largeur2.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_forme_z)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -620,7 +604,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
-            # lancement retour des touches
+            # la photo de la configuration 
+            canva_tab4.create_image(700,500, image=img_geo_forme_croix)            
+            # lancement retour des touches            
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
             saisie_hauteur.bind('<Return>',largeur1_next)
@@ -656,6 +642,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_triangle_rec)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -683,6 +671,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_cercle)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -714,6 +704,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
             saisie_rayon1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_cercle_t)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',rayon1_next)
@@ -740,6 +732,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_demi_cercle)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -765,6 +759,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_quart_de_cercle)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -796,6 +792,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_diagonale1.config(cursor='hand1')
             saisie_diagonale2.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_ovale)            
             # lancement retour des touches
             saisie_longueur.bind('<Return>',diagonale1_next)
             saisie_diagonale1.bind('<Return>',diagonale2_next)
@@ -829,6 +827,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_diagonale1.config(cursor='hand1')
             saisie_diagonale2.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_geo_losange)            
             # lancement retour des touches
             saisie_longueur.bind('<Return>',diagonale1_next)
             saisie_diagonale1.bind('<Return>',diagonale2_next)
@@ -1296,6 +1296,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_conc_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_con_app_simple)               
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1315,6 +1317,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_rep_app_simple)               
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1345,6 +1349,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_I.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_rep_part)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
@@ -1371,6 +1377,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_triang) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1390,6 +1398,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_triang_monotone) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1408,6 +1418,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_triang_anti) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1438,6 +1450,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_I.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_trapèze) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
@@ -1458,6 +1472,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_parabo) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1482,6 +1498,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_moment_app_simple) 
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1501,6 +1519,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_moment.select_range(0,END)
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_moment_unfi) 
             # lancement retour des touches
             saisie_moment.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1526,6 +1546,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_conc_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_con_encas) 
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1545,6 +1567,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_rep_encas) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1575,6 +1599,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_I.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_rep_part) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_I.bind('<Return>',c1_next)
@@ -1595,6 +1621,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_triang_croiss) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1613,6 +1641,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_triang_décroiss) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1637,6 +1667,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_moment_encas) 
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
