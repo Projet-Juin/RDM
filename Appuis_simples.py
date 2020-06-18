@@ -583,6 +583,14 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     print('DefMax', DefMax)
     
     # Flèche de la poutre
+    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            Mf[i] = -q*x[i]*(3*a*longueur-3*(a**2)-(x[i]**2))/(6*a)
+        elif x[i] > a and x[i] <= (a+b):
+            Mf[i] = -q*(3*longueur*x[i]-3*(x[i]**2)-(a**2))/6 
+        elif x[i] > (a+b) :
+            Mf[i] = -q*(longueur-x[i])*(3*a*(longueur-a)-((longueur-x[i])**2))/(6*a)
     flèche = 0*x #pas de flèche encore
     FlècheMax = np.amin(flèche)
 
@@ -647,7 +655,7 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     print('DefMax', DefMax)
     
     # Flèche de la poutre
-    flèche = q*x*((x**5)*-3*longueur*(x**4)+5*(longueur**3)*(x**2)-3*(longueur**5))/(90*E*Igz*(longueur**2))
+    flèche = -q/(3*(longueur**2)*E*Igz)*((x**6)/30-2*longueur*(x**5)/20+(longueur**3)*(x**3)/6-(longueur**5)/10*x)
     FlècheMax = np.amin(flèche)
     print('flèche max : ',FlècheMax)
     
