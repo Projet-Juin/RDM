@@ -546,7 +546,7 @@ def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, 
 def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b):
     # q forme un trapèze
     # Réactions aux appuis
-    RA = q*(longueur-a)/2
+    RA = -q*(longueur-a)/2
     RB = RA
     
     # Efforts tranchants [N]
@@ -624,14 +624,14 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
 def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     # q forme une parabole
     # Réactions aux appuis
-    RA = q*longueur/3 
+    RA = -q*longueur/3 
     RB = RA 
     
     # Efforts tranchants [N]
-    EffortTranch = -q*(4*(x**3)-(6*longueur*(x**2))+(longueur**3))/(3*(longueur**2))
+    EffortTranch = q*(4*(x**3)-(6*longueur*(x**2))+(longueur**3))/(3*(longueur**2))
     
     # Moment Fléchissant [N.mm]
-    Mf = q*x*((x**3)-2*longueur*(x**2)+(longueur**3))/(3*(longueur**2))
+    Mf = -q*x*((x**3)-2*longueur*(x**2)+(longueur**3))/(3*(longueur**2))
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
