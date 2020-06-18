@@ -609,10 +609,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # lancement retour des touches            
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
-            saisie_hauteur.bind('<Return>',largeur1_next)
-            saisie_largeur1.bind('<Return>',largeur2_next)
-            saisie_largeur2.bind('<Return>',hauteur1_next)
-            saisie_hauteur1.bind('<Return>',valider_la_géométrie_auto) 
+            saisie_hauteur.bind('<Return>',valider_la_géométrie_auto) 
             print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(geometrie.get()) == 'Triangle':
         if str(geometrie5.get()) == 'Rectangle':
@@ -849,8 +846,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
-            if L!='' and b!='' and h!='' :
-                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
+                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -865,8 +862,8 @@ def valider_la_géométrie():
             b1 = float(saisie_largeur1.get())
             h = float(saisie_hauteur.get())    
             h1 = float(saisie_hauteur1.get())
-            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
-                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
+                b2=None; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -879,8 +876,8 @@ def valider_la_géométrie():
         if str(geometrie3.get()) == 'Normal':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())            
-            if L!='' and b!='' :
-                b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and L!=0.0 and b!=0.0:
+                b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -893,8 +890,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             b1 = float(saisie_largeur1.get())            
-            if L!='' and b!='' and b1!='' :
-                b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and L!=0.0 and b!=0.0 and b1!=0.0 :
+                b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -911,8 +908,8 @@ def valider_la_géométrie():
             b2 = float(saisie_largeur2.get())
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
-            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='':
-                R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
+                R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -927,8 +924,8 @@ def valider_la_géométrie():
             b1 = float(saisie_largeur1.get())
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())            
-            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
-                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
+                b2=None; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -943,8 +940,8 @@ def valider_la_géométrie():
             b1 = float(saisie_largeur1.get())
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
-            if L!='' and b!='' and b1!='' and h!='' and h1!='' :
-                b2=0.0; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0:
+                b2=None; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -960,8 +957,8 @@ def valider_la_géométrie():
             b2 = float(saisie_largeur2.get())
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
-            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='':
-                R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!=''and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
+                R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -974,8 +971,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
-            if L!='' and b!='' and h!='' :
-                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
+                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -989,8 +986,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
-            if L!='' and b!='' and h!='' :
-                b1=0.0 ; b2=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
+                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1003,8 +1000,8 @@ def valider_la_géométrie():
         if str(geometrie6.get()) == 'Normal':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
-            if L!='' and R!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and R!='' and L!=0.0 and R!=0.0 :
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1017,8 +1014,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             R1 = float(saisie_rayon1.get())
-            if L!='' and R!='' and R1!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and R!='' and R1!='' and L!=0.0 and R!=0.0 and R1!=0.0:
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1030,8 +1027,8 @@ def valider_la_géométrie():
         if str(geometrie6.get()) == 'Demi Cercle':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
-            if L!='' and R!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and R!='' and L!=0.0 and R!=0.0 :
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1043,8 +1040,8 @@ def valider_la_géométrie():
         if str(geometrie6.get()) == 'Quart de Cercle':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
-            if L!='' and R!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R1=0.0 ; D1=0.0 ; D2=0.0
+            if L!='' and R!='' and L!=0.0 and R!=0.0 :
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1057,8 +1054,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             D1 = float(saisie_diagonale1.get())
             D2 = float(saisie_diagonale2.get())
-            if L!='' and D1!='' and D2!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0
+            if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
@@ -1072,8 +1069,8 @@ def valider_la_géométrie():
             L = float(saisie_longueur.get())
             D1 = float(saisie_diagonale1.get())
             D2 = float(saisie_diagonale2.get())
-            if L!='' and D1!='' and D2!='' :
-                b=0.0 ; b1=0.0 ; b2=0.0 ; h=0.0 ; h1=0.0 ; R=0.0 ; R1=0.0
+            if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
+                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
                 valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
