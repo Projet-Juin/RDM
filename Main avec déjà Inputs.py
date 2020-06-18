@@ -32,8 +32,8 @@ géométrie = 'carré'
     # Forces appliquées [N.mm]
 q = -200
 P = -200
-a = 200
-c = 200
+a = 600
+c = 500
 b = longueur - a - c
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
@@ -45,7 +45,7 @@ y = np.linspace(0, hauteur, NbrePointsY)
 # LES CALCULS :
 # fonction que l'on pourra appeler qui s'occupe de calculer différentes données d'une poutre qui subit seulement une charge répartie
     
-#(RACC, RBCR, EffortTranchCR, MfCR, ContrainteYMaxCR, ContrainteMaxCR, DefYMaxCR, DefMaxCR, flècheCR, FlècheMaxCR, \
+#(RACR, RBCR, EffortTranchCR, MfCR, ContrainteYMaxCR, ContrainteMaxCR, DefYMaxCR, DefMaxCR, flècheCR, FlècheMaxCR, \
 #GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR) = \
 #Appuis_simples.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) 
   
@@ -77,3 +77,4 @@ y = np.linspace(0, hauteur, NbrePointsY)
 #Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
 Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+#2
