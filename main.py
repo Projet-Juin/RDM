@@ -85,7 +85,7 @@ img_geo_carre = PhotoImage(file='images/section carré.PNG')
 
 # img_geo_rectangle = PhotoImage(file='images/section rectangle.PNG')
 
-# img_geo_rectangle_t = PhotoImage(file='images/section rectangle troué.PNG')
+img_geo_rectangle_t = PhotoImage(file='images/section rectangle troué.PNG')
 
 # img_geo_forme_i = PhotoImage(file='images/section forme i.PNG')
 
@@ -325,6 +325,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
+            # la photo de la configuration
+            canva_tab4.create_image(700,500, image=img_geo_rectangle_t)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -354,6 +356,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
+            # la photo de la configuration
+            canva_tab4.create_image(700,500, image=img_geo_carre)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',valider_la_géométrie_auto)
@@ -1651,18 +1655,12 @@ def ajout_charge():
             a1 = float(saisie_a1.get())
             q = 0.0 ; c1 = 0.0 ; I =0.0 ; M = 0.0
             if p!='' and a1!='' :
-                temp_charges=(p,q,a1,c1,I,M)
-                absent = True
-                for i in liste_charges:
-                    if i[1]==temp_charges:
-                        absent = False
-                    if absent:
-                        liste_charges.append(['Charge'+str(len(liste_charges)+1),temp_charges,None,None,None])
-                        udapte_listbox_charge(len(liste_charges)-1)
-                        saisie_force_conc_1.focus()
-                        saisie_force_conc_1.select_range(0,END)
-                    else:
-                        showerror('Erreur', 'Cette Charge existe déjà, elle ne peut pas être ajouté.')
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append(['Charge'+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_conc_1.focus()
+                saisie_force_conc_1.select_range(0,END)
+            
             if p==0 or a1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             if p=='' or a1=='':
@@ -1674,10 +1672,11 @@ def udapte_listbox_charge(index):
     if Liste_listboxCharges[0].size()!=len(liste_charges):
         for i in Liste_listboxCharges:
             i.insert(index,liste_charges[index][0]+" "+str(liste_charges[index][1]))
+    Liste_listboxCharges[0].see(index)
 def renommer_charge():
     if Liste_listboxCharges[0].curselection()!=():
         temp_nom_charges=simpledialog.askstring("Renommer ", 'Nouveau nom de la charges : "'+Liste_listboxCharges[0].get(Liste_listboxCharges[0].curselection()[0])+'" :')
-        if temp_nom_noeud!='':
+        if temp_nom_charges!='':
             liste_charges[Liste_listboxCharges[0].curselection()[0]][0] = temp_nom_charges
             udapte_listbox_charge(Liste_listboxCharges[0].curselection()[0])
     else:
@@ -1724,8 +1723,7 @@ Fin
 tab4 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 4
 img4 = PhotoImage(file='images/picture.png')
 notebook2.add(tab4, text='Schémas',image=img4, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab4 = Canvas(tab4, bg="white", width = 600, height = 600)
-# canva_tab4.create_image(0,0, image=img_geo_carre)
+canva_tab4 = Canvas(tab4, bg="white")
 canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
