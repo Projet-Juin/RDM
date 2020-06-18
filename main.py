@@ -1682,28 +1682,250 @@ def ajout_charge():
     global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
     if str(chargement.get()) == '2 appuis simples' : 
+        type_de_charge = 0  # pour repérer plutard si on est dans le cas encastrement ou appui
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
             a1 = float(saisie_a1.get())
-            q = 0.0 ; c1 = 0.0 ; I =0.0 ; M = 0.0
-            if p!='' and a1!='' :
+            if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
+                q = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append(['Charge'+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
-            
             if p==0 or a1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             if p=='' or a1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de p,q,a1,c1,I et M sont (config ",chargement.get()," - ",chargement2.get(),") :",liste_charges)
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)
+        if str(chargement2.get()) == 'Charge uniformément répartie' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!= 0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='' :
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)            
+        if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
+            q = float(saisie_force_rep_1.get())
+            I = float(saisie_I.get())
+            c1 = float(saisie_c1.get())
+            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
+                p = None ; a1 = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 or I==0 or c1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='' or I=='' or c1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)
+        if str(chargement2.get()) == 'Charge triangulaire' :
+            q = float(saisie_force_rep_1.get())
+            a1 = float(saisie_a1.get())
+            if q!='' and a1!=''and q!= 0.0 and a1!= 0.0 :
+                p = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)
+        if str(chargement2.get()) == 'Charge triangulaire monotone' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire montone '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement2.get()) == 'Charge triangulaire antisymétrique' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire antisym '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')          
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement2.get()) == 'Charge trapézoïdale' :
+            q = float(saisie_force_rep_1.get())
+            I = float(saisie_I.get())
+            c1 = float(saisie_c1.get())
+            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
+                p = None ; a1 = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 or I==0 or c1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='' or I=='' or c1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement2.get()) == 'Charge parabolique' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge],['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')            
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement2.get()) == 'Moment' :
+            M = float(saisie_moment.get())
+            a1 = float(saisie_a1.get())
+            if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
+                p = None ; c1 = None ; I = None ; q = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Moment '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_moment.focus()
+                saisie_moment.select_range(0,END)
+            if M==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if M=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement2.get()) == 'Moment uniformément réparti' :    
+            M = float(saisie_moment.get())
+            if M!='' and M!= 0.0 :
+                p = None ; c1 = None ; I = None ; q = None ; a1 = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Appuis Simple / Moment unif réparti '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_moment.focus()
+                saisie_moment.select_range(0,END)
+            if M==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if M=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+    if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
+        type_de_charge = 1 # pour repérer plutard si on est dans le cas encastrement ou appui
+        if str(chargement3.get()) == 'Charge concentrée' :
+            p = float(saisie_force_conc_1.get())
+            a1 = float(saisie_a1.get())
+            if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
+                q = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_conc_1.focus()
+                saisie_force_conc_1.select_range(0,END)
+            if p==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if p=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement3.get()) == 'Charge uniformément répartie' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')     
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)   
+        if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
+            q = float(saisie_force_rep_1.get())
+            I = float(saisie_I.get())
+            c1 = float(saisie_c1.get())
+            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
+                p = None ; a1 = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Charge unif répartie partielle '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 or I==0 or c1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='' or I=='' or c1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement3.get()) == 'Charge triangulaire croissante' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Charge triang croissante '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')     
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)        
+        if str(chargement3.get()) == 'Charge triangulaire décroissante' :
+            q = float(saisie_force_rep_1.get())
+            if q!='' and q!=0.0:
+                p = None ; a1 = None ; c1 = None ; I = None ; M = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Charge triang décroissante '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0:
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if q=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')     
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
+        if str(chargement3.get()) == 'Moment' :
+            M = float(saisie_moment.get())
+            a1 = float(saisie_a1.get())
+            if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
+                p = None ; c1 = None ; I = None ; q = None
+                temp_charges=[p,q,a1,c1,I,M]
+                liste_charges.append([type_de_charge,'Encastrement / Moment '+str(len(liste_charges)+1),temp_charges])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_moment.focus()
+                saisie_moment.select_range(0,END)
+            if M==0 or a1==0 :
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            if M=='' or a1=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide')
+            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges,"\n")              
 def udapte_listbox_charge(index):    
     for i in Liste_listboxCharges:
         i.delete(index)
     if Liste_listboxCharges[0].size()!=len(liste_charges):
         for i in Liste_listboxCharges:
-            i.insert(index,liste_charges[index][0]+" "+str(liste_charges[index][1]))
+            i.insert(index,liste_charges[index][1]+" "+str(liste_charges[index][2]))
     Liste_listboxCharges[0].see(index)
 def renommer_charge():
     if Liste_listboxCharges[0].curselection()!=():
