@@ -5,12 +5,23 @@
 Création du main
 
 """
-### IMPORTATIONS ###
+### IMPORTATIONS INTERFACE ###
+# Import Biblio
 from tkinter import *
-from INTERFACE_Annexe_1 import *
-from INTERFACE_gestion_des_calculs import *
 from tkinter import ttk
 from tkinter.messagebox import *
+# Import feuilles .py
+from INTERFACE_Annexe_1 import *
+
+### IMPORTATIONS CALCULS ###
+# Import Biblio
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+# Import feuilles .py
+import Appuis_simples
+import Liaison_encastrement
+import géométrie_poutre
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -847,7 +858,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -863,7 +874,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -877,7 +888,7 @@ def valider_la_géométrie():
             b = float(saisie_largeur.get())            
             if L!='' and b!='' and L!=0.0 and b!=0.0:
                 b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 :
@@ -891,7 +902,7 @@ def valider_la_géométrie():
             b1 = float(saisie_largeur1.get())            
             if L!='' and b!='' and b1!='' and L!=0.0 and b!=0.0 and b1!=0.0 :
                 b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 :
@@ -909,7 +920,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
                 R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
@@ -925,7 +936,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())            
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -941,7 +952,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0:
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -958,7 +969,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!=''and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
                 R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
@@ -972,7 +983,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -987,7 +998,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -1001,7 +1012,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1015,7 +1026,7 @@ def valider_la_géométrie():
             R1 = float(saisie_rayon1.get())
             if L!='' and R!='' and R1!='' and L!=0.0 and R!=0.0 and R1!=0.0:
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 or R1==0 :
@@ -1028,7 +1039,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1041,7 +1052,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1055,7 +1066,7 @@ def valider_la_géométrie():
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
@@ -1070,7 +1081,7 @@ def valider_la_géométrie():
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2)
+                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
@@ -1678,14 +1689,13 @@ def ajout_charge():
     global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
     if str(chargement.get()) == '2 appuis simples' : 
-        type_de_charge = 0  # pour repérer plutard si on est dans le cas encastrement ou appui
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
             a1 = float(saisie_a1.get())
             if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
                 q = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1699,7 +1709,7 @@ def ajout_charge():
             if q!='' and q!= 0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1715,7 +1725,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1730,7 +1740,7 @@ def ajout_charge():
             if q!='' and a1!=''and q!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1744,7 +1754,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire montone '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire montone '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1758,7 +1768,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge triangulaire antisym '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire antisym '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1774,7 +1784,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1788,7 +1798,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge],['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1803,7 +1813,7 @@ def ajout_charge():
             if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Moment '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Moment '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1817,7 +1827,7 @@ def ajout_charge():
             if M!='' and M!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None ; a1 = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Appuis Simple / Moment unif réparti '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Moment unif réparti '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1827,14 +1837,13 @@ def ajout_charge():
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)    
     if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
-        type_de_charge = 1 # pour repérer plutard si on est dans le cas encastrement ou appui
         if str(chargement3.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
             a1 = float(saisie_a1.get())
             if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
                 q = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1848,7 +1857,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1864,7 +1873,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Charge unif répartie partielle '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge unif répartie partielle '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1878,7 +1887,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Charge triang croissante '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge triang croissante '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1892,7 +1901,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Charge triang décroissante '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge triang décroissante '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1907,7 +1916,7 @@ def ajout_charge():
             if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([type_de_charge,'Encastrement / Moment '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Moment '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1921,7 +1930,7 @@ def udapte_listbox_charge(index):
         i.delete(index)
     if Liste_listboxCharges[0].size()!=len(liste_charges):
         for i in Liste_listboxCharges:
-            i.insert(index,liste_charges[index][1]+" "+str(liste_charges[index][2]))
+            i.insert(index,liste_charges[index][2]+" "+str(liste_charges[index][3]))
     Liste_listboxCharges[0].see(index)
 def renommer_charge():
     if Liste_listboxCharges[0].curselection()!=():
@@ -1953,6 +1962,134 @@ Fin
 """
 
 ### left_canvas_2 ###
+### Fonction vérif conditions de la rdm ###
+def verification_hypotheses_de_la_rdm_section_rectangulaire(): 
+    #Vérifie le rapport de x4 pour la géométrie
+    if (valeurs_geometriques[0])/(valeurs_geometriques[1])<=4:
+        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés \n Pour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
+### Fonction sélection du ou des calcul(s) à faire ###
+def calcul(): # Effectue le calcul sur le bouton calcul
+    donothing() #pour le moment, fait rien
+    # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
+    """
+    Vérifier si les conditions de la RDM sont respectées
+    """
+    if valeurs_geometriques[0] != None and valeurs_geometriques[1] != None :
+        
+        verification_hypotheses_de_la_rdm_section_rectangulaire()
+    """
+    on travail sur la copie d'une liste : 
+    --> 1 CAS : s'il n'y a qu'une seule charge, on distingue la quelle c'est, on lance le calcul et on lance la fonction tracer le graphe
+    --> 2 CAS : s'il y a plus de 2 charges, on fait un while pour faie les calculs de chacunes de ces sous listes, on suprime leurs traces \ 
+        et quand la liste copie des charges est finalement vide, on les additonnes par principe de superposition et on lance la fct lancer_graph
+    """
+    # liste_charges_bis=[]
+    # liste_charges=liste_charges_bis 
+    # if len(liste_charges_bis) == 1 : # 1 CAS : la liste à 1
+    #     [p,q,a1,c1,I,M] = liste_charges_bis[0][2]
+    #     # plusieurs auquel cas il y a des sous listes et il faut les distingé dans le prochains cas
+    #     if liste_charges_bis[0][0]=='2 appuis simples':
+    #         if liste_charges_bis[0][1]=="Charge concentrée":  
+    #             # le calcul de Clara et Agnès
+    #             # lancer_le_graph()
+    #         if liste_charges[0][1]=="Charge uniformément répartie":
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":   
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire":
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire monotone":
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire antisymétrique": 
+                
+    #         if liste_charges_bis[0][1]=="Charge trapézoïdale":
+                
+    #         if liste_charges_bis[0][1]=="Charge parabolique":
+                
+    #         if liste_charges_bis[0][1]=="Moment":
+                
+    #         if liste_charges_bis[0][1]=="Moment uniformément réparti":
+                
+    #     if liste_charges_bis[0][1]=='1 encastrement et 1 bord libre':
+    #         if liste_charges_bis[0][1]=="Charge concentrée":
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie":                
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":           
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire croissante":                  
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire décroissante":
+                
+    #         if liste_charges_bis[0][1]=="Moment":
+                    
+    # if len(liste_charges_bis) != 1 :
+    #     while liste_charges_bis != [] :
+    #         if liste_charges_bis[i][0]=='2 appuis simples':
+    #             if liste_charges_bis[i][1]=="Charge concentrée":
+    #                 # ajout de la charge au calcul par principe de superposition 
+    #                 del liste_charges_bis[i]
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire":
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire monotone":
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire antisymétrique":   
+                    
+    #             if liste_charges_bis[i][1]=="Charge trapézoïdale":
+                    
+    #             if liste_charges_bis[i][1]=="Charge parabolique":
+                    
+    #             if liste_charges_bis[i][1]=="Moment":
+                    
+    #             if liste_charges_bis[i][1]=="Moment uniformément réparti":
+                    
+    #         if liste_charges_bis[i][1]=='1 encastrement et 1 bord libre':
+    #             if liste_charges_bis[i][1]=="Charge concentrée":
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":       
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire croissante":             
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire décroissante":
+                    
+    #             if liste_charges_bis[i][1]=="Moment":
+    #     lancer_le_graph()
+    # else :
+    #     showerror(title='ERREUR !!!',message='Quelque chose ne va pas, relance le programme !!!')    
+                    
+    # update()
+    # ttk.Progressbar()
+    #  valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2] # liste des entrées géométriques
+    # E , m , Mv , Re et nu libre dans le programme
+    # liste_charges --> liste des charges de la forme [[str chargement.get(), str chargement2.get() ou chargement3.get(),"commentaire sur le type de chargement" ,[p,q,a1,c1,I,M]]]
+### Lancer le Graphique ###
+def lancer_le_graph():
+    donothing()
+# matplotlib.use('TkAgg')
+# from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+# from matplotlib.figure import Figure
+# plotun, plotdeux = CalculerPortique(liste_noeuds, liste_poutres)
+# f = Figure(figsize=(16, 9), dpi=80)
+# a = f.add_subplot(111)
+# for i in plotun:
+#     a.plot(i[0],i[1],'-.', c="red", marker='o')
+# for j in plotdeux:
+#     a.plot(j[0],j[1])
+# a.set_xlabel('x')
+# a.set_ylabel('y')
+
+# graph = FigureCanvasTkAgg(f, master=canvasgraph)
+# graph.get_tk_widget().grid(row = 0)
+# canvas._tkcanvas.grid(row = 0)
+# canvasgraph.pack(side=CENTER)
+# canva_tab5.add(canvasgraph)
+
 # Bouton Calculer #
 bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul)
 bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
