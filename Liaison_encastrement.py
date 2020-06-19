@@ -285,4 +285,76 @@ def charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x):
     GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
     plt.show()
     
-    #
+def couple(hauteur, longueur, Igz, E, LimElast, C, a, x, NbrePointsX):
+    # Réactions aux appuis
+    RA = 0
+    RB = 0
+    
+    # Efforts tranchants [N]
+    EffortTranch = 0
+    
+    # Moment Fléchissant [N.mm]
+    Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a : 
+            Mf[i] = C
+        elif x[i] > a :
+            Mf[i] = 0
+    
+    # Contrainte pour y = h/2 [MPa]
+    ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
+    print('contrainte max = ', ContrainteMax)
+    
+    # Contrainte pour tout y [MPa]
+    #Contrainte = np.matmul(-(Mf/Igz),y)
+    
+    # Déformation pour y = h/2 [SD]
+    DefYMax = ContrainteYMax/E
+    DefMax = np.amax(abs(DefYMax))
+    print('DefMax', DefMax)
+    
+    # Flèche de la poutre
+    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            flèche[i] = -C*(x[i]**2)/(2*E*Igz)
+        elif x[i] > a :
+            flèche[i] = -C*a*(x[i]-a/2)/(E*Igz)
+    FlècheMax = np.amac(abs(flèche))
+    print('flèche max : ',FlècheMax)
+    
+    plt.figure(1) #Graphe effort tranchant
+    plt.xlabel("x [mm]") 
+    plt.ylabel("T [N]") 
+    plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+    GrapheEffortTranchCR = plt.plot(x,EffortTranch) #Le tracé en lui-même
+    plt.show()
+    
+    plt.figure(2) #Graphe moment fléchissant
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Mf [N.mm]") 
+    plt.title("Tracé du Moment Fléchissant") 
+    GrapheMfCR = plt.plot(x,Mf)
+    plt.show()
+    
+    plt.figure(3) #Graphe de la contrainte en y = h/2
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Contrainte Max [MPa]") 
+    plt.title("Tracé de la Contrainte Maximale") 
+    GrapheContrainteYMaxCR = plt.plot(x,ContrainteYMax) 
+    plt.show()
+    
+    plt.figure(4) #Graphe de la déformation en y = h/2
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Déformation Max [SD]") 
+    plt.title("Tracé de la Déformation Maximale") 
+    GrapheDefYMaxCR = plt.plot(x,DefYMax) 
+    plt.show()
+    
+    plt.figure(5) #Graphe de la flèche
+    plt.xlabel("x [mm]") 
+    plt.ylabel("flèche [mm]") 
+    plt.title("Tracé de la flèche") 
+    GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
+    plt.show()
