@@ -7,9 +7,8 @@ Création du main
 """
 ### IMPORTATIONS ###
 from tkinter import *
-from appel_fonctions_annexes import *
-from gestion_des_entrees import *
-from gestion_des_calculs import *
+from INTERFACE_Annexe_1 import *
+from INTERFACE_gestion_des_calculs import *
 from tkinter import ttk
 from tkinter.messagebox import *
 

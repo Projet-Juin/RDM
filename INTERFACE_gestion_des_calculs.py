@@ -8,7 +8,7 @@ Gestion des calculs
 from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
-from appel_fonctions_annexes import *
+from INTERFACE_Annexe_1 import *
 
 
 # def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous programme de calcul qui renvoi TRUE si les conditions de la rdm sont respectué, sinon FALSE
