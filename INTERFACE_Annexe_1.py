@@ -63,7 +63,18 @@ def ouvrir():
     # some_data = fh.read() 
     # fh.close() 
     #     
+
+# import json
+# def ouvrir():
+#     global liste_noeuds, liste_poutres
+#     with open("inputs_example.json", "r") as f:
+#         liste_noeuds, liste_poutres = json.load(f)
     
+# def sauvegarder():
+#     with open("inputs_example.json", "w") as f:
+#         json.dump((liste_noeuds, liste_poutres), f)
+#         import matplotlib
+
 def sauvegarder(): # Extention de sauvegarder sous
     #Il faut lire si je fichier existe déjà
     if e_s != None: #le fichier existe pas
