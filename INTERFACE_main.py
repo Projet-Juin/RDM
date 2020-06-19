@@ -5,12 +5,23 @@
 Création du main
 
 """
-### IMPORTATIONS ###
+### IMPORTATIONS INTERFACE ###
+# Import Biblio
 from tkinter import *
-from INTERFACE_Annexe_1 import *
-from INTERFACE_gestion_des_calculs import *
 from tkinter import ttk
 from tkinter.messagebox import *
+# Import feuilles .py
+from INTERFACE_Annexe_1 import *
+
+### IMPORTATIONS CALCULS ###
+# Import Biblio
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+# Import feuilles .py
+import Appuis_simples
+import Liaison_encastrement
+import géométrie_poutre
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -1951,6 +1962,113 @@ Fin
 """
 
 ### left_canvas_2 ###
+### Fonction vérif conditions de la rdm ###
+def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous programme de calcul qui renvoi TRUE si les conditions de la rdm sont respectué, sinon FALSE
+    #Vérifie le rapport de x4 pour la géométrie
+    if L/b<=4:
+        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés \n Pour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
+### Fonction sélection du ou des calcul(s) à faire ###
+def calcul(): # Effectue le calcul sur le bouton calcul
+    donothing() #pour le moment, fait rien
+    """
+    Vérifier si les conditions de la RDM sont respectées
+    """
+    if saisie_longueur != None and saisie_largeur != None :
+        verification_hypotheses_de_la_rdm_section_rectangulaire(saisie_longueur,saisie_largeur)
+    """
+    on travail sur la copie d'une liste : 
+    ---> 1 CAS : s'il n'y a qu'une seule charge, on distingue la quelle c'est, on lance le calcul et on lance la fonction tracer le graphe
+    --> 2 CAS : s'il y a plus de 2 charges, on fait un while pour faie les calculs de chacunes de ces sous listes, on suprime leurs traces \ 
+        et quand la liste copie des charges est finalement vide, on les additonnes par principe de superposition et on lance la fct lancer_graph
+    """
+    # liste_charges_bis=[]
+    # liste_charges=liste_charges_bis 
+    # if len(liste_charges_bis) == 1 : # 1 CAS : la liste à 1
+    #     [p,q,a1,c1,I,M] = liste_charges_bis[0][2]
+    #     # plusieurs auquel cas il y a des sous listes et il faut les distingé dans le prochains cas
+    #     if liste_charges_bis[0][0]=='2 appuis simples':
+    #         if liste_charges_bis[0][1]=="Charge concentrée":  
+    #             # le calcul de Clara et Agnès
+    #             # lancer_le_graph()
+    #         if liste_charges[0][1]=="Charge uniformément répartie":
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":   
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire":
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire monotone":
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire antisymétrique": 
+                
+    #         if liste_charges_bis[0][1]=="Charge trapézoïdale":
+                
+    #         if liste_charges_bis[0][1]=="Charge parabolique":
+                
+    #         if liste_charges_bis[0][1]=="Moment":
+                
+    #         if liste_charges_bis[0][1]=="Moment uniformément réparti":
+                
+    #     if liste_charges_bis[0][1]=='1 encastrement et 1 bord libre':
+    #         if liste_charges_bis[0][1]=="Charge concentrée":
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie":                
+                
+    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":           
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire croissante":                  
+                
+    #         if liste_charges_bis[0][1]=="Charge triangulaire décroissante":
+                
+    #         if liste_charges_bis[0][1]=="Moment":
+                    
+    # if len(liste_charges_bis) != 1 :
+    #     while liste_charges_bis != [] :
+    #         if liste_charges_bis[i][0]=='2 appuis simples':
+    #             if liste_charges_bis[i][1]=="Charge concentrée":
+    #                 # ajout de la charge au calcul par principe de superposition 
+    #                 del liste_charges_bis[i]
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire":
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire monotone":
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire antisymétrique":   
+                    
+    #             if liste_charges_bis[i][1]=="Charge trapézoïdale":
+                    
+    #             if liste_charges_bis[i][1]=="Charge parabolique":
+                    
+    #             if liste_charges_bis[i][1]=="Moment":
+                    
+    #             if liste_charges_bis[i][1]=="Moment uniformément réparti":
+                    
+    #         if liste_charges_bis[i][1]=='1 encastrement et 1 bord libre':
+    #             if liste_charges_bis[i][1]=="Charge concentrée":
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":       
+                    
+    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire croissante":             
+                    
+    #             if liste_charges_bis[i][1]=="Charge triangulaire décroissante":
+                    
+    #             if liste_charges_bis[i][1]=="Moment":
+    #     lancer_le_graph()
+    # else :
+    #     showerror(title='ERREUR !!!',message='Quelque chose ne va pas, relance le programme !!!')    
+                    
+    # update()
+    # ttk.Progressbar()
+    #  valeurs_geometriques=(L,b,b1,b2,h,h1,R,R1,D1,D2) # liste des entrées géométriques
+    # E , m , Mv , Re et nu libre dans le programme
+    # liste_charges --> liste des charges de la forme [[str chargement.get(), str chargement2.get() ou chargement3.get(),"commentaire sur le type de chargement" ,[p,q,a1,c1,I,M]]]
+### Lancer le Graphique ###
+def lancer_le_graph():
+    donothing()
 # Bouton Calculer #
 bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul)
 bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
