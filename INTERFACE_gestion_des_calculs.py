@@ -4,11 +4,23 @@
 
 Gestion des calculs
 """
-### IMPORTATIONS ###
+### IMPORTATIONS INTERFACE ###
+# Import Biblio
 from tkinter import *
 from tkinter.filedialog import *
 from tkinter.messagebox import *
+# Import feuilles .py
 from INTERFACE_Annexe_1 import *
+
+### IMPORTATIONS CALCULS ###
+# Import Biblio
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+# Import feuilles .py
+import Appuis_simples
+import Liaison_encastrement
+import géométrie_poutre
 
 
 # def verification_hypotheses_de_la_rdm_section_rectangulaire(L,b): # sous programme de calcul qui renvoi TRUE si les conditions de la rdm sont respectué, sinon FALSE
