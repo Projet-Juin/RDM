@@ -34,7 +34,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('ContrainteMax', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -42,7 +42,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -109,7 +109,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -117,7 +117,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -193,7 +193,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -201,7 +201,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre        ##NE FONCTIONNE PAS
@@ -276,7 +276,7 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -284,7 +284,7 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -356,7 +356,7 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -364,7 +364,7 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -427,7 +427,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -435,7 +435,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -492,7 +492,7 @@ def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, 
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -500,7 +500,7 @@ def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, 
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -571,7 +571,7 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -579,7 +579,7 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
@@ -643,7 +643,7 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     
     # Contrainte pour y = h/2 [MPa]
     ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-    ContrainteMax = np.amax(ContrainteYMax)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
     print('contrainte max = ', ContrainteMax)
     
     # Contrainte pour tout y [MPa]
@@ -651,12 +651,87 @@ def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
     
     # Déformation pour y = h/2 [SD]
     DefYMax = ContrainteYMax/E
-    DefMax = np.amax(DefYMax)
+    DefMax = np.amax(abs(DefYMax))
     print('DefMax', DefMax)
     
     # Flèche de la poutre
     flèche = -q/(3*(longueur**2)*E*Igz)*((x**6)/30-2*longueur*(x**5)/20+(longueur**3)*(x**3)/6-(longueur**5)/10*x)
     FlècheMax = np.amin(flèche)
+    print('flèche max : ',FlècheMax)
+    
+    plt.figure(1) #Graphe effort tranchant
+    plt.xlabel("x [mm]") 
+    plt.ylabel("T [N]") 
+    plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+    GrapheEffortTranchCR = plt.plot(x,EffortTranch) #Le tracé en lui-même
+    plt.show()
+    
+    plt.figure(2) #Graphe moment fléchissant
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Mf [N.mm]") 
+    plt.title("Tracé du Moment Fléchissant") 
+    GrapheMfCR = plt.plot(x,Mf)
+    plt.show()
+    
+    plt.figure(3) #Graphe de la contrainte en y = h/2
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Contrainte Max [MPa]") 
+    plt.title("Tracé de la Contrainte Maximale") 
+    GrapheContrainteYMaxCR = plt.plot(x,ContrainteYMax) 
+    plt.show()
+    
+    plt.figure(4) #Graphe de la déformation en y = h/2
+    plt.xlabel("x [mm]") 
+    plt.ylabel("Déformation Max [SD]") 
+    plt.title("Tracé de la Déformation Maximale") 
+    GrapheDefYMaxCR = plt.plot(x,DefYMax) 
+    plt.show()
+    
+    plt.figure(5) #Graphe de la flèche
+    plt.xlabel("x [mm]") 
+    plt.ylabel("flèche [mm]") 
+    plt.title("Tracé de la flèche") 
+    GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
+    plt.show()
+    
+def couple(hauteur, longueur, Igz, E, LimElast, C, a, x, NbrePointsX):
+    # Réactions aux appuis
+    RA = C/longueur 
+    RB = -RA
+    
+    # Efforts tranchants [N]
+    EffortTranch = -RA
+    
+    # Moment Fléchissant [N.mm]
+    Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a : 
+            Mf[i] = C*x[i]/longueur
+        elif x[i] > a :
+            Mf[i] = -C*(longueur-x[i])/longueur
+
+    
+    # Contrainte pour y = h/2 [MPa]
+    ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+    ContrainteMax = np.amax(abs(ContrainteYMax))
+    print('contrainte max = ', ContrainteMax)
+    
+    # Contrainte pour tout y [MPa]
+    #Contrainte = np.matmul(-(Mf/Igz),y)
+    
+    # Déformation pour y = h/2 [SD]
+    DefYMax = ContrainteYMax/E
+    DefMax = np.amax(abs(DefYMax))
+    print('DefMax', DefMax)
+    
+    # Flèche de la poutre
+    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+    for i in range(NbrePointsX):
+        if x[i] <= a :
+            flèche[i] = C*x[i]*(x[i]**2-longueur**2+3*(longueur-a)**2)/(6*E*Igz*longueur)
+        elif x[i] > a :
+            flèche[i] = C*((x[i]**3)-3*longueur*x[i]**2+(2*longueur**2+3*a**2)*x[i]-3*(a**2)*longueur)/(6*E*Igz*longueur)
+    FlècheMax = np.amac(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
