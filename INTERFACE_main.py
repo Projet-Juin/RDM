@@ -858,7 +858,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -874,7 +874,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -888,7 +888,7 @@ def valider_la_géométrie():
             b = float(saisie_largeur.get())            
             if L!='' and b!='' and L!=0.0 and b!=0.0:
                 b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie3.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 :
@@ -902,7 +902,7 @@ def valider_la_géométrie():
             b1 = float(saisie_largeur1.get())            
             if L!='' and b!='' and b1!='' and L!=0.0 and b!=0.0 and b1!=0.0 :
                 b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie3.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 :
@@ -920,7 +920,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
                 R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
@@ -936,7 +936,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())            
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -952,7 +952,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0:
                 b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
@@ -969,7 +969,7 @@ def valider_la_géométrie():
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!=''and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
                 R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
@@ -983,7 +983,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -998,7 +998,7 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
                 b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie5.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
@@ -1012,7 +1012,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1026,7 +1026,7 @@ def valider_la_géométrie():
             R1 = float(saisie_rayon1.get())
             if L!='' and R!='' and R1!='' and L!=0.0 and R!=0.0 and R1!=0.0:
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 or R1==0 :
@@ -1039,7 +1039,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1052,7 +1052,7 @@ def valider_la_géométrie():
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
@@ -1066,7 +1066,7 @@ def valider_la_géométrie():
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
@@ -1081,7 +1081,7 @@ def valider_la_géométrie():
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
                 b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2]
+                valeurs_geometriques=[geometrie.get(),geometrie7.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
@@ -1174,7 +1174,7 @@ def valider_le_materiau():
     Re = float(saisie_limiteel.get())
     nu = float(saisie_coeffpoiss.get())
     if E!='' and Re!='' :
-        valeurs_materiau = (E,Mv,m,Re,nu)
+        valeurs_materiau = [E,Mv,m,Re,nu]
         saisie_young.focus()
         saisie_young.select_range(0,END)
     if E==0 or Re==0 :
@@ -1211,17 +1211,6 @@ Button(canva_tab2_labelframe,relief="raised",overrelief="groove", text='Valider 
 Fin
 """
 
-#Combobox personnalisé, fonctionne pas
-# s = ttk.Style()
-# s.configure("perso.TCombobox",Background="yellow", SelectBackground="purple",FieldBackground="white", SelectForeground="black")
-# s.map('TCombobox', fieldbackground=[('readonly','white')])
-# s.map('TCombobox', selectbackground=[('readonly', 'yellow')])
-# s.map('TCombobox', selectforeground=[('readonly', 'black')])
-# main.option_add( '*TCombobox*Listbox*Background', 'yellow')
-# main.option_add( '*TCombobox*Listbox*selectBackground','red') #does not work
-# main.option_add( '*TCombobox*Listbox*Highlightbackground','blue') # does not work
-# main.option_add( '*TCombobox*Listbox*Highlightforeground','green') #does not work
-# main.option_add( '*TCombobox*Listbox*activestyle', 'underline') #does not work
 ### Barre 3 : Chargement ###
 tab3 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 notebook.add(tab3, text='Chargement') # Ajout de la barre 1 au notebook
@@ -1695,7 +1684,7 @@ def ajout_charge():
             if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
                 q = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1709,7 +1698,7 @@ def ajout_charge():
             if q!='' and q!= 0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1725,7 +1714,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1740,7 +1729,7 @@ def ajout_charge():
             if q!='' and a1!=''and q!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1754,7 +1743,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire montone '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge triangulaire montone '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1768,7 +1757,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge triangulaire antisym '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge triangulaire antisym '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1784,7 +1773,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1798,7 +1787,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1813,7 +1802,7 @@ def ajout_charge():
             if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Moment '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Moment '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1827,7 +1816,7 @@ def ajout_charge():
             if M!='' and M!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None ; a1 = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement2.get(),'Appuis Simple / Moment unif réparti '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Appuis Simple / Moment unif réparti '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1843,7 +1832,7 @@ def ajout_charge():
             if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
                 q = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1857,7 +1846,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Charge unif répartie '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1873,7 +1862,7 @@ def ajout_charge():
             if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
                 p = None ; a1 = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge unif répartie partielle '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Charge unif répartie partielle '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1887,7 +1876,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge triang croissante '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Charge triang croissante '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1901,7 +1890,7 @@ def ajout_charge():
             if q!='' and q!=0.0:
                 p = None ; a1 = None ; c1 = None ; I = None ; M = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Charge triang décroissante '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Charge triang décroissante '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1916,7 +1905,7 @@ def ajout_charge():
             if M!='' and a1!=''and M!= 0.0 and a1!= 0.0 :
                 p = None ; c1 = None ; I = None ; q = None
                 temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append([chargement.get(),chargement3.get(),'Encastrement / Moment '+str(len(liste_charges)+1),temp_charges])
+                liste_charges.append(['Encastrement / Moment '+str(len(liste_charges)+1),temp_charges])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1933,7 +1922,7 @@ def udapte_listbox_charge(index):
             i.insert(index,liste_charges[index][2]+" "+str(liste_charges[index][3]))
     Liste_listboxCharges[0].see(index)
 def renommer_charge():
-    if Liste_listboxCharges[0].curselection()!=():
+    if Liste_listboxCharges[2].curselection()!=():
         temp_nom_charges=simpledialog.askstring("Renommer ", 'Nouveau nom de la charges : "'+Liste_listboxCharges[0].get(Liste_listboxCharges[0].curselection()[0])+'" :')
         if temp_nom_charges!='':
             liste_charges[Liste_listboxCharges[0].curselection()[0]][0] = temp_nom_charges
@@ -1983,6 +1972,8 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     --> 2 CAS : s'il y a plus de 2 charges, on fait un while pour faie les calculs de chacunes de ces sous listes, on suprime leurs traces \ 
         et quand la liste copie des charges est finalement vide, on les additonnes par principe de superposition et on lance la fct lancer_graph
     """
+    # valeurs_geometriques=[geometrie.get(),geometrie2à7.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+    # valeurs_materiau = [E,Mv,m,Re,nu]
     # liste_charges_bis=[]
     # liste_charges=liste_charges_bis 
     # if len(liste_charges_bis) == 1 : # 1 CAS : la liste à 1
@@ -1991,6 +1982,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     #     if liste_charges_bis[0][0]=='2 appuis simples':
     #         if liste_charges_bis[0][1]=="Charge concentrée":  
     #             # le calcul de Clara et Agnès
+    #               plotun, plotdeux = CalculerPortique(liste_noeuds, liste_poutres)
     #             # lancer_le_graph()
     #         if liste_charges[0][1]=="Charge uniformément répartie":
                 
@@ -2063,18 +2055,12 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     # else :
     #     showerror(title='ERREUR !!!',message='Quelque chose ne va pas, relance le programme !!!')    
                     
-    # update()
-    # ttk.Progressbar()
-    #  valeurs_geometriques=[L,b,b1,b2,h,h1,R,R1,D1,D2] # liste des entrées géométriques
-    # E , m , Mv , Re et nu libre dans le programme
-    # liste_charges --> liste des charges de la forme [[str chargement.get(), str chargement2.get() ou chargement3.get(),"commentaire sur le type de chargement" ,[p,q,a1,c1,I,M]]]
 ### Lancer le Graphique ###
 def lancer_le_graph():
     donothing()
 # matplotlib.use('TkAgg')
 # from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # from matplotlib.figure import Figure
-# plotun, plotdeux = CalculerPortique(liste_noeuds, liste_poutres)
 # f = Figure(figsize=(16, 9), dpi=80)
 # a = f.add_subplot(111)
 # for i in plotun:
