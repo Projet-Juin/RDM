@@ -19,9 +19,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 # Import feuilles .py
-import Appuis_simples
+#import Appuis_simples
 import Liaison_encastrement
 import géométrie_poutre
+import classe 
 
 ### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
@@ -1671,7 +1672,16 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
 # Définition des listes pour la listbox 
 Liste_listboxCharges = []
-liste_charges=[]
+liste_charges = []
+tabl_c_concentrée = []
+tabl_c_répartie = []
+tabl_c_répartie_partielle = []
+tabl_c_triang = []
+tabl_c_triangulaire_mon = []
+tabl_c_triangulaire_antisy = []
+tabl_c_trapézoïdale_sy = []
+tabl_c_parabolique = []
+tabl_couple = []
 def ajout_charge_event(event):
     ajout_charge()
 def ajout_charge():
@@ -1682,17 +1692,15 @@ def ajout_charge():
             p = float(saisie_force_conc_1.get())
             a1 = float(saisie_a1.get())
             if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
-                q = None ; c1 = None ; I = None ; M = None
-                temp_charges=[p,q,a1,c1,I,M]
-                liste_charges.append(['Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),temp_charges])
+                VarEcrase = classe.charge_concentrée(p, a1)
+                tabl_c_concentrée.append(VarEcrase)  
+                liste_charges.append(['Appuis Simple/Charge concentrée '+str(len(liste_charges)+1), "P = ", str(tabl_c_concentrée[0].P), " ; a = ", str(tabl_c_concentrée[0].a)])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
-            if p==0 or a1==0 :
+            if p==0 or a1==0 or p=='' or a1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
-            if p=='' or a1=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de p,q,a1,c1,I et M sont : ",liste_charges)
+            print("La liste_charges est : ",liste_charges)
         if str(chargement2.get()) == 'Charge uniformément répartie' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!= 0.0:
