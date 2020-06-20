@@ -1691,16 +1691,16 @@ def ajout_charge():
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
             a1 = float(saisie_a1.get())
-            if p!='' and a1!='' and p!= 0.0 and a1!= 0.0 :
+            if p!= 0.0 and a1!= 0.0 :
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
-                liste_charges.append(['Appuis Simple/Charge concentrée '+str(len(liste_charges)+1), "P = ", str(tabl_c_concentrée[0].P), " ; a = ", str(tabl_c_concentrée[0].a)])
+                liste_charges.append(['Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[0].P , " ; a = ", tabl_c_concentrée[0].a ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
-            if p==0 or a1==0 or p=='' or a1=='' :
+            if float(saisie_force_conc_1.get())==0 or float(saisie_a1.get())==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
-            print("La liste_charges est : ",liste_charges)
+            print("La liste_charges est : ",liste_charges)                
         if str(chargement2.get()) == 'Charge uniformément répartie' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!= 0.0:
@@ -1927,7 +1927,7 @@ def udapte_listbox_charge(index):
         i.delete(index)
     if Liste_listboxCharges[0].size()!=len(liste_charges):
         for i in Liste_listboxCharges:
-            i.insert(index,liste_charges[index][2]+" "+str(liste_charges[index][3]))
+            i.insert(index,liste_charges[index][0]+" "+str(liste_charges[index][1]))
     Liste_listboxCharges[0].see(index)
 def renommer_charge():
     if Liste_listboxCharges[2].curselection()!=():
