@@ -65,6 +65,7 @@ class charge_concentrée :
         P = self.P
         # Réactions aux liaisons
         RA = -P
+        RB = 0
         
         # Efforts tranchants [N] 
         EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
@@ -110,7 +111,7 @@ class charge_répartie :
         self.q = q
         charge_répartie.nbr += 1
         
-    def charge_répartie_appuis_simples(hauteur, longueur, Igz, E, x) :
+    def charge_répartie_appuis_simples(self, hauteur, longueur, Igz, E, x) :
         q = self.q
         # Réactions aux appuis
         RA = -(q*longueur)/2
@@ -126,15 +127,10 @@ class charge_répartie :
         # Contrainte pour y = h/2 [MPa]
         ContrainteYMax = -(Mf/Igz)*(hauteur/2)
         ContrainteMax = np.amax(abs(ContrainteYMax))
-        print('contrainte max = ', ContrainteMax)
-        
-        # Contrainte pour tout y [MPa]
-        #Contrainte = np.matmul(-(Mf/Igz),y)
         
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
         DefMax = np.amax(abs(DefYMax))
-        print('DefMax', DefMax)
         
         # Flèche de la poutre
         flèche = q*x/(24*E*Igz)*((longueur**3)-2*longueur*(x**2)+(x**3))
@@ -142,10 +138,11 @@ class charge_répartie :
         
         return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
         
-    def charge_répartie_encastrement(hauteur, longueur, Igz, E, x):
+    def charge_répartie_encastrement(self, hauteur, longueur, Igz, E, x):
         q = self.q
         # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
         RA = q*longueur
+        RB = 0
         
         # Efforts tranchants [N]
         EffortTranch = RA-q*x  # EffortTranch est de type <class 'numpy.ndarray'>. 
@@ -175,7 +172,7 @@ class charge_répartie_partielle :
         self.b = b
         charge_répartie_partielle.nbr += 1
         
-    def charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_répartie_partielle_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         a = self.a
         b = self.b
@@ -232,7 +229,7 @@ class charge_triangulaire :
         self.a = a
         charge_triangulaire.nbr += 1
         
-    def charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_triangulaire_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         a = self.a
         b = longueur - a
@@ -281,7 +278,7 @@ class charge_triangulaire_monotone :
         self.q = q
         charge_triangulaire_monotone.nbr += 1
         
-    def charge_triangulaire_monotone_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_triangulaire_monotone_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         # Réactions aux appuis
         RA = -q*(longueur)/6 
@@ -314,7 +311,7 @@ class charge_triangulaire_antisymétrique :
         self.q = q
         charge_triangulaire_antisymétrique.nbr += 1
         
-    def charge_triangulaire_antisymétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_triangulaire_antisymétrique_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         # Réactions aux appuis
         RA = -q*(longueur)/6 
@@ -349,7 +346,7 @@ class charge_trapézoïdale_symétrique :
         self.l = l
         charge_trapézoïdale_symétrique.nbr += 1
         
-    def charge_trapézoïdale_symétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_trapézoïdale_symétrique_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         a = self.a
         b = self.l
@@ -406,7 +403,7 @@ class charge_parabolique :
         self.q = q
         charge_parabolique.nbr += 1
         
-    def charge_parabolique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def charge_parabolique_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         # Réactions aux appuis
         RA = -q*longueur/3 
@@ -440,7 +437,7 @@ class couple :
         self.a = a
         couple.nbr += 1
         
-    def couple_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def couple_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         C = self.C
         a = self.a
         # Réactions aux appuis
@@ -479,7 +476,7 @@ class couple :
         
         return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
         
-    def couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def couple_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         C = self.C
         a = self.a
         # Réactions aux appuis
@@ -523,7 +520,7 @@ class couple_réparti :
         self.C = C
         couple_réparti.nbr += 1
         
-    def couple_réparti_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX):
+    def couple_réparti_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         C = self.C
         # Réactions aux appuis
         RA = C
@@ -558,10 +555,11 @@ class charge_croissante :
         self.q = q
         charge_croissante.nbr += 1
         
-    def charge_croissante_encastrement(hauteur, longueur, Igz, E, x):
+    def charge_croissante_encastrement(self, hauteur, longueur, Igz, E, x):
         q = self.q
         # Réactions aux appuis 
         RA = -q*longueur/2
+        RB = 0
         
         # Efforts tranchants [N]
         EffortTranch = RA*((x**2)/(longueur**2)-1)  # EffortTranch est de type <class 'numpy.ndarray'>. 
@@ -590,10 +588,11 @@ class charge_décroissante :
         self.q = q
         charge_décroissante.nbr += 1
         
-    def charge_décroissante_encastrement(hauteur, longueur, Igz, E, x):
+    def charge_décroissante_encastrement(self, hauteur, longueur, Igz, E, x):
         q = self.q
         # Réactions aux appuis 
         RA = -q*longueur/2
+        RB = 0
         
         # Efforts tranchants [N]
         EffortTranch = q*((longueur-x)**2)/(2*longueur)

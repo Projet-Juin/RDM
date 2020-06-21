@@ -38,7 +38,7 @@ dernierj = classe.charge_concentrée.nbr
 #     DefMax += DefMaxt
 #     FlècheMax += FlècheMaxt
 
-for j in range(dernierj) :
+for j in range(classe.charge_concentrée.nbr) :
     print(j)
     [RAt, RBt, EffortTrancht, Mft, ContrainteYMaxt, ContrainteMaxt, DefYMaxt, DefMaxt, flèchet, FlècheMaxt] = tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
     conversion = np.array([RAt, RBt, EffortTrancht, Mft, ContrainteYMaxt, ContrainteMaxt, DefYMaxt, DefMaxt, flèchet, FlècheMaxt])
