@@ -4,7 +4,8 @@ Created on Mon Jun 15 17:24:39 2020
 
 @author: Clara
 """
-
+import numpy as np
+import matplotlib.pyplot as plt
 
 class charge_concentrée :
     nbr = 0
@@ -12,6 +13,52 @@ class charge_concentrée :
         self.P = P
         self.a = a
         charge_concentrée.nbr += 1
+    
+    def charge_concentrée(self, hauteur, longueur, Igz, E, x, NbrePointsX):
+        a = self.a
+        b = longueur - self.b
+        P = self.P
+        # Réactions aux appuis
+        RA = -(P*b)/longueur
+        RB = -(P*a)/longueur
+        
+        # Efforts tranchants [N] 
+        EffortTranch = np.linspace(0, 0, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] < a :
+                EffortTranch[i] = -RA
+            elif x[i] > a :
+                EffortTranch[i] = RB
+            else :
+                EffortTranch[i] = 0
+        
+        # Moment Fléchissant [N.mm] 
+        Mf = np.linspace(0, 0, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] < a :
+                Mf[i] = RA*x[i]
+            elif x[i] >= a :
+                Mf[i] = RB*(longueur-x[i])
+        
+        # Contrainte pour y = h/2 [MPa]
+        ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+        ContrainteMax = np.amax(abs(ContrainteYMax))
+        print('ContrainteMax', ContrainteMax)
+        
+        # Déformation pour y = h/2 [SD]
+        DefYMax = ContrainteYMax/E
+        DefMax = np.amax(abs(DefYMax))
+        print('DefMax', DefMax)
+        
+        # Flèche de la poutre
+        flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                flèche[i] = -(P/(E*Igz*longueur))*((b/6)*(x[i]**3)+a*(longueur*a/2-(a**2)/6-(longueur**2)/3)*x[i])
+            elif x[i] > a :
+                flèche[i] = -P*a/(E*Igz*longueur)*(-(x[i]**3)/6+longueur*(x[i]**2)/2+(-(a**2)/6-(longueur**2)/3)*x[i]+((a**2)*longueur)/6)
+        FlècheMax = np.amin(flèche)
+        print('flèche max : ',FlècheMax)
         
 class charge_répartie :
     nbr = 0
