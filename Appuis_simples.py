@@ -586,11 +586,11 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            
+            flèche[i]=0
         elif x[i] > a and x[i] <= (a+b):
-             
+             flèche[i]=0
         elif x[i] > (a+b) :
-          
+          flèche[i]=0
     flèche = 0*x #pas de flèche encore
     FlècheMax = np.amin(flèche)
 

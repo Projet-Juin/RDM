@@ -19,7 +19,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 # Import feuilles .py
-#import Appuis_simples
+import Appuis_simples
 import Liaison_encastrement
 import géométrie_poutre
 import classe 
@@ -1942,31 +1942,38 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
     global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, \
     tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois
-
-    if len(tabl_c_concentrée) != 0:
-        print(tabl_c_concentrée)
-    if len(tabl_c_répartie) != 0:
-        print(tabl_c_répartie)
-    if len(tabl_c_répartie_partielle) != 0:
-        print(tabl_c_triang)
-    if len(tabl_c_triang) != 0:
-        print()
-    if len(tabl_c_triangulaire_mon) != 0:
-        print(tabl_c_triangulaire_mon)
-    if len(tabl_c_triangulaire_antisy) != 0:
-        print(tabl_c_triangulaire_antisy)
-    if len(tabl_c_trapézoïdale_sy) != 0:
-        print(tabl_c_trapézoïdale_sy)
-    if len(tabl_c_parabolique) != 0:
-        printtabl_c_parabolique
-    if len(tabl_couple) != 0:
-        print(tabl_couple)
-    if len(tabl_couple_réparti) != 0:
-        print(tabl_couple_réparti)
-    if len(tabl_c_décrois) != 0:
-        print(tabl_c_décrois)
-    if len(tabl_c_crois) != 0:
-        print(tabl_c_crois)
+    if str(chargement.get()) == '2 appuis simples' :
+        if len(tabl_c_concentrée) != 0:
+            
+            print(tabl_c_concentrée[0].P, tabl_c_concentrée[0].a)
+        if len(tabl_c_répartie) != 0:
+            print(tabl_c_répartie)
+        if len(tabl_c_répartie_partielle) != 0:
+            print(tabl_c_répartie_partielle)
+        if len(tabl_c_triang) != 0:
+            print(tabl_c_triang)
+        if len(tabl_c_triangulaire_mon) != 0:
+            print(tabl_c_triangulaire_mon)
+        if len(tabl_c_triangulaire_antisy) != 0:
+            print(tabl_c_triangulaire_antisy)
+        if len(tabl_c_trapézoïdale_sy) != 0:
+            print(tabl_c_trapézoïdale_sy)
+        if len(tabl_c_parabolique) != 0:
+            print(tabl_c_parabolique)
+        if len(tabl_couple) != 0:
+            print(tabl_couple)
+        if len(tabl_couple_réparti) != 0:
+            print(tabl_couple_réparti)
+    elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
+        if len(tabl_c_concentrée) != 0:
+            
+            print(tabl_c_concentrée[0].P, tabl_c_concentrée[0].a)
+        if len(tabl_c_répartie) != 0:
+            print(tabl_c_répartie)
+        if len(tabl_c_crois) != 0:
+            print(tabl_c_crois)
+        if len(tabl_couple) != 0:
+            print(tabl_couple)
 """
     #Vérifier si les conditions de la RDM sont respectées
     if valeurs_geometriques[0] != None and valeurs_geometriques[1] != None :
