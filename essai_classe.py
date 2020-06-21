@@ -6,17 +6,10 @@ Created on Sat Jun 20 12:51:09 2020
 """
 import classe 
 
-charge_concentrée = []
+tab_charge_concentrée = []
 a1 = 1
 a2 = 2
 salut = classe.charge_concentrée(a1, a2)
-charge_concentrée.append(salut)
-print(salut.P)
-print(charge_concentrée[0].P)
-print(charge_concentrée[0].a)
-
-salut = classe.charge_concentrée(a1+5,a2+5)
-charge_concentrée.append(salut)
-print(salut.P)
-print(charge_concentrée[1].P)
-print(charge_concentrée[1].a)
+tab_charge_concentrée.append(salut)
+nbr = charge_concentrée.nbr
+print(nbr)
