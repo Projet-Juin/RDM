@@ -1710,7 +1710,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie[nbr].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge répartie '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie[nbr-1].q ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1724,7 +1724,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, I)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie_partielle[nbr].q , " ; c1 = ", tabl_c_répartie_partielle[nbr].a , " ; l = ", tabl_c_répartie_partielle[nbr].l, "]"]])
+                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie_partielle[nbr-1].q , " ; c1 = ", tabl_c_répartie_partielle[nbr-1].a , " ; l = ", tabl_c_répartie_partielle[nbr-1].l, "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1737,7 +1737,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire(q, a1)
                 tabl_c_triang.append(VarEcrase) 
                 nbr = classe.charge_triangulaire.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triang[nbr].q , " ; a1 = ", tabl_c_triang[nbr].a ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triang[nbr-1].q , " ; a1 = ", tabl_c_triang[nbr-1].a ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1749,7 +1749,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_monotone(q)
                 tabl_c_triangulaire_mon.append(VarEcrase)
                 nbr = classe.charge_triangulaire_monotone.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_mon[nbr].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_mon[nbr-1].q ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1761,7 +1761,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_antisymétrique(q)
                 tabl_c_triangulaire_antisy.append(VarEcrase)
                 nbr = classe.charge_triangulaire_antisymétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_antisy[nbr].q , "]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_antisy[nbr-1].q , "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1775,7 +1775,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, I)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 nbr = classe.charge_trapézoïdale_symétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_trapézoïdale_sy[nbr].q , " ; c1 = ", tabl_c_trapézoïdale_sy[nbr].a , " ; l = ", tabl_c_trapézoïdale_sy[nbr].l ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_trapézoïdale_sy[nbr-1].q , " ; c1 = ", tabl_c_trapézoïdale_sy[nbr-1].a , " ; l = ", tabl_c_trapézoïdale_sy[nbr-1].l ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1787,7 +1787,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_parabolique(q)
                 tabl_c_parabolique.append(VarEcrase)
                 nbr = classe.charge_parabolique.nbr
-                liste_charges.append(['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_parabolique[nbr].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_parabolique[nbr-1].q ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1800,7 +1800,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple[nbr].C , " ; a1 = ", tabl_couple[nbr].a ,"]"]])
+                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple[nbr-1].C , " ; a1 = ", tabl_couple[nbr-1].a ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1812,7 +1812,7 @@ def ajout_charge():
                 VarEcrase = classe.couple_réparti(M)
                 tabl_couple_réparti.append(VarEcrase)
                 nbr = classe.couple_réparti.nbr
-                liste_charges.append(['Appuis Simple / Couple réparti '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple_réparti[nbr].C ,"]"]])
+                liste_charges.append(['Appuis Simple / Couple réparti '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple_réparti[nbr-1].C ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1826,7 +1826,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 nbr = classe.charge_concentrée.nbr
-                liste_charges.append(['Encastrement / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[nbr].P , " ; a1 = ", tabl_c_concentrée[nbr].a ,"]"]])
+                liste_charges.append(['Encastrement / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[nbr-1].P , " ; a1 = ", tabl_c_concentrée[nbr-1].a ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1838,7 +1838,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Encastrement / Charge répartie '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie[nbr].q ,"]"]])
+                liste_charges.append(['Encastrement / Charge répartie '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie[nbr-1].q ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1852,7 +1852,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, I)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Encastrement / Charge répartie partielle '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie_partielle[nbr].q , " ; c1 = ", tabl_c_répartie_partielle[nbr].a , " ; l = ", tabl_c_répartie_partielle[nbr].l, "]"]])
+                liste_charges.append(['Encastrement / Charge répartie partielle '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie_partielle[nbr-1].q , " ; c1 = ", tabl_c_répartie_partielle[nbr-1].a , " ; l = ", tabl_c_répartie_partielle[nbr-1].l, "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1864,7 +1864,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_croissante(q)
                 tabl_c_crois.append(VarEcrase)
                 nbr = classe.charge_croissante.nbr
-                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_crois[nbr].q , "]"]])
+                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_crois[nbr-1].q , "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1876,7 +1876,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_décroissante(q)
                 tabl_c_décrois.append(VarEcrase)
                 nbr = classe.charge_décroissante.nbr
-                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr].q , "]"]])
+                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr-1].q , "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1889,7 +1889,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1),[ "[M = ", tabl_couple[nbr].C , " ; a1 = ", tabl_couple[nbr].a ,"]"]])
+                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1),[ "[M = ", tabl_couple[nbr-1].C , " ; a1 = ", tabl_couple[nbr-1].a ,"]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
