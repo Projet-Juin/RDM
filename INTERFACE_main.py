@@ -1944,7 +1944,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0:
-            
+            Appuis_simples.charge_concentrée()
             print(tabl_c_concentrée[0].P, tabl_c_concentrée[0].a)
         if len(tabl_c_répartie) != 0:
             print(tabl_c_répartie)

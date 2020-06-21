@@ -52,7 +52,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
             flèche[i] = -(P/(E*Igz*longueur))*((b/6)*(x[i]**3)+a*(longueur*a/2-(a**2)/6-(longueur**2)/3)*x[i])
         elif x[i] > a :
             flèche[i] = -P*a/(E*Igz*longueur)*(-(x[i]**3)/6+longueur*(x[i]**2)/2+(-(a**2)/6-(longueur**2)/3)*x[i]+((a**2)*longueur)/6)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -101,8 +101,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     RB = -(q*longueur)/2
     
     # Efforts tranchants [N]
-    EffortTranch = -((-q*longueur/2) + q*x) # EffortTranch est de type <class 'numpy.ndarray'>. 
-    # En tant qu'instances de classe, il possède donc des attributs et méthodes
+    EffortTranch = -((-q*longueur/2) + q*x)
     
     # Moment Fléchissant [N.mm]
     Mf = -q*(longueur-x)*(x/2)
@@ -122,7 +121,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) :
     
     # Flèche de la poutre
     flèche = q*x/(24*E*Igz)*((longueur**3)-2*longueur*(x**2)+(x**3))
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -213,7 +212,7 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
             flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
             flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
 
     plt.figure(1) #Graphe effort tranchant
     plt.xlabel("x [mm]") 
@@ -294,7 +293,7 @@ def charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x,
             flèche[i] = q*x[i]*((a**2)*((2*longueur-a)**2)-2*a*(2*longueur-a)*(x[i]**2)+longueur*(x[i]**3))/(24*E*Igz*longueur)
         elif x[i] > a :
             flèche[i] = q*a**2*(longueur-x[i])*(4*longueur*x[i]-2*x[i]**2-a**2)/(24*E*Igz*longueur)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -374,7 +373,7 @@ def charge_triangulaire(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, 
             flèche[i] = q*x[i]*(3*(x[i]**4)+a*(longueur+b)*(7*longueur**2-3*b**2-10*x[i]**2))/(360*E*Igz*a)
         elif x[i] > a :
             flèche[i] = q*(longueur-x[i])*(3*((longueur-x[i])**4)+b*(longueur+a)*(7*longueur**2-3*a**2-10*(longueur-x[i])**2))/(360*E*Igz*b)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -440,7 +439,7 @@ def charge_triangulaire_monotone(hauteur, longueur, Igz, E, LimElast, q, x, Nbre
     
     # Flèche de la poutre
     flèche = q*x*(longueur**2-x**2)*(7*longueur**2-3*x**2)/(360*E*Igz*longueur)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -505,7 +504,7 @@ def charge_triangulaire_antisymétrique(hauteur, longueur, Igz, E, LimElast, q, 
     
     # Flèche de la poutre
     flèche = -q*x*(6*(x**4)-15*longueur*(x**3)+10*longueur**2*x**2-(longueur**4))/(360*E*Igz*longueur)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -592,7 +591,7 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
         elif x[i] > (a+b) :
           flèche[i]=0
     flèche = 0*x #pas de flèche encore
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
 
     plt.figure(1) #Graphe effort tranchant
     plt.xlabel("x [mm]") 

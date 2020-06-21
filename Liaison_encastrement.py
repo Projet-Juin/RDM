@@ -50,7 +50,7 @@ def charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a
             flèche[i] = -RA*(x[i]**2)/(6*E*Igz)*(3*a-x[i])  #-(RA/(E*Igz))*((x[i]**3)/6+a*(x[i]**2)/2)
         elif x[i] > a :
             flèche[i] = -RA*(a**2)/(6*E*Igz)*(3*x[i]-a) #-(RA/(E*Igz))*((3/2)*(a**2)*x[i]-(5/6)*(a**3))
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -117,7 +117,7 @@ def charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x):
     
     # Flèche de la poutre
     flèche = q*(((longueur-x)**4)+4*(longueur**3)*x-(longueur**4))/(24*E*Igz)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -183,7 +183,7 @@ def charge_croissante(hauteur, longueur, Igz, E, LimElast, q, x):
     
     # Flèche de la poutre
     flèche = q*(x**2)*(20*(longueur**3)-10*longueur**2*x+(x**3))/(120*E*Igz*longueur)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
@@ -247,7 +247,7 @@ def charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x):
     
     # Flèche de la poutre
     flèche = q*(4*(longueur**5)-5*(longueur**4)*(longueur-x)+((longueur-x)**5))/(120*E*Igz*longueur)
-    FlècheMax = np.amin(flèche)
+    FlècheMax = np.amax(abs(flèche))
     print('flèche max : ',FlècheMax)
     
     plt.figure(1) #Graphe effort tranchant
