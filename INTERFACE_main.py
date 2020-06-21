@@ -1952,8 +1952,8 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0:
             for j in range(class.charge_concentrée.nbr):
-                tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-            print(tabl_c_concentrée[0].P, tabl_c_concentrée[0].a)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] += tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                
         if len(tabl_c_répartie) != 0:
             print(tabl_c_répartie)
         if len(tabl_c_répartie_partielle) != 0:

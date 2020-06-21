@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import classe
 import géométrie_poutre
+import Appuis_simples
 
 # LES IMPUTS SONT :
 
@@ -27,14 +28,13 @@ géométrie = 'carré'
     # plus tard dans le projet, on pourrait importer une base de données pour faire en sorte qu'avec la seule connaissance du matériau, le logiciel pourrait en déduire automatiquement E, la masse volumque etc...
 
 (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
-print(Igz)
 
     # Forces appliquées [N.mm]
 q = -200
 P = -200
 a = 600
 c = 500
-b = longueur - a - c
+b = longueur - a 
     
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
 NbrePointsX = 101
@@ -44,8 +44,8 @@ y = np.linspace(0, hauteur, NbrePointsY)
 
 # LES CALCULS :
 
-a = classe.charge_concentrée(P,a)
-a.charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+# a = classe.charge_concentrée(P,a)
+# a.charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
 
 # fonction que l'on pourra appeler qui s'occupe de calculer différentes données d'une poutre qui subit seulement une charge répartie
     
@@ -53,9 +53,10 @@ a.charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
 #GrapheEffortTranchCR, GrapheMfCR, GrapheContrainteYMaxCR, GrapheDefYMaxCR, GrapheFlècheCR) = \
 #Appuis_simples.charge_répartie(hauteur, longueur, Igz, E, LimElast, q, x) 
   
-#(RACC, RBCC, EffortTranchCC, MfCC, ContrainteYMaxCC, ContrainteMaxCC, DefYMaxCC, DefMaxCC, flècheCC, FlècheMaxCC, \
-#GrapheEffortTranchCC, GrapheMfCC, GrapheContrainteYMaxCC, GrapheDefYMaxCC, GrapheFlècheCC) = \
-#Appuis_simples.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+(RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax) = Appuis_simples.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+(RA1, RB1, EffortTranch1, Mf1, ContrainteYMax1, ContrainteMax1, DefYMax1, DefMax1, flèche1, FlècheMax1) = Appuis_simples.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)
+print("RA = ", RA + RA1, "RB = ", RB+RB1, "ContrainteMax = ", ContrainteMax+ContrainteMax1, "DefMax = ", DefMax+DefMax1, "FlècheMax = ", FlècheMax+FlècheMax1)
+    
 
 #(RACCE, EffortTranchCCE, MfCCE, ContrainteYMaxCCE, ContrainteMaxCCE, DefYMaxCCE, DefMaxCCE, flècheCCE, FlècheMaxCCE) = \
 #Liaison_encastrement.charge_concentrée(hauteur, longueur, Igz, E, LimElast, P, x, NbrePointsX, a, b)

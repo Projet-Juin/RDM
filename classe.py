@@ -57,6 +57,8 @@ class charge_concentrée :
                 flèche[i] = -P*a/(E*Igz*longueur)*(-(x[i]**3)/6+longueur*(x[i]**2)/2+(-(a**2)/6-(longueur**2)/3)*x[i]+((a**2)*longueur)/6)
         FlècheMax = np.amax(abs(flèche))
         
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
+        
     def charge_concentrée_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         a = self.a
         b = longueur - self.a
@@ -100,6 +102,8 @@ class charge_concentrée :
                 flèche[i] = -RA*(a**2)/(6*E*Igz)*(3*x[i]-a) #-(RA/(E*Igz))*((3/2)*(a**2)*x[i]-(5/6)*(a**3))
         FlècheMax = np.amax(abs(flèche))
         
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
+        
 class charge_répartie :
     nbr = 0
     def __init__(self, q): 
@@ -136,6 +140,8 @@ class charge_répartie :
         flèche = q*x/(24*E*Igz)*((longueur**3)-2*longueur*(x**2)+(x**3))
         FlècheMax = np.amax(abs(flèche))
         
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
+        
     def charge_répartie_encastrement(hauteur, longueur, Igz, E, x):
         q = self.q
         # Réactions aux appuis (à améliorer quand y aura plus de 2 appuis)
@@ -158,6 +164,8 @@ class charge_répartie :
         # Flèche de la poutre
         flèche = q*(((longueur-x)**4)+4*(longueur**3)*x-(longueur**4))/(24*E*Igz)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
         
 class charge_répartie_partielle :
     nbr = 0
@@ -215,6 +223,7 @@ class charge_répartie_partielle :
                 flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
         FlècheMax = np.amax(abs(flèche))
 
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
         
 class charge_triangulaire :
     nbr = 0
@@ -264,6 +273,7 @@ class charge_triangulaire :
                 flèche[i] = q*(longueur-x[i])*(3*((longueur-x[i])**4)+b*(longueur+a)*(7*longueur**2-3*a**2-10*(longueur-x[i])**2))/(360*E*Igz*b)
         FlècheMax = np.amax(abs(flèche))
         
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
         
 class charge_triangulaire_monotone :
     nbr = 0
@@ -294,6 +304,8 @@ class charge_triangulaire_monotone :
         # Flèche de la poutre
         flèche = q*x*(longueur**2-x**2)*(7*longueur**2-3*x**2)/(360*E*Igz*longueur)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class charge_triangulaire_antisymétrique :
@@ -325,6 +337,8 @@ class charge_triangulaire_antisymétrique :
         # Flèche de la poutre
         flèche = -q*x*(6*(x**4)-15*longueur*(x**3)+10*longueur**2*x**2-(longueur**4))/(360*E*Igz*longueur)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class charge_trapézoïdale_symétrique :
@@ -382,6 +396,8 @@ class charge_trapézoïdale_symétrique :
               flèche[i]=0
         flèche = 0*x #pas de flèche encore
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class charge_parabolique :
@@ -413,6 +429,8 @@ class charge_parabolique :
         # Flèche de la poutre
         flèche = -q/(3*(longueur**2)*E*Igz)*((x**6)/30-2*longueur*(x**5)/20+(longueur**3)*(x**3)/6-(longueur**5)/10*x)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class couple :
@@ -459,6 +477,8 @@ class couple :
                 flèche[i] = C*((x[i]**3)-3*longueur*x[i]**2+(2*longueur**2+3*a**2)*x[i]-3*(a**2)*longueur)/(6*E*Igz*longueur)
         FlècheMax = np.amax(abs(flèche))
         
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
+        
     def couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX):
         C = self.C
         a = self.a
@@ -493,6 +513,8 @@ class couple :
             elif x[i] > a :
                 flèche[i] = -C*a*(x[i]-a/2)/(E*Igz)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class couple_réparti :
@@ -526,6 +548,8 @@ class couple_réparti :
         # Flèche de la poutre
         flèche = 0*x
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
         
 class charge_croissante :
@@ -556,6 +580,8 @@ class charge_croissante :
         # Flèche de la poutre
         flèche = q*(x**2)*(20*(longueur**3)-10*longueur**2*x+(x**3))/(120*E*Igz*longueur)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
 
 class charge_décroissante :
@@ -586,5 +612,7 @@ class charge_décroissante :
         # Flèche de la poutre
         flèche = q*(4*(longueur**5)-5*(longueur**4)*(longueur-x)+((longueur-x)**5))/(120*E*Igz*longueur)
         FlècheMax = np.amax(abs(flèche))
+        
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax
 
     
