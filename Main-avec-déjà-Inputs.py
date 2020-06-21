@@ -8,6 +8,7 @@ Created on Mon Jun  8 20:17:14 2020
 import numpy as np
 import matplotlib.pyplot as plt
 import classe
+import géométrie_poutre
 
 # LES IMPUTS SONT :
 
@@ -25,9 +26,8 @@ LimElast = 40
 géométrie = 'carré'
     # plus tard dans le projet, on pourrait importer une base de données pour faire en sorte qu'avec la seule connaissance du matériau, le logiciel pourrait en déduire automatiquement E, la masse volumque etc...
 
-#(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
-Masse = largeur*hauteur*longueur*MasseVol*(10^(-6))
-Igz = (largeur *(pow(hauteur,3)))/12
+(Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
+print(Igz)
 
     # Forces appliquées [N.mm]
 q = -200

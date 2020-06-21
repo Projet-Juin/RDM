@@ -19,8 +19,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 # Import feuilles .py
-import Appuis_simples
-import Liaison_encastrement
 import géométrie_poutre
 import classe 
 
@@ -1940,11 +1938,21 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire():
 
 def calcul(): # Effectue le calcul sur le bouton calcul
     # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
-    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, \
-    tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois
+    # valeurs_materiau = [E,Mv,m,Re,nu]
+    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois
+    longueur = valeurs_geometriques[0]
+    hauteur = valeurs_geometriques[4]
+    largeur = valeurs_geometriques[1]
+    E = valeurs_materiau[0]
+    MasseVol = valeurs_materiau[1]
+    (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
+            # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
+    NbrePointsX = 101
+    x = np.linspace(0, longueur, NbrePointsX)
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0:
-            Appuis_simples.charge_concentrée()
+            for j in range(class.charge_concentrée.nbr):
+                tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
             print(tabl_c_concentrée[0].P, tabl_c_concentrée[0].a)
         if len(tabl_c_répartie) != 0:
             print(tabl_c_répartie)
@@ -1985,9 +1993,8 @@ on travaille sur la copie d'une liste :
 """
 
 
-
     # valeurs_geometriques=[geometrie.get(),geometrie2à7.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
-    # valeurs_materiau = [E,Mv,m,Re,nu]
+
     # liste_charges_bis=[]
     # liste_charges=liste_charges_bis 
     # if len(liste_charges_bis) == 1 : # 1 CAS : la liste à 1
