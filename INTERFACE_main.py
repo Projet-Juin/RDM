@@ -1939,7 +1939,7 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire():
 def calcul(): # Effectue le calcul sur le bouton calcul
     # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
     # valeurs_materiau = [E,Mv,m,Re,nu]
-    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois
+    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois, valeurs_geometriques
     longueur = valeurs_geometriques[0]
     hauteur = valeurs_geometriques[4]
     largeur = valeurs_geometriques[1]
@@ -1953,171 +1953,99 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_concentrée = Somme_c_concentrée + conversion
         if len(tabl_c_répartie) != 0:
             for j in range(classe.charge_répartie.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_répartie[j].charge_répartie_appuis_simples(hauteur, longueur, Igz, E, x)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie[j].charge_répartie_appuis_simples(hauteur, longueur, Igz, E, x)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie = Somme_c_répartie + conversion
         if len(tabl_c_répartie_partielle) != 0:
             for j in range(classe.charge_répartie_partielle.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_répartie_partielle[j].charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie_partielle = Somme_c_répartie_partielle + conversion
         if len(tabl_c_triang) != 0:
             for j in range(classe.charge_triangulaire.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_triang[j].charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triang[j].charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triang = Somme_c_triang + conversion
         if len(tabl_c_triangulaire_mon) != 0:
             for j in range(classe.charge_triangulaire_monotone.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_triangulaire_mon[j].charge_triangulaire_monotone_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_mon[j].charge_triangulaire_monotone_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triangulaire_mon = Somme_c_triangulaire_mon + conversion
         if len(tabl_c_triangulaire_antisy) != 0:
             for j in range(classe.charge_triangulaire_antisymétrique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_triangulaire_antisy[j].charge_triangulaire_antisymétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_antisy[j].charge_triangulaire_antisymétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triangulaire_antisy = Somme_c_triangulaire_antisy + conversion
         if len(tabl_c_trapézoïdale_sy) != 0:
             for j in range(classe.charge_trapézoïdale_symétrique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_trapézoïdale_sy[j].charge_trapézoïdale_symétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_trapézoïdale_sy[j].charge_trapézoïdale_symétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_trapézoïdale_sy = Somme_c_trapézoïdale_sy + conversion
         if len(tabl_c_parabolique) != 0:
             for j in range(classe.charge_parabolique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_parabolique[j].charge_parabolique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_parabolique[j].charge_parabolique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_parabolique = Somme_c_parabolique + conversion
         if len(tabl_couple) != 0:
             for j in range(classe.couple.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_couple[j].couple_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
         if len(tabl_couple_réparti) != 0:
             for j in range(classe.couple_réparti.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_couple_réparti[j].couple_réparti_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple_réparti[j].couple_réparti_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple_réparti = Somme_couple_réparti + conversion
+             # SOMME TOTALE :
+        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Somme_c_triang[0] + Somme_c_triangulaire_mon[0] + Somme_c_triangulaire_antisy[0] + Somme_c_trapézoïdale_sy[0] + Somme_c_parabolique[0] + Somme_couple[0] + Somme_couple_réparti[0]
+        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1] + Somme_c_triang[1] + Somme_c_triangulaire_mon[1] + Somme_c_triangulaire_antisy[1] + Somme_c_trapézoïdale_sy[1] + Somme_c_parabolique[1] + Somme_couple[1] + Somme_couple_réparti[1]
+        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2] + Somme_c_triang[2] + Somme_c_triangulaire_mon[2] + Somme_c_triangulaire_antisy[2] + Somme_c_trapézoïdale_sy[2] + Somme_c_parabolique[2] + Somme_couple[2] + Somme_couple_réparti[2]
+        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3] + Somme_c_triang[3] + Somme_c_triangulaire_mon[3] + Somme_c_triangulaire_antisy[3] + Somme_c_trapézoïdale_sy[3] + Somme_c_parabolique[3] + Somme_couple[3] + Somme_couple_réparti[3]
+        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4] + Somme_c_triang[4] + Somme_c_triangulaire_mon[4] + Somme_c_triangulaire_antisy[4] + Somme_c_trapézoïdale_sy[4] + Somme_c_parabolique[4] + Somme_couple[4] + Somme_couple_réparti[4]
+        ContrainteMaxTotal = np.amax(abs(ContrainteYMaxTotal))
+        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5] + Somme_c_triang[5] + Somme_c_triangulaire_mon[5] + Somme_c_triangulaire_antisy[5] + Somme_c_trapézoïdale_sy[5] + Somme_c_parabolique[5] + Somme_couple[5] + Somme_couple_réparti[5]
+        DefMaxTotal = np.amax(abs(DefYMaxTotal))
+        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
+        FlècheMaxTotale = np.amax(abs(flècheTotale))       
+        
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if len(tabl_c_concentrée) != 0:
             for j in range(classe.charge_concentrée.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_concentrée[j].charge_concentrée_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_concentrée = Somme_c_concentrée + conversion
         if len(tabl_c_répartie) != 0:
             for j in range(classe.charge_répartie.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_répartie[j].charge_répartie_encastrement(hauteur, longueur, Igz, E, x)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie[j].charge_répartie_encastrement(hauteur, longueur, Igz, E, x)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie = Somme_c_répartie + conversion
         if len(tabl_c_crois) != 0:
             for j in range(classe.charge_croissante.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_c_crois[j].charge_croissante_encastrement(hauteur, longueur, Igz, E, x)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_crois[j].charge_croissante_encastrement(hauteur, longueur, Igz, E, x)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Sommec_crois = Sommec_crois + conversion
         if len(tabl_couple) != 0:
             for j in range(classe.couple.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax] = tabl_couple[j].couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
-                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax])
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
-"""
-    #Vérifier si les conditions de la RDM sont respectées
-    if valeurs_geometriques[0] != None and valeurs_geometriques[1] != None :
-        verification_hypotheses_de_la_rdm_section_rectangulaire()
-on travaille sur la copie d'une liste : 
---> 1 CAS : s'il n'y a qu'une seule charge, on distingue la quelle c'est, on lance le calcul et on lance la fonction tracer le graphe
---> 2 CAS : s'il y a plus de 2 charges, on fait un while pour faie les calculs de chacunes de ces sous listes, on suprime leurs traces \ 
-    et quand la liste copie des charges est finalement vide, on les additonnes par principe de superposition et on lance la fct lancer_graph
-"""
-
-
-    # valeurs_geometriques=[geometrie.get(),geometrie2à7.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
-
-    # liste_charges_bis=[]
-    # liste_charges=liste_charges_bis 
-    # if len(liste_charges_bis) == 1 : # 1 CAS : la liste à 1
-    #     [p,q,a1,c1,I,M] = liste_charges_bis[0][2]
-    #     # plusieurs auquel cas il y a des sous listes et il faut les distingé dans le prochains cas
-    #     if liste_charges_bis[0][0]=='2 appuis simples':
-    #         if liste_charges_bis[0][1]=="Charge concentrée":  
-    #             # le calcul de Clara et Agnès
-    #               plotun, plotdeux = CalculerPortique(liste_noeuds, liste_poutres)
-    #             # lancer_le_graph()
-    #         if liste_charges[0][1]=="Charge uniformément répartie":
-                
-    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":   
-                
-    #         if liste_charges_bis[0][1]=="Charge triangulaire":
-                
-    #         if liste_charges_bis[0][1]=="Charge triangulaire monotone":
-                
-    #         if liste_charges_bis[0][1]=="Charge triangulaire antisymétrique": 
-                
-    #         if liste_charges_bis[0][1]=="Charge trapézoïdale":
-                
-    #         if liste_charges_bis[0][1]=="Charge parabolique":
-                
-    #         if liste_charges_bis[0][1]=="Moment":
-                
-    #         if liste_charges_bis[0][1]=="Moment uniformément réparti":
-                
-    #     if liste_charges_bis[0][1]=='1 encastrement et 1 bord libre':
-    #         if liste_charges_bis[0][1]=="Charge concentrée":
-                
-    #         if liste_charges_bis[0][1]=="Charge uniformément répartie":                
-                
-    #         if liste_charges_bis[0][1]=="Charge uniformément répartie partielle":           
-                
-    #         if liste_charges_bis[0][1]=="Charge triangulaire croissante":                  
-                
-    #         if liste_charges_bis[0][1]=="Charge triangulaire décroissante":
-                
-    #         if liste_charges_bis[0][1]=="Moment":
-                    
-        # elif len(liste_charges_bis) > 1 :
-        # donothing() 
-    
-    
-    #     while liste_charges_bis != [] :
-    #         if liste_charges_bis[i][0]=='2 appuis simples':
-    #             if liste_charges_bis[i][1]=="Charge concentrée":
-    #                 # ajout de la charge au calcul par principe de superposition 
-    #                 del liste_charges_bis[i]
-    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":
-                    
-    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
-                    
-    #             if liste_charges_bis[i][1]=="Charge triangulaire":
-                    
-    #             if liste_charges_bis[i][1]=="Charge triangulaire monotone":
-                    
-    #             if liste_charges_bis[i][1]=="Charge triangulaire antisymétrique":   
-                    
-    #             if liste_charges_bis[i][1]=="Charge trapézoïdale":
-                    
-    #             if liste_charges_bis[i][1]=="Charge parabolique":
-                    
-    #             if liste_charges_bis[i][1]=="Moment":
-                    
-    #             if liste_charges_bis[i][1]=="Moment uniformément réparti":
-                    
-    #         if liste_charges_bis[i][1]=='1 encastrement et 1 bord libre':
-    #             if liste_charges_bis[i][1]=="Charge concentrée":
-                    
-    #             if liste_charges_bis[i][1]=="Charge uniformément répartie":       
-                    
-    #             if liste_charges_bis[i][1]=="Charge uniformément répartie partielle":     
-                    
-    #             if liste_charges_bis[i][1]=="Charge triangulaire croissante":             
-                    
-    #             if liste_charges_bis[i][1]=="Charge triangulaire décroissante":
-                    
-    #             if liste_charges_bis[i][1]=="Moment":
-    #     lancer_le_graph()
-    #   else :
-    #     showerror(title='ERREUR',message='Aucune force n'a été ajoutée.')    
+             # SOMME TOTALE :
+        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Sommec_crois[0] + Somme_couple[0] 
+        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Sommec_crois[1] + Somme_couple[1] 
+        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Sommec_crois[2] + Somme_couple[2] 
+        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Sommec_crois[3] + Somme_couple[3] 
+        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Sommec_crois[4] + Somme_couple[4] 
+        ContrainteMaxTotal = np.amax(abs(ContrainteYMaxTotal))
+        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Sommec_crois[5] + Somme_couple[5] 
+        DefMaxTotal = np.amax(abs(DefYMaxTotal))
+        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Sommec_crois[6] + Somme_couple[6] 
+        FlècheMaxTotale = np.amax(abs(flècheTotale))  
+  
                     
 ### Lancer le Graphique ###
 def lancer_le_graph():
