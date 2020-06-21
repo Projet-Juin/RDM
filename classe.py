@@ -7,11 +7,10 @@ Created on Mon Jun 15 17:24:39 2020
 
 
 class charge_concentrée :
-    nbr = 0
+
     def __init__(self, P, a): # Notre méthode constructeur
         self.P = P
         self.a = a
-        nbr += 1  
         
 class charge_répartie :
     

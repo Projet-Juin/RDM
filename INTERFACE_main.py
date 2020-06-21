@@ -852,9 +852,9 @@ def valider_la_géométrie():
             ,saisie_longueur,saisie_largeur,saisie_largeur1,saisie_largeur2,saisie_rayon,saisie_rayon1\
                 ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
                     ,canva_tab1_labelframe2,valeurs_geometriques
-    if str(geometrie.get()) == 'Rectangle':        
+    if str(geometrie.get()) == 'Rectangle':  
+        L = float(saisie_longueur.get())
         if str(geometrie2.get()) == 'Normal':
-            L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
@@ -1685,11 +1685,12 @@ tabl_couple = []
 tabl_couple_réparti = []
 tabl_c_décrois = []
 tabl_c_crois = []
+nbr = 0
 def ajout_charge_event(event):
     ajout_charge()
 def ajout_charge():
     global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
-        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
+        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges, nbr
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
@@ -1698,6 +1699,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 liste_charges.append(['Appuis Simple / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[nbr].P , " ; a = ", tabl_c_concentrée[nbr].a ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1710,6 +1712,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 liste_charges.append(['Appuis Simple / Charge répartie '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie[nbr].q ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1726,6 +1729,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, I)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie_partielle[nbr].q , " ; c1 = ", tabl_c_répartie_partielle[nbr].a , " ; l = ", tabl_c_répartie_partielle[nbr].l, "]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1741,6 +1745,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire(q, a1)
                 tabl_c_triang.append(VarEcrase) 
                 liste_charges.append(['Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1),[ "[q = ", tabl_c_triang[nbr].q , " ; a1 = ", tabl_c_triang[nbr].a ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1755,6 +1760,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_monotone(q)
                 tabl_c_triangulaire_mon.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(len(liste_charges)+1),[ "[q = ", tabl_c_triangulaire_mon[nbr].q ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1769,6 +1775,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_antisymétrique(q)
                 tabl_c_triangulaire_antisy.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(len(liste_charges)+1),[ "[q = ", tabl_c_triangulaire_antisy[nbr].q , "]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1785,6 +1792,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, I)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1),[ "[q = ", tabl_c_trapézoïdale_sy[nbr].q , " ; c1 = ", tabl_c_trapézoïdale_sy[nbr].a , " ; l = ", tabl_c_trapézoïdale_sy[nbr].l ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1799,6 +1807,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_parabolique(q)
                 tabl_c_parabolique.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1),[ "[q = ", tabl_c_parabolique[nbr].q ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1814,6 +1823,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1),[ "[M = ", tabl_couple[nbr].C , " ; a1 = ", tabl_couple[nbr].a ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1828,6 +1838,7 @@ def ajout_charge():
                 VarEcrase = classe.couple_réparti(M)
                 tabl_couple_réparti.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / Couple réparti '+str(len(liste_charges)+1),[ "[M = ", tabl_couple_réparti[nbr].C ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1844,6 +1855,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 liste_charges.append(['Encastrement / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[nbr].P , " ; a1 = ", tabl_c_concentrée[nbr].a ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1858,6 +1870,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 liste_charges.append(['Encastrement / Charge répartie '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie[nbr].q ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1874,6 +1887,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, I)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 liste_charges.append(['Encastrement / Charge répartie partielle '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie_partielle[nbr].q , " ; c1 = ", tabl_c_répartie_partielle[nbr].a , " ; l = ", tabl_c_répartie_partielle[nbr].l, "]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1888,6 +1902,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_croissante(q)
                 tabl_c_crois.append(VarEcrase)
                 liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_crois[nbr].q , "]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1902,6 +1917,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_décroissante(q)
                 tabl_c_décrois.append(VarEcrase)
                 liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr].q , "]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1917,6 +1933,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1),[ "[M = ", tabl_couple[nbr].C , " ; a1 = ", tabl_couple[nbr].a ,"]"]])
+                nbr += 1
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1967,18 +1984,16 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire():
     #Vérifie le rapport de x4 pour la géométrie
     if (valeurs_geometriques[0])/(valeurs_geometriques[1])<=4:
         showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés \n Pour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
-### Fonction sélection du ou des calcul(s) à faire ###
+
 def calcul(): # Effectue le calcul sur le bouton calcul
     donothing() #pour le moment, fait rien
     # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
-    """
-    Vérifier si les conditions de la RDM sont respectées
-    """
+
+    #Vérifier si les conditions de la RDM sont respectées
     if valeurs_geometriques[0] != None and valeurs_geometriques[1] != None :
-        
         verification_hypotheses_de_la_rdm_section_rectangulaire()
     """
-    on travail sur la copie d'une liste : 
+    on travaille sur la copie d'une liste : 
     --> 1 CAS : s'il n'y a qu'une seule charge, on distingue la quelle c'est, on lance le calcul et on lance la fonction tracer le graphe
     --> 2 CAS : s'il y a plus de 2 charges, on fait un while pour faie les calculs de chacunes de ces sous listes, on suprime leurs traces \ 
         et quand la liste copie des charges est finalement vide, on les additonnes par principe de superposition et on lance la fct lancer_graph
@@ -2026,7 +2041,10 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 
     #         if liste_charges_bis[0][1]=="Moment":
                     
-    # if len(liste_charges_bis) != 1 :
+        # elif len(liste_charges_bis) > 1 :
+        # donothing() 
+    
+    
     #     while liste_charges_bis != [] :
     #         if liste_charges_bis[i][0]=='2 appuis simples':
     #             if liste_charges_bis[i][1]=="Charge concentrée":
@@ -2063,8 +2081,8 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                     
     #             if liste_charges_bis[i][1]=="Moment":
     #     lancer_le_graph()
-    # else :
-    #     showerror(title='ERREUR !!!',message='Quelque chose ne va pas, relance le programme !!!')    
+    #   else :
+    #     showerror(title='ERREUR',message='Aucune force n'a été ajoutée.')    
                     
 ### Lancer le Graphique ###
 def lancer_le_graph():
