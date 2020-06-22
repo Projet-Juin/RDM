@@ -1255,8 +1255,8 @@ def ajout_combobox_chargement(event):
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox3.bind("<<ComboboxSelected>>", ajout_données_chargement) 
 def ajout_données_chargement(event): # nouvelle frame où on rentre les données du chargement
-    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
-        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2
+    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_l,label_moment,\
+        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_l,saisie_moment,canva_tab3_labelframe2
     # nouveau_labelframe_chargement
     canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = "Chargement",bg=gris_5) #définit le message 1
     canva_tab3_labelframe2.place(relx=0.01,rely=0.14,relwidth=0.98, relheight=0.23) # affiche le labelframe type de section
@@ -1322,35 +1322,35 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
             label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
             label_force_rep_1.pack(fill='both')
             saisie_force_rep_1.pack(fill='both')
-            label_I.pack(fill='both')
-            saisie_I.pack(fill='both')
+            label_l.pack(fill='both')
+            saisie_l.pack(fill='both')
             label_c1.pack(fill='both')
             saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_l.insert(0, "0.0") # saisie affichage de départ
             saisie_c1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
             saisie_force_rep_1.focus() 
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            saisie_I.config(cursor='hand1')
+            saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
             # la photo de la configuration            
             canva_tab4.create_image(700,500, image=img_charge_rep_part)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
-            saisie_I.bind('<Return>',c1_next)
+            saisie_l.bind('<Return>',c1_next)
             saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire' :
@@ -1423,35 +1423,35 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge trapézoïdale' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
             label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
             label_force_rep_1.pack(fill='both')
             saisie_force_rep_1.pack(fill='both')
-            label_I.pack(fill='both')
-            saisie_I.pack(fill='both')
+            label_l.pack(fill='both')
+            saisie_l.pack(fill='both')
             label_c1.pack(fill='both')
             saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_l.insert(0, "0.0") # saisie affichage de départ
             saisie_c1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
             saisie_force_rep_1.focus() 
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            saisie_I.config(cursor='hand1')
+            saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
             # la photo de la configuration            
             canva_tab4.create_image(700,500, image=img_charge_trapèze) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
-            saisie_I.bind('<Return>',c1_next)
+            saisie_l.bind('<Return>',c1_next)
             saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge parabolique' :
@@ -1572,35 +1572,35 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_I = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
             label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            saisie_I = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
             label_force_rep_1.pack(fill='both')
             saisie_force_rep_1.pack(fill='both')
-            label_I.pack(fill='both')
-            saisie_I.pack(fill='both')
+            label_l.pack(fill='both')
+            saisie_l.pack(fill='both')
             label_c1.pack(fill='both')
             saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-            saisie_I.insert(0, "0.0") # saisie affichage de départ
+            saisie_l.insert(0, "0.0") # saisie affichage de départ
             saisie_c1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
             saisie_force_rep_1.focus() 
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            saisie_I.config(cursor='hand1')
+            saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
             # la photo de la configuration            
             canva_tab4.create_image(700,500, image=img_charge_rep_part) 
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
-            saisie_I.bind('<Return>',c1_next)
+            saisie_l.bind('<Return>',c1_next)
             saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire croissante' :
@@ -1688,8 +1688,8 @@ tabl_c_crois = []
 def ajout_charge_event(event):
     ajout_charge()
 def ajout_charge():
-    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_I,label_moment,\
-        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_I,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
+    global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_l,label_moment,\
+        saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_l,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
@@ -1698,39 +1698,47 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 nbr = classe.charge_concentrée.nbr
-                liste_charges.append(['Appuis Simple / Charge concentrée '+str(len(liste_charges)+1)+str(nbr),[ "[P = ", tabl_c_concentrée[nbr-1].P , " ; a = ", tabl_c_concentrée[nbr-1].a ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge concentrée '+str(nbr),' [p = '+str(tabl_c_concentrée[nbr-1].P) + " ; a = "+ str(tabl_c_concentrée[nbr-1].a) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
             if float(saisie_force_conc_1.get())==0 or float(saisie_a1.get())==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')   
-            print('Stockage charge : ',classe.charge_concentrée)
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_concentrée)):
+                print(tabl_c_concentrée[i].P," - ",tabl_c_concentrée[i].a)
         elif str(chargement2.get()) == 'Charge uniformément répartie' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!= 0.0:
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie[nbr-1].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge répartie '+str(nbr)," [q = "+ str(tabl_c_répartie[nbr-1].q) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='' :
-                showerror('Erreur', 'Un champ de coordonnées est vide.')    
+                showerror('Erreur', 'Un champ de coordonnées est vide.') 
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_répartie)):
+                print(tabl_c_répartie[i].q)
         elif str(chargement2.get()) == 'Charge uniformément répartie partielle' :
             q = float(saisie_force_rep_1.get())
-            I = float(saisie_I.get())
+            l = float(saisie_l.get())
             c1 = float(saisie_c1.get())
-            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
-                VarEcrase = classe.charge_répartie_partielle(q, c1, I)
+            if q!='' and l!='' and c1!='' and q!= 0.0 and l!= 0.0 and c1!= 0.0:
+                VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_répartie_partielle[nbr-1].q , " ; c1 = ", tabl_c_répartie_partielle[nbr-1].a , " ; l = ", tabl_c_répartie_partielle[nbr-1].l, "]"]])
+                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].l), "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
-            if q==0 or I==0 or c1==0 or q=='' or I=='' or c1=='':
+            if q==0 or l==0 or c1==0 or q=='' or l=='' or c1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_répartie_partielle)):
+                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].l)
         elif str(chargement2.get()) == 'Charge triangulaire' :
             q = float(saisie_force_rep_1.get())
             a1 = float(saisie_a1.get())
@@ -1738,62 +1746,77 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire(q, a1)
                 tabl_c_triang.append(VarEcrase) 
                 nbr = classe.charge_triangulaire.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triang[nbr-1].q , " ; a1 = ", tabl_c_triang[nbr-1].a ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(nbr), "[q = "+ str(tabl_c_triang[nbr-1].q) + " ; a1 = "+ str(tabl_c_triang[nbr-1].a) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or a1==0 or q=='' or a1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_triang)):
+                print(tabl_c_triang[i].q," - ",tabl_c_triang[i].a)
         elif str(chargement2.get()) == 'Charge triangulaire monotone' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_triangulaire_monotone(q)
                 tabl_c_triangulaire_mon.append(VarEcrase)
                 nbr = classe.charge_triangulaire_monotone.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_mon[nbr-1].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(nbr), "[q = "+ str(tabl_c_triangulaire_mon[nbr-1].q) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_triangulaire_mon)):
+                print(tabl_c_triangulaire_mon[i].q)
         elif str(chargement2.get()) == 'Charge triangulaire antisymétrique' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_triangulaire_antisymétrique(q)
                 tabl_c_triangulaire_antisy.append(VarEcrase)
                 nbr = classe.charge_triangulaire_antisymétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_triangulaire_antisy[nbr-1].q , "]"]])
+                liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(nbr), "[q = "+ str(tabl_c_triangulaire_antisy[nbr-1].q) + "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.') 
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_triangulaire_antisy)):
+                print(tabl_c_triangulaire_antisy[i].q)
         elif str(chargement2.get()) == 'Charge trapézoïdale' :
             q = float(saisie_force_rep_1.get())
-            I = float(saisie_I.get())
+            l = float(saisie_l.get())
             c1 = float(saisie_c1.get())
-            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
-                VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, I)
+            if q!='' and l!='' and c1!='' and q!= 0.0 and l!= 0.0 and c1!= 0.0:
+                VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, l)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 nbr = classe.charge_trapézoïdale_symétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_trapézoïdale_sy[nbr-1].q , " ; c1 = ", tabl_c_trapézoïdale_sy[nbr-1].a , " ; l = ", tabl_c_trapézoïdale_sy[nbr-1].l ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(nbr), "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].l) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
-            if q==0 or I==0 or c1==0 or q=='' or I=='' or c1=='':
+            if q==0 or l==0 or c1==0 or q=='' or l=='' or c1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_trapézoïdale_sy)):
+                print(tabl_c_trapézoïdale_sy[i].q," - ",tabl_c_trapézoïdale_sy[i].a," - ",tabl_c_trapézoïdale_sy[i].l)
         elif str(chargement2.get()) == 'Charge parabolique' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_parabolique(q)
                 tabl_c_parabolique.append(VarEcrase)
                 nbr = classe.charge_parabolique.nbr
-                liste_charges.append(['Appuis Simple / Charge parabolique '+str(len(liste_charges)+1)+str(nbr),[ "[q = ", tabl_c_parabolique[nbr-1].q ,"]"]])
+                liste_charges.append(['Appuis Simple / Charge parabolique '+str(nbr), "[q = "+ str(tabl_c_parabolique[nbr-1].q) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide.') 
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_trapézoïdale_sy)):
+                print(tabl_c_parabolique[i].q)
         elif str(chargement2.get()) == 'Moment' :
             M = float(saisie_moment.get())
             a1 = float(saisie_a1.get())
@@ -1801,24 +1824,30 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple[nbr-1].C , " ; a1 = ", tabl_couple[nbr-1].a ,"]"]])
+                liste_charges.append(['Appuis Simple / couple '+str(nbr), "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
             if M==0 or a1==0 or M=='' or a1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_couple)):
+                print(tabl_couple[i].C," - ",tabl_couple[i].a)
         elif str(chargement2.get()) == 'Moment uniformément réparti' :    
             M = float(saisie_moment.get())
             if M!='' and M!= 0.0 :
                 VarEcrase = classe.couple_réparti(M)
                 tabl_couple_réparti.append(VarEcrase)
                 nbr = classe.couple_réparti.nbr
-                liste_charges.append(['Appuis Simple / Couple réparti '+str(len(liste_charges)+1)+str(nbr),[ "[M = ", tabl_couple_réparti[nbr-1].C ,"]"]])
+                liste_charges.append(['Appuis Simple / Couple réparti '+str(nbr), "[M = "+ str(tabl_couple_réparti[nbr-1].C) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
             if M==0 or a1==0 or M=='' or a1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_couple_réparti)):
+                print(tabl_couple_réparti[i].C)
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if str(chargement3.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
@@ -1827,62 +1856,77 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 nbr = classe.charge_concentrée.nbr
-                liste_charges.append(['Encastrement / Charge concentrée '+str(len(liste_charges)+1),[ "[P = ", tabl_c_concentrée[nbr-1].P , " ; a1 = ", tabl_c_concentrée[nbr-1].a ,"]"]])
+                liste_charges.append(['Encastrement / Charge concentrée '+str(nbr), "[P = "+ str(tabl_c_concentrée[nbr-1].P) + " ; a1 = "+ str(tabl_c_concentrée[nbr-1].a) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
             if p==0 or a1==0 or p=='' or a1=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')   
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_c_concentrée)):
+                print(tabl_c_concentrée[i].P," - ",tabl_c_concentrée[i].a)                
         elif str(chargement3.get()) == 'Charge uniformément répartie' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Encastrement / Charge répartie '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie[nbr-1].q ,"]"]])
+                liste_charges.append(['Encastrement / Charge répartie '+str(nbr), "[q = "+ str(tabl_c_répartie[nbr-1].q) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_c_répartie)):
+                print(tabl_c_répartie[i].q) 
         elif str(chargement3.get()) == 'Charge uniformément répartie partielle' :
             q = float(saisie_force_rep_1.get())
-            I = float(saisie_I.get())
+            l = float(saisie_l.get())
             c1 = float(saisie_c1.get())
-            if q!='' and I!='' and c1!='' and q!= 0.0 and I!= 0.0 and c1!= 0.0:
-                VarEcrase = classe.charge_répartie_partielle(q, c1, I)
+            if q!='' and l!='' and c1!='' and q!= 0.0 and l!= 0.0 and c1!= 0.0:
+                VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Encastrement / Charge répartie partielle '+str(len(liste_charges)+1),[ "[q = ", tabl_c_répartie_partielle[nbr-1].q , " ; c1 = ", tabl_c_répartie_partielle[nbr-1].a , " ; l = ", tabl_c_répartie_partielle[nbr-1].l, "]"]])
+                liste_charges.append(['Encastrement / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].l)+ "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
-            if q==0 or I==0 or c1==0 or q=='' or I=='' or c1=='':
+            if q==0 or l==0 or c1==0 or q=='' or l=='' or c1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_c_répartie_partielle)):
+                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].l)
         elif str(chargement3.get()) == 'Charge triangulaire croissante' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_croissante(q)
                 tabl_c_crois.append(VarEcrase)
                 nbr = classe.charge_croissante.nbr
-                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_crois[nbr-1].q , "]"]])
+                liste_charges.append(['Encastrement / Charge croissante '+str(nbr), "[q = "+ str(tabl_c_crois[nbr-1].q) + "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')       
+                showerror('Erreur', 'Un champ de coordonnées est vide.')     
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_c_crois)):
+                print(tabl_c_crois[i].q)
         elif str(chargement3.get()) == 'Charge triangulaire décroissante' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
                 VarEcrase = classe.charge_décroissante(q)
                 tabl_c_décrois.append(VarEcrase)
                 nbr = classe.charge_décroissante.nbr
-                liste_charges.append(['Encastrement / Charge décroissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr-1].q , "]"]])
+                liste_charges.append(['Encastrement / Charge décroissante '+str(nbr), "[q = "+ str(tabl_c_décrois[nbr-1].q) + "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or q=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')  
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_c_décrois)):
+                print(tabl_c_décrois[i].q)
         elif str(chargement3.get()) == 'Moment' :
             M = float(saisie_moment.get())
             a1 = float(saisie_a1.get())
@@ -1890,21 +1934,24 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(len(liste_charges)+1),[ "[M = ", tabl_couple[nbr-1].C , " ; a1 = ", tabl_couple[nbr-1].a ,"]"]])
+                liste_charges.append(['Appuis Simple / couple '+str(nbr), "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
             if M==0 or a1==0 or M=='' or a1=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')          
+                showerror('Erreur', 'Un champ de coordonnées est vide.')  
+            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
+            for i in range(len(tabl_couple)):
+                print(tabl_couple[i].C," - ",tabl_couple[i].a)
 def udapte_listbox_charge(index):    
     for i in Liste_listboxCharges:
         i.delete(index)
     if Liste_listboxCharges[0].size()!=len(liste_charges):
         for i in Liste_listboxCharges:
-            i.insert(index,liste_charges[index][0]+" "+str(liste_charges[index][1]))
+            i.insert(index,liste_charges[index][0]+" "+liste_charges[index][1])
     Liste_listboxCharges[0].see(index)
 def renommer_charge():
-    if Liste_listboxCharges[2].curselection()!=():
+    if Liste_listboxCharges[0].curselection()!=():
         temp_nom_charges=simpledialog.askstring("Renommer ", 'Nouveau nom de la charges : "'+Liste_listboxCharges[0].get(Liste_listboxCharges[0].curselection()[0])+'" :')
         if temp_nom_charges!='':
             liste_charges[Liste_listboxCharges[0].curselection()[0]][0] = temp_nom_charges
@@ -1921,8 +1968,8 @@ def a1_next(event): #fct pour passer à a1
     saisie_a1.focus()
     saisie_a1.select_range(0,END)
 def I_next(event): #fct pour passer à I
-    saisie_I.focus()
-    saisie_I.select_range(0,END)
+    saisie_l.focus()
+    saisie_l.select_range(0,END)
 def c1_next(event): #fct pour passer à c1
     saisie_c1.focus()
     saisie_c1.select_range(0,END)
@@ -2019,50 +2066,10 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
         flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
         FlècheMaxTotale = np.amax(abs(flècheTotale))      
-        
-        # plt.figure(1) #Graphe effort tranchant
-        # plt.xlabel("x [mm]") 
-        # plt.ylabel("T [N]") 
-        # plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
-        # GrapheEffortTranchCC = plt.plot(x,EffortTranchTotal) #Le tracé en lui-même
-        # plt.show()
-        
-        # plt.figure(2) #Graphe moment fléchissant
-        # plt.xlabel("x [mm]") 
-        # plt.ylabel("Mf [N.mm]") 
-        # plt.title("Tracé du Moment Fléchissant") 
-        # GrapheMfCC = plt.plot(x,MfTotal)
-        # plt.show()
-        
-        # plt.figure(3) #Graphe de la contrainte en y = h/2
-        # plt.xlabel("x [mm]") 
-        # plt.ylabel("Contrainte Max [MPa]") 
-        # plt.title("Tracé de la Contrainte Maximale") 
-        # GrapheContrainteYMaxCC = plt.plot(x,ContrainteYMaxTotal) 
-        # plt.show()
-        
-        # plt.figure(4) #Graphe de la déformation en y = h/2
-        # plt.xlabel("x [mm]") 
-        # plt.ylabel("Déformation Max [SD]") 
-        # plt.title("Tracé de la Déformation Maximale") 
-        # GrapheDefYMaxCC = plt.plot(x,DefYMaxTotal) 
-        # plt.show()
-        
-        # plt.figure(5) #Graphe de la flèche
-        # plt.xlabel("x [mm]") 
-        # plt.ylabel("flèche [mm]") 
-        # plt.title("Tracé de la flèche") 
-        # GrapheFlècheCC = plt.plot(x,flècheTotale,label="flèche")
-        # plt.show()
-        # Dire dans la console calculs lancées
+        # Dire dans la console calculs lancées        
         print('Calculs appuis simple lancés')
         # Lancer les graphs
-        lancer_le_graph_globaux()
-        lancer_le_graph_Effort()
-        lancer_le_graph_Mf()
-        lancer_le_graph_Contrainte()
-        lancer_le_graph_Déformation()
-        lancer_le_graph_Flèche()
+        rafraichir()
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if len(tabl_c_concentrée) != 0:
             for j in range(classe.charge_concentrée.nbr):
@@ -2098,41 +2105,65 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         # Dire dans la console calculs lancées
         print('Calculs encastrement lancés')
         # Lancer les graphs
-        lancer_le_graph_globaux()
-        lancer_le_graph_Effort()
-        lancer_le_graph_Mf()
-        lancer_le_graph_Contrainte()
-        lancer_le_graph_Déformation()
-        lancer_le_graph_Flèche()           
-### Lancer les Graphique ###
+        rafraichir()          
+### Lancer les Graphiques ###
 import matplotlib
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 # Implement the default Matplotlib key bindings.
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
+def rafraichir():
+    global canva_tab5, canva_tab6, canva_tab7, canva_tab8, canva_tab9, canva_tab10
+    canva_tab5.destroy()
+    canva_tab5 = Canvas(tab5, bg=gris_5)
+    canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    canva_tab6.destroy()
+    canva_tab6 = Canvas(tab6, bg=gris_5)
+    canva_tab6.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    canva_tab7.destroy()
+    canva_tab7 = Canvas(tab7, bg=gris_5)
+    canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    canva_tab8.destroy()
+    canva_tab8 = Canvas(tab8, bg=gris_5)
+    canva_tab8.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    canva_tab9.destroy()
+    canva_tab9 = Canvas(tab9, bg=gris_5)
+    canva_tab9.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    canva_tab10.destroy()
+    canva_tab10 = Canvas(tab10, bg=gris_5)
+    canva_tab10.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    lancer_le_graph_globaux()
+    lancer_le_graph_Effort()
+    lancer_le_graph_Mf()
+    lancer_le_graph_Contrainte()
+    lancer_le_graph_Déformation()
+    lancer_le_graph_Flèche()    
+
 def lancer_le_graph_globaux():
     ## Effort tranchant graphique  ###
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(231)
     a.plot(x,EffortTranchTotal)
-    a.set_xlabel('x')
-    a.set_ylabel('Effort Tranchant')
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Effort Tranchant T [N]')
+    # a.plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
     b = f.add_subplot(232)
     b.plot(x,MfTotal)
-    b.set_xlabel('x')
-    b.set_ylabel('Moment fléchissant')
+    b.set_xlabel('x [mm]')
+    b.set_ylabel('Moment fléchissant Mf [N.mm]')
+    # b.plt.title("Tracé du Moment Fléchissant") 
     c = f.add_subplot(233)
     c.plot(x,ContrainteYMaxTotal)
-    c.set_xlabel('x')
-    c.set_ylabel('Contrainte Maximum')  
+    c.set_xlabel('x [mm]')
+    c.set_ylabel('Contrainte Maximum [MPa]')  
     d = f.add_subplot(234)
     d.plot(x,DefYMaxTotal)
-    d.set_xlabel('x')
-    d.set_ylabel('Déformation Maximum')
+    d.set_xlabel('x [mm]')
+    d.set_ylabel('Déformation Maximum [SD]')
     e = f.add_subplot(235)
     e.plot(x,flècheTotale)
-    e.set_xlabel('x')
-    e.set_ylabel('Flèche Maximum')
+    e.set_xlabel('x [mm]')
+    e.set_ylabel('Flèche Maximum [mm]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab5)
     canvas.draw()
@@ -2148,8 +2179,9 @@ def lancer_le_graph_Effort():
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(111)
     a.plot(x,EffortTranchTotal)
-    a.set_xlabel('x')
-    a.set_ylabel('Effort Tranchant')
+    # a.plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Effort Tranchant T [N]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab6)
     canvas.draw()
@@ -2165,8 +2197,9 @@ def lancer_le_graph_Mf():
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(111)
     a.plot(x,MfTotal)
-    a.set_xlabel('x')
-    a.set_ylabel('Moment fléchissant')
+    # a.plt.title("Tracé du Moment Fléchissant") 
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Moment fléchissant Mf [N.mm]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab7)
     canvas.draw()
@@ -2182,8 +2215,8 @@ def lancer_le_graph_Contrainte():
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(111)
     a.plot(x,ContrainteYMaxTotal)
-    a.set_xlabel('x')
-    a.set_ylabel('Contrainte Maximum')
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Contrainte Maximum [MPa]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab8)
     canvas.draw()
@@ -2199,8 +2232,8 @@ def lancer_le_graph_Déformation():
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(111)
     a.plot(x,DefYMaxTotal)
-    a.set_xlabel('x')
-    a.set_ylabel('Déformation Maximum')
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Déformation Maximum [SD]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab9)
     canvas.draw()
@@ -2216,8 +2249,8 @@ def lancer_le_graph_Flèche():
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(111)
     a.plot(x,flècheTotale)
-    a.set_xlabel('x')
-    a.set_ylabel('Flèche Maximum')
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Flèche Maximum [mm]')
      # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab10)
     canvas.draw()
@@ -2261,7 +2294,6 @@ img5 = PhotoImage(file='images/statistics.png')
 notebook2.add(tab5, text='Graphiques Globaux',image=img5, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab5 = Canvas(tab5, bg=gris_5)
 canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
-
 """
 Fin
 """
