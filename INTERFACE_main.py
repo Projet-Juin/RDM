@@ -2011,7 +2011,42 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5] + Somme_c_triang[5] + Somme_c_triangulaire_mon[5] + Somme_c_triangulaire_antisy[5] + Somme_c_trapézoïdale_sy[5] + Somme_c_parabolique[5] + Somme_couple[5] + Somme_couple_réparti[5]
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
         flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
-        FlècheMaxTotale = np.amax(abs(flècheTotale))       
+        FlècheMaxTotale = np.amax(abs(flècheTotale))      
+        
+        plt.figure(1) #Graphe effort tranchant
+        plt.xlabel("x [mm]") 
+        plt.ylabel("T [N]") 
+        plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+        GrapheEffortTranchCC = plt.plot(x,EffortTranchTotal) #Le tracé en lui-même
+        plt.show()
+        
+        plt.figure(2) #Graphe moment fléchissant
+        plt.xlabel("x [mm]") 
+        plt.ylabel("Mf [N.mm]") 
+        plt.title("Tracé du Moment Fléchissant") 
+        GrapheMfCC = plt.plot(x,MfTotal)
+        plt.show()
+        
+        plt.figure(3) #Graphe de la contrainte en y = h/2
+        plt.xlabel("x [mm]") 
+        plt.ylabel("Contrainte Max [MPa]") 
+        plt.title("Tracé de la Contrainte Maximale") 
+        GrapheContrainteYMaxCC = plt.plot(x,ContrainteYMaxTotal) 
+        plt.show()
+        
+        plt.figure(4) #Graphe de la déformation en y = h/2
+        plt.xlabel("x [mm]") 
+        plt.ylabel("Déformation Max [SD]") 
+        plt.title("Tracé de la Déformation Maximale") 
+        GrapheDefYMaxCC = plt.plot(x,DefYMaxTotal) 
+        plt.show()
+        
+        plt.figure(5) #Graphe de la flèche
+        plt.xlabel("x [mm]") 
+        plt.ylabel("flèche [mm]") 
+        plt.title("Tracé de la flèche") 
+        GrapheFlècheCC = plt.plot(x,flècheTotale,label="flèche")
+        plt.show()
         
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if len(tabl_c_concentrée) != 0:
@@ -2069,7 +2104,7 @@ def lancer_le_graph():
 # canva_tab5.add(canvasgraph)
 
 # Bouton Calculer #
-bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul)
+bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul())
 bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
 """
 Fin
