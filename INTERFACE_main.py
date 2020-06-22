@@ -1239,8 +1239,8 @@ def ajout_combobox_chargement(event):
         chargement2 = StringVar()
         canva_tab3_labelframe1_Combobox2 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement2 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
-                                "Charge triangulaire", "Charge triangulaire monotone", "Charge triangulaire antisymétrique",\
-                                    "Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
+                                "Charge uniformément répartie partielle proche des appuis","Charge triangulaire", "Charge triangulaire monotone",\
+                                    "Charge triangulaire antisymétrique","Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
         canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -1320,6 +1320,40 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
+            # messages des inputs
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
+            # saisie des inputs
+            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
+            # Placement des items sur la grille
+            label_force_rep_1.pack(fill='both')
+            saisie_force_rep_1.pack(fill='both')
+            label_l.pack(fill='both')
+            saisie_l.pack(fill='both')
+            label_c1.pack(fill='both')
+            saisie_c1.pack(fill='both')
+            # saisie affichage de départ
+            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
+            saisie_l.insert(0, "0.0") # saisie affichage de départ
+            saisie_c1.insert(0, "0.0") # saisie affichage de départ
+            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
+            saisie_force_rep_1.focus() 
+            saisie_force_rep_1.select_range(0,END)
+            # main au dessus de la case
+            saisie_force_rep_1.config(cursor='hand1')
+            saisie_l.config(cursor='hand1')
+            saisie_c1.config(cursor='hand1')
+            # la photo de la configuration            
+            canva_tab4.create_image(700,500, image=img_charge_rep_part)             
+            # lancement retour des touches
+            saisie_force_rep_1.bind('<Return>',I_next)
+            saisie_l.bind('<Return>',c1_next)
+            saisie_c1.bind('<Return>',ajout_charge_event)
+            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
+        if str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
             label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
@@ -1739,6 +1773,23 @@ def ajout_charge():
             print('Stockage charge : ',chargement.get()," - ",chargement2.get())
             for i in range(len(tabl_c_répartie_partielle)):
                 print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)
+        elif str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
+            q = float(saisie_force_rep_1.get())
+            l = float(saisie_l.get())
+            c1 = float(saisie_c1.get())
+            # if q!='' and l!='' and c1!='' and q!= 0.0 and l!= 0.0 and c1!= 0.0:
+            #     VarEcrase = classe.charge_répartie_partielle(q, c1, l)
+            #     tabl_c_répartie_partielle.append(VarEcrase) 
+            #     nbr = classe.charge_répartie_partielle.nbr
+            #     liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]"])
+            #     udapte_listbox_charge(len(liste_charges)-1)
+            #     saisie_force_rep_1.focus()
+            #     saisie_force_rep_1.select_range(0,END)
+            # if q==0 or l==0 or c1==0 or q=='' or l=='' or c1=='':
+            #     showerror('Erreur', 'Un champ de coordonnées est vide.')
+            # print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            # for i in range(len(tabl_c_répartie_partielle)):
+            #     print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)       
         elif str(chargement2.get()) == 'Charge triangulaire' :
             q = float(saisie_force_rep_1.get())
             a1 = float(saisie_a1.get())
