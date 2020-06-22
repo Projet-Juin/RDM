@@ -6,75 +6,103 @@ Created on Wed Jun 10 18:02:26 2020
 """
 import math
 
-def géométrie_poutre(hauteur, longueur, largeur, MasseVol):
-    
-    Masse = largeur*hauteur*longueur*MasseVol*(10^(-6))
-    Igz = (largeur *(pow(hauteur,3)))/12
-    # if géométrie == 'carré' :
-    #     S = a**2
-    #     Igz = (S**2)/12 #[mm^4]
-        
-    # elif géométrie == 'carré vide' :
-    #     S = A**2 - a**2
-    #     Igz = ((A**4)-(a**4))/12
-        
-    # elif géométrie == 'rectangle' :
-    #     S = hauteur*largeur
-    #     Igz = (largeur *(pow(hauteur,3)))/12
-    
-    # elif géométrie == 'rectangle vide' :
-    #     S = hauteur*largeur - phauteur*plargeur
-    #     Igz = ((largeur*(hauteur**3)) - plargeur*(phauteur**3))/12
-        
-    # elif géométrie == 'I' :
-    #     S = hauteur*largeur - phauteur*(largeur-plargeur)
-    #     Igz = (largeur*(hauteur**3)-(phauteur**3)*(largeur-plargeur)/12
-    
-    return Masse, Igz
-        
-    # elif géométrie == 'T' :
-    #     S = hauteur*largeur - phauteur*(largeur-plargeur)
-    #     Igz = ((largeur**2)*(hauteur**4) + phauteur*(largeur-plargeur)*((phauteur**3)*(largeur-plargeur)+6*largeur*(hauteur**2)*(phauteur**2)-4*largeur*(hauteur**3)*phauteur-4*largeur*hauteur*(phauteur**3)))/(12*S)
-        
-    # elif géométrie == 'L' :
-    #     S = hauteur*largeur - phauteur*(largeur-plargeur)
-    #     Igz = ((largeur-plargeur)*(4*largeur*hauteur*((hauteur-phauteur)**3)-((hauteur-phauteur)**3)*(largeur-plargeur)*(3*(hauteur-phauteur)+4*phauteur)-6*((hauteur-phauteur)**2)*plargeur*(hauteur**2)-4*plargeur*(hauteur**3)*phauteur)-(hauteur**4)*plargeur*(4*largeur-3*plargeur))/(12*S)
+def carré(L, b) :
+    S = b**2
+    Igz = pow(b,4)/12
+    volume = S*L
+    return Igz, L, b, volume
 
-    # elif géométrie == 'Z' :
-    #     S = hauteur*largeur - phauteur*(largeur-plargeur)
-    #     Igz = (largeur*(hauteur**3)-(phauteur**3)*(largeur-plargeur))/12
-        
-    # elif géométrie == 'triangle' :
-    #     S = hauteur*largeur/2
-    #     Igz = largeur*(hauteur**3)/36
-        
-    # elif géométrie == 'cercle' :
-    #     S = (math.pi * diamètre**2)/4
-    #     Igz = (math.pi * (diamètre**4)) / 64
-        
-    # elif géométrie == 'anneau' :
-    #     S = (math.pi * (diamètre**2 - pdiamètre**2)/4
-    #     Igz = (math.pi * (diamètre**4)-(pdiamètre**4))/64
-        
-    # elif géométrie == 'demi cercle' :
-    #     S = (math.pi * (diamètre**2))/8
-    #     Igz = (diamètre**4)*((math.pi/8)-8/(9*math.pi))/16
-        
-    # elif géométrie == 'quart cercle' :
-    #     S = (math.pi*((diamètre/2)**2))/8
-    #     Igz = ((diamètre/2)**4)*((math.pi/8)-8/(9*math.pi))/2
-        
-# #    elif géométrie == 'ellipse' :
-#         S = (math.pi*largeur*hauteur)/4
-#         Igz = (math.pi*largeur*(hauteur**2))/65
-        
-    # elif géométrie == 'croix' :
-    #     S = 2*plargeur*hauteur - plargeur**2
-    #     Igz = (plargeur*(hauteur**3)+(plargeur**3)*hauteur-(plargeur**4))/12
-        
-    # elif géométrie == 'losange' :
-    #     S = hauteur**2/2
-    #     Igz = (hauteur**4)/48
+def carré_creux(L, b, b1) :
+    S = b**2 - b1**2
+    Igz = ((b**4)-(b1**4))/12
+    volume = S*L
+    return Igz, L, b, volume
+
+def rectangle(L, b, h) :
+    S = h*b
+    Igz = (b *(pow(h,3)))/12
+    volume = S*L
+    return Igz, L, h, volume
+
+def rectangle_creux(L, b, h, b1, h1) :
+    S = h*b - h1*b1
+    Igz = ((b*(h**3)) - b1*(h1**3))/12
+    volume = S*L
+    return Igz, L, h, volume
+
+def I(L, b, h, b1, b2, h1) :
+    S = h1*(b - b1 - b2) + h*(b1 + b2)
+    Igz =  (2*b*(h1**3)+((h**3)-(h1**3))*(b1 + b2)) / 24
+    volume = S*L
+    return Igz, L, h, volume
+
+def T(L, b, h, b1, h1) :
+    S = b1*h - h1*(b1 - b)
+    Igz =  (b*(h1**3)+((h**3)-(h1**3))*b1) / 12
+    volume = S*L
+    return Igz, L, h, volume
+
+def L(L, b, h, b1, h1) :
+    S = h*b1 - h1*(b1-b)
+    Igz = (b*(h1**3)+((h**3)-(h1**3))*b1) / 12
+    volume = S*L
+    return Igz, L, h, volume
+
+def Z(L, b, h, b1, b2, h1) :
+    S =  h1*(b-b1-b2)+h*(b1+b2)
+    Igz = (2*b*(h1**3)+((h**3)-(h1**3))*(b1+b2)) / 24
+    volume = S*L
+    return Igz, L, h, volume
+
+def triangle_rectangle(L, b, h) :
+    S = h*b/2
+    Igz = b*(h**3)/36
+    volume = S*L
+    return Igz, L, h, volume
+
+def cercle(L, R) :
+    S = math.pi * R**2
+    Igz = math.pi* (R**4) / 4
+    volume = S*L
+    return Igz, L, 2*R, volume
+
+def cercle_creux(L, R, R1) :
+    S = math.pi * (R**2 - R1**2)
+    Igz = math.pi*((R**4)-(R1**4)) / 4
+    volume = S*L
+    return Igz, L, 2*R, volume
+
+def demi_cercle(L, R) :
+    S = math.pi*(R**2)/2
+    Igz =  (R**4)*((math.pi/8)-(8/(9*math.pi)))
+    volume = S*L
+    return Igz, L, R, volume
+
+def quart_cercle(L, R) :
+    S = (math.pi*((R)**2))/4
+    Igz = (R**4)*((math.pi/8) - (8/(9*math.pi))) / 2
+    volume = S*L
+    return Igz, L, R, volume
+
+def ovale(L, D2, D1) :
+    S = (math.pi*D1*D2) / 4
+    Igz = (math.pi*D1*(D2**3)) / 64
+    volume = S*L
+    return Igz, L, D1, volume
+
+def croix(L, b, h) :
+    S = 2*b*h - b**2
+    Igz = (b*(h**3)+(b**3)*h-(b**4))/12
+    volume = S*L
+    return Igz, L, h, volume
+
+def losange(L, D2, D1) :
+    S = D1*D2 / 2
+    Igz = (D1**3)*D2 / 48
+    volume = S*L
+    return Igz, L, D1, volume
+
+
         
 
 

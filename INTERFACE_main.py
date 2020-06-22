@@ -857,15 +857,13 @@ def valider_la_géométrie():
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
-                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.rectangle(L, b, h)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
-            if L==0 or b==0 or h==0 :
+            if L==0 or b==0 or h==0 or L=='' or b=='' or h=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            if L=='' or b=='' or h=='' :
-                showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie2.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie2.get()) == 'Creux':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
@@ -873,43 +871,43 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())    
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
-                b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.rectangle_creux(L, b, h, b1, h1) 
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' or h=='' or h1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie2.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
     if str(geometrie.get()) == 'Carré':
         if str(geometrie3.get()) == 'Normal':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())            
             if L!='' and b!='' and L!=0.0 and b!=0.0:
-                b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie3.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.carré(L, b)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie3.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie3.get()) == 'Creux':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             b1 = float(saisie_largeur1.get())            
             if L!='' and b!='' and b1!='' and L!=0.0 and b!=0.0 and b1!=0.0 :
-                b2=None ; h=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie3.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.carré_creux(L, b, b1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie3.get(),") :",valeurs_geometriques)            
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])            
     if str(geometrie.get()) == 'Forme':
         if str(geometrie4.get()) == 'I':
             L = float(saisie_longueur.get())
@@ -919,15 +917,15 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
-                R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.I(L, b, h, b1, b2, h1) 
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' or h=='' or h1=='' or b2=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie4.get()) == 'T':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
@@ -935,15 +933,15 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())            
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 :
-                b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.T(L, b, h, b1, h1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' or h=='' or h1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie4.get()) == 'L':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
@@ -951,15 +949,15 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0:
-                b2=None; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.L(L, b, h, b1, h1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' or h=='' or h1=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie4.get()) == 'Z':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
@@ -968,127 +966,127 @@ def valider_la_géométrie():
             h = float(saisie_hauteur.get())
             h1 = float(saisie_hauteur1.get())
             if L!='' and b!='' and b1!='' and h!='' and h1!='' and b2!=''and L!=0.0 and b!=0.0 and b1!=0.0 and h!=0.0 and h1!=0.0 and b2!=0.0:
-                R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.Z(L, b, h, b1, b2, h1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or b1==0 or h==0 or h1==0 or b2==0:
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or b1=='' or h=='' or h1=='' or b2=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie4.get()) == 'Croix':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
-                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie4.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.croix(L, b, h)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or h=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie4.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
     if str(geometrie.get()) == 'Triangle':
         if str(geometrie5.get()) == 'Rectangle':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             h = float(saisie_hauteur.get())
             if L!='' and b!='' and h!='' and L!=0.0 and b!=0.0 and h!=0.0 :
-                b1=None ; b2=None ; h1=None ; R=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie5.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.triangle_rectangle(L, b, h)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or b==0 or h==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or b=='' or h=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie5.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
     if str(geometrie.get()) == 'Cercle':
         if str(geometrie6.get()) == 'Normal':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.cercle(L, R) 
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or R=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie6.get()) == 'Creux':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             R1 = float(saisie_rayon1.get())
             if L!='' and R!='' and R1!='' and L!=0.0 and R!=0.0 and R1!=0.0:
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.cercle_creux(L, R, R1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 or R1==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or R=='' or R1=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie6.get()) == 'Demi Cercle':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.demi_cercle(L, R)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or R=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie6.get()) == 'Quart de Cercle':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             if L!='' and R!='' and L!=0.0 and R!=0.0 :
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R1=None ; D1=None ; D2=None
-                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.quart_cercle(L, R)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or R==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or R=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
         if str(geometrie6.get()) == 'Ovale':
             L = float(saisie_longueur.get())
             D1 = float(saisie_diagonale1.get())
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=[geometrie.get(),geometrie6.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.ovale(L, D2, D1)
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or D1=='' or D2=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
     if str(geometrie.get()) == 'Losange':
         if str(geometrie7.get()) == 'Normal':
             L = float(saisie_longueur.get())
             D1 = float(saisie_diagonale1.get())
             D2 = float(saisie_diagonale2.get())
             if L!='' and D1!='' and D2!='' and L!=0.0 and D1!=0.0 and D2!=0.0 :
-                b=None ; b1=None ; b2=None ; h=None ; h1=None ; R=None ; R1=None
-                valeurs_geometriques=[geometrie.get(),geometrie7.get(),L,b,b1,b2,h,h1,R,R1,D1,D2]
+                [Igz, L, h, volume] = géométrie_poutre.losange(L, D2, D1) 
+                valeurs_geometriques = [Igz, L, h, volume]
                 saisie_longueur.focus()
                 saisie_longueur.select_range(0,END)
             if L==0 or D1==0 or D2==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             if L=='' or D1=='' or D2=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
-            print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie7.get(),") :",valeurs_geometriques)
+            print("Igz calculé = ", valeurs_geometriques[0], "L = ", valeurs_geometriques[1], "hauteur = ", valeurs_geometriques[2], "volume = ", valeurs_geometriques[3])
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def largeur_next(event): #fct pour passer à b
     saisie_largeur.focus()
@@ -2038,23 +2036,22 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire():
         showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés ! \nPour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
 
 def calcul(): # Effectue le calcul sur le bouton calcul
-    # [geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
     # valeurs_materiau = [E,Mv,m,Re,nu]
     global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon,\
         tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, \
             tabl_c_décrois, tabl_c_crois, x, Masse, RATotal, RBTota, EffortTranchTotal, MfTotal, ContrainteYMaxTotal,\
-                ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale 
+                ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale, valeurs_geometriques, valeurs_materiau
     verification_hypotheses_de_la_rdm_section_rectangulaire()
-    longueur = L    
-    largeur = b
-    hauteur = h
+    Igz = valeurs_geometriques[0]
+    longueur = valeurs_geometriques[1]
+    hauteur = valeurs_geometriques[2]
+    volume = valeurs_geometriques[3]
     E = valeurs_materiau[0]
     MasseVol = valeurs_materiau[1]
-    (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
     NbrePointsX = 101
     x = np.linspace(0, longueur, NbrePointsX)
-    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0, 0, 0, 0, 0, 0, 0])
+    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
