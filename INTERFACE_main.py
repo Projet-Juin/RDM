@@ -179,7 +179,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Rectangle':
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly",justify='center')
-        canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Troué"]
+        canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Creux"]
         canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -187,7 +187,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Carré':
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly",justify='center')
-        canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Troué"]
+        canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Creux"]
         canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -211,7 +211,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Cercle':
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly",justify='center')
-        canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Troué","Demi Cercle","Quart de Cercle","Ovale"]
+        canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Creux","Demi Cercle","Quart de Cercle","Ovale"]
         canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -270,7 +270,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur.bind('<Return>',hauteur_next)
             saisie_hauteur.bind('<Return>',valider_la_géométrie_auto)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab1_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-        if str(geometrie2.get()) == 'Troué':
+        if str(geometrie2.get()) == 'Creux':
             # messages des inputs L,b,h
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
             label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
@@ -346,7 +346,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',valider_la_géométrie_auto)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab1_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-        if str(geometrie3.get()) == 'Troué':
+        if str(geometrie3.get()) == 'Creux':
             # messages des inputs L,b,h
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
             label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
@@ -684,7 +684,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
             print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-        if str(geometrie6.get()) == 'Troué':
+        if str(geometrie6.get()) == 'Creux':
             # messages des inputs L,R
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
             label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R de votre poutre en mm :',bg=gris_5)
@@ -866,7 +866,7 @@ def valider_la_géométrie():
             if L=='' or b=='' or h=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie2.get(),") :",valeurs_geometriques)
-        if str(geometrie2.get()) == 'Troué':
+        if str(geometrie2.get()) == 'Creux':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             b1 = float(saisie_largeur1.get())
@@ -896,7 +896,7 @@ def valider_la_géométrie():
             if L=='' or b=='' :
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie3.get(),") :",valeurs_geometriques)
-        if str(geometrie3.get()) == 'Troué':
+        if str(geometrie3.get()) == 'Creux':
             L = float(saisie_longueur.get())
             b = float(saisie_largeur.get())
             b1 = float(saisie_largeur1.get())            
@@ -1020,7 +1020,7 @@ def valider_la_géométrie():
             if L=='' or R=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide')
             print("Les valeurs de L,b,b1,b2,h,h1,R,R1,D1 et D2 sont (config ",geometrie.get()," - ",geometrie6.get(),") :",valeurs_geometriques)
-        if str(geometrie6.get()) == 'Troué':
+        if str(geometrie6.get()) == 'Creux':
             L = float(saisie_longueur.get())
             R = float(saisie_rayon.get())
             R1 = float(saisie_rayon1.get())
@@ -1730,7 +1730,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].l), "]"])
+                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1738,7 +1738,7 @@ def ajout_charge():
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             print('Stockage charge : ',chargement.get()," - ",chargement2.get())
             for i in range(len(tabl_c_répartie_partielle)):
-                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].l)
+                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)
         elif str(chargement2.get()) == 'Charge triangulaire' :
             q = float(saisie_force_rep_1.get())
             a1 = float(saisie_a1.get())
@@ -1793,7 +1793,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, l)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 nbr = classe.charge_trapézoïdale_symétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(nbr), "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].l) +"]"])
+                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(nbr), "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].b) +"]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1801,7 +1801,7 @@ def ajout_charge():
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             print('Stockage charge : ',chargement.get()," - ",chargement2.get())
             for i in range(len(tabl_c_trapézoïdale_sy)):
-                print(tabl_c_trapézoïdale_sy[i].q," - ",tabl_c_trapézoïdale_sy[i].a," - ",tabl_c_trapézoïdale_sy[i].l)
+                print(tabl_c_trapézoïdale_sy[i].q," - ",tabl_c_trapézoïdale_sy[i].a," - ",tabl_c_trapézoïdale_sy[i].b)
         elif str(chargement2.get()) == 'Charge parabolique' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
@@ -1888,7 +1888,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Encastrement / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].l)+ "]"])
+                liste_charges.append(['Encastrement / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b)+ "]"])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1896,7 +1896,7 @@ def ajout_charge():
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             print('Stockage charge : ',chargement.get()," - ",chargement3.get())
             for i in range(len(tabl_c_répartie_partielle)):
-                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].l)
+                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)
         elif str(chargement3.get()) == 'Charge triangulaire croissante' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
