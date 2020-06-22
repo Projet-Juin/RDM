@@ -42,6 +42,7 @@ Fin
 main=Tk()
 main.title("RDM6+++ --- Écran principal") #Titre de l'encadré
 main.config(bg=gris_7)
+main.call('wm', 'iconphoto', main._w, PhotoImage(file='images/geo.png'))
 width = main.winfo_screenwidth()  #obtient la taille de l'écran de l'utilisateur en largeur
 height = main.winfo_screenheight()  #obtient la taille de l'écran de l'utilisateur en hauteur
 main.geometry("%dx%d" % (width,height))
@@ -849,7 +850,7 @@ def valider_la_géométrie():
         ,label_hauteur,label_hauteur1,label_diagonale1,label_diagonale2\
             ,saisie_longueur,saisie_largeur,saisie_largeur1,saisie_largeur2,saisie_rayon,saisie_rayon1\
                 ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
-                    ,canva_tab1_labelframe2,valeurs_geometriques
+                    ,canva_tab1_labelframe2,valeurs_geometriques , L, b, h, b1, b2, h, h1, R, R1, D1, D2
     if str(geometrie.get()) == 'Rectangle':  
         L = float(saisie_longueur.get())
         if str(geometrie2.get()) == 'Normal':
@@ -1162,6 +1163,7 @@ saisie_limiteel.pack(fill='both',pady=5)
 label_coeffpoiss.pack(fill='both')
 saisie_coeffpoiss.pack(fill='both',pady=5)
 # Gestion du stockage des valeurs
+# valeurs_materiau = [0.0,0.0,0.0,0.0,0.0]
 def valider_le_materiau_event(event):
     valider_le_materiau()
 def valider_le_materiau():
@@ -1182,7 +1184,7 @@ def valider_le_materiau():
         showerror('Erreur', 'Un champ de coordonnées est vide')
     print("Les valeurs de E,Mv,m,Re et nu sont :",valeurs_materiau)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
-def massevol_next(evt): #fct pour passer à Mv
+def massevol_next(): #fct pour passer à Mv
     saisie_massevol.focus()
     saisie_massevol.select_range(0,END)
 def masse_next(evt): #fct pour passer à m
@@ -1195,7 +1197,7 @@ def coeffpoiss_next(evt): #fct pour passer à nu
     saisie_coeffpoiss.focus()
     saisie_coeffpoiss.select_range(0,END)
 def detection_passage2(evt): # détecte quand on doit passer d'une case à l'autre
-    saisie_young.bind('<Return>', massevol_next) # switch de E à Mv quand on tape sur entrée
+    massevol_next() # switch de E à Mv quand on tape sur entrée
     saisie_massevol.bind('<Return>', masse_next) # switch de Mv à m quand on tape sur entrée
     saisie_masse.bind('<Return>', limiteel_next) # switch de m à Re quand on tape sur entrée
     saisie_limiteel.bind('<Return>', coeffpoiss_next) # switch de Re à nu quand on tape sur entrée
@@ -1702,6 +1704,7 @@ def ajout_charge():
                 saisie_force_conc_1.select_range(0,END)
             if float(saisie_force_conc_1.get())==0 or float(saisie_a1.get())==0 :
                 showerror('Erreur', 'Un champ de coordonnées est vide.')   
+            print('Stockage charge : ',classe.charge_concentrée)
         elif str(chargement2.get()) == 'Charge uniformément répartie' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!= 0.0:
@@ -1933,23 +1936,27 @@ Fin
 ### Fonction vérif conditions de la rdm ###
 def verification_hypotheses_de_la_rdm_section_rectangulaire(): 
     #Vérifie le rapport de x4 pour la géométrie
-    if (valeurs_geometriques[0])/(valeurs_geometriques[1])<=4:
-        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés \n Pour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
+    if L/b<=4:
+        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés ! \nPour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
 
 def calcul(): # Effectue le calcul sur le bouton calcul
-    # [L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
+    # [geometrie.get(),geometrie2.get(),L,b,b1,b2,h,h1,R,R1,D1,D2] = valeurs_geometriques
     # valeurs_materiau = [E,Mv,m,Re,nu]
-    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon, tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, tabl_c_décrois, tabl_c_crois, valeurs_geometriques
-    longueur = valeurs_geometriques[0]
-    hauteur = valeurs_geometriques[4]
-    largeur = valeurs_geometriques[1]
+    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon,\
+        tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, \
+            tabl_c_décrois, tabl_c_crois, x, Masse, RATotal, RBTota, EffortTranchTotal, MfTotal, ContrainteYMaxTotal,\
+                ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale 
+    verification_hypotheses_de_la_rdm_section_rectangulaire()
+    longueur = L    
+    largeur = b
+    hauteur = h
     E = valeurs_materiau[0]
     MasseVol = valeurs_materiau[1]
     (Masse, Igz) = géométrie_poutre.géométrie_poutre(hauteur, longueur, largeur, MasseVol)
-            # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
+    # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
     NbrePointsX = 101
     x = np.linspace(0, longueur, NbrePointsX)
-    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0, 0, 0, 0, 0, 0, 0])
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
@@ -2013,41 +2020,49 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
         FlècheMaxTotale = np.amax(abs(flècheTotale))      
         
-        plt.figure(1) #Graphe effort tranchant
-        plt.xlabel("x [mm]") 
-        plt.ylabel("T [N]") 
-        plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
-        GrapheEffortTranchCC = plt.plot(x,EffortTranchTotal) #Le tracé en lui-même
-        plt.show()
+        # plt.figure(1) #Graphe effort tranchant
+        # plt.xlabel("x [mm]") 
+        # plt.ylabel("T [N]") 
+        # plt.title("Effort Tranchant le long de la poutre") #Titre de la courbe
+        # GrapheEffortTranchCC = plt.plot(x,EffortTranchTotal) #Le tracé en lui-même
+        # plt.show()
         
-        plt.figure(2) #Graphe moment fléchissant
-        plt.xlabel("x [mm]") 
-        plt.ylabel("Mf [N.mm]") 
-        plt.title("Tracé du Moment Fléchissant") 
-        GrapheMfCC = plt.plot(x,MfTotal)
-        plt.show()
+        # plt.figure(2) #Graphe moment fléchissant
+        # plt.xlabel("x [mm]") 
+        # plt.ylabel("Mf [N.mm]") 
+        # plt.title("Tracé du Moment Fléchissant") 
+        # GrapheMfCC = plt.plot(x,MfTotal)
+        # plt.show()
         
-        plt.figure(3) #Graphe de la contrainte en y = h/2
-        plt.xlabel("x [mm]") 
-        plt.ylabel("Contrainte Max [MPa]") 
-        plt.title("Tracé de la Contrainte Maximale") 
-        GrapheContrainteYMaxCC = plt.plot(x,ContrainteYMaxTotal) 
-        plt.show()
+        # plt.figure(3) #Graphe de la contrainte en y = h/2
+        # plt.xlabel("x [mm]") 
+        # plt.ylabel("Contrainte Max [MPa]") 
+        # plt.title("Tracé de la Contrainte Maximale") 
+        # GrapheContrainteYMaxCC = plt.plot(x,ContrainteYMaxTotal) 
+        # plt.show()
         
-        plt.figure(4) #Graphe de la déformation en y = h/2
-        plt.xlabel("x [mm]") 
-        plt.ylabel("Déformation Max [SD]") 
-        plt.title("Tracé de la Déformation Maximale") 
-        GrapheDefYMaxCC = plt.plot(x,DefYMaxTotal) 
-        plt.show()
+        # plt.figure(4) #Graphe de la déformation en y = h/2
+        # plt.xlabel("x [mm]") 
+        # plt.ylabel("Déformation Max [SD]") 
+        # plt.title("Tracé de la Déformation Maximale") 
+        # GrapheDefYMaxCC = plt.plot(x,DefYMaxTotal) 
+        # plt.show()
         
-        plt.figure(5) #Graphe de la flèche
-        plt.xlabel("x [mm]") 
-        plt.ylabel("flèche [mm]") 
-        plt.title("Tracé de la flèche") 
-        GrapheFlècheCC = plt.plot(x,flècheTotale,label="flèche")
-        plt.show()
-        
+        # plt.figure(5) #Graphe de la flèche
+        # plt.xlabel("x [mm]") 
+        # plt.ylabel("flèche [mm]") 
+        # plt.title("Tracé de la flèche") 
+        # GrapheFlècheCC = plt.plot(x,flècheTotale,label="flèche")
+        # plt.show()
+        # Dire dans la console calculs lancées
+        print('Calculs appuis simple lancés')
+        # Lancer les graphs
+        lancer_le_graph_globaux()
+        lancer_le_graph_Effort()
+        lancer_le_graph_Mf()
+        lancer_le_graph_Contrainte()
+        lancer_le_graph_Déformation()
+        lancer_le_graph_Flèche()
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if len(tabl_c_concentrée) != 0:
             for j in range(classe.charge_concentrée.nbr):
@@ -2080,31 +2095,142 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
         flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Sommec_crois[6] + Somme_couple[6] 
         FlècheMaxTotale = np.amax(abs(flècheTotale))  
-  
-                    
-### Lancer le Graphique ###
-def lancer_le_graph():
-    donothing()
-# matplotlib.use('TkAgg')
-# from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-# from matplotlib.figure import Figure
-# f = Figure(figsize=(16, 9), dpi=80)
-# a = f.add_subplot(111)
-# for i in plotun:
-#     a.plot(i[0],i[1],'-.', c="red", marker='o')
-# for j in plotdeux:
-#     a.plot(j[0],j[1])
-# a.set_xlabel('x')
-# a.set_ylabel('y')
-
-# graph = FigureCanvasTkAgg(f, master=canvasgraph)
-# graph.get_tk_widget().grid(row = 0)
-# canvas._tkcanvas.grid(row = 0)
-# canvasgraph.pack(side=CENTER)
-# canva_tab5.add(canvasgraph)
-
-# Bouton Calculer #
-bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul())
+        # Dire dans la console calculs lancées
+        print('Calculs encastrement lancés')
+        # Lancer les graphs
+        lancer_le_graph_globaux()
+        lancer_le_graph_Effort()
+        lancer_le_graph_Mf()
+        lancer_le_graph_Contrainte()
+        lancer_le_graph_Déformation()
+        lancer_le_graph_Flèche()           
+### Lancer les Graphique ###
+import matplotlib
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+# Implement the default Matplotlib key bindings.
+from matplotlib.backend_bases import key_press_handler
+from matplotlib.figure import Figure
+def lancer_le_graph_globaux():
+    ## Effort tranchant graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(231)
+    a.plot(x,EffortTranchTotal)
+    a.set_xlabel('x')
+    a.set_ylabel('Effort Tranchant')
+    b = f.add_subplot(232)
+    b.plot(x,MfTotal)
+    b.set_xlabel('x')
+    b.set_ylabel('Moment fléchissant')
+    c = f.add_subplot(233)
+    c.plot(x,ContrainteYMaxTotal)
+    c.set_xlabel('x')
+    c.set_ylabel('Contrainte Maximum')  
+    d = f.add_subplot(234)
+    d.plot(x,DefYMaxTotal)
+    d.set_xlabel('x')
+    d.set_ylabel('Déformation Maximum')
+    e = f.add_subplot(235)
+    e.plot(x,flècheTotale)
+    e.set_xlabel('x')
+    e.set_ylabel('Flèche Maximum')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab5)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab5)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+def lancer_le_graph_Effort():
+    ## Effort tranchant graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,EffortTranchTotal)
+    a.set_xlabel('x')
+    a.set_ylabel('Effort Tranchant')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab6)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab6)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+def lancer_le_graph_Mf():
+    ### Mf graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,MfTotal)
+    a.set_xlabel('x')
+    a.set_ylabel('Moment fléchissant')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab7)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab7)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)    
+def lancer_le_graph_Contrainte():
+    ### Contrainte graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,ContrainteYMaxTotal)
+    a.set_xlabel('x')
+    a.set_ylabel('Contrainte Maximum')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab8)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab8)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)    
+def lancer_le_graph_Déformation():
+    ### Déformations graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,DefYMaxTotal)
+    a.set_xlabel('x')
+    a.set_ylabel('Déformation Maximum')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab9)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab9)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)    
+def lancer_le_graph_Flèche():
+    ### Flèche graphique  ###
+    f = Figure(figsize=(16, 9), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,flècheTotale)
+    a.set_xlabel('x')
+    a.set_ylabel('Flèche Maximum')
+     # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=canva_tab10)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, canva_tab10)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)   
+    
+### Bouton Calculer ####
+bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul)
 bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
 """
 Fin
@@ -2140,22 +2266,47 @@ canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 Fin
 """
 
-### Barre 3 : Graphiques détaillés ###
+### Barre 3 : Effort Tranchant ###
+# , MfTotal, ContrainteYMaxTotal, ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale
 tab6 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img6 = PhotoImage(file='images/analysis (1).png')
-notebook2.add(tab6, text='Graphiques détaillés',image=img6, compound=LEFT) # Ajout de la barre 1 au notebook
+notebook2.add(tab6, text='Effort Tranchant',image=img6, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab6 = Canvas(tab6, bg="green")
 canva_tab6.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+### Barre 4 : Moment fléchissant ###
+tab7 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
+img7 = PhotoImage(file='images/analysis (1).png')
+notebook2.add(tab7, text='Moment fléchissant',image=img7, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab7 = Canvas(tab7, bg="green")
+canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+### Barre 5 : Contrainte pour y=h/2 ###
+tab8 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
+img8 = PhotoImage(file='images/analysis (1).png')
+notebook2.add(tab8, text='Contrainte Maximum',image=img8, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab8 = Canvas(tab8, bg="green")
+canva_tab8.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+### Barre 6 : Déformations ###
+tab9 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
+img9 = PhotoImage(file='images/analysis (1).png')
+notebook2.add(tab9, text='Déformation Maximum',image=img9, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab9 = Canvas(tab9, bg="green")
+canva_tab9.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+### Barre 7 : Flèche ###
+tab10 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
+img10 = PhotoImage(file='images/analysis (1).png')
+notebook2.add(tab10, text='Flèche Maximum',image=img10, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab10 = Canvas(tab10, bg="green")
+canva_tab10.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
 """
 
-### Barre 4 : Analyse ###
-tab7 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 7
-img7 = PhotoImage(file='images/analysis.png')
-notebook2.add(tab7, text='Analyse',image=img7, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab7 = Canvas(tab7, bg="red")
-canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+### Barre 8 : Analyse ###
+tab11 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 7
+img11 = PhotoImage(file='images/analysis.png')
+notebook2.add(tab11, text='Analyse',image=img11, compound=LEFT) # Ajout de la barre 1 au notebook
+canva_tab11 = Canvas(tab11, bg="red")
+canva_tab11.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
 """
