@@ -2030,9 +2030,9 @@ Fin
 
 ### left_canvas_2 ###
 ### Fonction vérif conditions de la rdm ###
-def verification_hypotheses_de_la_rdm_section_rectangulaire(): 
+def verification_hypotheses_de_la_rdm_section_rectangulaire(hauteur):
     #Vérifie le rapport de x4 pour la géométrie
-    if L/b<=4:
+    if L/hauteur <= 4 :
         showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés ! \nPour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
 
 def calcul(): # Effectue le calcul sur le bouton calcul
@@ -2041,11 +2041,11 @@ def calcul(): # Effectue le calcul sur le bouton calcul
         tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, \
             tabl_c_décrois, tabl_c_crois, x, Masse, RATotal, RBTota, EffortTranchTotal, MfTotal, ContrainteYMaxTotal,\
                 ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale, valeurs_geometriques, valeurs_materiau
-    verification_hypotheses_de_la_rdm_section_rectangulaire()
     Igz = valeurs_geometriques[0]
     longueur = valeurs_geometriques[1]
     hauteur = valeurs_geometriques[2]
     volume = valeurs_geometriques[3]
+    verification_hypotheses_de_la_rdm_section_rectangulaire(hauteur)
     E = valeurs_materiau[0]
     MasseVol = valeurs_materiau[1]
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
