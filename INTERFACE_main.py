@@ -2259,7 +2259,7 @@ Fin
 tab5 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 5
 img5 = PhotoImage(file='images/statistics.png')
 notebook2.add(tab5, text='Graphiques Globaux',image=img5, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab5 = Canvas(tab5, bg="blue")
+canva_tab5 = Canvas(tab5, bg=gris_5)
 canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 
 """
@@ -2271,31 +2271,31 @@ Fin
 tab6 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img6 = PhotoImage(file='images/analysis (1).png')
 notebook2.add(tab6, text='Effort Tranchant',image=img6, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab6 = Canvas(tab6, bg="green")
+canva_tab6 = Canvas(tab6, bg=gris_5)
 canva_tab6.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 4 : Moment fléchissant ###
 tab7 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img7 = PhotoImage(file='images/analysis (1).png')
 notebook2.add(tab7, text='Moment fléchissant',image=img7, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab7 = Canvas(tab7, bg="green")
+canva_tab7 = Canvas(tab7, bg=gris_5)
 canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 5 : Contrainte pour y=h/2 ###
 tab8 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img8 = PhotoImage(file='images/analysis (1).png')
 notebook2.add(tab8, text='Contrainte Maximum',image=img8, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab8 = Canvas(tab8, bg="green")
+canva_tab8 = Canvas(tab8, bg=gris_5)
 canva_tab8.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 6 : Déformations ###
 tab9 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img9 = PhotoImage(file='images/analysis (1).png')
 notebook2.add(tab9, text='Déformation Maximum',image=img9, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab9 = Canvas(tab9, bg="green")
+canva_tab9 = Canvas(tab9, bg=gris_5)
 canva_tab9.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 7 : Flèche ###
 tab10 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img10 = PhotoImage(file='images/analysis (1).png')
 notebook2.add(tab10, text='Flèche Maximum',image=img10, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab10 = Canvas(tab10, bg="green")
+canva_tab10 = Canvas(tab10, bg=gris_5)
 canva_tab10.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
@@ -2305,7 +2305,7 @@ Fin
 tab11 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 7
 img11 = PhotoImage(file='images/analysis.png')
 notebook2.add(tab11, text='Analyse',image=img11, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab11 = Canvas(tab11, bg="red")
+canva_tab11 = Canvas(tab11, bg=gris_5)
 canva_tab11.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
 Fin
