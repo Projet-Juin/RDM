@@ -1877,7 +1877,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_décroissante(q)
                 tabl_c_décrois.append(VarEcrase)
                 nbr = classe.charge_décroissante.nbr
-                liste_charges.append(['Encastrement / Charge croissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr-1].q , "]"]])
+                liste_charges.append(['Encastrement / Charge décroissante '+str(len(liste_charges)+1),[ "[q = ", tabl_c_décrois[nbr-1].q , "]"]])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
