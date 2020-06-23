@@ -435,14 +435,8 @@ class charge_trapézoïdale_symétrique :
         DefYMax = ContrainteYMax/E
         # Flèche de la poutre
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-        for i in range(NbrePointsX):
-            if x[i] <= a :
-                flèche[i]=0
-            elif x[i] > a and x[i] <= (a+b):
-                 flèche[i]=0
-            elif x[i] > (a+b) :
-              flèche[i]=0
         flèche = 0*x #pas de flèche encore
+        FlècheMax = -(q/(1920*E*Igz))*(5*longueur**2 - 4*a**2)**2
         
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
 

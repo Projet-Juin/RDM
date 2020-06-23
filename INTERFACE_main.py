@@ -1273,6 +1273,9 @@ def ajout_combobox_chargement(event):
     global chargement,chargement2,chargement3,canva_tab3_labelframe1_Combobox2,canva_tab3_labelframe1_Combobox3
     print("Sélection en cours du Combobox 1 :  index <",canva_tab3_labelframe1_Combobox1.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox1.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(chargement.get()) == '2 appuis simples':
+        liste_charges = tabl_c_concentrée = tabl_c_répartie = tabl_c_répartie_partielle = tabl_c_répartie_partielle_proche = tabl_c_triang = []
+        tabl_c_triangulaire_mon = tabl_c_triangulaire_antisy = tabl_c_trapézoïdale_sy = tabl_c_parabolique = tabl_couple = tabl_couple_réparti = tabl_c_décrois = tabl_c_crois = []
+        print("changement d'appuis, suppression des charges")
         chargement2 = StringVar()
         canva_tab3_labelframe1_Combobox2 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement2 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
@@ -1283,6 +1286,9 @@ def ajout_combobox_chargement(event):
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox2.bind("<<ComboboxSelected>>", ajout_données_chargement)
     if str(chargement.get()) == '1 encastrement et 1 bord libre':
+        liste_charges = tabl_c_concentrée = tabl_c_répartie = tabl_c_répartie_partielle = tabl_c_répartie_partielle_proche = tabl_c_triang = []
+        tabl_c_triangulaire_mon = tabl_c_triangulaire_antisy = tabl_c_trapézoïdale_sy = tabl_c_parabolique = tabl_couple = tabl_couple_réparti = tabl_c_décrois = tabl_c_crois = []
+        print("changement d'appuis, suppression des charges")
         chargement3 = StringVar()
         canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
@@ -2274,6 +2280,8 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple_réparti = Somme_couple_réparti + conversion
              # SOMME TOTALE :
+                
+        
         RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Somme_c_répartie_partielle_proche[0] + Somme_c_triang[0] + Somme_c_triangulaire_mon[0] + Somme_c_triangulaire_antisy[0] + Somme_c_trapézoïdale_sy[0] + Somme_c_parabolique[0] + Somme_couple[0] + Somme_couple_réparti[0]
         RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1] + Somme_c_répartie_partielle_proche[1] + Somme_c_triang[1] + Somme_c_triangulaire_mon[1] + Somme_c_triangulaire_antisy[1] + Somme_c_trapézoïdale_sy[1] + Somme_c_parabolique[1] + Somme_couple[1] + Somme_couple_réparti[1]
         EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2] + Somme_c_répartie_partielle_proche[2] + Somme_c_triang[2] + Somme_c_triangulaire_mon[2] + Somme_c_triangulaire_antisy[2] + Somme_c_trapézoïdale_sy[2] + Somme_c_parabolique[2] + Somme_couple[2] + Somme_couple_réparti[2]
@@ -2358,6 +2366,7 @@ def rafraichir():
     lancer_le_graph_Flèche()    
 
 def lancer_le_graph_globaux():
+    global tabl_c_trapézoïdale_sy
     ## Effort tranchant graphique  ###
     f = Figure(figsize=(16, 9), dpi=80)
     a = f.add_subplot(231)
@@ -2378,10 +2387,13 @@ def lancer_le_graph_globaux():
     d.plot(x,DefYMaxTotal)
     d.set_xlabel('x [mm]')
     d.set_ylabel('Déformation Maximum [SD]')
-    e = f.add_subplot(235)
-    e.plot(x,flècheTotale)
-    e.set_xlabel('x [mm]')
-    e.set_ylabel('Flèche Maximum [mm]')
+    if len(tabl_c_trapézoïdale_sy) != 0:
+        print("pas de flèche disponible pour le moment, car la poutre subit une charge trapézoïdale")
+    else :
+        e = f.add_subplot(235)
+        e.plot(x,flècheTotale)
+        e.set_xlabel('x [mm]')
+        e.set_ylabel('Flèche Maximum [mm]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab5)
     canvas.draw()
@@ -2463,22 +2475,26 @@ def lancer_le_graph_Déformation():
     canvas.mpl_connect("key_press_event", on_key_press)
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)    
 def lancer_le_graph_Flèche():
-    ### Flèche graphique  ###
-    f = Figure(figsize=(16, 9), dpi=80)
-    a = f.add_subplot(111)
-    a.plot(x,flècheTotale)
-    a.set_xlabel('x [mm]')
-    a.set_ylabel('Flèche Maximum [mm]')
-     # tanbouille tkinter pour afficher #
-    canvas = FigureCanvasTkAgg(f, master=canva_tab10)
-    canvas.draw()
-    toolbar = NavigationToolbar2Tk(canvas, canva_tab10)
-    toolbar.update()
-    def on_key_press(event):
-        print("you pressed {}".format(event.key))
-        key_press_handler(event, canvas, toolbar)
-    canvas.mpl_connect("key_press_event", on_key_press)
-    canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)   
+    global tabl_c_trapézoïdale_sy
+    if len(tabl_c_trapézoïdale_sy) != 0:
+        print("pas de flèche disponible pour le moment, car la poutre subit une charge trapézoïdale")
+    else :
+        ### Flèche graphique  ###
+        f = Figure(figsize=(16, 9), dpi=80)
+        a = f.add_subplot(111)
+        a.plot(x,flècheTotale)
+        a.set_xlabel('x [mm]')
+        a.set_ylabel('Flèche Maximum [mm]')
+         # tanbouille tkinter pour afficher #
+        canvas = FigureCanvasTkAgg(f, master=canva_tab10)
+        canvas.draw()
+        toolbar = NavigationToolbar2Tk(canvas, canva_tab10)
+        toolbar.update()
+        def on_key_press(event):
+            print("you pressed {}".format(event.key))
+            key_press_handler(event, canvas, toolbar)
+        canvas.mpl_connect("key_press_event", on_key_press)
+        canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)   
     
 ### Bouton Calculer ####
 bouton_calculer= Button(left_canvas2, justify='center',text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"),activebackground=gris_1,cursor='spraycan', bg=gris_3, fg ="white", command=calcul)
