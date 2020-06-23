@@ -204,9 +204,6 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         elif x[i] > a and x[i] <= (a+b):
             flèche[i] = RA/(E*Igz)*((x[i]**3)/6-(a+b/2)*(x[i]**2)/2)+q/(E*Igz)*((x[i]**4)/24-a*(x[i]**3)/6+(a**2)*(x[i]**2)/4-(a**3)*x[i]/6+(a**4)/24)
         elif x[i] > (a+b) :
-            #K5 = RA*(((a+b)**2)/2-(a+b/2)*(a+b))+q*(((a+b)**3)/6-a*((a+b)**2)/2+(a**2)*(a+b)/2-(a**3)/3)
-            #K6 = RA/(E*Igz)*(((a+b)**3)/6-(a+b/2)*((a+b)**2)/2)+q/(E*Igz)*(((a+b)**4)/24-a*((a+b)**3)/6+(a**2)*((a+b)**2)/4-(a**3)*(a+b)/6+(a**4)/24)-K5*(a+b)/(E*Igz)
-
             K5 = RA/(E*Igz)*(((a+b)**2)/2-(a+b/2)*(a+b))+q/(E*Igz)*(((a+b)**3)/6-a*((a+b)**2)/2+(a**2)*(a+b)/2-(a**3)/6)
             K6 = RA/(E*Igz)*(((a+b)**3)/6-(a+b/2)*((a+b)**2)/2)+q/(E*Igz)*(((a+b)**4)/24-a*((a+b)**3)/6+(a**2)*((a+b)**2)/4-(a**3)*(a+b)/6+(a**4)/24)-K5*(a+b)
             flèche[i] = K5*x[i]+K6
