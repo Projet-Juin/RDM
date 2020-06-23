@@ -138,8 +138,8 @@ left_canvas2=Canvas(left_frame, bg=gris_5) # encadré gauche bas
 left_frame.place(relx=0,rely=0, relwidth=0.25, relheight=1)
 right_frame.place(relx=0.25,y=0, relwidth =0.75, relheight=1)
 # placement des deux 2 canvas de left_frame
-left_canvas1.place(relx=0,rely=0,relwidth=1, relheight=0.9)
-left_canvas2.place(relx=0,rely=0.9,relwidth=1, relheight=0.1)
+left_canvas1.place(relx=0,rely=0,relwidth=1, relheight=0.92)
+left_canvas2.place(relx=0,rely=0.92,relwidth=1, relheight=0.1)
 """
 Fin
 """
@@ -162,14 +162,15 @@ canva_tab1 = Canvas(tab1, bg=gris_5)
 canva_tab1.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab1_labelframe1 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Type de section',bg =gris_5) #définit le message 1
-canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.12) # affiche le labelframe type de section    
+canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.20) # affiche le labelframe type de section    
 # Choisir quelle est la géométrie du problème
 canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choissiez le type de géométrie de votre poutre :",bg=gris_5,font = ("Arial",10,"bold"))
 canva_tab1_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
 geometrie = StringVar()
 canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly",justify='center')
 canva_tab1_labelframe1_Combobox1['values'] = ["","Rectangle", "Carré", "Forme", "Triangle", "Cercle", "Losange"]
-canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.30) # affichage de la combobox
+canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.20) # affichage de la combobox
+# canva_tab1_labelframe1_Combobox1.pack(fill='both')
 canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 def ajout_combobox(event):
     global geometrie2,geometrie3,geometrie4,geometrie5,geometrie6,geometrie7,\
@@ -180,7 +181,7 @@ def ajout_combobox(event):
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -188,7 +189,7 @@ def ajout_combobox(event):
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
@@ -196,7 +197,7 @@ def ajout_combobox(event):
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
-        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -204,7 +205,7 @@ def ajout_combobox(event):
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox5['values'] = ["","Rectangle"]
-        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -212,7 +213,7 @@ def ajout_combobox(event):
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Creux","Demi Cercle","Quart de Cercle","Ovale"]
-        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -220,7 +221,7 @@ def ajout_combobox(event):
         geometrie7 = StringVar()
         canva_tab1_labelframe1_Combobox7 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie7 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox7['values'] = ["","Normal"]
-        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
         canva_tab1_labelframe1_Combobox7.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox7.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -232,9 +233,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
                     ,canva_tab1_labelframe2,valeurs_geometriques, canva_tab4
     # Création labelframe 2
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_5) #définit le message 2
-    canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.44) # affiche le labelframe type de section   
+    canva_tab1_labelframe2.place(relx=0.01,rely=0.21,relwidth=0.98, relheight=0.70) # affiche le labelframe type de section   
     # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
-    Button(canva_tab1_labelframe2,relief="raised",overrelief="groove", text='Valider la géométrie', font=("Tahoma", 14,"bold"), command=valider_la_géométrie, bg=gris_3,fg ="white").place(relx=0,rely=0.89,relwidth=1, relheight=0.10) # affiche le bouton valider  
+    Button(canva_tab1,relief="raised",overrelief="groove", text='Valider la géométrie', font=("Tahoma", 14,"bold"), command=valider_la_géométrie, bg=gris_3,fg ="white").place(relx=0.01,rely=0.92,relwidth=0.98, relheight=0.07) # affiche le bouton valider  
     if str(geometrie.get()) == 'Rectangle':
         if str(geometrie2.get()) == 'Normal':
             # messages des inputs L,b,h
@@ -2399,7 +2400,7 @@ def lancer_le_graph_Flèche():
     
 ### Bouton Calculer ####
 bouton_calculer= Button(left_canvas2, justify='center',text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"),activebackground=gris_1,cursor='spraycan', bg=gris_3, fg ="white", command=calcul)
-bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
+bouton_calculer.place(relx=0.5,rely=0.45,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
 bouton_calculer.configure(state=DISABLED, background=gris_5)
 """
 Fin
