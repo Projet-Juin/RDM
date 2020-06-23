@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author: Forjot Henri
+@author: Forjot Henri et Ferru Clara 
 
 Création du main
 
