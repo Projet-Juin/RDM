@@ -128,5 +128,27 @@ def ctds_de_fct(): # annonce les conditions dans lequels le programme renvois de
     label8.pack(fill='both')
     root.mainloop()
 def credit(): # annonce la version du programme, les concepteurs du programme et l'année de développement
-    donothing()
-    
+    root=Tk()
+    root.title("Solve Structure --- Crédit") #Titre de l'encadré
+    root.config(bg=gris_5)
+    root.wm_iconbitmap('images/petitlogo1.ico')
+    root.geometry("%dx%d" % (600,280))
+    label0=Label(root,justify='center',bg=gris_5,font=("Arial", 14, "bold italic"),text='Crédit')
+    label0.pack(fill='both')
+    label8=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'En partenariat avec l\'EPF, Solve Structure est programme qui à pour \nintérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.')
+    label8.pack(fill='both')
+    label2=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'L\'application a été conçu par l\'Equipe de Solve Structure :')
+    label2.pack(fill='both')
+    label4=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'Partie RDM : \nAgnès DURIEZ --- Clara FERRU --- Henri FORJOT')
+    label4.pack(fill='both')
+    label6=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'Partie Eléments finis : \nOmbline DELASSUS --- Lansana DIOMANDE --- Guillaume WEBER --- Xingyu XIA')
+    label6.pack(fill='both')
+    logo_1 = PhotoImage(file='images/EPF-couleur_crédit.png')
+    logo_2 = PhotoImage(file='images/logo_crédit.png')
+    labellogo_1=Label(root,image=logo_1)
+    labellogo_1.image = logo_1
+    labellogo_1.pack(anchor='w')
+    labellogo_2=Label(root,image=logo_2)
+    labellogo_2.image = logo_2
+    labellogo_2.pack(anchor='e')
+    root.mainloop()
