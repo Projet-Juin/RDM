@@ -1179,8 +1179,8 @@ Fin
 ### Barre 2 : Matériau ###
 tab2 = ttk.Frame(notebook) # Creation de la barre 1 de Notebook
 # notebook.add(tab2, text='Matériau') # Ajout de la barre 1 au notebook
-img2 = PhotoImage(file='images/construction-and-tools.png')
-notebook.add(tab2,text='Matériau',image=img2, compound=LEFT) # Ajout de la barre 1 au notebook
+img2 = PhotoImage(file='images/program (1).png')
+notebook.add(tab2,text='Matériau\n& Précision',image=img2, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab2=Canvas(tab2, bg=gris_5)
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
@@ -1206,7 +1206,6 @@ saisie_massevol.pack(fill='both',pady=5)
 label_limiteel.pack(fill='both')
 saisie_limiteel.pack(fill='both',pady=5)
 # Gestion du stockage des valeurs
-
 def valider_le_materiau_event(event):
     valider_le_materiau()
 def valider_le_materiau():
@@ -1262,7 +1261,6 @@ chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly",justify='center')
 canva_tab3_labelframe1_Combobox1['values'] = ["","2 appuis simples", "1 encastrement et 1 bord libre"]
 canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.30) # affichage de la combobox
-
 canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 # Choisir quelle est la charge 2 du problème
 def ajout_combobox_chargement(event):
