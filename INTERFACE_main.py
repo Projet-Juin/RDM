@@ -1260,14 +1260,14 @@ canva_tab3=Canvas(tab3, bg=gris_5)
 canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_5) #définit le message 1
-canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.12) # affiche le labelframe type de chargement    
+canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.20) # affiche le labelframe type de chargement    
 # Choisir quelle est la charge 1 du problème
 canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :",bg = gris_5,font = ("Arial",10,"bold"))
 canva_tab3_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
 chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly",justify='center')
 canva_tab3_labelframe1_Combobox1['values'] = ["","2 appuis simples", "1 encastrement et 1 bord libre"]
-canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.30) # affichage de la combobox
+canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.22) # affichage de la combobox
 canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 # Choisir quelle est la charge 2 du problème
 def ajout_combobox_chargement(event):
@@ -1279,7 +1279,7 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge uniformément répartie partielle proche des appuis","Charge triangulaire", "Charge triangulaire monotone",\
                                     "Charge triangulaire antisymétrique","Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
-        canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox2.bind("<<ComboboxSelected>>", ajout_données_chargement)
@@ -1288,7 +1288,7 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
-        canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.30) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab3_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox3.bind("<<ComboboxSelected>>", ajout_données_chargement) 
@@ -1306,9 +1306,9 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
     Liste_listboxCharges[0].place(relx=0.01,rely=0.38,relwidth=0.93, relheight=0.51)
     yDefilB['command'] = Listbox_tab3.yview
     # Apparition bouton ajouter/supprimer/renommer charge
-    Button(canva_tab3,relief="raised",overrelief="groove", text='Ajouter la charge', command=ajout_charge, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.90,relwidth=0.49, relheight=0.04)
-    Button(canva_tab3,relief="raised",overrelief="groove", text='Renommer la charge', command=renommer_charge, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.51,rely=0.90,relwidth=0.48, relheight=0.04)
-    Button(canva_tab3,relief="raised",overrelief="groove", text='Supprimer la charge', command=supprimer_charge, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.95,relwidth=0.98, relheight=0.04)
+    Button(canva_tab3,relief="raised",overrelief="groove", text='Ajouter la charge', command=ajout_charge, bg=gris_3,fg ="white", font=("Tahoma", 12,"bold")).place(relx=0.01,rely=0.90,relwidth=0.49, relheight=0.04)
+    Button(canva_tab3,relief="raised",overrelief="groove", text='Renommer la charge', command=renommer_charge, bg=gris_3,fg ="white", font=("Tahoma", 12,"bold")).place(relx=0.51,rely=0.90,relwidth=0.48, relheight=0.04)
+    Button(canva_tab3,relief="raised",overrelief="groove", text='Supprimer la charge', command=supprimer_charge, bg=gris_3,fg ="white", font=("Tahoma", 13,"bold")).place(relx=0.01,rely=0.95,relwidth=0.98, relheight=0.04)
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             # messages des inputs
