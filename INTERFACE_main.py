@@ -1821,7 +1821,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 nbr = classe.charge_concentrée.nbr
-                liste_charges.append(['Appuis Simple / Charge concentrée '+str(nbr),' [p = '+str(tabl_c_concentrée[nbr-1].P) + " ; a = "+ str(tabl_c_concentrée[nbr-1].a) +"]"])
+                liste_charges.append(['Charge concentrée ',str(nbr)+' [p = '+str(tabl_c_concentrée[nbr-1].P) + " ; a = "+ str(tabl_c_concentrée[nbr-1].a) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -1836,7 +1836,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie '+str(nbr)," [q = "+ str(tabl_c_répartie[nbr-1].q) +"]"])
+                liste_charges.append(['Charge répartie ',str(nbr)+" [q = "+ str(tabl_c_répartie[nbr-1].q) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1853,7 +1853,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]"])
+                liste_charges.append(['Charge répartie partielle ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1870,7 +1870,7 @@ def ajout_charge():
             #     VarEcrase = classe.charge_répartie_partielle(q, c1, l)
             #     tabl_c_répartie_partielle.append(VarEcrase) 
             #     nbr = classe.charge_répartie_partielle.nbr
-            #     liste_charges.append(['Appuis Simple / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]"])
+            #     liste_charges.append(['Charge répartie partielle proche',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]", nbr])
             #     udapte_listbox_charge(len(liste_charges)-1)
             #     saisie_force_rep_1.focus()
             #     saisie_force_rep_1.select_range(0,END)
@@ -1886,7 +1886,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire(q, a1)
                 tabl_c_triang.append(VarEcrase) 
                 nbr = classe.charge_triangulaire.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire '+str(nbr), "[q = "+ str(tabl_c_triang[nbr-1].q) + " ; a1 = "+ str(tabl_c_triang[nbr-1].a) +"]"])
+                liste_charges.append(['Charge triangulaire ',str(nbr)+ "[q = "+ str(tabl_c_triang[nbr-1].q) + " ; a1 = "+ str(tabl_c_triang[nbr-1].a) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1901,7 +1901,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_monotone(q)
                 tabl_c_triangulaire_mon.append(VarEcrase)
                 nbr = classe.charge_triangulaire_monotone.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire monotone '+str(nbr), "[q = "+ str(tabl_c_triangulaire_mon[nbr-1].q) +"]"])
+                liste_charges.append(['Charge triangulaire monotone ',str(nbr)+ "[q = "+ str(tabl_c_triangulaire_mon[nbr-1].q) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1916,7 +1916,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_triangulaire_antisymétrique(q)
                 tabl_c_triangulaire_antisy.append(VarEcrase)
                 nbr = classe.charge_triangulaire_antisymétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge triangulaire antisymétrique '+str(nbr), "[q = "+ str(tabl_c_triangulaire_antisy[nbr-1].q) + "]"])
+                liste_charges.append(['Charge triangulaire antisymétrique ',str(nbr)+ "[q = "+ str(tabl_c_triangulaire_antisy[nbr-1].q) + "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1933,7 +1933,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, l)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 nbr = classe.charge_trapézoïdale_symétrique.nbr
-                liste_charges.append(['Appuis Simple / Charge trapézoïdale '+str(nbr), "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].b) +"]"])
+                liste_charges.append(['Charge trapézoïdale ',str(nbr)+ "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].b) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1948,7 +1948,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_parabolique(q)
                 tabl_c_parabolique.append(VarEcrase)
                 nbr = classe.charge_parabolique.nbr
-                liste_charges.append(['Appuis Simple / Charge parabolique '+str(nbr), "[q = "+ str(tabl_c_parabolique[nbr-1].q) +"]"])
+                liste_charges.append(['Charge parabolique ',str(nbr)+ "[q = "+ str(tabl_c_parabolique[nbr-1].q) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1964,7 +1964,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(nbr), "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]"])
+                liste_charges.append(['Couple ',str(nbr)+ "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1979,7 +1979,7 @@ def ajout_charge():
                 VarEcrase = classe.couple_réparti(M)
                 tabl_couple_réparti.append(VarEcrase)
                 nbr = classe.couple_réparti.nbr
-                liste_charges.append(['Appuis Simple / Couple réparti '+str(nbr), "[M = "+ str(tabl_couple_réparti[nbr-1].C) +"]"])
+                liste_charges.append(['Couple réparti ',str(nbr)+ "[M = "+ str(tabl_couple_réparti[nbr-1].C) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -1996,7 +1996,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_concentrée(p, a1)
                 tabl_c_concentrée.append(VarEcrase)  
                 nbr = classe.charge_concentrée.nbr
-                liste_charges.append(['Encastrement / Charge concentrée '+str(nbr), "[P = "+ str(tabl_c_concentrée[nbr-1].P) + " ; a1 = "+ str(tabl_c_concentrée[nbr-1].a) +"]"])
+                liste_charges.append(['Charge concentrée ',str(nbr)+ "[P = "+ str(tabl_c_concentrée[nbr-1].P) + " ; a1 = "+ str(tabl_c_concentrée[nbr-1].a) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_conc_1.focus()
                 saisie_force_conc_1.select_range(0,END)
@@ -2011,7 +2011,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie(q)
                 tabl_c_répartie.append(VarEcrase)  
                 nbr = classe.charge_répartie.nbr
-                liste_charges.append(['Encastrement / Charge répartie '+str(nbr), "[q = "+ str(tabl_c_répartie[nbr-1].q) +"]"])
+                liste_charges.append(['Charge répartie ',str(nbr)+ "[q = "+ str(tabl_c_répartie[nbr-1].q) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -2028,7 +2028,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Encastrement / Charge répartie partielle '+str(nbr), "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b)+ "]"])
+                liste_charges.append(['Charge répartie partielle ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b)+ "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -2043,7 +2043,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_croissante(q)
                 tabl_c_crois.append(VarEcrase)
                 nbr = classe.charge_croissante.nbr
-                liste_charges.append(['Encastrement / Charge croissante '+str(nbr), "[q = "+ str(tabl_c_crois[nbr-1].q) + "]"])
+                liste_charges.append(['Charge croissante ',str(nbr)+"[q = "+ str(tabl_c_crois[nbr-1].q) + "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -2058,7 +2058,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_décroissante(q)
                 tabl_c_décrois.append(VarEcrase)
                 nbr = classe.charge_décroissante.nbr
-                liste_charges.append(['Encastrement / Charge décroissante '+str(nbr), "[q = "+ str(tabl_c_décrois[nbr-1].q) + "]"])
+                liste_charges.append(['Charge décroissante ',str(nbr)+"[q = "+ str(tabl_c_décrois[nbr-1].q) + "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -2074,7 +2074,7 @@ def ajout_charge():
                 VarEcrase = classe.couple(M, a1)
                 tabl_couple.append(VarEcrase)
                 nbr = classe.couple.nbr
-                liste_charges.append(['Appuis Simple / couple '+str(nbr), "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]"])
+                liste_charges.append(['Couple ',str(nbr)+ "[M = "+ str(tabl_couple[nbr-1].C) + " ; a1 = "+ str(tabl_couple[nbr-1].a) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_moment.focus()
                 saisie_moment.select_range(0,END)
@@ -2100,6 +2100,85 @@ def renommer_charge():
         showerror('Erreur', 'Aucune charge sélectionné.')
 def supprimer_charge():
     if Liste_listboxCharges[0].curselection()!=():
+        print("suppression de ", liste_charges[Liste_listboxCharges[0].curselection()[0]][0])
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge concentrée ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_concentrée[IndiceSuppr]
+            classe.charge_concentrée.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge concentrée : ")
+            for k in range(len(tabl_c_concentrée)): print(tabl_c_concentrée[k].P, tabl_c_concentrée[k].a)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_répartie[IndiceSuppr]
+            classe.charge_répartie.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_répartie.nbr, "Charge répartie : ")
+            for k in range(len(tabl_c_répartie)): print(tabl_c_répartie[k].q)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_répartie_partielle[IndiceSuppr]
+            classe.charge_répartie_partielle.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_répartie_partielle.nbr, "Charge répartie partielle : ")
+            for k in range(len(tabl_c_répartie_partielle)): print(tabl_c_répartie_partielle[k].q, tabl_c_répartie_partielle[k].a, tabl_c_répartie_partielle[k].b)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle proche' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_concentrée[IndiceSuppr]
+            classe.charge_concentrée.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge répartie partielle proche : ")
+            for k in range(len(tabl_c_concentrée)): print(tabl_c_concentrée[k].P, tabl_c_concentrée[k].a)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_triang[IndiceSuppr]
+            classe.charge_triangulaire.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire.nbr, "Charge triangulaire : ")
+            for k in range(len(tabl_c_triang)): print(tabl_c_triang[k].q, tabl_c_triang[k].a)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire monotone ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_triangulaire_mon[IndiceSuppr]
+            classe.charge_triangulaire_monotone.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire_monotone.nbr, "Charge triangulaire monotone : ")
+            for k in range(len(tabl_c_triangulaire_mon)): print(tabl_c_triangulaire_mon[k].q)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire antisymétrique ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_triangulaire_antisy[IndiceSuppr]
+            classe.charge_triangulaire_antisymétrique.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire_antisymétrique.nbr, "Charge triangulaire antisymétrique : ")
+            for k in range(len(tabl_c_triangulaire_antisy)): print(tabl_c_triangulaire_antisy[k].q)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge trapézoïdale ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_trapézoïdale_sy[IndiceSuppr]
+            classe.charge_trapézoïdale_symétrique.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_trapézoïdale_symétrique.nbr, "Charge trapézoïdale : ")
+            for k in range(len(tabl_c_trapézoïdale_sy)): print(tabl_c_trapézoïdale_sy[k].q)   
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge parabolique ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_parabolique[IndiceSuppr]
+            classe.charge_parabolique.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_parabolique.nbr, "Charge parabolique : ")
+            for k in range(len(tabl_c_parabolique)): print(tabl_c_parabolique[k].q) 
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Couple ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_couple[IndiceSuppr]
+            classe.couple.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.couple.nbr, "Couple : ")
+            for k in range(len(tabl_couple)): print(tabl_couple[k].C) 
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Couple réparti ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_couple_réparti[IndiceSuppr]
+            classe.couple_réparti.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.couple_réparti.nbr, "Couple réparti : ")
+            for k in range(len(tabl_couple_réparti)): print(tabl_couple_réparti[k].C) 
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge croissante ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_crois[IndiceSuppr]
+            classe.charge_croissante.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_croissante.nbr, "Charge croissante : ")
+            for k in range(len(tabl_c_crois)): print(tabl_c_crois[k].q) 
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge décroissante ' :
+            IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
+            del tabl_c_décrois[IndiceSuppr]
+            classe.charge_décroissante.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_décroissante.nbr, "Charge décroissante : ")
+            for k in range(len(tabl_c_décrois)): print(tabl_c_décrois[k].q) 
         del liste_charges[Liste_listboxCharges[0].curselection()[0]]
         udapte_listbox_charge(Liste_listboxCharges[0].curselection()[0])
     else:
