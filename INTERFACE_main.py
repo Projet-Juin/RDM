@@ -1215,7 +1215,7 @@ def valider_le_materiau():
     Mv = float(saisie_massevol.get())
     Re = float(saisie_limiteel.get())
     if E!='' and Re!='' :
-        valeurs_materiau = [E,Mv,m,Re]
+        valeurs_materiau = [E,Mv,Re]
         saisie_young.focus()
         saisie_young.select_range(0,END)
     if E==0 or Re==0 :
@@ -1239,7 +1239,14 @@ saisie_young.focus()
 saisie_young.select_range(0,END)
 saisie_young.bind('<Return>', detection_passage2)         
 # Bouton pour valider l'entrée des données de matériau pour rassurer l'utilisateur
-Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0,rely=0.90,relwidth=1, relheight=0.10)
+Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.35,relwidth=0.98, relheight=0.07)
+### Barre 2_bis : Précision ###
+canva_tab2_labelframe2 = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Précision',bg=gris_5) #définit le message 1
+canva_tab2_labelframe2.place(relx=0.01,rely=0.43,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
+# Gestion de la précision
+précision = DoubleVar()
+scale = Scale(canva_tab2_labelframe2,variable=précision,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=10, to=1000,resolution=0.1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Régler la précision du calcul')
+scale.pack(fill='both',anchor=CENTER)
 """
 Fin
 """
@@ -2135,13 +2142,13 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     E = valeurs_materiau[0]
     MasseVol = valeurs_materiau[1]
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
-    NbrePointsX = 101
-    x = np.linspace(0, longueur, NbrePointsX)
+    précision = 101
+    x = np.linspace(0, longueur, précision)
     Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_concentrée = Somme_c_concentrée + conversion
         if len(tabl_c_répartie) != 0:
@@ -2151,42 +2158,42 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 Somme_c_répartie = Somme_c_répartie + conversion
         if len(tabl_c_répartie_partielle) != 0:
             for j in range(classe.charge_répartie_partielle.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie_partielle = Somme_c_répartie_partielle + conversion
         if len(tabl_c_triang) != 0:
             for j in range(classe.charge_triangulaire.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triang[j].charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triang[j].charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triang = Somme_c_triang + conversion
         if len(tabl_c_triangulaire_mon) != 0:
             for j in range(classe.charge_triangulaire_monotone.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_mon[j].charge_triangulaire_monotone_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_mon[j].charge_triangulaire_monotone_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triangulaire_mon = Somme_c_triangulaire_mon + conversion
         if len(tabl_c_triangulaire_antisy) != 0:
             for j in range(classe.charge_triangulaire_antisymétrique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_antisy[j].charge_triangulaire_antisymétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triangulaire_antisy[j].charge_triangulaire_antisymétrique_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_triangulaire_antisy = Somme_c_triangulaire_antisy + conversion
         if len(tabl_c_trapézoïdale_sy) != 0:
             for j in range(classe.charge_trapézoïdale_symétrique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_trapézoïdale_sy[j].charge_trapézoïdale_symétrique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_trapézoïdale_sy[j].charge_trapézoïdale_symétrique_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_trapézoïdale_sy = Somme_c_trapézoïdale_sy + conversion
         if len(tabl_c_parabolique) != 0:
             for j in range(classe.charge_parabolique.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_parabolique[j].charge_parabolique_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_parabolique[j].charge_parabolique_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_parabolique = Somme_c_parabolique + conversion
         if len(tabl_couple) != 0:
             for j in range(classe.couple.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
         if len(tabl_couple_réparti) != 0:
             for j in range(classe.couple_réparti.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple_réparti[j].couple_réparti_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple_réparti[j].couple_réparti_appuis_simples(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple_réparti = Somme_couple_réparti + conversion
              # SOMME TOTALE :
@@ -2207,7 +2214,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if len(tabl_c_concentrée) != 0:
             for j in range(classe.charge_concentrée.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_concentrée[j].charge_concentrée_encastrement(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_concentrée = Somme_c_concentrée + conversion
         if len(tabl_c_répartie) != 0:
@@ -2222,7 +2229,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 Sommec_crois = Sommec_crois + conversion
         if len(tabl_couple) != 0:
             for j in range(classe.couple.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_encastrement(hauteur, longueur, Igz, E, x, précision)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
              # SOMME TOTALE :
