@@ -169,7 +169,7 @@ canva_tab1_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=
 geometrie = StringVar()
 canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly",justify='center')
 canva_tab1_labelframe1_Combobox1['values'] = ["","Rectangle", "Carré", "Forme", "Triangle", "Cercle", "Losange"]
-canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.20) # affichage de la combobox
+canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.22) # affichage de la combobox
 # canva_tab1_labelframe1_Combobox1.pack(fill='both')
 canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 def ajout_combobox(event):
@@ -181,7 +181,7 @@ def ajout_combobox(event):
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -189,7 +189,7 @@ def ajout_combobox(event):
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
@@ -197,7 +197,7 @@ def ajout_combobox(event):
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
-        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -205,7 +205,7 @@ def ajout_combobox(event):
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox5['values'] = ["","Rectangle"]
-        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -213,7 +213,7 @@ def ajout_combobox(event):
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Creux","Demi Cercle","Quart de Cercle","Ovale"]
-        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -221,7 +221,7 @@ def ajout_combobox(event):
         geometrie7 = StringVar()
         canva_tab1_labelframe1_Combobox7 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie7 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox7['values'] = ["","Normal"]
-        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.20) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
         canva_tab1_labelframe1_Combobox7.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox7.bind("<<ComboboxSelected>>", nouveau_labelframe)
