@@ -1792,6 +1792,7 @@ liste_charges = []
 tabl_c_concentrée = []
 tabl_c_répartie = []
 tabl_c_répartie_partielle = []
+tabl_c_répartie_partielle_proche = []
 tabl_c_triang = []
 tabl_c_triangulaire_mon = []
 tabl_c_triangulaire_antisy = []
@@ -1860,18 +1861,18 @@ def ajout_charge():
             q = float(saisie_force_rep_1.get())
             l = float(saisie_l.get())
             if q!='' and l!='' and q!= 0.0 and l!= 0.0 :
-                VarEcrase = classe.charge_répartie_partielle(q, l)
-                tabl_c_répartie_partielle.append(VarEcrase) 
-                nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Charge répartie partielle proche',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) +  "]", nbr])
+                VarEcrase = classe.charge_répartie_partielle_proche(q, l)
+                tabl_c_répartie_partielle_proche.append(VarEcrase) 
+                nbr = classe.charge_répartie_partielle_proche.nbr
+                liste_charges.append(['Charge répartie partielle proche ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle_proche[nbr-1].q) + " ; l = "+ str(tabl_c_répartie_partielle_proche[nbr-1].l) +  "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
             if q==0 or l==0 or q=='' or l=='':
                 showerror('Erreur', 'Un champ de coordonnées est vide.')
             print('Stockage charge : ',chargement.get()," - ",chargement2.get())
-            for i in range(len(tabl_c_répartie_partielle)):
-                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a)       
+            for i in range(len(tabl_c_répartie_partielle_proche)):
+                print(tabl_c_répartie_partielle_proche[i].q," - ",tabl_c_répartie_partielle_proche[i].l)       
         elif str(chargement2.get()) == 'Charge triangulaire' :
             q = float(saisie_force_rep_1.get())
             a1 = float(saisie_a1.get())
@@ -2112,12 +2113,12 @@ def supprimer_charge():
             classe.charge_répartie_partielle.nbr -= 1
             print("il n'y a maintenant plus que ", classe.charge_répartie_partielle.nbr, "Charge répartie partielle d'attributs : ")
             for k in range(len(tabl_c_répartie_partielle)): print(tabl_c_répartie_partielle[k].q, tabl_c_répartie_partielle[k].a, tabl_c_répartie_partielle[k].b)   
-        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle proche' :
+        if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle proche ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
-            del tabl_c_concentrée[IndiceSuppr]
-            classe.charge_concentrée.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge répartie partielle proche d'attributs : ")
-            for k in range(len(tabl_c_concentrée)): print(tabl_c_concentrée[k].P, tabl_c_concentrée[k].a)   
+            del tabl_c_répartie_partielle_proche[IndiceSuppr]
+            classe.charge_répartie_partielle_proche.nbr -= 1
+            print("il n'y a maintenant plus que ", classe.charge_répartie_partielle_proche.nbr, "Charge répartie partielle proche d'attributs : ")
+            for k in range(len(tabl_c_répartie_partielle_proche)): print(tabl_c_répartie_partielle_proche[k].q, tabl_c_répartie_partielle_proche[k].l)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_triang[IndiceSuppr]
@@ -2200,7 +2201,7 @@ def verification_hypotheses_de_la_rdm_section_rectangulaire(hauteur):
 
 def calcul(): # Effectue le calcul sur le bouton calcul
     # valeurs_materiau = [E,Mv,m,Re,nu]
-    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_triang, tabl_c_triangulaire_mon,\
+    global tabl_c_concentrée, tabl_c_répartie, tabl_c_répartie_partielle, tabl_c_répartie_partielle_proche, tabl_c_triang, tabl_c_triangulaire_mon,\
         tabl_c_triangulaire_antisy, tabl_c_trapézoïdale_sy, tabl_c_parabolique, tabl_couple, tabl_couple_réparti, \
             tabl_c_décrois, tabl_c_crois, x, Masse, RATotal, RBTota, EffortTranchTotal, MfTotal, ContrainteYMaxTotal,\
                 ContrainteMaxTotal,  DefYMaxTotal, DefMaxTotal, flècheTotale, FlècheMaxTotale, valeurs_geometriques, valeurs_materiau
@@ -2215,7 +2216,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     NbrePointsX = int(NbrePointsX_bis.get())
     print('Nombres de points sur les graphes : ', NbrePointsX)
     x = np.linspace(0, longueur, NbrePointsX)
-    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_répartie_partielle_proche = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
@@ -2232,6 +2233,11 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie_partielle = Somme_c_répartie_partielle + conversion
+        if len(tabl_c_répartie_partielle_proche) != 0:
+            for j in range(classe.charge_répartie_partielle_proche.nbr):
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle_proche[j].charge_répartie_partielle_proche_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
+                Somme_c_répartie_partielle_proche = Somme_c_répartie_partielle_proche + conversion
         if len(tabl_c_triang) != 0:
             for j in range(classe.charge_triangulaire.nbr):
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_triang[j].charge_triangulaire_appuis_simples(hauteur, longueur, Igz, E, x, NbrePointsX)
@@ -2268,15 +2274,15 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple_réparti = Somme_couple_réparti + conversion
              # SOMME TOTALE :
-        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Somme_c_triang[0] + Somme_c_triangulaire_mon[0] + Somme_c_triangulaire_antisy[0] + Somme_c_trapézoïdale_sy[0] + Somme_c_parabolique[0] + Somme_couple[0] + Somme_couple_réparti[0]
-        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1] + Somme_c_triang[1] + Somme_c_triangulaire_mon[1] + Somme_c_triangulaire_antisy[1] + Somme_c_trapézoïdale_sy[1] + Somme_c_parabolique[1] + Somme_couple[1] + Somme_couple_réparti[1]
-        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2] + Somme_c_triang[2] + Somme_c_triangulaire_mon[2] + Somme_c_triangulaire_antisy[2] + Somme_c_trapézoïdale_sy[2] + Somme_c_parabolique[2] + Somme_couple[2] + Somme_couple_réparti[2]
-        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3] + Somme_c_triang[3] + Somme_c_triangulaire_mon[3] + Somme_c_triangulaire_antisy[3] + Somme_c_trapézoïdale_sy[3] + Somme_c_parabolique[3] + Somme_couple[3] + Somme_couple_réparti[3]
-        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4] + Somme_c_triang[4] + Somme_c_triangulaire_mon[4] + Somme_c_triangulaire_antisy[4] + Somme_c_trapézoïdale_sy[4] + Somme_c_parabolique[4] + Somme_couple[4] + Somme_couple_réparti[4]
+        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Somme_c_répartie_partielle_proche[0] + Somme_c_triang[0] + Somme_c_triangulaire_mon[0] + Somme_c_triangulaire_antisy[0] + Somme_c_trapézoïdale_sy[0] + Somme_c_parabolique[0] + Somme_couple[0] + Somme_couple_réparti[0]
+        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1] + Somme_c_répartie_partielle_proche[1] + Somme_c_triang[1] + Somme_c_triangulaire_mon[1] + Somme_c_triangulaire_antisy[1] + Somme_c_trapézoïdale_sy[1] + Somme_c_parabolique[1] + Somme_couple[1] + Somme_couple_réparti[1]
+        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2] + Somme_c_répartie_partielle_proche[2] + Somme_c_triang[2] + Somme_c_triangulaire_mon[2] + Somme_c_triangulaire_antisy[2] + Somme_c_trapézoïdale_sy[2] + Somme_c_parabolique[2] + Somme_couple[2] + Somme_couple_réparti[2]
+        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3] + Somme_c_répartie_partielle_proche[3] + Somme_c_triang[3] + Somme_c_triangulaire_mon[3] + Somme_c_triangulaire_antisy[3] + Somme_c_trapézoïdale_sy[3] + Somme_c_parabolique[3] + Somme_couple[3] + Somme_couple_réparti[3]
+        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4] + Somme_c_répartie_partielle_proche[4] + Somme_c_triang[4] + Somme_c_triangulaire_mon[4] + Somme_c_triangulaire_antisy[4] + Somme_c_trapézoïdale_sy[4] + Somme_c_parabolique[4] + Somme_couple[4] + Somme_couple_réparti[4]
         ContrainteMaxTotal = np.amax(abs(ContrainteYMaxTotal))
-        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5] + Somme_c_triang[5] + Somme_c_triangulaire_mon[5] + Somme_c_triangulaire_antisy[5] + Somme_c_trapézoïdale_sy[5] + Somme_c_parabolique[5] + Somme_couple[5] + Somme_couple_réparti[5]
+        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5] + Somme_c_répartie_partielle_proche[5] + Somme_c_triang[5] + Somme_c_triangulaire_mon[5] + Somme_c_triangulaire_antisy[5] + Somme_c_trapézoïdale_sy[5] + Somme_c_parabolique[5] + Somme_couple[5] + Somme_couple_réparti[5]
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
-        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
+        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_répartie_partielle_proche[6] + Somme_c_triang[6] + Somme_c_triangulaire_mon[6] + Somme_c_triangulaire_antisy[6] + Somme_c_trapézoïdale_sy[6] + Somme_c_parabolique[6] + Somme_couple[6] + Somme_couple_réparti[6]
         FlècheMaxTotale = np.amax(abs(flècheTotale))      
         # Dire dans la console calculs lancées        
         print('Calculs appuis simple lancés')
