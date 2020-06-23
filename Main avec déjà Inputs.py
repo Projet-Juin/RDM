@@ -32,7 +32,7 @@ géométrie = 'carré'
     # Forces appliquées [N.mm]
 q = -200
 P = -200
-a = 600
+a = 200
 c = 500
 b = longueur - a - c
     
@@ -64,7 +64,7 @@ y = np.linspace(0, hauteur, NbrePointsY)
 #Liaison_encastrement.charge_décroissante(hauteur, longueur, Igz, E, LimElast, q, x)
 
 #(RA, RB, EffortTranch, Mf, ContrainteYMax, ContrainteMax, DefYMax, DefMax, flèche, FlècheMax)\
-#Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
+Appuis_simples.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
 
 #Appuis_simples.charge_répartie_partielle_proche(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a)
 
@@ -76,5 +76,6 @@ y = np.linspace(0, hauteur, NbrePointsY)
 
 #Appuis_simples.charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b)
 
-Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
-#2
+#Appuis_simples.charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX)
+
+#Liaison_encastrement.charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX, a, b, c)
