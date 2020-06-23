@@ -208,11 +208,13 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
     flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
     for i in range(NbrePointsX):
         if x[i] <= a :
-            flèche[i] = -RA/(E*Igz)*((x[i]**3)/6-(q/(48*longueur*RA)*b*(b+2*c)*(4*((longueur**2)-(a**2))-((b+2*c)**2)-(b**2))+(a**2)/6)*x[i])
+            flèche[i] = -RA/(24*E*Igz)*(-4*(x[i]**3)+(4*(longueur**2)-((b+2*c)**2)-(b**2))*x[i])
         elif x[i] > a and x[i] <= (a+b):
             flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
-            flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
+            K5 = -1/(24*c)*((b+2*c)/(b+2*a)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**3)/(b+2*a)-12*longueur*((a+b)**2)+4*((a+b)**3)+8*(longueur**3))
+            K6 = -(longueur**3)/3-K5*longueur
+            flèche[i] = -RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
