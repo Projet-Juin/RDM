@@ -1297,13 +1297,13 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_l,saisie_moment,canva_tab3_labelframe2
     # nouveau_labelframe_chargement
     canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = "Chargement",bg=gris_5) #définit le message 1
-    canva_tab3_labelframe2.place(relx=0.01,rely=0.14,relwidth=0.98, relheight=0.23) # affiche le labelframe type de section
+    canva_tab3_labelframe2.place(relx=0.01,rely=0.21,relwidth=0.98, relheight=0.26) # affiche le labelframe type de section
     # Apparition du list box
     yDefilB = Scrollbar(canva_tab3, orient='vertical')
-    yDefilB.place(relx=0.94,rely=0.38,relwidth=0.05, relheight=0.51)
+    yDefilB.place(relx=0.94,rely=0.48,relwidth=0.05, relheight=0.41)
     Listbox_tab3 = Listbox(canva_tab3,activestyle= 'dotbox',selectmode=SINGLE,yscrollcommand=yDefilB.set)
     Liste_listboxCharges.append(Listbox_tab3)
-    Liste_listboxCharges[0].place(relx=0.01,rely=0.38,relwidth=0.93, relheight=0.51)
+    Liste_listboxCharges[0].place(relx=0.01,rely=0.48,relwidth=0.93, relheight=0.41)
     yDefilB['command'] = Listbox_tab3.yview
     # Apparition bouton ajouter/supprimer/renommer charge
     Button(canva_tab3,relief="raised",overrelief="groove", text='Ajouter la charge', command=ajout_charge, bg=gris_3,fg ="white", font=("Tahoma", 12,"bold")).place(relx=0.01,rely=0.90,relwidth=0.49, relheight=0.04)
