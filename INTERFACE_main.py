@@ -1403,8 +1403,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début  d’application de la charge c1 sur votre poutre \n en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1516,8 +1516,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge trapézoïdale' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1683,8 +1683,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
