@@ -2426,7 +2426,7 @@ notebook2.add(tab4, text='Schémas',image=img4, compound=LEFT) # Ajout de la bar
 canva_tab4 = Canvas(tab4, bg=gris_7)
 canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 bienvenue_message1=Label(canva_tab4,fg="red",font=font_titre1,text='Bienvenue sur Solve Structure',bg=gris_7) #définit le message 1
-bienvenue_message1.place(relx=0.19,rely=0.24)
+bienvenue_message1.place(relx=0.13,rely=0.24)
 logo_1 = PhotoImage(file='images/105286100_1375318509324214_8360492095536146396_n.png')
 logo_2 = PhotoImage(file='images/EPF-couleur.png')
 labellogo_1=Label(canva_tab4,image=logo_1)
@@ -2434,9 +2434,9 @@ labellogo_1.image = img_charge_moment_encas
 labellogo_1.place(relx=0.51,rely=0.35)
 labellogo_2=Label(canva_tab4,image=logo_2)
 labellogo_2.image = img_charge_moment_encas
-labellogo_2.place(relx=0.15,rely=0.40)
-bienvenue_message2=Label(canva_tab4,fg="red",font=font_titre2,text='En parteranirait avec l\'EPF, l\'équipe de Solve Strucutre a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
-bienvenue_message2.place(relx=0.22,rely=0.65)
+labellogo_2.place(relx=0.10,rely=0.40)
+bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Strucutre a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
+bienvenue_message2.place(relx=0.15,rely=0.70)
 """
 Fin
 """
