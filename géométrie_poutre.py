@@ -2,7 +2,7 @@
 """
 Created on Wed Jun 10 18:02:26 2020
 
-@author: Simon
+@author: CLARA (rendons à cesear ce qui est à cesear)
 """
 import math
 
