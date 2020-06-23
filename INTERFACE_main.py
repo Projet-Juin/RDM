@@ -162,15 +162,14 @@ canva_tab1 = Canvas(tab1, bg=gris_5)
 canva_tab1.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab1_labelframe1 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Type de section',bg =gris_5) #définit le message 1
-canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.20) # affiche le labelframe type de section    
+canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.16) # affiche le labelframe type de section    
 # Choisir quelle est la géométrie du problème
 canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choissiez le type de géométrie de votre poutre :",bg=gris_5,font = ("Arial",10,"bold"))
-canva_tab1_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
+canva_tab1_labelframe1_label.place(relx=0.01,rely=0.02,relwidth=0.98, relheight=0.25)
 geometrie = StringVar()
 canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly",justify='center')
 canva_tab1_labelframe1_Combobox1['values'] = ["","Rectangle", "Carré", "Forme", "Triangle", "Cercle", "Losange"]
-canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.22) # affichage de la combobox
-# canva_tab1_labelframe1_Combobox1.pack(fill='both')
+canva_tab1_labelframe1_Combobox1.place(relx=0.01,rely=0.35,relwidth=0.98, relheight=0.28) # affichage de la combobox
 canva_tab1_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 def ajout_combobox(event):
     global geometrie2,geometrie3,geometrie4,geometrie5,geometrie6,geometrie7,\
@@ -181,7 +180,7 @@ def ajout_combobox(event):
         geometrie2 = StringVar()
         canva_tab1_labelframe1_Combobox2 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie2 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox2['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox2.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox2.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -189,7 +188,7 @@ def ajout_combobox(event):
         geometrie3 = StringVar()
         canva_tab1_labelframe1_Combobox3 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie3 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox3['values'] = ["","Normal","Creux"]
-        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox3.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox3.bind("<<ComboboxSelected>>", nouveau_labelframe) 
@@ -197,7 +196,7 @@ def ajout_combobox(event):
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
-        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox4.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -205,7 +204,7 @@ def ajout_combobox(event):
         geometrie5 = StringVar()
         canva_tab1_labelframe1_Combobox5 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie5 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox5['values'] = ["","Rectangle"]
-        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox5.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox5.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox5.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -213,7 +212,7 @@ def ajout_combobox(event):
         geometrie6 = StringVar()
         canva_tab1_labelframe1_Combobox6 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie6 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox6['values'] = ["","Normal","Creux","Demi Cercle","Quart de Cercle","Ovale"]
-        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox6.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox6.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox6.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -221,7 +220,7 @@ def ajout_combobox(event):
         geometrie7 = StringVar()
         canva_tab1_labelframe1_Combobox7 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie7 , state = "readonly",justify='center')
         canva_tab1_labelframe1_Combobox7['values'] = ["","Normal"]
-        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab1_labelframe1_Combobox7.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox7.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab1_labelframe1_Combobox7.bind("<<ComboboxSelected>>", nouveau_labelframe)
@@ -233,7 +232,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
                     ,canva_tab1_labelframe2,valeurs_geometriques, canva_tab4
     # Création labelframe 2
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_5) #définit le message 2
-    canva_tab1_labelframe2.place(relx=0.01,rely=0.21,relwidth=0.98, relheight=0.70) # affiche le labelframe type de section   
+    canva_tab1_labelframe2.place(relx=0.01,rely=0.17,relwidth=0.98, relheight=0.74) # affiche le labelframe type de section   
     # Bouton pour valider l'entrée des données de géométrie pour rassurer l'utilisateur
     Button(canva_tab1,relief="raised",overrelief="groove", text='Valider la géométrie', font=("Tahoma", 14,"bold"), command=valider_la_géométrie, bg=gris_3,fg ="white").place(relx=0.01,rely=0.92,relwidth=0.98, relheight=0.07) # affiche le bouton valider  
     if str(geometrie.get()) == 'Rectangle':
@@ -1242,7 +1241,7 @@ saisie_young.bind('<Return>', detection_passage2)
 Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.35,relwidth=0.98, relheight=0.07)
 ### Barre 2_bis : Précision ###
 canva_tab2_labelframe2 = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Précision',bg=gris_5) #définit le message 1
-canva_tab2_labelframe2.place(relx=0.01,rely=0.43,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
+canva_tab2_labelframe2.place(relx=0.01,rely=0.60,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
 # Gestion de la précision
 NbrePointsX_bis = IntVar()
 scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Régler la précision du calcul')
@@ -1260,14 +1259,14 @@ canva_tab3=Canvas(tab3, bg=gris_5)
 canva_tab3.pack(expand=1, fill='both')
 # Création labelframe 1
 canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_5) #définit le message 1
-canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.20) # affiche le labelframe type de chargement    
+canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.16) # affiche le labelframe type de chargement    
 # Choisir quelle est la charge 1 du problème
 canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :",bg = gris_5,font = ("Arial",10,"bold"))
-canva_tab3_labelframe1_label.place(relx=0.01,rely=0.05,relwidth=0.98, relheight=0.30)
+canva_tab3_labelframe1_label.place(relx=0.01,rely=0.02,relwidth=0.98, relheight=0.25)
 chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly",justify='center')
 canva_tab3_labelframe1_Combobox1['values'] = ["","2 appuis simples", "1 encastrement et 1 bord libre"]
-canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.36,relwidth=0.98, relheight=0.22) # affichage de la combobox
+canva_tab3_labelframe1_Combobox1.place(relx=0.01,rely=0.35,relwidth=0.98, relheight=0.28) # affichage de la combobox
 canva_tab3_labelframe1_Combobox1.current(0) # onglet actif dans la combobox quand on démarre 
 # Choisir quelle est la charge 2 du problème
 def ajout_combobox_chargement(event):
@@ -1279,7 +1278,7 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge uniformément répartie partielle proche des appuis","Charge triangulaire", "Charge triangulaire monotone",\
                                     "Charge triangulaire antisymétrique","Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
-        canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox2.bind("<<ComboboxSelected>>", ajout_données_chargement)
@@ -1288,7 +1287,7 @@ def ajout_combobox_chargement(event):
         canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
-        canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.67,relwidth=0.98, relheight=0.22) # affichage de la combobox
+        canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab3_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
         canva_tab3_labelframe1_Combobox3.bind("<<ComboboxSelected>>", ajout_données_chargement) 
@@ -1297,13 +1296,13 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_l,saisie_moment,canva_tab3_labelframe2
     # nouveau_labelframe_chargement
     canva_tab3_labelframe2 = LabelFrame(canva_tab3,font=("Arial",14 , "bold"),text = "Chargement",bg=gris_5) #définit le message 1
-    canva_tab3_labelframe2.place(relx=0.01,rely=0.21,relwidth=0.98, relheight=0.26) # affiche le labelframe type de section
+    canva_tab3_labelframe2.place(relx=0.01,rely=0.17,relwidth=0.98, relheight=0.31) # affiche le labelframe type de section
     # Apparition du list box
     yDefilB = Scrollbar(canva_tab3, orient='vertical')
-    yDefilB.place(relx=0.94,rely=0.48,relwidth=0.05, relheight=0.41)
+    yDefilB.place(relx=0.94,rely=0.49,relwidth=0.05, relheight=0.40)
     Listbox_tab3 = Listbox(canva_tab3,activestyle= 'dotbox',selectmode=SINGLE,yscrollcommand=yDefilB.set)
     Liste_listboxCharges.append(Listbox_tab3)
-    Liste_listboxCharges[0].place(relx=0.01,rely=0.48,relwidth=0.93, relheight=0.41)
+    Liste_listboxCharges[0].place(relx=0.01,rely=0.49,relwidth=0.93, relheight=0.40)
     yDefilB['command'] = Listbox_tab3.yview
     # Apparition bouton ajouter/supprimer/renommer charge
     Button(canva_tab3,relief="raised",overrelief="groove", text='Ajouter la charge', command=ajout_charge, bg=gris_3,fg ="white", font=("Tahoma", 12,"bold")).place(relx=0.01,rely=0.90,relwidth=0.49, relheight=0.04)
@@ -1367,8 +1366,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I sur votre \n poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit du début \n d’application de la charge c1 sur votre poutre en mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
