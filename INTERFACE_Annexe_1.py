@@ -15,7 +15,15 @@ import os
 font_titre1 = ("Arial", 45, "bold")
 font_titre2 = ("Arial", 14, "bold italic")
 font_texte1 = ("Arial", 8, "bold")
+font_texte2 = ("Arial", 11)
+gris_1_bis='#EAECEE'
+gris_1='#D5D8DC'
+gris_2='#ABB2B9'
+gris_3='#85929E'
+gris_4='#808B96'
 gris_5='#5D6D7E'
+gris_6='#566573'
+gris_7='#34495E'
 
 def donothing(): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
     nouvelle_fenetre =Tk()
@@ -88,8 +96,22 @@ def aide(): # fourni les liens URLs de la plateforme d'aide en ligne, du pdf et 
     donothing()
     
 def ctds_de_fct(): # annonce les conditions dans lequels le programme renvois des valeurs "exactes"
-    donothing()
-    
+    root=Tk()
+    root.title("Solve Structure --- Conditions de fonctionnement") #Titre de l'encadré
+    root.config(bg=gris_5)
+    root.wm_iconbitmap('images/petitlogo1.ico')
+    root.geometry("%dx%d" % (1200,500))
+    label0=Label(root,justify='left',bg=gris_5,font=("Arial", 14, "bold italic"),text='Principes fondamentaux de la théorie des poutres\n')
+    label0.pack(fill='both')
+    label2=Label(root,justify='left',bg=gris_5,font=font_texte2,text= 'Le postulat de la Résitance Des Matériaux (RDM) implique que : \n\nDeux des dimensions de la poutre sont petites par rapport à la troisième. En d\'autres termes les dimensions de la section droite sont petites par rapport à la longueur de la poutre. \nCe principe permet d\'approximer la poutre par une ligne (droite ou courbe) et des sections droites. En général, une longueur ou une distance de l\'ordre de deux à trois fois la plus\ngrande dimension de la section droite est considérée suffisante pour appliquer le modèle RDM.\n\n')
+    label2.pack(fill='both')
+    label4=Label(root,justify='left',bg=gris_5,font=font_texte2,text= 'Le principe de Saint-Venant précise que le comportement en un point quelconque de la poutre, pourvu que ce point soit suffisamment éloigné des zones d\'applications des\nforces et des liaisons,est indépendant de la façon dont sont appliquées les forces et de la façon dont sont physiquement réalisées les liaisons; le comportement dépend alors\nuniquement du torseur des forces internes en ce point. La conséquence est que les contraintes produites par un système de forces dans une section éloignée du point d\'application\nde ces forces ne dépendent que de la résultante générale et du moment résultat du système de forces appliquées à gauche de cette section.\n\n')
+    label4.pack(fill='both')
+    label6=Label(root,justify='left',bg=gris_5,font=font_texte2,text= 'Le modèle RDM n\'est plus valide lorsque le principe de Saint Venant n\'est pas satisfait, c\'est-à-dire à proximité des liaisons, des appuis ou des points d\'application des forces.\nDans ces cas particuliers, il faut appliquer les principes de la mécanique des milieux continus. Le principe de Navier-Bernoulli précise que les sections droites le long de la fibre\nmoyenne restent planes après déformation. Les déformations dues à l\'effort tranchant montrent que les sections droites ne peuvent pas rester planes mais subissent un\ngauchissement. Pour tenir compte de ce fait l\'énoncé de ce principe peut prendre la forme suivante: deux sections droites infiniment voisines deviennent après déformation deux\nsections gauches superposables par déplacement.Comme ce déplacement est petit, on peut considérer que les allongements ou raccourcissements de tout tronçon de fibre sont\ndes fonctions linéaires des coordonnées de la fibre dans le plan de la section.\n\n')
+    label6.pack(fill='both')
+    label8=Label(root,justify='left',bg=gris_5,font=font_texte2,text= 'La loi de Hooke précise que, dans le domaine élastique du matériau, les déformations sont proportionnelles aux contraintes. Le principe de superposition permet de décomposer\ntoute sollicitation complexe en une somme de sollicitations élémentaires dont les effets sont ensuite additionnés. Ce principe est directement lié à l\'hypothèse de linéarité de la loi de\nHooke.\n')
+    label8.pack(fill='both')
+    root.mainloop()
 def credit(): # annonce la version du programme, les concepteurs du programme et l'année de développement
     donothing()
     
