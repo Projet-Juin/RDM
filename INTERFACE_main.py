@@ -1187,37 +1187,31 @@ canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 
 canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.37) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
 label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre en N/mm² ou MPa :',bg=gris_5)
-label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 : (Option)',bg=gris_5)
-label_masse = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse m de votre poutre en kg : (Option)',bg=gris_5)
+label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 : ',bg=gris_5)
 label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Limite élastique Re de votre poutre en MPa :',bg=gris_5)
 #saisie des inputs E,Mv,m,m,Re,nu
 saisie_young = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_massevol = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-saisie_masse = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_limiteel = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 #saisie affichage de départ
 saisie_young.insert(0, "0.0")
 saisie_massevol.insert(0, "0.0")
-saisie_masse.insert(0, "0.0")
 saisie_limiteel.insert(0, "0.0")
 #Placement des items sur la grille
 label_young.pack(fill='both')
 saisie_young.pack(fill='both',pady=5)
 label_massevol.pack(fill='both')
 saisie_massevol.pack(fill='both',pady=5)
-label_masse.pack(fill='both')
-saisie_masse.pack(fill='both',pady=5)
 label_limiteel.pack(fill='both')
 saisie_limiteel.pack(fill='both',pady=5)
 # Gestion du stockage des valeurs
-# valeurs_materiau = [0.0,0.0,0.0,0.0,0.0]
+
 def valider_le_materiau_event(event):
     valider_le_materiau()
 def valider_le_materiau():
     global valeurs_materiau
     #Gestion du stockage des valeurs
     E = float(saisie_young.get())
-    m = float(saisie_masse.get())
     Mv = float(saisie_massevol.get())
     Re = float(saisie_limiteel.get())
     if E!='' and Re!='' :
@@ -1233,16 +1227,12 @@ def valider_le_materiau():
 def massevol_next(): #fct pour passer à Mv
     saisie_massevol.focus()
     saisie_massevol.select_range(0,END)
-def masse_next(evt): #fct pour passer à m
-    saisie_masse.focus()
-    saisie_masse.select_range(0,END)
 def limiteel_next(evt): #fct pour passer à Re
     saisie_limiteel.focus()
     saisie_limiteel.select_range(0,END)
 def detection_passage2(evt): # détecte quand on doit passer d'une case à l'autre
     massevol_next() # switch de E à Mv quand on tape sur entrée
-    saisie_massevol.bind('<Return>', masse_next) # switch de Mv à m quand on tape sur entrée
-    saisie_masse.bind('<Return>', limiteel_next) # switch de m à Re quand on tape sur entrée
+    saisie_massevol.bind('<Return>', limiteel_next) # switch de Mv à m quand on tape sur entrée
     saisie_limiteel.bind('<Return>', valider_le_materiau_event) # switch de Re à nu quand on tape sur entrée  
 # initialisation sélection
 saisie_young.focus()
