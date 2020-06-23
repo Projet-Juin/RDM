@@ -93,7 +93,22 @@ def export_elts_finis(): # fonction qui import des données de géometrie,charge
     donothing()
     
 def aide(): # fourni les liens URLs de la plateforme d'aide en ligne, du pdf et de la page youtube
-    donothing()
+    root=Tk()
+    root.title("Solve Structure --- Aide") #Titre de l'encadré
+    root.config(bg=gris_5)
+    root.wm_iconbitmap('images/petitlogo1.ico')
+    root.geometry("%dx%d" % (500,150))
+    label0=Label(root,justify='left',bg=gris_5,font=("Arial", 14, "bold italic"),text='\n')
+    label0.pack(fill='both')
+    label2=Label(root,justify='left',bg=gris_5,font=font_texte2,text= '\n')
+    label2.pack(fill='both')
+    label4=Label(root,justify='left',bg=gris_5,font=font_texte2,text= '\n')
+    label4.pack(fill='both')
+    label6=Label(root,justify='left',bg=gris_5,font=font_texte2,text= '\n')
+    label6.pack(fill='both')
+    label8=Label(root,justify='left',bg=gris_5,font=font_texte2,text= '\n')
+    label8.pack(fill='both')
+    root.mainloop()
     
 def ctds_de_fct(): # annonce les conditions dans lequels le programme renvois des valeurs "exactes"
     root=Tk()

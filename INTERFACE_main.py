@@ -56,9 +56,9 @@ barre_de_menu = Menu(main, tearoff=0)
 main.config(menu=barre_de_menu)
 # Création d'un menu fichier et ajout d'items
 fichier_menu = Menu(barre_de_menu,activebackground=gris_5, tearoff=0) # Création d'un menu fichier
-fichier_menu.add_command(label='Ouvrir',command=ouvrir) # ajout de l'item ouvrir
-fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)',command=sauvegarder) # ajout de l'item sauvegarder
-fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)',command=sauvegarder_sous) # ajout de l'item sauvegarder sous
+fichier_menu.add_command(label='Ouvrir',command=ouvrir,state=DISABLED) # ajout de l'item ouvrir
+fichier_menu.add_command(label='Sauvegarder            (Ctrl+S)',command=sauvegarder,state=DISABLED) # ajout de l'item sauvegarder
+fichier_menu.add_command(label='Sauvegarder Sous   (Shift+Ctrl+S)',command=sauvegarder_sous,state=DISABLED) # ajout de l'item sauvegarder sous
 fichier_menu.add_command(label='Redémarrer',command=reboot_programme) # ajout de l'item redémarrer
 fichier_menu.add_separator() #ajout d'un separateur
 fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter (ou sys.exit)
@@ -66,8 +66,8 @@ fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item
 elts_finis_menu = Menu(barre_de_menu,activebackground=gris_5, tearoff=0) # Création d'un menu élts finis
 elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis) # ajout de l'item permettant d'aller en élément finis
 elts_finis_menu.add_separator() #ajout d'un separateur
-elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=import_elts_finis) # ajout de l'item permettant d'importer les données d'éléments finis
-elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=export_elts_finis) # ajout de l'item permettant d'exporter les données d'éléments finis
+elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=import_elts_finis,state=DISABLED) # ajout de l'item permettant d'importer les données d'éléments finis
+elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=export_elts_finis,state=DISABLED) # ajout de l'item permettant d'exporter les données d'éléments finis
 # Création d'un menu autres et ajout d'items
 autres_menu = Menu(barre_de_menu,activebackground=gris_5, tearoff=0) # Création d'un menu autres
 autres_menu.add_command(label='Aide',command=aide) # ajout de l'item aide
@@ -1403,29 +1403,23 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
             label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début  d’application de la charge c1 sur votre poutre \n en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            saisie_c1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
             label_force_rep_1.pack(fill='both')
             saisie_force_rep_1.pack(fill='both')
             label_l.pack(fill='both')
             saisie_l.pack(fill='both')
-            label_c1.pack(fill='both')
-            saisie_c1.pack(fill='both')
             # saisie affichage de départ
             saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
             saisie_l.insert(0, "0.0") # saisie affichage de départ
-            saisie_c1.insert(0, "0.0") # saisie affichage de départ
             # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
             saisie_force_rep_1.focus() 
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
             saisie_l.config(cursor='hand1')
-            saisie_c1.config(cursor='hand1')
             # la photo de la configuration  
             recreer_le_canva()
             labelimg=Label(canva_tab4,image=img_charge_rep_part)
@@ -1433,8 +1427,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             labelimg.pack(fill=BOTH, expand=1)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
-            saisie_l.bind('<Return>',c1_next)
-            saisie_c1.bind('<Return>',ajout_charge_event)
+            saisie_l.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire' :
             # messages des inputs
@@ -1853,7 +1846,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_répartie_partielle(q, c1, l)
                 tabl_c_répartie_partielle.append(VarEcrase) 
                 nbr = classe.charge_répartie_partielle.nbr
-                liste_charges.append(['Charge répartie partielle ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]", nbr])
+                liste_charges.append(['Charge répartie partielle ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b)+ "]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
@@ -1865,20 +1858,19 @@ def ajout_charge():
         elif str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
             q = float(saisie_force_rep_1.get())
             l = float(saisie_l.get())
-            c1 = float(saisie_c1.get())
-            # if q!='' and l!='' and c1!='' and q!= 0.0 and l!= 0.0 and c1!= 0.0:
-            #     VarEcrase = classe.charge_répartie_partielle(q, c1, l)
-            #     tabl_c_répartie_partielle.append(VarEcrase) 
-            #     nbr = classe.charge_répartie_partielle.nbr
-            #     liste_charges.append(['Charge répartie partielle proche',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) + " ; l = "+ str(tabl_c_répartie_partielle[nbr-1].b), "]", nbr])
-            #     udapte_listbox_charge(len(liste_charges)-1)
-            #     saisie_force_rep_1.focus()
-            #     saisie_force_rep_1.select_range(0,END)
-            # if q==0 or l==0 or c1==0 or q=='' or l=='' or c1=='':
-            #     showerror('Erreur', 'Un champ de coordonnées est vide.')
-            # print('Stockage charge : ',chargement.get()," - ",chargement2.get())
-            # for i in range(len(tabl_c_répartie_partielle)):
-            #     print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)       
+            if q!='' and l!='' and q!= 0.0 and l!= 0.0 :
+                VarEcrase = classe.charge_répartie_partielle(q, l)
+                tabl_c_répartie_partielle.append(VarEcrase) 
+                nbr = classe.charge_répartie_partielle.nbr
+                liste_charges.append(['Charge répartie partielle proche',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle[nbr-1].q) + " ; c1 = "+ str(tabl_c_répartie_partielle[nbr-1].a) +  "]", nbr])
+                udapte_listbox_charge(len(liste_charges)-1)
+                saisie_force_rep_1.focus()
+                saisie_force_rep_1.select_range(0,END)
+            if q==0 or l==0 or q=='' or l=='':
+                showerror('Erreur', 'Un champ de coordonnées est vide.')
+            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
+            for i in range(len(tabl_c_répartie_partielle)):
+                print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a)       
         elif str(chargement2.get()) == 'Charge triangulaire' :
             q = float(saisie_force_rep_1.get())
             a1 = float(saisie_a1.get())
