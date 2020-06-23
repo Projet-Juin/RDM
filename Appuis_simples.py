@@ -212,9 +212,9 @@ def charge_répartie_partielle(hauteur, longueur, Igz, E, LimElast, q, x, NbrePo
         elif x[i] > a and x[i] <= (a+b):
             flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
         elif x[i] > (a+b) :
-            K5 = -1/(24*c)*((b+2*c)/(b+2*a)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**3)/(b+2*a)-12*longueur*((a+b)**2)+4*((a+b)**3)+8*(longueur**3))
+            K5 = q/(48*longueur*RB)*(b*(b+2*c)*(4*(longueur**2)-12*((a+b)**2)-((b+2*c)**2)-(b**2))+2*longueur*(4*((a+b)**3)-12*a*((a+b)**2)+12*(a**2)*(a+b)-4*(a**3)))-longueur*(a+b)+((a+b)**2)/2
             K6 = -(longueur**3)/3-K5*longueur
-            flèche[i] = -RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
+            flèche[i] = RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
     FlècheMax = np.amin(flèche)
 
     plt.figure(1) #Graphe effort tranchant
