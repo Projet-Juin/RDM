@@ -1818,6 +1818,7 @@ def ajout_charge_event(event):
 def ajout_charge():
     global label_force_conc_1,label_force_rep_1,label_a1,label_c1,label_l,label_moment,\
         saisie_force_conc_1,saisie_force_rep_1,saisie_a1,saisie_c1,saisie_l,saisie_moment,canva_tab3_labelframe2,liste_charges,Liste_listboxCharges
+    bouton_calculer.configure(state=NORMAL)
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
@@ -2407,8 +2408,9 @@ def lancer_le_graph_Flèche():
     canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)   
     
 ### Bouton Calculer ####
-bouton_calculer= Button(left_canvas2, text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"), bg=gris_3, fg ="white", command=calcul)
+bouton_calculer= Button(left_canvas2, justify='center',text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"),activebackground=gris_1,cursor='spraycan', bg=gris_3, fg ="white", command=calcul)
 bouton_calculer.place(relx=0.5,rely=0.5,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
+bouton_calculer.configure(state=DISABLED, background=gris_5)
 """
 Fin
 """
