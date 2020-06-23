@@ -229,7 +229,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
         ,label_hauteur,label_hauteur1,label_diagonale1,label_diagonale2\
             ,saisie_longueur,saisie_largeur, saisie_largeur1 , saisie_largeur2 ,saisie_rayon,saisie_rayon1\
                 ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
-                    ,canva_tab1_labelframe2,valeurs_geometriques
+                    ,canva_tab1_labelframe2,valeurs_geometriques, canva_tab4
     # Création labelframe 2
     canva_tab1_labelframe2 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Données',bg = gris_5) #définit le message 2
     canva_tab1_labelframe2.place(relx=0.01,rely=0.15,relwidth=0.98, relheight=0.44) # affiche le labelframe type de section   
@@ -263,8 +263,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_rectangle)
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_rectangle)
+            labelimg.image = img_geo_rectangle
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -310,7 +313,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
             # la photo de la configuration
-            canva_tab4.create_image(700,500, image=img_geo_rectangle_t)
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_rectangle_t)
+            labelimg.image = img_geo_rectangle_t
+            labelimg.pack(fill=BOTH, expand=1)
+            # canva_tab4.create_image(700,500, image=img_geo_rectangle_t)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -341,7 +348,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             # la photo de la configuration
-            canva_tab4.create_image(700,500, image=img_geo_carre)
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_carre)
+            labelimg.image = img_geo_carre
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',valider_la_géométrie_auto)
@@ -373,8 +383,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_carre_t)
+            # la photo de la configuration     
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_carre_t)
+            labelimg.image = img_geo_carre_t
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',largeur1_next)
@@ -426,8 +439,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1.config(cursor='hand1')
             saisie_largeur2.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_forme_i)            
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_forme_i)
+            labelimg.image = img_geo_forme_i
+            labelimg.pack(fill=BOTH, expand=1)                     
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -475,8 +491,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_forme_t)
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_forme_t)
+            labelimg.image = img_geo_forme_t
+            labelimg.pack(fill=BOTH, expand=1) 
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -523,8 +542,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_hauteur.config(cursor='hand1')
             saisie_largeur1.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_forme_l)
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_forme_l)
+            labelimg.image = img_geo_forme_l
+            labelimg.pack(fill=BOTH, expand=1) 
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -577,8 +599,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur1.config(cursor='hand1')
             saisie_largeur2.config(cursor='hand1')
             saisie_hauteur1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_forme_z)
+            # la photo de la configuration    
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_forme_z)
+            labelimg.image = img_geo_forme_z
+            labelimg.pack(fill=BOTH, expand=1) 
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -615,7 +640,10 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
             # la photo de la configuration 
-            canva_tab4.create_image(700,500, image=img_geo_forme_croix)            
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_forme_croix)
+            labelimg.image = img_geo_forme_croix
+            labelimg.pack(fill=BOTH, expand=1)         
             # lancement retour des touches            
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -649,8 +677,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_largeur.config(cursor='hand1')
             saisie_hauteur.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_triangle_rec)
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_triangle_rec)
+            labelimg.image = img_geo_triangle_rec
+            labelimg.pack(fill=BOTH, expand=1)            
             # lancement retour des touches
             saisie_longueur.bind('<Return>',largeur_next)
             saisie_largeur.bind('<Return>',hauteur_next)
@@ -678,8 +709,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_cercle)
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_cercle)
+            labelimg.image = img_geo_cercle
+            labelimg.pack(fill=BOTH, expand=1)    
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -711,8 +745,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
             saisie_rayon1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_cercle_t)
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_cercle_t)
+            labelimg.image = img_geo_cercle_t
+            labelimg.pack(fill=BOTH, expand=1)    
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',rayon1_next)
@@ -739,8 +776,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_demi_cercle)
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_demi_cercle)
+            labelimg.image = img_geo_demi_cercle
+            labelimg.pack(fill=BOTH, expand=1)    
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -766,8 +806,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             # main au dessus de la case
             saisie_longueur.config(cursor='hand1')
             saisie_rayon.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_quart_de_cercle)
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_quart_de_cercle)
+            labelimg.image = img_geo_quart_de_cercle
+            labelimg.pack(fill=BOTH, expand=1)    
             # lancement retour des touches
             saisie_longueur.bind('<Return>',rayon_next)
             saisie_rayon.bind('<Return>',valider_la_géométrie_auto)
@@ -799,8 +842,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_diagonale1.config(cursor='hand1')
             saisie_diagonale2.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_ovale)            
+            # la photo de la configuration   
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_ovale)
+            labelimg.image = img_geo_ovale
+            labelimg.pack(fill=BOTH, expand=1)          
             # lancement retour des touches
             saisie_longueur.bind('<Return>',diagonale1_next)
             saisie_diagonale1.bind('<Return>',diagonale2_next)
@@ -834,8 +880,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             saisie_longueur.config(cursor='hand1')
             saisie_diagonale1.config(cursor='hand1')
             saisie_diagonale2.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_geo_losange)            
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_geo_losange)
+            labelimg.image = img_geo_losange
+            labelimg.pack(fill=BOTH, expand=1)           
             # lancement retour des touches
             saisie_longueur.bind('<Return>',diagonale1_next)
             saisie_diagonale1.bind('<Return>',diagonale2_next)
@@ -850,7 +899,7 @@ def valider_la_géométrie():
         ,label_hauteur,label_hauteur1,label_diagonale1,label_diagonale2\
             ,saisie_longueur,saisie_largeur,saisie_largeur1,saisie_largeur2,saisie_rayon,saisie_rayon1\
                 ,saisie_hauteur,saisie_hauteur1,saisie_diagonale1,saisie_diagonale2\
-                    ,canva_tab1_labelframe2,valeurs_geometriques , L, b, h, b1, b2, h, h1, R, R1, D1, D2
+                    ,canva_tab1_labelframe2,valeurs_geometriques , L, b, h, b1, b2, h, h1, R, R1, D1, D2,géométrie_poutre
     if str(geometrie.get()) == 'Rectangle':  
         L = float(saisie_longueur.get())
         if str(geometrie2.get()) == 'Normal':
@@ -1114,7 +1163,12 @@ def diagonale1_next(event): #fct pour passer à R
     saisie_diagonale1.select_range(0,END)
 def diagonale2_next(event): #fct pour passer à R
     saisie_diagonale2.focus()
-    saisie_diagonale2.select_range(0,END)      
+    saisie_diagonale2.select_range(0,END)    
+def recreer_le_canva():
+    global canva_tab4
+    canva_tab4.destroy()
+    canva_tab4 = Canvas(tab4, bg="white")
+    canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 # Passage d'une combobox à l'autre   
 canva_tab1_labelframe1_Combobox1.bind("<<ComboboxSelected>>", ajout_combobox)      
 """
@@ -1136,19 +1190,16 @@ label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"b
 label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 : (Option)',bg=gris_5)
 label_masse = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse m de votre poutre en kg : (Option)',bg=gris_5)
 label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Limite élastique Re de votre poutre en MPa :',bg=gris_5)
-label_coeffpoiss = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer le Coefficient de Poisson nu de votre poutre : (Option)',bg=gris_5)
 #saisie des inputs E,Mv,m,m,Re,nu
 saisie_young = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_massevol = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_masse = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_limiteel = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-saisie_coeffpoiss = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 #saisie affichage de départ
 saisie_young.insert(0, "0.0")
 saisie_massevol.insert(0, "0.0")
 saisie_masse.insert(0, "0.0")
 saisie_limiteel.insert(0, "0.0")
-saisie_coeffpoiss.insert(0, "0.0")
 #Placement des items sur la grille
 label_young.pack(fill='both')
 saisie_young.pack(fill='both',pady=5)
@@ -1158,8 +1209,6 @@ label_masse.pack(fill='both')
 saisie_masse.pack(fill='both',pady=5)
 label_limiteel.pack(fill='both')
 saisie_limiteel.pack(fill='both',pady=5)
-label_coeffpoiss.pack(fill='both')
-saisie_coeffpoiss.pack(fill='both',pady=5)
 # Gestion du stockage des valeurs
 # valeurs_materiau = [0.0,0.0,0.0,0.0,0.0]
 def valider_le_materiau_event(event):
@@ -1171,16 +1220,15 @@ def valider_le_materiau():
     m = float(saisie_masse.get())
     Mv = float(saisie_massevol.get())
     Re = float(saisie_limiteel.get())
-    nu = float(saisie_coeffpoiss.get())
     if E!='' and Re!='' :
-        valeurs_materiau = [E,Mv,m,Re,nu]
+        valeurs_materiau = [E,Mv,m,Re]
         saisie_young.focus()
         saisie_young.select_range(0,END)
     if E==0 or Re==0 :
         showerror('Erreur', 'Un champ de coordonnées est vide')
     if E=='' or Re=='' :
         showerror('Erreur', 'Un champ de coordonnées est vide')
-    print("Les valeurs de E,Mv,m,Re et nu sont :",valeurs_materiau)
+    print("Les valeurs de E,Mv,m et Re sont :",valeurs_materiau)
 # définition de fcts pour les lignes ci-dessous ou on gestionne le passage d'une case à l'autre et la désactivation de certains
 def massevol_next(): #fct pour passer à Mv
     saisie_massevol.focus()
@@ -1191,15 +1239,11 @@ def masse_next(evt): #fct pour passer à m
 def limiteel_next(evt): #fct pour passer à Re
     saisie_limiteel.focus()
     saisie_limiteel.select_range(0,END)
-def coeffpoiss_next(evt): #fct pour passer à nu
-    saisie_coeffpoiss.focus()
-    saisie_coeffpoiss.select_range(0,END)
 def detection_passage2(evt): # détecte quand on doit passer d'une case à l'autre
     massevol_next() # switch de E à Mv quand on tape sur entrée
     saisie_massevol.bind('<Return>', masse_next) # switch de Mv à m quand on tape sur entrée
     saisie_masse.bind('<Return>', limiteel_next) # switch de m à Re quand on tape sur entrée
-    saisie_limiteel.bind('<Return>', coeffpoiss_next) # switch de Re à nu quand on tape sur entrée
-    saisie_coeffpoiss.bind('<Return>', valider_le_materiau_event) # switch de Re à nu quand on tape sur entrée   
+    saisie_limiteel.bind('<Return>', valider_le_materiau_event) # switch de Re à nu quand on tape sur entrée  
 # initialisation sélection
 saisie_young.focus()
 saisie_young.select_range(0,END)
@@ -1291,8 +1335,12 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_conc_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_con_app_simple)               
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_con_app_simple)
+            labelimg.image = img_charge_con_app_simple
+            labelimg.pack(fill=BOTH, expand=1)            
+            # canva_tab4.create_image(700,500, image=img_charge_con_app_simple)               
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1312,8 +1360,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_rep_app_simple)               
+            # la photo de la configuration
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_rep_app_simple)
+            labelimg.image = img_charge_rep_app_simple
+            labelimg.pack(fill=BOTH, expand=1)                            
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1344,8 +1395,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_rep_part)             
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_rep_part)
+            labelimg.image = img_charge_rep_part
+            labelimg.pack(fill=BOTH, expand=1)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_l.bind('<Return>',c1_next)
@@ -1378,8 +1432,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_rep_part)             
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_rep_part)
+            labelimg.image = img_charge_rep_part
+            labelimg.pack(fill=BOTH, expand=1)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_l.bind('<Return>',c1_next)
@@ -1406,8 +1463,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_triang) 
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_triang)
+            labelimg.image = img_charge_triang
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1427,8 +1487,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_triang_monotone) 
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_triang_monotone)
+            labelimg.image = img_charge_triang_monotone
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1447,8 +1510,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_triang_anti) 
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_triang_anti)
+            labelimg.image = img_charge_triang_anti
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1479,8 +1545,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_trapèze) 
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_trapèze)
+            labelimg.image = img_charge_trapèze
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_l.bind('<Return>',c1_next)
@@ -1501,8 +1570,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_parabo) 
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_parabo)
+            labelimg.image = img_charge_parabo
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1527,8 +1599,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_moment_app_simple) 
+            # la photo de la configuration   
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_moment_app_simple)
+            labelimg.image = img_charge_moment_app_simple
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1548,8 +1623,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_moment.select_range(0,END)
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_moment_unfi) 
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_moment_moment_unfi)
+            labelimg.image = img_charge_moment_unfi
+            labelimg.pack(fill=BOTH, expand=1) 
             # lancement retour des touches
             saisie_moment.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1575,8 +1653,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_force_conc_1.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_con_encas) 
+            # la photo de la configuration   
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_con_encas)
+            labelimg.image = img_charge_con_encas
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_conc_1.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
@@ -1596,8 +1677,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_rep_encas) 
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_con_encas)
+            labelimg.image = img_charge_con_encas
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1628,8 +1712,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             saisie_l.config(cursor='hand1')
             saisie_c1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_rep_part) 
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_rep_part)
+            labelimg.image = img_charge_rep_part
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
             saisie_l.bind('<Return>',c1_next)
@@ -1650,8 +1737,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_triang_croiss) 
+            # la photo de la configuration 
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_triang_croiss)
+            labelimg.image = img_charge_triang_croiss
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1670,8 +1760,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.select_range(0,END)
             # main au dessus de la case
             saisie_force_rep_1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_triang_décroiss) 
+            # la photo de la configuration   
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_triang_décroiss)
+            labelimg.image = img_charge_triang_décroiss
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
@@ -1696,8 +1789,11 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # main au dessus de la case
             saisie_moment.config(cursor='hand1')
             saisie_a1.config(cursor='hand1')
-            # la photo de la configuration            
-            canva_tab4.create_image(700,500, image=img_charge_moment_encas) 
+            # la photo de la configuration  
+            recreer_le_canva()
+            labelimg=Label(canva_tab4,image=img_charge_moment_encas)
+            labelimg.image = img_charge_moment_encas
+            labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
