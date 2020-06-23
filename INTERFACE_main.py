@@ -1185,7 +1185,7 @@ canva_tab2=Canvas(tab2, bg=gris_5)
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_5) #définit le message 1
-canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.37) # affiche le labelframe type de section
+canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.34) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
 label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre \n en N/mm² ou MPa :',bg=gris_5)
 label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre \n en kg/mm3 : ',bg=gris_5)
