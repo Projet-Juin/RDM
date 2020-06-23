@@ -249,7 +249,7 @@ class charge_répartie_partielle_proche :
         b = longueur - self.l
         # Réactions aux appuis
         RA = -q*b
-        
+        RB = 0
         # Efforts tranchants [N]
         EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):

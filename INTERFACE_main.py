@@ -1933,7 +1933,7 @@ def ajout_charge():
                 VarEcrase = classe.charge_trapézoïdale_symétrique(q, c1, l)
                 tabl_c_trapézoïdale_sy.append(VarEcrase)
                 nbr = classe.charge_trapézoïdale_symétrique.nbr
-                liste_charges.append(['Charge trapézoïdale ',str(nbr)+ "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].b) +"]", nbr])
+                liste_charges.append(['Charge trapézoïdale ',str(nbr)+ "[q = "+ str(tabl_c_trapézoïdale_sy[nbr-1].q) + " ; c1 = "+ str(tabl_c_trapézoïdale_sy[nbr-1].a) + " ; l = "+ str(tabl_c_trapézoïdale_sy[nbr-1].l) +"]", nbr])
                 udapte_listbox_charge(len(liste_charges)-1)
                 saisie_force_rep_1.focus()
                 saisie_force_rep_1.select_range(0,END)
