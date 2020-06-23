@@ -2105,79 +2105,79 @@ def supprimer_charge():
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_concentrée[IndiceSuppr]
             classe.charge_concentrée.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge concentrée : ")
+            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge concentrée d'attributs : ")
             for k in range(len(tabl_c_concentrée)): print(tabl_c_concentrée[k].P, tabl_c_concentrée[k].a)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_répartie[IndiceSuppr]
             classe.charge_répartie.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_répartie.nbr, "Charge répartie : ")
+            print("il n'y a maintenant plus que ", classe.charge_répartie.nbr, "Charge répartie d'attributs : ")
             for k in range(len(tabl_c_répartie)): print(tabl_c_répartie[k].q)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_répartie_partielle[IndiceSuppr]
             classe.charge_répartie_partielle.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_répartie_partielle.nbr, "Charge répartie partielle : ")
+            print("il n'y a maintenant plus que ", classe.charge_répartie_partielle.nbr, "Charge répartie partielle d'attributs : ")
             for k in range(len(tabl_c_répartie_partielle)): print(tabl_c_répartie_partielle[k].q, tabl_c_répartie_partielle[k].a, tabl_c_répartie_partielle[k].b)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge répartie partielle proche' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_concentrée[IndiceSuppr]
             classe.charge_concentrée.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge répartie partielle proche : ")
+            print("il n'y a maintenant plus que ", classe.charge_concentrée.nbr, "Charge répartie partielle proche d'attributs : ")
             for k in range(len(tabl_c_concentrée)): print(tabl_c_concentrée[k].P, tabl_c_concentrée[k].a)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_triang[IndiceSuppr]
             classe.charge_triangulaire.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_triangulaire.nbr, "Charge triangulaire : ")
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire.nbr, "Charge triangulaire d'attributs : ")
             for k in range(len(tabl_c_triang)): print(tabl_c_triang[k].q, tabl_c_triang[k].a)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire monotone ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_triangulaire_mon[IndiceSuppr]
             classe.charge_triangulaire_monotone.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_triangulaire_monotone.nbr, "Charge triangulaire monotone : ")
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire_monotone.nbr, "Charge triangulaire monotone d'attributs : ")
             for k in range(len(tabl_c_triangulaire_mon)): print(tabl_c_triangulaire_mon[k].q)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge triangulaire antisymétrique ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_triangulaire_antisy[IndiceSuppr]
             classe.charge_triangulaire_antisymétrique.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_triangulaire_antisymétrique.nbr, "Charge triangulaire antisymétrique : ")
+            print("il n'y a maintenant plus que ", classe.charge_triangulaire_antisymétrique.nbr, "Charge triangulaire antisymétrique d'attributs : ")
             for k in range(len(tabl_c_triangulaire_antisy)): print(tabl_c_triangulaire_antisy[k].q)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge trapézoïdale ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_trapézoïdale_sy[IndiceSuppr]
             classe.charge_trapézoïdale_symétrique.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_trapézoïdale_symétrique.nbr, "Charge trapézoïdale : ")
+            print("il n'y a maintenant plus que ", classe.charge_trapézoïdale_symétrique.nbr, "Charge trapézoïdale d'attributs : ")
             for k in range(len(tabl_c_trapézoïdale_sy)): print(tabl_c_trapézoïdale_sy[k].q)   
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge parabolique ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_parabolique[IndiceSuppr]
             classe.charge_parabolique.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_parabolique.nbr, "Charge parabolique : ")
+            print("il n'y a maintenant plus que ", classe.charge_parabolique.nbr, "Charge parabolique d'attributs : ")
             for k in range(len(tabl_c_parabolique)): print(tabl_c_parabolique[k].q) 
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Couple ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_couple[IndiceSuppr]
             classe.couple.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.couple.nbr, "Couple : ")
+            print("il n'y a maintenant plus que ", classe.couple.nbr, "Couple d'attributs : ")
             for k in range(len(tabl_couple)): print(tabl_couple[k].C) 
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Couple réparti ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_couple_réparti[IndiceSuppr]
             classe.couple_réparti.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.couple_réparti.nbr, "Couple réparti : ")
+            print("il n'y a maintenant plus que ", classe.couple_réparti.nbr, "Couple réparti d'attributs : ")
             for k in range(len(tabl_couple_réparti)): print(tabl_couple_réparti[k].C) 
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge croissante ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_crois[IndiceSuppr]
             classe.charge_croissante.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_croissante.nbr, "Charge croissante : ")
+            print("il n'y a maintenant plus que ", classe.charge_croissante.nbr, "Charge croissante d'attributs : ")
             for k in range(len(tabl_c_crois)): print(tabl_c_crois[k].q) 
         if liste_charges[Liste_listboxCharges[0].curselection()[0]][0] == 'Charge décroissante ' :
             IndiceSuppr = liste_charges[Liste_listboxCharges[0].curselection()[0]][2] - 1
             del tabl_c_décrois[IndiceSuppr]
             classe.charge_décroissante.nbr -= 1
-            print("il n'y a maintenant plus que ", classe.charge_décroissante.nbr, "Charge décroissante : ")
+            print("il n'y a maintenant plus que ", classe.charge_décroissante.nbr, "Charge décroissante d'attributs : ")
             for k in range(len(tabl_c_décrois)): print(tabl_c_décrois[k].q) 
         del liste_charges[Liste_listboxCharges[0].curselection()[0]]
         udapte_listbox_charge(Liste_listboxCharges[0].curselection()[0])

@@ -198,6 +198,58 @@ class charge_répartie_partielle :
 
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
         
+class charge_répartie_partielle_proche :
+    nbr = 0
+    def __init__(self, q, a): 
+        self.q = q
+        self.a = a
+        charge_répartie_partielle_proche.nbr += 1
+        
+    def charge_répartie_partielle_proche_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
+        q = self.q
+        a = self.a
+        c = longueur - (self.a + self.b)
+        # Réactions aux appuis
+        RA = -q*b*(b + 2*c)/(2*longueur)
+        RB = -q*b*(b + 2*a)/(2*longueur)
+        
+        # Efforts tranchants [N]
+        EffortTranch = np.linspace(0, 0, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                EffortTranch[i] = -RA
+            elif x[i] > a and x[i] <= (a+b):
+                EffortTranch[i] = -RA-q*(x[i]-a)
+            elif x[i] > (a+b) and x[i] <= longueur :
+                EffortTranch[i] = RB
+        
+        # Moment Fléchissant [N.mm]
+        Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                Mf[i] = RA*x[i]
+            elif x[i] > a and x[i] <= (a+b):
+                Mf[i] = (RA-q*a)*x[i]+q/2*((x[i])**2)+q/2*(a**2)
+            elif x[i] > (a+b) :
+                Mf[i] = RB*(longueur-x[i])
+        
+        # Contrainte pour y = h/2 [MPa]
+        ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+        # Déformation pour y = h/2 [SD]
+        DefYMax = ContrainteYMax/E
+        
+        # Flèche de la poutre        ##NE FONCTIONNE PAS
+        flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                flèche[i] = -RA/(E*Igz)*((x[i]**3)/6-(q/(48*longueur*RA)*b*(b+2*c)*(4*((longueur**2)-(a**2))-((b+2*c)**2)-(b**2))+(a**2)/6)*x[i])
+            elif x[i] > a and x[i] <= (a+b):
+                flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
+            elif x[i] > (a+b) :
+                flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
+
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
+    
 class charge_triangulaire :
     nbr = 0
     def __init__(self, q, a): # Notre méthode constructeur
