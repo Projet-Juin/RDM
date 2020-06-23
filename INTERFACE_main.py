@@ -40,9 +40,9 @@ Fin
 
 ### Création fenetre principale ###
 main=Tk()
-main.title("RDM6+++ --- Écran principal") #Titre de l'encadré
+main.title("Solve Structure --- Écran principal") #Titre de l'encadré
 main.config(bg=gris_7)
-main.call('wm', 'iconphoto', main._w, PhotoImage(file='images/geo.png'))
+main.call('wm', 'iconphoto', main._w, PhotoImage(file='images/petitlogo.png'))
 width = main.winfo_screenwidth()  #obtient la taille de l'écran de l'utilisateur en largeur
 height = main.winfo_screenheight()  #obtient la taille de l'écran de l'utilisateur en hauteur
 main.geometry("%dx%d" % (width,height))
@@ -146,7 +146,6 @@ Fin
 
 ### NoteBook - left_canvas1 ###
 notebook = ttk.Notebook(left_canvas1, style='TNotebook') # Creation du Notebook
-#,height=900,width=500
 notebook.enable_traversal() # permet de swtich avec le clavier d'un tab à l'autre [Ctl+tab,Ctrl+shift+tab,Alt+K]
 notebook.pack(expand=1, fill='both') # on place le notebook
 """
@@ -2424,12 +2423,23 @@ Fin
 tab4 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 4
 img4 = PhotoImage(file='images/picture.png')
 notebook2.add(tab4, text='Schémas',image=img4, compound=LEFT) # Ajout de la barre 1 au notebook
-canva_tab4 = Canvas(tab4, bg="white")
+canva_tab4 = Canvas(tab4, bg=gris_7)
 canva_tab4.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+bienvenue_message1=Label(canva_tab4,fg="red",font=font_titre1,text='Bienvenue sur Solve Structure',bg=gris_7) #définit le message 1
+bienvenue_message1.place(relx=0.19,rely=0.24)
+logo_1 = PhotoImage(file='images/105286100_1375318509324214_8360492095536146396_n.png')
+logo_2 = PhotoImage(file='images/EPF-couleur.png')
+labellogo_1=Label(canva_tab4,image=logo_1)
+labellogo_1.image = img_charge_moment_encas
+labellogo_1.place(relx=0.51,rely=0.35)
+labellogo_2=Label(canva_tab4,image=logo_2)
+labellogo_2.image = img_charge_moment_encas
+labellogo_2.place(relx=0.15,rely=0.40)
+bienvenue_message2=Label(canva_tab4,fg="red",font=font_titre2,text='En parteranirait avec l\'EPF, l\'équipe de Solve Strucutre a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
+bienvenue_message2.place(relx=0.22,rely=0.65)
 """
 Fin
 """
-
 ### Barre 2 : Graphiques Globaux ###
 tab5 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 5
 img5 = PhotoImage(file='images/statistics.png')
@@ -2485,10 +2495,7 @@ canva_tab11.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 Fin
 """
 
-### Lancement du rendu général ###
-# Fenetre de bienvenue #
-# fenetre_bienvenue()
-#lancer le main
+### Démarrage ###
 main.mainloop()
 """
 Fin
