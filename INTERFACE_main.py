@@ -400,8 +400,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
             label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
             label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile supérieure b1 de votre poutre en mm :',bg=gris_5)
-            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile supérieure b1 de votre poutre \nen mm :',bg=gris_5)
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
             label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -561,7 +561,7 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
             label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
             label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
-            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre en mm :',bg=gris_5)
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
             label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -819,8 +819,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
         if str(geometrie6.get()) == 'Ovale':
             # messages des inputs L,R
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre poutre en mm :',bg=gris_5)
-            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre poutre en mm :',bg=gris_5)
+            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre poutre \nen mm :',bg=gris_5)
+            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -857,8 +857,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
         if str(geometrie7.get()) == 'Normal':
             # messages des inputs L,b,h
             label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre poutre en mm :',bg=gris_5)
-            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre poutre en mm :',bg=gris_5)
+            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre \npoutre en mm :',bg=gris_5)
+            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre \npoutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
