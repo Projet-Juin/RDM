@@ -1187,8 +1187,8 @@ canva_tab2.pack(expand=1, fill='both')
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_5) #définit le message 1
 canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.37) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
-label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre en N/mm² ou MPa :',bg=gris_5)
-label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre en kg/mm3 : ',bg=gris_5)
+label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre \n en N/mm² ou MPa :',bg=gris_5)
+label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre \n en kg/mm3 : ',bg=gris_5)
 label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Limite élastique Re de votre poutre en MPa :',bg=gris_5)
 #saisie des inputs E,Mv,m,m,Re,nu
 saisie_young = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1239,7 +1239,7 @@ saisie_young.focus()
 saisie_young.select_range(0,END)
 saisie_young.bind('<Return>', detection_passage2)         
 # Bouton pour valider l'entrée des données de matériau pour rassurer l'utilisateur
-Button(canva_tab2_labelframe,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0,rely=0.90,relwidth=1, relheight=0.10)
+Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0,rely=0.90,relwidth=1, relheight=0.10)
 """
 Fin
 """
