@@ -113,6 +113,7 @@ img_charge_con_encas = PhotoImage(file='images/charge concentrée encastrement.P
 img_charge_rep_app_simple = PhotoImage(file='images/charge répartie appuis simples.PNG')
 img_charge_rep_encas = PhotoImage(file='images/charge répartie encastrement.PNG')
 img_charge_rep_part = PhotoImage(file='images/charge partiellement répartie appuis simples.PNG')
+img_charge_rep_part_proche = PhotoImage(file='images/charge partiellement répartie appuis simples proche des appuis.PNG')
 img_charge_triang = PhotoImage(file='images/charge triangulaire appuis simples.PNG')
 img_charge_triang_monotone = PhotoImage(file='images/charge triangulaire monotone appuis simples.PNG')
 img_charge_triang_croiss = PhotoImage(file='images/charge triangulaire croissante encastrement.PNG')
@@ -1243,7 +1244,7 @@ canva_tab2_labelframe2 = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text =
 canva_tab2_labelframe2.place(relx=0.01,rely=0.60,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
 # Gestion de la précision
 NbrePointsX_bis = IntVar()
-scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Régler la précision du calcul')
+scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Discrétisation de la longueur de la poutre (Nombres de points)')
 scale.pack(fill='both',anchor=CENTER)
 """
 Fin
@@ -1422,8 +1423,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_l.config(cursor='hand1')
             # la photo de la configuration  
             recreer_le_canva()
-            labelimg=Label(canva_tab4,image=img_charge_rep_part)
-            labelimg.image = img_charge_rep_part
+            labelimg=Label(canva_tab4,image=img_charge_rep_part_proche)
+            labelimg.image = img_charge_rep_part_proche
             labelimg.pack(fill=BOTH, expand=1)             
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',I_next)
