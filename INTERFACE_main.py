@@ -73,7 +73,7 @@ autres_menu = Menu(barre_de_menu,activebackground=gris_5, tearoff=0) # Création
 autres_menu.add_command(label='Aide',command=aide) # ajout de l'item aide
 autres_menu.add_command(label='Conditions de fonctionnement',command=ctds_de_fct) # ajout de l'item conditions de la rdm
 autres_menu.add_separator() #ajout d'un separateur
-autres_menu.add_command(label='Crédit',command=credit) # ajout de l'item crédit
+autres_menu.add_command(label='Crédits',command=credit) # ajout de l'item crédit
 # Ajouts des barres de menus
 barre_de_menu.add_cascade(label='Fichier', menu=fichier_menu,command=donothing) # ajouter de fichier_menu dans barre_de_menu
 barre_de_menu.add_cascade(label='Éléments finis', menu=elts_finis_menu,command=donothing) # ajouter de elts_finis_menu dans barre_de_menu
@@ -2421,7 +2421,7 @@ def rafraichir():
     lancer_le_graph_Contrainte()
     lancer_le_graph_Déformation()
     lancer_le_graph_Flèche()    
-
+    lancer_le_graph_Contrainte_analyse()
 def lancer_le_graph_globaux():
     global tabl_c_trapézoïdale_sy
     ## Effort tranchant graphique  ###
@@ -2552,7 +2552,6 @@ def lancer_le_graph_Flèche():
             key_press_handler(event, canvas, toolbar)
         canvas.mpl_connect("key_press_event", on_key_press)
         canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)   
-    
 ### Bouton Calculer ####
 bouton_calculer= Button(left_canvas2, justify='center',text="Calculer",textvariable="Re-Calculer",relief="raised",overrelief="groove", font=("Tahoma", 20,"bold"),activebackground=gris_1,cursor='spraycan', bg=gris_3, fg ="white", command=calcul)
 bouton_calculer.place(relx=0.5,rely=0.45,relwidth=0.5, relheight=0.5,anchor='center') # afficher le bouton
@@ -2586,7 +2585,7 @@ labellogo_1.place(relx=0.51,rely=0.35)
 labellogo_2=Label(canva_tab4,image=logo_2)
 labellogo_2.image = img_charge_moment_encas
 labellogo_2.place(relx=0.10,rely=0.40)
-bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Strucutre a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
+bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Structure a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
 bienvenue_message2.place(relx=0.15,rely=0.70)
 """
 Fin
@@ -2642,6 +2641,29 @@ img11 = PhotoImage(file='images/analysis.png')
 notebook2.add(tab11, text='Analyse',image=img11, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab11 = Canvas(tab11, bg=gris_5)
 canva_tab11.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+# left frame en 2 canvas
+right_canvas1=Canvas(canva_tab11, bg=gris_5) # encadré gauche haut
+right_canvas2=Canvas(canva_tab11, bg=gris_5) # encadré gauche bas
+# placement des deux 2 canvas de left_frame
+right_canvas1.place(relx=0,rely=0,relwidth=1, relheight=1)
+right_canvas2.place(relx=0,rely=0.5,relwidth=1, relheight=1)
+def lancer_le_graph_Contrainte():
+    ### Contrainte graphique Analyse ###
+    f = Figure(figsize=(10, 4), dpi=80)
+    a = f.add_subplot(111)
+    a.plot(x,ContrainteYMaxTotal)
+    a.set_xlabel('x [mm]')
+    a.set_ylabel('Contrainte Maximum [MPa]')
+    # tanbouille tkinter pour afficher #
+    canvas = FigureCanvasTkAgg(f, master=right_canvas1)
+    canvas.draw()
+    toolbar = NavigationToolbar2Tk(canvas, right_canvas1)
+    toolbar.update()
+    def on_key_press(event):
+        print("you pressed {}".format(event.key))
+        key_press_handler(event, canvas, toolbar)
+    canvas.mpl_connect("key_press_event", on_key_press)
+    canvas.get_tk_widget().place(relx=0,rely=0,relwidth=1, relheight=0.5) 
 """
 Fin
 """
