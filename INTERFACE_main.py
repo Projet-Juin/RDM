@@ -64,7 +64,7 @@ fichier_menu.add_separator() #ajout d'un separateur
 fichier_menu.add_command(label='Quitter',command=main.destroy) # ajout de l'item quitter (ou sys.exit)
 # Création d'un menu éléments finis et ajout d'items
 elts_finis_menu = Menu(barre_de_menu,activebackground=gris_5, tearoff=0) # Création d'un menu élts finis
-elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis) # ajout de l'item permettant d'aller en élément finis
+elts_finis_menu.add_command(label='Switch vers Éléments finis',command=switch_elts_finis,state=DISABLED) # ajout de l'item permettant d'aller en élément finis
 elts_finis_menu.add_separator() #ajout d'un separateur
 elts_finis_menu.add_command(label='Importer les Inputs d\'Éléments finis',command=import_elts_finis,state=DISABLED) # ajout de l'item permettant d'importer les données d'éléments finis
 elts_finis_menu.add_command(label='Exporter les Inputs d\'Éléments finis',command=export_elts_finis,state=DISABLED) # ajout de l'item permettant d'exporter les données d'éléments finis
@@ -1209,7 +1209,7 @@ saisie_limiteel.pack(fill='both',pady=5)
 def valider_le_materiau_event(event):
     valider_le_materiau()
 def valider_le_materiau():
-    global valeurs_materiau
+    global valeurs_materiau,Re
     #Gestion du stockage des valeurs
     E = float(saisie_young.get())
     Mv = float(saisie_massevol.get())
@@ -2396,7 +2396,7 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 from matplotlib.backend_bases import key_press_handler
 from matplotlib.figure import Figure
 def rafraichir():
-    global canva_tab5, canva_tab6, canva_tab7, canva_tab8, canva_tab9, canva_tab10
+    global canva_tab5, canva_tab6, canva_tab7, canva_tab8, canva_tab9, canva_tab10,canva_tab11,right_canvas1,right_canvas2
     canva_tab5.destroy()
     canva_tab5 = Canvas(tab5, bg=gris_5)
     canva_tab5.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
@@ -2415,13 +2415,19 @@ def rafraichir():
     canva_tab10.destroy()
     canva_tab10 = Canvas(tab10, bg=gris_5)
     canva_tab10.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+    right_canvas1.destroy()
+    right_canvas2.destroy()
+    right_canvas1=Canvas(canva_tab11, bg=gris_5) # encadré gauche haut
+    right_canvas2=Canvas(canva_tab11, bg=gris_5) # encadré gauche bas
+    right_canvas1.place(relx=0,rely=0,relwidth=1, relheight=1)
+    right_canvas2.place(relx=0,rely=0.5,relwidth=1, relheight=1)
     lancer_le_graph_globaux()
     lancer_le_graph_Effort()
     lancer_le_graph_Mf()
     lancer_le_graph_Contrainte()
     lancer_le_graph_Déformation()
     lancer_le_graph_Flèche()    
-    lancer_le_graph_Contrainte_analyse()
+    Analyse()
 def lancer_le_graph_globaux():
     global tabl_c_trapézoïdale_sy
     ## Effort tranchant graphique  ###
@@ -2640,30 +2646,65 @@ tab11 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 7
 img11 = PhotoImage(file='images/analysis.png')
 notebook2.add(tab11, text='Analyse',image=img11, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab11 = Canvas(tab11, bg=gris_5)
-canva_tab11.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
+canva_tab11.place(relx=0,rely=0,relwidth=1, relheight=1)
 # left frame en 2 canvas
 right_canvas1=Canvas(canva_tab11, bg=gris_5) # encadré gauche haut
 right_canvas2=Canvas(canva_tab11, bg=gris_5) # encadré gauche bas
 # placement des deux 2 canvas de left_frame
 right_canvas1.place(relx=0,rely=0,relwidth=1, relheight=1)
-right_canvas2.place(relx=0,rely=0.5,relwidth=1, relheight=1)
-def lancer_le_graph_Contrainte():
-    ### Contrainte graphique Analyse ###
-    f = Figure(figsize=(10, 4), dpi=80)
-    a = f.add_subplot(111)
-    a.plot(x,ContrainteYMaxTotal)
-    a.set_xlabel('x [mm]')
-    a.set_ylabel('Contrainte Maximum [MPa]')
-    # tanbouille tkinter pour afficher #
-    canvas = FigureCanvasTkAgg(f, master=right_canvas1)
-    canvas.draw()
-    toolbar = NavigationToolbar2Tk(canvas, right_canvas1)
-    toolbar.update()
-    def on_key_press(event):
-        print("you pressed {}".format(event.key))
-        key_press_handler(event, canvas, toolbar)
-    canvas.mpl_connect("key_press_event", on_key_press)
-    canvas.get_tk_widget().place(relx=0,rely=0,relwidth=1, relheight=0.5) 
+right_canvas2.place(relx=0,rely=0.5,relwidth=1, relheight=1)  
+poucerouge = PhotoImage(file='images/feedback (1).png')
+poucevert = PhotoImage(file='images/feedback.png')
+def Analyse():
+    lancer_le_graph_Contrainte_analyse()     
+    if ContrainteMaxTotal>=Re or ContrainteMaxTotal<=(-Re):
+        Label1 = Label(right_canvas2,text="La poutre ne supporte pas la charge qui lui est contraint",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        labelpouce=Label(right_canvas2,image=poucerouge,bg=gris_5)
+        labelpouce.image = poucerouge
+        Label2= Label(right_canvas2,text="Contrainte totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label2_bis= Label(right_canvas2,text=ContrainteMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label3= Label(right_canvas2,text="Déformation totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label3_bis= Label(right_canvas2,text=DefMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4= Label(right_canvas2,text="Flèche totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4_bis= Label(right_canvas2,text=FlècheMaxTotale,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+    elif ContrainteMaxTotal<=Re or ContrainteMaxTotal>=(-Re):
+        Label1 = Label(right_canvas2,text="La poutre supporte la charge qui lui est contraint",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        labelpouce=Label(right_canvas2,image=poucevert,bg=gris_5)
+        labelpouce.image = poucevert
+        Label2= Label(right_canvas2,text="Contrainte totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label2_bis= Label(right_canvas2,text=ContrainteMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label3= Label(right_canvas2,text="Déformation totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label3_bis= Label(right_canvas2,text=DefMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4= Label(right_canvas2,text="Flèche totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4_bis= Label(right_canvas2,text=FlècheMaxTotale,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+    labelpouce.pack(anchor='center')
+    Label1.pack(anchor='w')
+    Label2.pack(anchor='w')
+    Label2_bis.pack(anchor='w')
+    Label3.pack(anchor='w')
+    Label3_bis.pack(anchor='w')
+    Label4.pack(anchor='w')
+    Label4_bis.pack(anchor='w')
+def lancer_le_graph_Contrainte_analyse():
+     ### Contrainte graphique Analyse ###
+     f = Figure(figsize=(10, 4), dpi=80)
+     a = f.add_subplot(111)
+     a.plot(x,ContrainteYMaxTotal)
+     a.axhline(y=Re)
+     a.axhline(y=-Re)
+     a.set_xlabel('x [mm]')
+     a.set_ylabel('Contrainte Maximum [MPa]')
+     # tanbouille tkinter pour afficher #
+     canvas = FigureCanvasTkAgg(f, master=right_canvas1)
+     canvas.draw()
+     toolbar = NavigationToolbar2Tk(canvas, right_canvas1)
+     toolbar.update()
+     def on_key_press(event):
+         print("you pressed {}".format(event.key))
+         key_press_handler(event, canvas, toolbar)
+     canvas.mpl_connect("key_press_event", on_key_press)
+     canvas.get_tk_widget().place(relx=0,rely=0,relwidth=1, relheight=0.5) 
+
 """
 Fin
 """
