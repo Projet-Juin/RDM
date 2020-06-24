@@ -548,9 +548,9 @@ class couple :
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
-                flèche[i] = -C*(x[i]**2)/(2*E*Igz)
+                flèche[i] = C*(x[i]**2)/(2*E*Igz)
             elif x[i] > a :
-                flèche[i] = -C*a*(x[i]-a/2)/(E*Igz)
+                flèche[i] = C*a*(x[i]-a/2)/(E*Igz)
         
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
 
