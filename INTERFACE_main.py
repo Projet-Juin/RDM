@@ -2370,7 +2370,7 @@ def lancer_le_graph_globaux():
     d = f.add_subplot(234)
     d.plot(x,DefYMaxTotal)
     d.set_xlabel('x [mm]')
-    d.set_ylabel('Déformation Maximum [SD]')
+    d.set_ylabel('Déformation Maximum')
     if len(tabl_c_trapézoïdale_sy) != 0:
         print("pas de flèche disponible pour le moment, car la poutre subit une charge trapézoïdale")
     else :
@@ -2447,7 +2447,7 @@ def lancer_le_graph_Déformation():
     a = f.add_subplot(111)
     a.plot(x,DefYMaxTotal)
     a.set_xlabel('x [mm]')
-    a.set_ylabel('Déformation Maximum [SD]')
+    a.set_ylabel('Déformation Maximum')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab9)
     canvas.draw()
