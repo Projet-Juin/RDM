@@ -1185,7 +1185,7 @@ canva_tab2=Canvas(tab2, bg=gris_5)
 canva_tab2.pack(expand=1, fill='both')
 #Création labelframe
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_5) #définit le message 1
-canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.33) # affiche le labelframe type de section
+canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.45) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
 label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre \n en N/mm² ou MPa :',bg=gris_5)
 label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre \n en kg/mm3 : ',bg=gris_5)
@@ -1239,10 +1239,10 @@ saisie_young.focus()
 saisie_young.select_range(0,END)
 saisie_young.bind('<Return>', detection_passage2)         
 # Bouton pour valider l'entrée des données de matériau pour rassurer l'utilisateur
-Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.35,relwidth=0.98, relheight=0.07)
+Button(canva_tab2,relief="raised",overrelief="groove", text='Valider le matériau', command=valider_le_materiau, bg=gris_3,fg ="white", font=("Tahoma", 14,"bold")).place(relx=0.01,rely=0.47,relwidth=0.98, relheight=0.06)
 ### Barre 2_bis : Précision ###
 canva_tab2_labelframe2 = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Précision',bg=gris_5) #définit le message 1
-canva_tab2_labelframe2.place(relx=0.01,rely=0.60,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
+canva_tab2_labelframe2.place(relx=0.01,rely=0.70,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
 # Gestion de la précision
 NbrePointsX_bis = IntVar()
 scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Discrétisation de la longueur de la poutre (Nombres de points)')
@@ -1281,7 +1281,7 @@ def ajout_combobox_chargement():
         canva_tab3_labelframe1_Combobox2 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement2 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox2['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
                                 "Charge uniformément répartie partielle proche des appuis","Charge triangulaire", "Charge triangulaire monotone",\
-                                    "Charge triangulaire antisymétrique","Charge trapézoïdale","Charge parabolique","Moment","Moment uniformément réparti"]
+                                    "Charge triangulaire antisymétrique","Charge trapézoïdale","Charge parabolique","Moment"]
         canva_tab3_labelframe1_Combobox2.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab3_labelframe1_Combobox2.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -1410,7 +1410,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
         if str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique a \nsur votre  poutre en mm :',bg=gris_5)        
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1602,29 +1602,6 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             # lancement retour des touches
             saisie_moment.bind('<Return>',a1_next)
             saisie_a1.bind('<Return>',ajout_charge_event)
-            print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-        if str(chargement2.get()) == 'Moment uniformément réparti' :    
-            # messages des inputs
-            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Moment M sur votre poutre en N.mm :',bg=gris_5)
-            # saisie des inputs
-            saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            # Placement des items sur la grille
-            label_moment.pack(fill='both')
-            saisie_moment.pack(fill='both')
-            # saisie affichage de départ
-            saisie_moment.insert(0, "0.0") # saisie affichage de départ
-            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-            saisie_moment.focus() 
-            saisie_moment.select_range(0,END)
-            # main au dessus de la case
-            saisie_moment.config(cursor='hand1')
-            # la photo de la configuration  
-            recreer_le_canva()
-            labelimg=Label(canva_tab4,image=img_charge_moment_moment_unfi)
-            labelimg.image = img_charge_moment_unfi
-            labelimg.pack(fill=BOTH, expand=1) 
-            # lancement retour des touches
-            saisie_moment.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
     if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if str(chargement3.get()) == 'Charge concentrée' :
@@ -1974,21 +1951,6 @@ def ajout_charge():
             print('Stockage charge : ',chargement.get()," - ",chargement2.get())
             for i in range(len(tabl_couple)):
                 print(tabl_couple[i].C," - ",tabl_couple[i].a)
-        elif str(chargement2.get()) == 'Moment uniformément réparti' :    
-            M = float(saisie_moment.get())
-            if M!='' and M!= 0.0 :
-                VarEcrase = classe.couple_réparti(M)
-                tabl_couple_réparti.append(VarEcrase)
-                nbr = classe.couple_réparti.nbr
-                liste_charges.append(['Couple réparti ',str(nbr)+ "[M = "+ str(tabl_couple_réparti[nbr-1].C) +"]", nbr])
-                udapte_listbox_charge(len(liste_charges)-1)
-                saisie_moment.focus()
-                saisie_moment.select_range(0,END)
-            if M==0 or a1==0 or M=='' or a1=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')
-            print('Stockage charge : ',chargement.get()," - ",chargement2.get())
-            for i in range(len(tabl_couple_réparti)):
-                print(tabl_couple_réparti[i].C)
     elif str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if str(chargement3.get()) == 'Charge concentrée' :
             p = float(saisie_force_conc_1.get())
