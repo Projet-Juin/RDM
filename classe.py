@@ -528,7 +528,7 @@ class couple :
         RB = 0
         
         # Efforts tranchants [N]
-        EffortTranch = 0
+        EffortTranch = 0*x
         
         # Moment Fléchissant [N.mm]
         Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
