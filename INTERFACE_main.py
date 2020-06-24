@@ -195,7 +195,7 @@ def ajout_combobox(event):
     if str(geometrie.get()) == 'Forme':
         geometrie4 = StringVar()
         canva_tab1_labelframe1_Combobox4 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie4 , state = "readonly",justify='center')
-        canva_tab1_labelframe1_Combobox4['values'] = ["","I","T","L","Z","Croix"]
+        canva_tab1_labelframe1_Combobox4['values'] = ["","I","Z","Croix"]
         canva_tab1_labelframe1_Combobox4.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab1_labelframe1_Combobox4.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
