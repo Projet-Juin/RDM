@@ -18,12 +18,12 @@ class charge_concentrée :
         a = self.a
         b = longueur - self.a
         P = self.P
-        # Réactions aux appuis
+        # Réactions aux appuis 
         RA = -(P*b)/longueur
         RB = -(P*a)/longueur
-        
+    
         # Efforts tranchants [N] 
-        EffortTranch = np.linspace(0, 0, num=NbrePointsX)
+        EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] < a :
                 EffortTranch[i] = -RA
@@ -31,27 +31,29 @@ class charge_concentrée :
                 EffortTranch[i] = RB
             else :
                 EffortTranch[i] = 0
-                
+    
         # Moment Fléchissant [N.mm] 
-        Mf = np.linspace(0, 0, num=NbrePointsX)
+        Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] < a :
                 Mf[i] = RA*x[i]
             elif x[i] >= a :
                 Mf[i] = RB*(longueur-x[i])
-        
+    
         # Contrainte pour y = h/2 [MPa]
         ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+    
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
-        
-        # Flèche de la poutre
+    
+        # Flèche de la poutre [mm]
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
                 flèche[i] = -(P/(E*Igz*longueur))*((b/6)*(x[i]**3)+a*(longueur*a/2-(a**2)/6-(longueur**2)/3)*x[i])
             elif x[i] > a :
                 flèche[i] = -P*a/(E*Igz*longueur)*(-(x[i]**3)/6+longueur*(x[i]**2)/2+(-(a**2)/6-(longueur**2)/3)*x[i]+((a**2)*longueur)/6)
+
 
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
         
@@ -186,15 +188,18 @@ class charge_répartie_partielle :
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
         
-        # Flèche de la poutre        ##NE FONCTIONNE PAS
+        # Flèche de la poutre 
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
-                flèche[i] = -RA/(E*Igz)*((x[i]**3)/6-(q/(48*longueur*RA)*b*(b+2*c)*(4*((longueur**2)-(a**2))-((b+2*c)**2)-(b**2))+(a**2)/6)*x[i])
+                flèche[i] = -RA/(24*E*Igz)*(-4*(x[i]**3)+(4*(longueur**2)-((b+2*c)**2)-(b**2))*x[i])
             elif x[i] > a and x[i] <= (a+b):
                 flèche[i] = q/(48*E*Igz*longueur)*(b*(b+2*c)*x[i]*(4*((longueur**2)-(x[i]**2))-((b+2*c)**2)-(b**2))+2*longueur*((x[i]-a)**4))
             elif x[i] > (a+b) :
-                flèche[i] = -RB/(E*Igz)*(longueur*(x[i]**2)/2-(x[i]**3)/6+((1/c)*(q/(48*longueur*RB)*(b*(b+2*c)*(a+b)*(4*((longueur**2)-((a+b)**2))-((b+2*c)**2)-(b**2))+2*longueur*(b**4))+longueur*((a+b)**2)/2-((a+b)**3)/6-(longueur**3)/3))*(x[i]-longueur)-(longueur**3)/3)
+                K5 = q/(48*longueur*RB)*(b*(b+2*c)*(4*(longueur**2)-12*((a+b)**2)-((b+2*c)**2)-(b**2))+2*longueur*(4*((a+b)**3)-12*a*((a+b)**2)+12*(a**2)*(a+b)-4*(a**3)))-longueur*(a+b)+((a+b)**2)/2
+                K6 = -(longueur**3)/3-K5*longueur
+                flèche[i] = RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
+
 
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
         
