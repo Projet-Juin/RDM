@@ -185,7 +185,6 @@ class charge_répartie_partielle :
         
         # Contrainte pour y = h/2 [MPa]
         ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-        
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
         
@@ -200,6 +199,8 @@ class charge_répartie_partielle :
                 K5 = q/(48*longueur*RB)*(b*(b+2*c)*(4*(longueur**2)-12*((a+b)**2)-((b+2*c)**2)-(b**2))+2*longueur*(4*((a+b)**3)-12*a*((a+b)**2)+12*(a**2)*(a+b)-4*(a**3)))-longueur*(a+b)+((a+b)**2)/2
                 K6 = -(longueur**3)/3-K5*longueur
                 flèche[i] = RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
+                
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
                 
     def charge_répartie_partielle_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
@@ -246,7 +247,7 @@ class charge_répartie_partielle :
                 K6 = RA/(E*Igz)*(((a+b)**3)/6-(a+b/2)*((a+b)**2)/2)+q/(E*Igz)*(((a+b)**4)/24-a*((a+b)**3)/6+(a**2)*((a+b)**2)/4-(a**3)*(a+b)/6+(a**4)/24)-K5*(a+b)
                 flèche[i] = K5*x[i]+K6
     
-            return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
+        return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
 
         
 class charge_répartie_partielle_proche :

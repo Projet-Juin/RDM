@@ -2506,7 +2506,7 @@ def lancer_le_graph_Flèche():
         a = f.add_subplot(111)
         a.plot(x,flècheTotale)
         a.set_xlabel('x [mm]')
-        a.set_ylabel('Flèche Maximum [mm]')
+        a.set_ylabel('Flèche [mm]')
          # tanbouille tkinter pour afficher #
         canvas = FigureCanvasTkAgg(f, master=canva_tab10)
         canvas.draw()
@@ -2593,7 +2593,7 @@ canva_tab9.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 7 : Flèche ###
 tab10 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img10 = PhotoImage(file='images/analysis (1).png')
-notebook2.add(tab10, text='Flèche Maximum',image=img10, compound=LEFT) # Ajout de la barre 1 au notebook
+notebook2.add(tab10, text='Flèche',image=img10, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab10 = Canvas(tab10, bg=gris_5)
 canva_tab10.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 """
