@@ -584,21 +584,9 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     DefMax = np.amax(DefYMax)
     print('DefMax', DefMax)
     
-    # Flèche de la poutre         ##NE FONCTIONNE PAS
-    flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-    K4 = -(a**4)/20
-    K5 = 1/longueur*(((a+b)**3)*(longueur-a)+3/4*((a+b)**4)*(longueur-a)+((a+b)**2)*((longueur-a)**3)/2-((a+b)**5)/5-K4*a+(longueur**5)/5-(longueur**3)*a*(longueur-a))
-    K6 = (longueur**5)/5-(longueur**3)*a*(longueur-a)-K5*longueur
-    K3 = 1/a*(-(longueur**3)*(a+b)+3*(longueur**2)*((a+b)**2)/2-longueur*((a+b)**3)+((a+b)**4)/4+K5)+(3*longueur*(longueur-a)+(a**2))*(a+b)-3*(2*longueur-a)*((a+b)**2)/2+((a+b)**3)
-    K1 = K3*a-(a**4)/4
-    for i in range(NbrePointsX):
-        if x[i] <= a :
-            flèche[i] = q*x[i]*(a*(longueur-a)*(x[i]**2)/2-(x[i]**4)/20+K1)/(6*a*E*Igz)
-        elif x[i] > a and x[i] <= (a+b):
-            flèche[i] = q*(longueur*(x[i]**3)/2-(x[i]**4)/4-(a**2)*(x[i]**2)/2+K3*x[i]+K4)/(6*E*Igz)
-        elif x[i] > (a+b) :
-            flèche[i] = q*(longueur*(3*a*(longueur-a)-(longueur**2))*(x[i]**2)/2+((longueur**2)-a*(longueur-a))*(x[i]**3)/2-longueur*(x[i]**4)/4+(x[i]**5)/20+K5*x[i]+K6)/(6*E*Igz*a)
-    FlècheMax = np.amin(flèche)
+    # Flèche de la poutre
+    flèchemax = -q/(1920*E*Igz)*((5*(longueur**2)-4*(a**2))**2)
+    print('flèche maximale =',flèchemax)
 
     plt.figure(1) #Graphe effort tranchant
     plt.xlabel("x [mm]") 
@@ -626,13 +614,6 @@ def charge_trapézoïdale_symétrique(hauteur, longueur, Igz, E, LimElast, q, x,
     plt.ylabel("Déformation Max [SD]") 
     plt.title("Tracé de la Déformation Maximale") 
     GrapheDefYMaxCR = plt.plot(x,DefYMax) 
-    plt.show()
-    
-    plt.figure(5) #Graphe de la flèche
-    plt.xlabel("x [mm]") 
-    plt.ylabel("flèche [mm]") 
-    plt.title("Tracé de la flèche") 
-    GrapheFlècheCR = plt.plot(x,flèche,label="flèche")
     plt.show()
     
 def charge_parabolique(hauteur, longueur, Igz, E, LimElast, q, x, NbrePointsX):
