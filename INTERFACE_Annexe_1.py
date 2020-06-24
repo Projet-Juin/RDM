@@ -4,14 +4,15 @@
 
 Création de fonctions annexes
 """
-### IMPORTATIONS ###
+### IMPORTATIONS INTERFACE ###
+# Import Biblio
 from tkinter import *
 import tkinter.filedialog
 from tkinter.messagebox import *
 import sys
 import os
 
-#Définition du visuel
+### Définition du visuel ###
 font_titre1 = ("Arial", 45, "bold")
 font_titre2 = ("Arial", 14, "bold italic")
 font_texte1 = ("Arial", 8, "bold")
@@ -25,22 +26,25 @@ gris_5='#5D6D7E'
 gris_6='#566573'
 gris_7='#34495E'
 
+### fonction donothing ###
 def donothing(): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
     nouvelle_fenetre =Tk()
     boutton = Button(nouvelle_fenetre, text="Ne fait rien pour le moment \n A venir très prochainement !")
     boutton.pack(side='top')  
     nouvelle_fenetre.mainloop()
-
 def donothing_event(event): # Pour eviter les bugs, fonctions qui dit que rien n'est encore codé quand on sélectionne un élts non codés
     donothing()
 
+### fonction reboot ###
 def reboot_programme(): #relance le programme de zéro
     python = sys.executable
     os.execl(python, python, * sys.argv)
 
+### fonction error ###
 def error(): #affiche une fenêtre pour les erreurs
     showerror(title='ERREUR !!!',message='Argument non valable... Veuillez recommencer !')
-    
+
+### fonction pour le menu ###    
 def ouvrir():
     # S'il n'est pas du bon genre, renvoie une erreur
     # if IOError: 
@@ -52,8 +56,7 @@ def ouvrir():
     # reboot_programme()
     # fh = open('name_of_a_file', "r") 
     # some_data = fh.read() 
-    # fh.close() 
-    #     
+    # fh.close()     
 
 # import json
 # def ouvrir():
