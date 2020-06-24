@@ -40,7 +40,7 @@ Fin
 
 ### Création fenetre principale ###
 main=Tk()
-main.title("Solve Structure --- Écran principal") #Titre de l'encadré
+main.title("Solve Structure V1.0 --- Écran principal") #Titre de l'encadré
 main.config(bg=gris_7)
 main.call('wm', 'iconphoto', main._w, PhotoImage(file='images/petitlogo.png'))
 width = main.winfo_screenwidth()  #obtient la taille de l'écran de l'utilisateur en largeur
