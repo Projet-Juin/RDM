@@ -12,7 +12,6 @@ from tkinter import ttk
 from tkinter.messagebox import *
 # Import feuilles .py
 from INTERFACE_Annexe_1 import *
-
 ### IMPORTATIONS CALCULS ###
 # Import Biblio
 import numpy as np
@@ -1651,8 +1650,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_force_rep_1.config(cursor='hand1')
             # la photo de la configuration 
             recreer_le_canva()
-            labelimg=Label(canva_tab4,image=img_charge_con_encas)
-            labelimg.image = img_charge_con_encas
+            labelimg=Label(canva_tab4,image=img_charge_rep_encas)
+            labelimg.image = img_charge_rep_encas
             labelimg.pack(fill=BOTH, expand=1)
             # lancement retour des touches
             saisie_force_rep_1.bind('<Return>',ajout_charge_event)
