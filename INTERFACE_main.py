@@ -2230,7 +2230,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     NbrePointsX = int(NbrePointsX_bis.get())
     print('Nombres de points sur les graphes : ', NbrePointsX)
     x = np.linspace(0, longueur, NbrePointsX)
-    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_répartie_partielle_proche = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Sommec_crois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_répartie_partielle_proche = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Somme_c_crois = Somme_c_décrois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     if str(chargement.get()) == '2 appuis simples' :
         if len(tabl_c_concentrée) != 0 :
             for j in range(classe.charge_concentrée.nbr):
@@ -2313,7 +2313,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie[j].charge_répartie_encastrement(hauteur, longueur, Igz, E, x)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie = Somme_c_répartie + conversion
-        if len(charge_répartie_partielle) != 0:
+        if len(tabl_c_répartie_partielle) != 0:
             for j in range(classe.charge_répartie_partielle.nbr):
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
@@ -2322,22 +2322,27 @@ def calcul(): # Effectue le calcul sur le bouton calcul
             for j in range(classe.charge_croissante.nbr):
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_crois[j].charge_croissante_encastrement(hauteur, longueur, Igz, E, x)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
-                Sommec_crois = Sommec_crois + conversion
+                Somme_c_crois = Somme_c_crois + conversion
+        if len(tabl_c_décrois) != 0:
+            for j in range(classe.charge_décroissante.nbr):
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_décrois[j].charge_décroissante_encastrement(hauteur, longueur, Igz, E, x)
+                conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
+                Somme_c_décrois = Somme_c_décrois + conversion
         if len(tabl_couple) != 0:
             for j in range(classe.couple.nbr):
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_couple[j].couple_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
              # SOMME TOTALE :
-        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Sommec_crois[0] + Somme_couple[0] 
-        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1]  + Sommec_crois[1] + Somme_couple[1] 
-        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2]  + Sommec_crois[2] + Somme_couple[2] 
-        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3]  + Sommec_crois[3] + Somme_couple[3] 
-        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4]  + Sommec_crois[4] + Somme_couple[4] 
+        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Somme_c_crois[0] + Somme_c_décrois[0] + Somme_couple[0] 
+        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1]  + Somme_c_crois[1] + Somme_c_décrois[1]  + Somme_couple[1] 
+        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2]  + Somme_c_crois[2] + Somme_c_décrois[2]  + Somme_couple[2] 
+        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3]  + Somme_c_crois[3] + Somme_c_décrois[3]  + Somme_couple[3] 
+        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4]  + Somme_c_crois[4] + Somme_c_décrois[4]  + Somme_couple[4] 
         ContrainteMaxTotal = np.amax(abs(ContrainteYMaxTotal))
-        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5]  + Sommec_crois[5] + Somme_couple[5] 
+        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5]  + Somme_c_crois[5] + Somme_c_décrois[5]  + Somme_couple[5] 
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
-        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Sommec_crois[6] + Somme_couple[6] 
+        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Somme_c_crois[6] + Somme_c_décrois[6]  + Somme_couple[6] 
         FlècheMaxTotale = np.amax(abs(flècheTotale))  
         # Dire dans la console calculs lancées
         print('Calculs encastrement lancés')

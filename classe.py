@@ -203,7 +203,7 @@ class charge_répartie_partielle :
                 
     def charge_répartie_partielle_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
-        a = self.l
+        a = self.a
         b = self.b
         # Réactions aux appuis [N]
         RA = -q*b
