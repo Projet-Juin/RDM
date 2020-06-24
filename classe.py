@@ -164,7 +164,7 @@ class charge_répartie_partielle :
         RB = -q*b*(b + 2*a)/(2*longueur)
         
         # Efforts tranchants [N]
-        EffortTranch = np.linspace(0, 0, num=NbrePointsX)
+        EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
                 EffortTranch[i] = -RA
@@ -185,10 +185,11 @@ class charge_répartie_partielle :
         
         # Contrainte pour y = h/2 [MPa]
         ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+        
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
         
-        # Flèche de la poutre 
+        # Flèche de la poutre [mm]
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
@@ -199,62 +200,15 @@ class charge_répartie_partielle :
                 K5 = q/(48*longueur*RB)*(b*(b+2*c)*(4*(longueur**2)-12*((a+b)**2)-((b+2*c)**2)-(b**2))+2*longueur*(4*((a+b)**3)-12*a*((a+b)**2)+12*(a**2)*(a+b)-4*(a**3)))-longueur*(a+b)+((a+b)**2)/2
                 K6 = -(longueur**3)/3-K5*longueur
                 flèche[i] = RB*(longueur*(x[i]**2)/2-(x[i]**3)/6+K5*x[i]+K6)/(E*Igz)
-
-
-        return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
-        
-class charge_répartie_partielle_proche :
-    nbr = 0
-    def __init__(self, q, l): 
-        self.q = q
-        self.l = l
-        charge_répartie_partielle_proche.nbr += 1
-        
-    def charge_répartie_partielle_proche_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
+                
+    def charge_répartie_partielle_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
         q = self.q
         a = self.l
-        # Réactions aux appuis
-        RA = -q*a*(longueur - (a/2))/longueur
-        RB = -q*(a**2)/(2*longueur)
-        
-        # Efforts tranchants [N]
-        EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-        for i in range(NbrePointsX):
-            if x[i] <= a :
-                EffortTranch[i] = -RA-q*x[i]
-            elif x[i] > a and x[i] <= longueur :
-                EffortTranch[i] = RB
-                
-        # Moment Fléchissant [N.mm]
-        Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-        for i in range(NbrePointsX):
-            if x[i] <= a : 
-                Mf[i] = RA*x[i]+q*(x[i]**2)/2
-            elif x[i] > a :
-                Mf[i] = RB*(longueur-x[i])
-                
-        # Contrainte pour y = h/2 [MPa]
-        ContrainteYMax = -(Mf/Igz)*(hauteur/2)
-        # Déformation pour y = h/2 [SD]
-        DefYMax = ContrainteYMax/E
-        
-        # Flèche de la poutre
-        flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
-        for i in range(NbrePointsX):
-            if x[i] <= a :
-                flèche[i] = q*x[i]*((a**2)*((2*longueur-a)**2)-2*a*(2*longueur-a)*(x[i]**2)+longueur*(x[i]**3))/(24*E*Igz*longueur)
-            elif x[i] > a :
-                flèche[i] = q*a**2*(longueur-x[i])*(4*longueur*x[i]-2*x[i]**2-a**2)/(24*E*Igz*longueur)
-        
-        return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
-    
-    def charge_répartie_partielle_proche_encastrement(self, hauteur, longueur, Igz, E, x, NbrePointsX):
-        q = self.q
-        a = self.l
-        b = longueur - self.l
-        # Réactions aux appuis
+        b = self.b
+        # Réactions aux appuis [N]
         RA = -q*b
         RB = 0
+        
         # Efforts tranchants [N]
         EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
@@ -264,7 +218,7 @@ class charge_répartie_partielle_proche :
                 EffortTranch[i] = -RA-q*(x[i]-a)
             elif x[i] > (a+b) and x[i] <= longueur :
                 EffortTranch[i] = 0
-                
+        
         # Moment Fléchissant [N.mm]
         Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
@@ -274,13 +228,13 @@ class charge_répartie_partielle_proche :
                 Mf[i] = RA*(x[i]-a-b/2)+q*((x[i]**2)/2-a*x[i]+(a**2)/2)
             elif x[i] > (a+b) :
                 Mf[i] = 0
-                
+        
         # Contrainte pour y = h/2 [MPa]
         ContrainteYMax = -(Mf/Igz)*(hauteur/2)
         # Déformation pour y = h/2 [SD]
         DefYMax = ContrainteYMax/E
         
-        # Flèche de la poutre
+        # Flèche de la poutre [mm]
         flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
         for i in range(NbrePointsX):
             if x[i] <= a :
@@ -292,7 +246,55 @@ class charge_répartie_partielle_proche :
                 K6 = RA/(E*Igz)*(((a+b)**3)/6-(a+b/2)*((a+b)**2)/2)+q/(E*Igz)*(((a+b)**4)/24-a*((a+b)**3)/6+(a**2)*((a+b)**2)/4-(a**3)*(a+b)/6+(a**4)/24)-K5*(a+b)
                 flèche[i] = K5*x[i]+K6
     
+            return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
+
+        
+class charge_répartie_partielle_proche :
+    nbr = 0
+    def __init__(self, q, l): 
+        self.q = q
+        self.l = l
+        charge_répartie_partielle_proche.nbr += 1
+        
+    def charge_répartie_partielle_proche_appuis_simples(self, hauteur, longueur, Igz, E, x, NbrePointsX):
+        q = self.q
+        a = self.l
+        # Réactions aux appuis [N]
+        RA = -q*a*(longueur - (a/2))/longueur
+        RB = -q*(a**2)/(2*longueur)
+        
+        # Efforts tranchants [N]
+        EffortTranch = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                EffortTranch[i] = -RA-q*x[i]
+            elif x[i] > a and x[i] <= longueur :
+                EffortTranch[i] = RB
+        
+        # Moment Fléchissant [N.mm]
+        Mf = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a : 
+                Mf[i] = RA*x[i]+q*(x[i]**2)/2
+            elif x[i] > a :
+                Mf[i] = RB*(longueur-x[i])
+        
+        # Contrainte pour y = h/2 [MPa]
+        ContrainteYMax = -(Mf/Igz)*(hauteur/2)
+        
+        # Déformation pour y = h/2 [SD]
+        DefYMax = ContrainteYMax/E
+        
+        # Flèche de la poutre [mm]
+        flèche = np.linspace(0, NbrePointsX-1, num=NbrePointsX)
+        for i in range(NbrePointsX):
+            if x[i] <= a :
+                flèche[i] = q*x[i]*((a**2)*((2*longueur-a)**2)-2*a*(2*longueur-a)*(x[i]**2)+longueur*(x[i]**3))/(24*E*Igz*longueur)
+            elif x[i] > a :
+                flèche[i] = q*a**2*(longueur-x[i])*(4*longueur*x[i]-2*x[i]**2-a**2)/(24*E*Igz*longueur)
+
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
+    
     
 class charge_triangulaire :
     nbr = 0
@@ -339,6 +341,7 @@ class charge_triangulaire :
                 flèche[i] = q*(longueur-x[i])*(3*((longueur-x[i])**4)+b*(longueur+a)*(7*longueur**2-3*a**2-10*(longueur-x[i])**2))/(360*E*Igz*b)
 
         return RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche
+    
         
 class charge_triangulaire_monotone :
     nbr = 0

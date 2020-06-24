@@ -1293,7 +1293,7 @@ def ajout_combobox_chargement():
         chargement3 = StringVar()
         canva_tab3_labelframe1_Combobox3 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement3 , state = "readonly",justify='center')
         canva_tab3_labelframe1_Combobox3['values'] = ["","Charge concentrée", "Charge uniformément répartie", "Charge uniformément répartie partielle",\
-                                'Charge uniformément répartie partielle proche des appuis',"Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
+                                "Charge triangulaire croissante", "Charge triangulaire décroissante","Moment"]
         canva_tab3_labelframe1_Combobox3.place(relx=0.01,rely=0.66,relwidth=0.98, relheight=0.28) # affichage de la combobox
         canva_tab3_labelframe1_Combobox3.current(0) # onglet actif dans la combobox quand on démarre
         # Passage d'une combobox à l'autre   
@@ -1717,36 +1717,6 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             saisie_l.bind('<Return>',c1_next)
             saisie_c1.bind('<Return>',ajout_charge_event)
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
-        if str(chargement3.get()) == 'Charge uniformément répartie partielle proche des appuis' :
-            # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
-            # saisie des inputs
-            saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
-            # Placement des items sur la grille
-            label_force_rep_1.pack(fill='both')
-            saisie_force_rep_1.pack(fill='both')
-            label_l.pack(fill='both')
-            saisie_l.pack(fill='both')
-            # saisie affichage de départ
-            saisie_force_rep_1.insert(0, "0.0") # saisie affichage de départ
-            saisie_l.insert(0, "0.0") # saisie affichage de départ
-            # refait le focus automatique sur la première case dès qu'on change le choix du combobox et sélection entière
-            saisie_force_rep_1.focus() 
-            saisie_force_rep_1.select_range(0,END)
-            # main au dessus de la case
-            saisie_force_rep_1.config(cursor='hand1')
-            saisie_l.config(cursor='hand1')
-            # la photo de la configuration  
-            recreer_le_canva()
-            labelimg=Label(canva_tab4,image=img_charge_rep_part_proche_encast)
-            labelimg.image = img_charge_rep_part_proche_encast
-            labelimg.pack(fill=BOTH, expand=1)             
-            # lancement retour des touches
-            saisie_force_rep_1.bind('<Return>',I_next)
-            saisie_l.bind('<Return>',ajout_charge_event)
-            print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire croissante' :
             # messages des inputs
             label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
@@ -2068,22 +2038,6 @@ def ajout_charge():
             print('Stockage charge : ',chargement.get()," - ",chargement3.get())
             for i in range(len(tabl_c_répartie_partielle)):
                 print(tabl_c_répartie_partielle[i].q," - ",tabl_c_répartie_partielle[i].a," - ",tabl_c_répartie_partielle[i].b)
-        elif str(chargement3.get()) == 'Charge uniformément répartie partielle proche des appuis' :
-            q = float(saisie_force_rep_1.get())
-            l = float(saisie_l.get())
-            if q!='' and l!='' and q!= 0.0 and l!= 0.0 :
-                VarEcrase = classe.charge_répartie_partielle_proche(q, l)
-                tabl_c_répartie_partielle_proche.append(VarEcrase) 
-                nbr = classe.charge_répartie_partielle_proche.nbr
-                liste_charges.append(['Charge répartie partielle proche ',str(nbr)+ "[q = "+ str(tabl_c_répartie_partielle_proche[nbr-1].q) + " ; l = "+ str(tabl_c_répartie_partielle_proche[nbr-1].l) +  "]", nbr])
-                udapte_listbox_charge(len(liste_charges)-1)
-                saisie_force_rep_1.focus()
-                saisie_force_rep_1.select_range(0,END)
-            if q==0 or l==0 or q=='' or l=='':
-                showerror('Erreur', 'Un champ de coordonnées est vide.')
-            print('Stockage charge : ',chargement.get()," - ",chargement3.get())
-            for i in range(len(tabl_c_répartie_partielle_proche)):
-                print(tabl_c_répartie_partielle_proche[i].q," - ",tabl_c_répartie_partielle_proche[i].l)   
         elif str(chargement3.get()) == 'Charge triangulaire croissante' :
             q = float(saisie_force_rep_1.get())
             if q!='' and q!=0.0:
@@ -2359,11 +2313,11 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie[j].charge_répartie_encastrement(hauteur, longueur, Igz, E, x)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_c_répartie = Somme_c_répartie + conversion
-        if len(tabl_c_répartie_partielle_proche) != 0:
-            for j in range(classe.charge_répartie_partielle_proche.nbr):
-                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle_proche[j].charge_répartie_partielle_proche_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
+        if len(charge_répartie_partielle) != 0:
+            for j in range(classe.charge_répartie_partielle.nbr):
+                [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_répartie_partielle[j].charge_répartie_partielle_encastrement(hauteur, longueur, Igz, E, x, NbrePointsX)
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
-                Somme_c_répartie_partielle_proche = Somme_c_répartie_partielle_proche + conversion
+                Somme_c_répartie_partielle = Somme_c_répartie_partielle_proche + conversion
         if len(tabl_c_crois) != 0:
             for j in range(classe.charge_croissante.nbr):
                 [RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche] = tabl_c_crois[j].charge_croissante_encastrement(hauteur, longueur, Igz, E, x)
@@ -2375,15 +2329,15 @@ def calcul(): # Effectue le calcul sur le bouton calcul
                 conversion = np.array([RA, RB, EffortTranch, Mf, ContrainteYMax, DefYMax, flèche])
                 Somme_couple = Somme_couple + conversion
              # SOMME TOTALE :
-        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle_proche[0] + Sommec_crois[0] + Somme_couple[0] 
-        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle_proche[1]  + Sommec_crois[1] + Somme_couple[1] 
-        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle_proche[2]  + Sommec_crois[2] + Somme_couple[2] 
-        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle_proche[3]  + Sommec_crois[3] + Somme_couple[3] 
-        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle_proche[4]  + Sommec_crois[4] + Somme_couple[4] 
+        RATotal = Somme_c_concentrée[0] + Somme_c_répartie[0] + Somme_c_répartie_partielle[0] + Sommec_crois[0] + Somme_couple[0] 
+        RBTotal = Somme_c_concentrée[1] + Somme_c_répartie[1] + Somme_c_répartie_partielle[1]  + Sommec_crois[1] + Somme_couple[1] 
+        EffortTranchTotal = Somme_c_concentrée[2] + Somme_c_répartie[2] + Somme_c_répartie_partielle[2]  + Sommec_crois[2] + Somme_couple[2] 
+        MfTotal = Somme_c_concentrée[3] + Somme_c_répartie[3] + Somme_c_répartie_partielle[3]  + Sommec_crois[3] + Somme_couple[3] 
+        ContrainteYMaxTotal = Somme_c_concentrée[4] + Somme_c_répartie[4] + Somme_c_répartie_partielle[4]  + Sommec_crois[4] + Somme_couple[4] 
         ContrainteMaxTotal = np.amax(abs(ContrainteYMaxTotal))
-        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle_proche[5]  + Sommec_crois[5] + Somme_couple[5] 
+        DefYMaxTotal = Somme_c_concentrée[5] + Somme_c_répartie[5] + Somme_c_répartie_partielle[5]  + Sommec_crois[5] + Somme_couple[5] 
         DefMaxTotal = np.amax(abs(DefYMaxTotal))
-        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle_proche[6] + Sommec_crois[6] + Somme_couple[6] 
+        flècheTotale = Somme_c_concentrée[6] + Somme_c_répartie[6] + Somme_c_répartie_partielle[6] + Sommec_crois[6] + Somme_couple[6] 
         FlècheMaxTotale = np.amax(abs(flècheTotale))  
         # Dire dans la console calculs lancées
         print('Calculs encastrement lancés')
