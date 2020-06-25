@@ -2172,7 +2172,7 @@ Fin
 def verification_hypotheses_de_la_rdm_section_rectangulaire(hauteur):
     #Vérifie le rapport de x4 pour la géométrie
     if L/hauteur <= 4 :
-        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectés ! \nPour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
+        showwarning(title="ATTENTION", message="Le calcul va se faire mais les conditions de la RDM ne sont pas respectées ! \nPour plus d'informations, rendez vous dans la rubrique Autres / Conditions de fonctionnement")
 
 def calcul(): # Effectue le calcul sur le bouton calcul
     # valeurs_materiau = [E,Mv,m,Re,nu]
@@ -2511,7 +2511,7 @@ labellogo_1.place(relx=0.51,rely=0.35)
 labellogo_2=Label(canva_tab4,image=logo_2)
 labellogo_2.image = img_charge_moment_encas
 labellogo_2.place(relx=0.10,rely=0.40)
-bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Structure a dévéloppé ce programme qui a pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
+bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='A la demande de l\'EPF, une equipe d\'étudiants a mis en place le logiciel Solve Structure qui est un programme ayant pour intérêt d\'étudier les effets d\'une ou plusieurs charges sur une structure.',wraplength=800,bg=gris_7) #définit le message 2
 bienvenue_message2.place(relx=0.15,rely=0.70)
 """
 Fin
@@ -2581,21 +2581,21 @@ def Analyse():
         Label1 = Label(right_canvas2,text="La poutre ne supporte pas la charge qui lui est contraint",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         labelpouce=Label(right_canvas2,image=poucerouge,bg=gris_5)
         labelpouce.image = poucerouge
-        Label2= Label(right_canvas2,text="Contrainte totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label2= Label(right_canvas2,text="Contrainte totale Maximale [MPa] = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label2_bis= Label(right_canvas2,text=ContrainteMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3= Label(right_canvas2,text="Déformation totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3_bis= Label(right_canvas2,text=DefMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
-        Label4= Label(right_canvas2,text="Flèche totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4= Label(right_canvas2,text="Flèche totale Maximale = [mm]",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label4_bis= Label(right_canvas2,text=FlècheMaxTotale,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
     elif ContrainteMaxTotal<=Re or ContrainteMaxTotal>=(-Re):
         Label1 = Label(right_canvas2,text="La poutre supporte la charge qui lui est contraint",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         labelpouce=Label(right_canvas2,image=poucevert,bg=gris_5)
         labelpouce.image = poucevert
-        Label2= Label(right_canvas2,text="Contrainte totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label2= Label(right_canvas2,text="Contrainte totale Maximale [MPa] = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label2_bis= Label(right_canvas2,text=ContrainteMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3= Label(right_canvas2,text="Déformation totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3_bis= Label(right_canvas2,text=DefMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
-        Label4= Label(right_canvas2,text="Flèche totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4= Label(right_canvas2,text="Flèche totale Maximale [mm] = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label4_bis= Label(right_canvas2,text=FlècheMaxTotale,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
     labelpouce.pack(anchor='center')
     Label1.pack(anchor='w')
