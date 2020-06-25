@@ -2542,7 +2542,7 @@ canva_tab7.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 5 : Contrainte pour y=h/2 ###
 tab8 = ttk.Frame(notebook2, style='TFrame') # Creation de la barre 6
 img8 = PhotoImage(file='images/analysis (1).png')
-notebook2.add(tab8, text='Contrainte Maximum',image=img8, compound=LEFT) # Ajout de la barre 1 au notebook
+notebook2.add(tab8, text='Contrainte Maximale',image=img8, compound=LEFT) # Ajout de la barre 1 au notebook
 canva_tab8 = Canvas(tab8, bg=gris_5)
 canva_tab8.place(relx=0.003,rely=0.003,relwidth=0.995, relheight=0.995)
 ### Barre 6 : Déformations ###
