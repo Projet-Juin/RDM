@@ -2365,18 +2365,18 @@ def lancer_le_graph_globaux():
     c = f.add_subplot(233)
     c.plot(x,ContrainteYMaxTotal)
     c.set_xlabel('x [mm]')
-    c.set_ylabel('Contrainte Maximum [MPa]')  
+    c.set_ylabel('Contrainte Maximale [MPa]')  
     d = f.add_subplot(234)
     d.plot(x,DefYMaxTotal)
     d.set_xlabel('x [mm]')
-    d.set_ylabel('Déformation Maximum')
+    d.set_ylabel('Déformation Maximale')
     if len(tabl_c_trapézoïdale_sy) != 0:
         print("pas de flèche disponible pour le moment, car la poutre subit une charge trapézoïdale")
     else :
         e = f.add_subplot(235)
         e.plot(x,flècheTotale)
         e.set_xlabel('x [mm]')
-        e.set_ylabel('Flèche Maximum [mm]')
+        e.set_ylabel('Flèche Maximale [mm]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab5)
     canvas.draw()
@@ -2429,7 +2429,7 @@ def lancer_le_graph_Contrainte():
     a = f.add_subplot(111)
     a.plot(x,ContrainteYMaxTotal)
     a.set_xlabel('x [mm]')
-    a.set_ylabel('Contrainte Maximum [MPa]')
+    a.set_ylabel('Contrainte Maximale [MPa]')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab8)
     canvas.draw()
@@ -2446,7 +2446,7 @@ def lancer_le_graph_Déformation():
     a = f.add_subplot(111)
     a.plot(x,DefYMaxTotal)
     a.set_xlabel('x [mm]')
-    a.set_ylabel('Déformation Maximum')
+    a.set_ylabel('Déformation Maximale')
     # tanbouille tkinter pour afficher #
     canvas = FigureCanvasTkAgg(f, master=canva_tab9)
     canvas.draw()
@@ -2511,7 +2511,7 @@ labellogo_1.place(relx=0.51,rely=0.35)
 labellogo_2=Label(canva_tab4,image=logo_2)
 labellogo_2.image = img_charge_moment_encas
 labellogo_2.place(relx=0.10,rely=0.40)
-bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Structure a dévéloppé ce programme qui à pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
+bienvenue_message2=Label(canva_tab4,fg="black",font=font_titre2,text='En partenariat avec l\'EPF, l\'équipe de Solve Structure a dévéloppé ce programme qui a pour intérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.',wraplength=800,bg=gris_7) #définit le message 2
 bienvenue_message2.place(relx=0.15,rely=0.70)
 """
 Fin

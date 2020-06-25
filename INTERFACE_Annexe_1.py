@@ -141,7 +141,7 @@ def credit(): # annonce la version du programme, les concepteurs du programme et
     root.geometry("%dx%d" % (600,375))
     label0=Label(root,justify='center',bg=gris_5,font=("Arial", 14, "bold italic"),text='SOLVE STRUCTURE --- VERSION 1.0')
     label0.pack(fill='both')
-    label8=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'En partenariat avec l\'EPF, Solve Structure est programme qui à pour \nintérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.')
+    label8=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'En partenariat avec l\'EPF, Solve Structure est programme qui a pour \nintérêt d\'étudier l\'efffet que peut avoir une charge sur une poutre.')
     label8.pack(fill='both')
     label2=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'L\'application a été conçu par l\'Equipe de Solve Structure :\n')
     label2.pack(fill='both')
