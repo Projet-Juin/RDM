@@ -164,7 +164,7 @@ canva_tab1.pack(expand=1, fill='both')
 canva_tab1_labelframe1 = LabelFrame(canva_tab1,font = ("Arial",14 , "bold"),text = 'Type de section',bg =gris_5) #définit le message 1
 canva_tab1_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.16) # affiche le labelframe type de section    
 # Choisir quelle est la géométrie du problème
-canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choissiez le type de géométrie de votre poutre :",bg=gris_5,font = ("Arial",10,"bold"))
+canva_tab1_labelframe1_label = Label(canva_tab1_labelframe1,text = "Choisissez le type de géométrie de votre poutre :",bg=gris_5,font = ("Arial",10,"bold"))
 canva_tab1_labelframe1_label.place(relx=0.01,rely=0.02,relwidth=0.98, relheight=0.25)
 geometrie = StringVar()
 canva_tab1_labelframe1_Combobox1 = ttk.Combobox(canva_tab1_labelframe1, textvariable = geometrie , state = "readonly",justify='center')
@@ -238,9 +238,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Rectangle':
         if str(geometrie2.get()) == 'Normal':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -275,11 +275,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 2 :  index <",canva_tab1_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie2.get()) == 'Creux':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b1 de votre poutre en mm :',bg=gris_5)
-            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b1 de votre poutre en mm :',bg=gris_5)
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -328,8 +328,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Carré':
         if str(geometrie3.get()) == 'Normal':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -358,9 +358,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 3 :  index <",canva_tab1_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie3.get()) == 'Creux':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -396,12 +396,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Forme':
         if str(geometrie4.get()) == 'I':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile supérieure b1 de votre poutre \nen mm :',bg=gris_5)
-            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
-            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile supérieure b1 de votre poutre \nen mm :',bg=gris_5)
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -454,11 +454,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie4.get()) == 'T':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
-            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -505,11 +505,11 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie4.get()) == 'L':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
-            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -556,12 +556,12 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie4.get()) == 'Z':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
-            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
-            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
-            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_largeur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile b1 de votre poutre en mm :',bg=gris_5)
+            label_largeur2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur de l’aile inférieure b2 de votre poutre \nen mm :',bg=gris_5)
+            label_hauteur1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur du tronc h1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -614,9 +614,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 4 :  index <",canva_tab1_labelframe1_Combobox4.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox4.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie4.get()) == 'Croix':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -652,9 +652,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Triangle':
         if str(geometrie5.get()) == 'Rectangle':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Largeur b de votre poutre en mm :',bg=gris_5)
-            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Hauteur h de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_largeur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Largeur b de votre poutre en mm :',bg=gris_5)
+            label_hauteur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Hauteur h de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_largeur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -690,8 +690,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Cercle':
         if str(geometrie6.get()) == 'Normal':
             # messages des inputs L,R
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Rayon R de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -720,9 +720,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie6.get()) == 'Creux':
             # messages des inputs L,R
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R de votre poutre en mm :',bg=gris_5)
-            label_rayon1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R1 de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Rayon R de votre poutre en mm :',bg=gris_5)
+            label_rayon1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Rayon R1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -757,8 +757,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie6.get()) == 'Demi Cercle':
             # messages des inputs L,R
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Rayon R de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -787,8 +787,8 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie6.get()) == 'Quart de Cercle':
             # messages des inputs L,R
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Rayon R de votre poutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_rayon = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Rayon R de votre poutre en mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_rayon = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -817,9 +817,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
             print("Sélection en cours du Combobox 6 :  index <",canva_tab1_labelframe1_Combobox6.current(),"> et intitulé <", canva_tab1_labelframe1_Combobox6.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(geometrie6.get()) == 'Ovale':
             # messages des inputs L,R
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre poutre \nen mm :',bg=gris_5)
-            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre poutre \nen mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la grande diagonale D1 de votre poutre \nen mm :',bg=gris_5)
+            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la petite diagonale D2 de votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs L,R
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -855,9 +855,9 @@ def nouveau_labelframe(event): # nouvelle frame où on rentre les données
     if str(geometrie.get()) == 'Losange':
         if str(geometrie7.get()) == 'Normal':
             # messages des inputs L,b,h
-            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Longueur L de votre poutre en mm :',bg=gris_5)
-            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la grande diagonale D1 de votre \npoutre en mm :',bg=gris_5)
-            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la petite diagonale D2 de votre \npoutre en mm :',bg=gris_5)
+            label_longueur = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Longueur L de votre poutre en mm :',bg=gris_5)
+            label_diagonale1 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la grande diagonale D1 de votre \npoutre en mm :',bg=gris_5)
+            label_diagonale2 = Label(canva_tab1_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la petite diagonale D2 de votre \npoutre en mm :',bg=gris_5)
             # saisie des inputs L,b,h
             saisie_longueur = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
             saisie_diagonale1 = Entry(canva_tab1_labelframe2,disabledbackground = gris_4,font = ("Arial",11),bg=gris_2,justify='center')
@@ -1186,9 +1186,9 @@ canva_tab2.pack(expand=1, fill='both')
 canva_tab2_labelframe = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text = 'Données matériau',bg=gris_5) #définit le message 1
 canva_tab2_labelframe.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.45) # affiche le labelframe type de section
 #messages des inputs E,Mv,m,m,Re,nu
-label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrer le Module de Young E de votre poutre \n en N/mm² ou MPa :',bg=gris_5)
-label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Masse volumique Mv de votre poutre \n en kg/mm3 : ',bg=gris_5)
-label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrer la Limite élastique Re de votre poutre en MPa :',bg=gris_5)
+label_young = Label(canva_tab2_labelframe,justify='center',font = ("Arial",10,"bold"),text = 'Entrez le Module de Young E de votre poutre \n en N/mm² ou MPa :',bg=gris_5)
+label_massevol = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrez la Masse volumique Mv de votre poutre \n en kg/mm3 : ',bg=gris_5)
+label_limiteel = Label(canva_tab2_labelframe,font = ("Arial",10,"bold"),text = 'Entrez la Limite élastique Re de votre poutre en MPa :',bg=gris_5)
 #saisie des inputs E,Mv,m,m,Re,nu
 saisie_young = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
 saisie_massevol = Entry(canva_tab2_labelframe,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1244,7 +1244,7 @@ canva_tab2_labelframe2 = LabelFrame(canva_tab2,font=("Arial",14 , "bold"),text =
 canva_tab2_labelframe2.place(relx=0.01,rely=0.70,relwidth=0.98, relheight=0.15) # affiche le labelframe type de section
 # Gestion de la précision
 NbrePointsX_bis = IntVar()
-scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Discrétisation de la longueur de la poutre (Nombres de points)')
+scale = Scale(canva_tab2_labelframe2,variable=NbrePointsX_bis,cursor='arrow',bd=0, orient='horizontal',font = ("Arial",10,"bold"), from_=100, to=1000,resolution=1,troughcolor=gris_7, tickinterval=100, length=1001, bg=gris_5,label='Discrétisation de la longueur de la poutre (Nombre de points) :')
 scale.pack(fill='both',anchor=CENTER)
 """
 Fin
@@ -1261,7 +1261,7 @@ canva_tab3.pack(expand=1, fill='both')
 canva_tab3_labelframe1 = LabelFrame(canva_tab3,font = ("Arial",14 , "bold"),text = 'Type de chargement',bg = gris_5) #définit le message 1
 canva_tab3_labelframe1.place(relx=0.01,rely=0.01,relwidth=0.98, relheight=0.16) # affiche le labelframe type de chargement    
 # Choisir quelle est la charge 1 du problème
-canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choissiez le type de charge sur votre poutre :",bg = gris_5,font = ("Arial",10,"bold"))
+canva_tab3_labelframe1_label = Label(canva_tab3_labelframe1,text = "Choisissez le type de charge sur votre poutre :",bg = gris_5,font = ("Arial",10,"bold"))
 canva_tab3_labelframe1_label.place(relx=0.01,rely=0.02,relwidth=0.98, relheight=0.25)
 chargement = StringVar()
 canva_tab3_labelframe1_Combobox1 = ttk.Combobox(canva_tab3_labelframe1, textvariable = chargement , state = "readonly",justify='center')
@@ -1317,8 +1317,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
     if str(chargement.get()) == '2 appuis simples' : 
         if str(chargement2.get()) == 'Charge concentrée' :
             # messages des inputs
-            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force concentrée P sur votre poutre en N :',bg=gris_5)
-            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la distance a1 de votre poutre en mm :',bg=gris_5)
+            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force concentrée P sur votre poutre en N :',bg=gris_5)
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la distance a1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1348,7 +1348,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1371,9 +1371,9 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1408,8 +1408,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge uniformément répartie partielle proche des appuis' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique a \nsur votre  poutre en mm :',bg=gris_5)        
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance sur laquelle la charge s’applique a \nsur votre  poutre en mm :',bg=gris_5)        
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1438,8 +1438,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
-            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la distance a1 de votre poutre en mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la distance a1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1468,7 +1468,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire monotone' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1491,7 +1491,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge triangulaire antisymétrique' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1514,9 +1514,9 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge trapézoïdale' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance sur laquelle la charge s’applique I \nsur votre  poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1551,7 +1551,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Charge parabolique' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1574,8 +1574,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 2 :  index <",canva_tab3_labelframe1_Combobox2.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox2.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement2.get()) == 'Moment' :
             # messages des inputs
-            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Moment M sur votre poutre en N.mm :',bg=gris_5)
-            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la distance a1 de votre poutre en mm :',bg=gris_5)
+            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Moment M sur votre poutre en N.mm :',bg=gris_5)
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la distance a1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1605,8 +1605,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
     if str(chargement.get()) == '1 encastrement et 1 bord libre' : 
         if str(chargement3.get()) == 'Charge concentrée' :
             # messages des inputs
-            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force concentrée P sur votre poutre en N :',bg=gris_5)
-            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la distance a1 de votre poutre en mm :',bg=gris_5)
+            label_force_conc_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force concentrée P sur votre poutre en N :',bg=gris_5)
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la distance a1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_conc_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1635,7 +1635,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge uniformément répartie' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1658,9 +1658,9 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge uniformément répartie partielle' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
-            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
-            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N/mm :',bg=gris_5)
+            label_l = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance sur laquelle la charge s’applique I \nsur votre poutre en mm :',bg=gris_5)        
+            label_c1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Distance entre le noeud de base et l’endroit \ndu début d’application de la charge c1 sur votre poutre \nen mm :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_l = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -1695,7 +1695,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire croissante' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1718,7 +1718,7 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Charge triangulaire décroissante' :
             # messages des inputs
-            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la Force répartie q sur votre poutre en N :',bg=gris_5)
+            label_force_rep_1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la Force répartie q sur votre poutre en N :',bg=gris_5)
             # saisie des inputs
             saisie_force_rep_1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             # Placement des items sur la grille
@@ -1741,8 +1741,8 @@ def ajout_données_chargement(event): # nouvelle frame où on rentre les donnée
             print("Sélection en cours du Combobox 3 :  index <",canva_tab3_labelframe1_Combobox3.current(),"> et intitulé <", canva_tab3_labelframe1_Combobox3.get(),">") # afficher index et valeur du choix du comboxbox dans le cmd
         if str(chargement3.get()) == 'Moment' :
             # messages des inputs
-            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer le Moment M sur votre poutre en N.mm :',bg=gris_5)
-            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrer la distance a1 de votre poutre en mm :',bg=gris_5)
+            label_moment = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez le Moment M sur votre poutre en N.mm :',bg=gris_5)
+            label_a1 = Label(canva_tab3_labelframe2,font = ("Arial",10,"bold"),text = 'Entrez la distance a1 de votre poutre en mm :',bg=gris_5)
             # saisie des inputs
             saisie_moment = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
             saisie_a1 = Entry(canva_tab3_labelframe2,disabledbackground = gris_4,font = ("Arial",11),justify='center',bg=gris_2)
@@ -2189,7 +2189,7 @@ def calcul(): # Effectue le calcul sur le bouton calcul
     MasseVol = valeurs_materiau[1]
     # Discrétisations (pour l'instant le pas ne peut pas être choisis mais il pourra l'être plus tard)
     NbrePointsX = int(NbrePointsX_bis.get())
-    print('Nombres de points sur les graphes : ', NbrePointsX)
+    print('Nombre de points sur les graphes : ', NbrePointsX)
     x = np.linspace(0, longueur, NbrePointsX)
     Somme_c_concentrée = Somme_c_répartie = Somme_c_répartie_partielle = Somme_c_répartie_partielle_proche = Somme_c_triang = Somme_c_triangulaire_mon = Somme_c_triangulaire_antisy = Somme_c_trapézoïdale_sy = Somme_c_parabolique = Somme_couple = Somme_couple_réparti = Somme_c_crois = Somme_c_décrois = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
     if str(chargement.get()) == '2 appuis simples' :

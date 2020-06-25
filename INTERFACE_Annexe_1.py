@@ -106,7 +106,7 @@ def aide(): # fourni les liens URLs de la plateforme d'aide en ligne, du pdf et 
     label0.pack(fill='both')
     label2=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'Plusieurs choix s\'offent à vous :')
     label2.pack(fill='both')
-    label4=Label(root,justify='center',bg=gris_5,font=font_texte2,text= '1/ Lisez le guide d\'utilisation fournie avec le logiciel')
+    label4=Label(root,justify='center',bg=gris_5,font=font_texte2,text= '1/ Lisez le guide d\'utilisation fourni avec le logiciel')
     label4.pack(fill='both')
     label6=Label(root,justify='center',bg=gris_5,font=font_texte2,text= '2/ Regardez la vidéo fournie également avec le logiciel (et bientôt sur la plateforme en ligne)')
     label6.pack(fill='both')
