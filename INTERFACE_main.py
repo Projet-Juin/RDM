@@ -2613,7 +2613,7 @@ def lancer_le_graph_Contrainte_analyse():
      a.axhline(y=Re)
      a.axhline(y=-Re)
      a.set_xlabel('x [mm]')
-     a.set_ylabel('Contrainte Maximum [MPa]')
+     a.set_ylabel('Contrainte Maximale [MPa]')
      # tanbouille tkinter pour afficher #
      canvas = FigureCanvasTkAgg(f, master=right_canvas1)
      canvas.draw()
