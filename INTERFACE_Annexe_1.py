@@ -8,6 +8,7 @@ Création de fonctions annexes
 # Import Biblio
 from tkinter import *
 import tkinter.filedialog
+from tkinter import ttk
 from tkinter.messagebox import *
 import sys
 import os
@@ -130,6 +131,8 @@ def ctds_de_fct(): # annonce les conditions dans lequels le programme renvois de
     label8=Label(root,justify='left',bg=gris_5,font=font_texte2,text= 'La loi de Hooke précise que, dans le domaine élastique du matériau, les déformations sont proportionnelles aux contraintes. Le principe de superposition permet de décomposer\ntoute sollicitation complexe en une somme de sollicitations élémentaires dont les effets sont ensuite additionnés. Ce principe est directement lié à l\'hypothèse de linéarité de la loi de\nHooke.\n')
     label8.pack(fill='both')
     root.mainloop()
+
+
 def credit(): # annonce la version du programme, les concepteurs du programme et l'année de développement
     root=Tk()
     root.title("Solve Structure --- Crédits") #Titre de l'encadré
@@ -146,8 +149,9 @@ def credit(): # annonce la version du programme, les concepteurs du programme et
     label4.pack(fill='both')
     label6=Label(root,justify='center',bg=gris_5,font=font_texte2,text= 'Partie Eléments finis : \nOmbline DELASSUS --- Lansana DIOMANDE --- Guillaume WEBER --- Xingyu XIA\n')
     label6.pack(fill='both')
-    logo_1 = PhotoImage(file='images/EPF-couleur_crédit.png')
-    logo_2 = PhotoImage(file='images/logo_crédit.png')
+    CHEMIN = os.getcwd()
+    logo_1 = PhotoImage(file=CHEMIN+'\images\EPF-couleur_credit.png')
+    logo_2 = PhotoImage(file='images\logo_credit.png')
     labellogo_1=Label(root,image=logo_1)
     labellogo_1.image = logo_1
     labellogo_1.pack(anchor='s')
