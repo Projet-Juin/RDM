@@ -2585,7 +2585,7 @@ def Analyse():
         Label2_bis= Label(right_canvas2,text=ContrainteMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3= Label(right_canvas2,text="Déformation totale Maximale = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label3_bis= Label(right_canvas2,text=DefMaxTotal,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
-        Label4= Label(right_canvas2,text="Flèche totale Maximale = [mm]",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
+        Label4= Label(right_canvas2,text="Flèche totale Maximale [mm] = ",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
         Label4_bis= Label(right_canvas2,text=FlècheMaxTotale,bg=gris_5,fg="red",font = ("Arial",11,"bold"))
     elif ContrainteMaxTotal<=Re or ContrainteMaxTotal>=(-Re):
         Label1 = Label(right_canvas2,text="La poutre supporte la charge qui lui est contraint",bg=gris_5,fg="red",font = ("Arial",11,"bold"))
